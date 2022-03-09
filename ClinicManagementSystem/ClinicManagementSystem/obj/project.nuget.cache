@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "OeY973RX18G5F2BXLqjl84rs4ZD3XSGhGv3KFq0T/CxRTUj/fMCpUCNgpkBk3079k4wQTHAq3Ndvpje5QkrMcg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\matad\\OneDrive\\Dokumenty\\GitHub\\TAB_DRA1\\ClinicManagementSystem\\ClinicManagementSystem\\ClinicManagementSystem.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\matad\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.20\\microsoft.netcore.app.host.win-x64.3.1.20.nupkg.sha512"
+  ],
+  "logs": []
+}
