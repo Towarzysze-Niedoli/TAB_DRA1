@@ -12,8 +12,9 @@ namespace ClinicManagementSystem
 {
     public partial class MainWindow : Form
     {
-        LoginForm _loginForm;
-        SideMenu _sideMenu;
+        private LoginForm _loginForm;
+        private SideMenu _sideMenu;
+        private NewVisitForm _newVisitForm;
         public MainWindow()
         {
             InitializeComponent();
@@ -28,12 +29,8 @@ namespace ClinicManagementSystem
 
         private void ShowLoginForm()
         {
-            _loginForm = new LoginForm(LoginButtonClicked)
-            {
-                Dock = DockStyle.Fill,
-                TopLevel = false,
-                TopMost = true
-            };
+            _loginForm = new LoginForm(LoginButtonClicked);
+            InitializeForm(_loginForm);
             this.SideUpperPanel.Controls.Add(_loginForm);
             _loginForm.Show();
         }
@@ -58,14 +55,25 @@ namespace ClinicManagementSystem
 
         private void ShowSideMenuForm(UserLevel level)
         {
-            _sideMenu = new SideMenu(level)
-            {
-                Dock = DockStyle.Fill,
-                TopLevel = false,
-                TopMost = true
-            };
+            _sideMenu = new SideMenu(level, ShowNewVisitForm);
+            InitializeForm(_sideMenu);
             this.SideUpperPanel.Controls.Add(_sideMenu);
             _sideMenu.Show();
+        }
+
+        private void ShowNewVisitForm()
+        {
+            _newVisitForm = new NewVisitForm();
+            InitializeForm(_newVisitForm);
+            this.MainPanel.Controls.Add(_newVisitForm);
+            _newVisitForm.Show();
+        }
+
+        private void InitializeForm(Form form)
+        {
+            form.Dock = DockStyle.Fill;
+            form.TopLevel = false;
+            form.TopMost = true;
         }
     }
 }

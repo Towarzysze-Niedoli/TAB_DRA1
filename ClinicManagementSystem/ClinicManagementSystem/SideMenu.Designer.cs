@@ -49,7 +49,7 @@ namespace ClinicManagementSystem
             this.VisitsButton.Location = new System.Drawing.Point(0, 0);
             this.VisitsButton.Name = "VisitsButton";
             this.VisitsButton.Size = new System.Drawing.Size(300, 57);
-            this.VisitsButton.TabIndex = 9;
+            this.VisitsButton.TabIndex = 0;
             this.VisitsButton.Text = "Visits";
             this.VisitsButton.UseVisualStyleBackColor = false;
             this.VisitsButton.Click += new System.EventHandler(this.VisitsButton_Click);
@@ -67,7 +67,7 @@ namespace ClinicManagementSystem
             this.MedicsButton.Location = new System.Drawing.Point(0, 57);
             this.MedicsButton.Name = "MedicsButton";
             this.MedicsButton.Size = new System.Drawing.Size(300, 57);
-            this.MedicsButton.TabIndex = 10;
+            this.MedicsButton.TabIndex = 1;
             this.MedicsButton.Text = "Doctors";
             this.MedicsButton.UseVisualStyleBackColor = false;
             this.MedicsButton.Click += new System.EventHandler(this.MedicsButton_Click);
@@ -85,7 +85,7 @@ namespace ClinicManagementSystem
             this.PatiensButton.Location = new System.Drawing.Point(0, 114);
             this.PatiensButton.Name = "PatiensButton";
             this.PatiensButton.Size = new System.Drawing.Size(300, 57);
-            this.PatiensButton.TabIndex = 11;
+            this.PatiensButton.TabIndex = 2;
             this.PatiensButton.Text = "Patients";
             this.PatiensButton.UseVisualStyleBackColor = false;
             this.PatiensButton.Click += new System.EventHandler(this.PatiensButton_Click);
@@ -103,7 +103,7 @@ namespace ClinicManagementSystem
             this.LaboratoryButton.Location = new System.Drawing.Point(0, 171);
             this.LaboratoryButton.Name = "LaboratoryButton";
             this.LaboratoryButton.Size = new System.Drawing.Size(300, 57);
-            this.LaboratoryButton.TabIndex = 12;
+            this.LaboratoryButton.TabIndex = 3;
             this.LaboratoryButton.Text = "Laboratory";
             this.LaboratoryButton.UseVisualStyleBackColor = false;
             this.LaboratoryButton.Click += new System.EventHandler(this.LaboratoryButton_Click);
@@ -121,7 +121,7 @@ namespace ClinicManagementSystem
             this.ManagementButton.Location = new System.Drawing.Point(0, 228);
             this.ManagementButton.Name = "ManagementButton";
             this.ManagementButton.Size = new System.Drawing.Size(300, 57);
-            this.ManagementButton.TabIndex = 13;
+            this.ManagementButton.TabIndex = 4;
             this.ManagementButton.Text = "Management";
             this.ManagementButton.UseVisualStyleBackColor = false;
             this.ManagementButton.Click += new System.EventHandler(this.ManagementButton_Click);

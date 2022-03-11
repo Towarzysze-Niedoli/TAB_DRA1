@@ -56,7 +56,7 @@ namespace ClinicManagementSystem
             this.passwordTextBox.Name = "passwordTextBox";
             this.passwordTextBox.PasswordChar = '*';
             this.passwordTextBox.Size = new System.Drawing.Size(250, 32);
-            this.passwordTextBox.TabIndex = 6;
+            this.passwordTextBox.TabIndex = 1;
             // 
             // loginLabel
             // 
@@ -81,7 +81,7 @@ namespace ClinicManagementSystem
             this.loginButton.Location = new System.Drawing.Point(25, 321);
             this.loginButton.Name = "loginButton";
             this.loginButton.Size = new System.Drawing.Size(250, 50);
-            this.loginButton.TabIndex = 8;
+            this.loginButton.TabIndex = 2;
             this.loginButton.Text = "Login";
             this.loginButton.UseVisualStyleBackColor = false;
             this.loginButton.Click += new System.EventHandler(this.loginButton_Click);
@@ -94,7 +94,7 @@ namespace ClinicManagementSystem
             this.loginTextBox.MaxLength = 20;
             this.loginTextBox.Name = "loginTextBox";
             this.loginTextBox.Size = new System.Drawing.Size(250, 32);
-            this.loginTextBox.TabIndex = 5;
+            this.loginTextBox.TabIndex = 0;
             // 
             // LoginForm
             // 

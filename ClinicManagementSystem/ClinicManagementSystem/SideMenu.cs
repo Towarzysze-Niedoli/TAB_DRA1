@@ -10,10 +10,12 @@ namespace ClinicManagementSystem
 {
     public partial class SideMenu : Form
     {
-        public SideMenu(UserLevel level)
+        private Action _openVisitsForm;
+        public SideMenu(UserLevel level, Action openVisitForms)
         {
             InitializeComponent();
             SetComponentsVisiblity(level);
+            _openVisitsForm += openVisitForms;
         }
 
         private void SetComponentsVisiblity(UserLevel level)
@@ -55,6 +57,7 @@ namespace ClinicManagementSystem
         private void VisitsButton_Click(object sender, EventArgs e)
         {
             SetButtonsColors(0);
+            _openVisitsForm.Invoke();
         }
 
         private void MedicsButton_Click(object sender, EventArgs e)
