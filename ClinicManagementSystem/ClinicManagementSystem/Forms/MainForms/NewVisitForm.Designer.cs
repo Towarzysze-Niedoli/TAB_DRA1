@@ -1,5 +1,5 @@
 ﻿
-namespace ClinicManagementSystem
+namespace ClinicManagementSystem.Forms.MainForms
 {
     partial class NewVisitForm
     {

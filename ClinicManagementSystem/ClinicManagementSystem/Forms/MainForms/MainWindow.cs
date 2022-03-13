@@ -7,14 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ClinicManagementSystem.Forms.SideForms;
+using ClinicManagementSystem.Forms.MainForms;
 
-namespace ClinicManagementSystem
+namespace ClinicManagementSystem.Forms.MainForms
 {
     public partial class MainWindow : Form
     {
-        private LoginForm _loginForm;
-        private SideMenu _sideMenu;
-        private NewVisitForm _newVisitForm;
+        private Form _currentMainForm;
+        private Form _currentSideForm;
         public MainWindow()
         {
             InitializeComponent();
@@ -29,19 +30,18 @@ namespace ClinicManagementSystem
 
         private void ShowLoginForm()
         {
-            _loginForm = new LoginForm(LoginButtonClicked);
-            InitializeForm(_loginForm);
-            this.SideUpperPanel.Controls.Add(_loginForm);
-            _loginForm.Show();
+            _currentSideForm = new LoginForm(LoginButtonClicked);
+            InitializeForm(_currentSideForm, FormType.SideForm);
         }
 
         private void LogoutButton_Click(object sender, EventArgs e)
         {
-            ShowLoginForm();
+            this.SideBottomPanel.Controls.Remove(_currentSideForm);
+            this.MainPanel.Controls.Remove(_currentMainForm);
             this.LogoBox.Show();
             this.LogoText.Show();
             this.LogoutButton.Hide();
-            this.SideBottomPanel.Controls.Remove(_sideMenu);
+            ShowLoginForm();
         }
 
         private void LoginButtonClicked()
@@ -49,31 +49,37 @@ namespace ClinicManagementSystem
             this.LogoBox.Hide();
             this.LogoText.Hide();
             this.LogoutButton.Show();
-            this.SideUpperPanel.Controls.Remove(_loginForm);
+            this.SideUpperPanel.Controls.Remove(_currentSideForm);
             ShowSideMenuForm(UserLevel.Manager);
         }
 
         private void ShowSideMenuForm(UserLevel level)
         {
-            _sideMenu = new SideMenu(level, ShowNewVisitForm);
-            InitializeForm(_sideMenu);
-            this.SideUpperPanel.Controls.Add(_sideMenu);
-            _sideMenu.Show();
+            _currentSideForm = new SideMenu(level, ShowNewVisitForm);
+            InitializeForm(_currentSideForm, FormType.SideForm);
         }
 
         private void ShowNewVisitForm()
         {
-            _newVisitForm = new NewVisitForm();
-            InitializeForm(_newVisitForm);
-            this.MainPanel.Controls.Add(_newVisitForm);
-            _newVisitForm.Show();
+            this.MainPanel.Controls.Remove(_currentMainForm);
+            _currentMainForm = new NewVisitForm();
+            InitializeForm(_currentMainForm, FormType.MainForm);
         }
 
-        private void InitializeForm(Form form)
+        private void InitializeForm(Form form, FormType type)
         {
             form.Dock = DockStyle.Fill;
             form.TopLevel = false;
             form.TopMost = true;
+            if (type == FormType.SideForm)
+            {
+                this.SideUpperPanel.Controls.Add(form);
+            }
+            else if(type == FormType.MainForm)
+            {
+                this.MainPanel.Controls.Add(form);
+            }
+            form.Show();
         }
     }
 }

@@ -14,7 +14,8 @@ C:\Users\matad\OneDrive\Dokumenty\GitHub\TAB_DRA1\ClinicManagementSystem\ClinicM
 C:\Users\matad\OneDrive\Dokumenty\GitHub\TAB_DRA1\ClinicManagementSystem\ClinicManagementSystem\obj\Debug\netcoreapp3.1\ClinicManagementSystem.pdb
 C:\Users\matad\OneDrive\Dokumenty\GitHub\TAB_DRA1\ClinicManagementSystem\ClinicManagementSystem\obj\Debug\netcoreapp3.1\ClinicManagementSystem.genruntimeconfig.cache
 C:\Users\matad\OneDrive\Dokumenty\GitHub\TAB_DRA1\ClinicManagementSystem\ClinicManagementSystem\obj\Debug\netcoreapp3.1\ClinicManagementSystem.Properties.Resources.resources
-C:\Users\matad\OneDrive\Dokumenty\GitHub\TAB_DRA1\ClinicManagementSystem\ClinicManagementSystem\obj\Debug\netcoreapp3.1\ClinicManagementSystem.MainWindow.resources
-C:\Users\matad\OneDrive\Dokumenty\GitHub\TAB_DRA1\ClinicManagementSystem\ClinicManagementSystem\obj\Debug\netcoreapp3.1\ClinicManagementSystem.LoginForm.resources
-C:\Users\matad\OneDrive\Dokumenty\GitHub\TAB_DRA1\ClinicManagementSystem\ClinicManagementSystem\obj\Debug\netcoreapp3.1\ClinicManagementSystem.SideMenu.resources
-C:\Users\matad\OneDrive\Dokumenty\GitHub\TAB_DRA1\ClinicManagementSystem\ClinicManagementSystem\obj\Debug\netcoreapp3.1\ClinicManagementSystem.NewVisitForm.resources
+C:\Users\matad\OneDrive\Dokumenty\GitHub\TAB_DRA1\ClinicManagementSystem\ClinicManagementSystem\obj\Debug\netcoreapp3.1\ClinicManagementSystem.Forms.CustomElements.ListElement.resources
+C:\Users\matad\OneDrive\Dokumenty\GitHub\TAB_DRA1\ClinicManagementSystem\ClinicManagementSystem\obj\Debug\netcoreapp3.1\ClinicManagementSystem.Forms.MainForms.MainWindow.resources
+C:\Users\matad\OneDrive\Dokumenty\GitHub\TAB_DRA1\ClinicManagementSystem\ClinicManagementSystem\obj\Debug\netcoreapp3.1\ClinicManagementSystem.Forms.MainForms.NewVisitForm.resources
+C:\Users\matad\OneDrive\Dokumenty\GitHub\TAB_DRA1\ClinicManagementSystem\ClinicManagementSystem\obj\Debug\netcoreapp3.1\ClinicManagementSystem.Forms.SideForms.LoginForm.resources
+C:\Users\matad\OneDrive\Dokumenty\GitHub\TAB_DRA1\ClinicManagementSystem\ClinicManagementSystem\obj\Debug\netcoreapp3.1\ClinicManagementSystem.Forms.SideForms.SideMenu.resources

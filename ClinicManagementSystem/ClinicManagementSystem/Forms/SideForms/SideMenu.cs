@@ -6,11 +6,13 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
-namespace ClinicManagementSystem
+namespace ClinicManagementSystem.Forms.SideForms
 {
     public partial class SideMenu : Form
     {
         private Action _openVisitsForm;
+
+        private SideMenuTab _currentTab;
         public SideMenu(UserLevel level, Action openVisitForms)
         {
             InitializeComponent();
@@ -56,70 +58,79 @@ namespace ClinicManagementSystem
 
         private void VisitsButton_Click(object sender, EventArgs e)
         {
-            SetButtonsColors(0);
+            SetTabsColors(SideMenuTab.Visits);
             _openVisitsForm.Invoke();
         }
 
         private void MedicsButton_Click(object sender, EventArgs e)
         {
-            SetButtonsColors(1);
+            SetTabsColors(SideMenuTab.Medics);
         }
 
         private void PatiensButton_Click(object sender, EventArgs e)
         {
-            SetButtonsColors(2);
+            SetTabsColors(SideMenuTab.Patients);
         }
 
         private void LaboratoryButton_Click(object sender, EventArgs e)
         {
-            SetButtonsColors(3);
+            SetTabsColors(SideMenuTab.Laboratory);
         }
 
         private void ManagementButton_Click(object sender, EventArgs e)
         {
-            SetButtonsColors(4);
+            SetTabsColors(SideMenuTab.Management);
         }
 
-        private void SetButtonsColors(int activeIndex)
+        private void SetTabsColors(SideMenuTab nextTab)
         {
-            switch (activeIndex)
+            SetTabInactive();
+            _currentTab = nextTab;
+            SetTabActive();
+        }
+        
+        private void SetTabActive()
+        {
+            switch (_currentTab)
             {
-                case 0:
+                case SideMenuTab.Visits:
                     this.VisitsButton.BackColor = Color.FromArgb(73, 88, 103);
-                    this.MedicsButton.BackColor = Color.FromArgb(189, 213, 234);
-                    this.PatiensButton.BackColor = Color.FromArgb(189, 213, 234);
-                    this.LaboratoryButton.BackColor = Color.FromArgb(189, 213, 234);
-                    this.ManagementButton.BackColor = Color.FromArgb(189, 213, 234);
                     break;
-                case 1:
-                    this.VisitsButton.BackColor = Color.FromArgb(189, 213, 234);
-                    this.MedicsButton.BackColor = Color.FromArgb(73, 88, 103);
-                    this.PatiensButton.BackColor = Color.FromArgb(189, 213, 234);
-                    this.LaboratoryButton.BackColor = Color.FromArgb(189, 213, 234);
-                    this.ManagementButton.BackColor = Color.FromArgb(189, 213, 234);
-                    break;
-                case 2:
-                    this.VisitsButton.BackColor = Color.FromArgb(189, 213, 234);
-                    this.MedicsButton.BackColor = Color.FromArgb(189, 213, 234);
+                case SideMenuTab.Patients:
                     this.PatiensButton.BackColor = Color.FromArgb(73, 88, 103);
-                    this.LaboratoryButton.BackColor = Color.FromArgb(189, 213, 234);
-                    this.ManagementButton.BackColor = Color.FromArgb(189, 213, 234);
                     break;
-                case 3:
-                    this.VisitsButton.BackColor = Color.FromArgb(189, 213, 234);
-                    this.MedicsButton.BackColor = Color.FromArgb(189, 213, 234);
-                    this.PatiensButton.BackColor = Color.FromArgb(189, 213, 234);
+                case SideMenuTab.Medics:
+                    this.MedicsButton.BackColor = Color.FromArgb(73, 88, 103);
+                    break;
+                case SideMenuTab.Laboratory:
                     this.LaboratoryButton.BackColor = Color.FromArgb(73, 88, 103);
-                    this.ManagementButton.BackColor = Color.FromArgb(189, 213, 234);
                     break;
                 default:
-                    this.VisitsButton.BackColor = Color.FromArgb(189, 213, 234);
-                    this.MedicsButton.BackColor = Color.FromArgb(189, 213, 234);
-                    this.PatiensButton.BackColor = Color.FromArgb(189, 213, 234);
-                    this.LaboratoryButton.BackColor = Color.FromArgb(189, 213, 234);
                     this.ManagementButton.BackColor = Color.FromArgb(73, 88, 103);
                     break;
             }
-        } 
+        }
+
+        private void SetTabInactive()
+        {
+            switch (_currentTab)
+            {
+                case SideMenuTab.Visits:
+                    this.VisitsButton.BackColor = Color.FromArgb(189, 213, 234);
+                    break;
+                case SideMenuTab.Patients:
+                    this.PatiensButton.BackColor = Color.FromArgb(189, 213, 234);
+                    break;
+                case SideMenuTab.Medics:
+                    this.MedicsButton.BackColor = Color.FromArgb(189, 213, 234);
+                    break;
+                case SideMenuTab.Laboratory:
+                    this.LaboratoryButton.BackColor = Color.FromArgb(189, 213, 234);
+                    break;
+                default:
+                    this.ManagementButton.BackColor = Color.FromArgb(189, 213, 234);
+                    break;
+            }
+        }
     }
 }

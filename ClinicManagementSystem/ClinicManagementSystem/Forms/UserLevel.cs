@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ClinicManagementSystem
+namespace ClinicManagementSystem.Forms
 {
     public enum UserLevel
     {

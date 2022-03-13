@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
-namespace ClinicManagementSystem
+namespace ClinicManagementSystem.Forms.MainForms
 {
     public partial class NewVisitForm : Form
     {
