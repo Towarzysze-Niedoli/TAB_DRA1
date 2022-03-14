@@ -36,7 +36,6 @@ namespace ClinicManagementSystem.Forms.MainForms
 
         private void LogoutButton_Click(object sender, EventArgs e)
         {
-            this.SideBottomPanel.Controls.Remove(_currentSideForm);
             this.MainPanel.Controls.Remove(_currentMainForm);
             this.LogoBox.Show();
             this.LogoText.Show();

@@ -57,7 +57,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.SearchPatientTextBox.MaxLength = 20;
             this.SearchPatientTextBox.Name = "SearchPatientTextBox";
             this.SearchPatientTextBox.PlaceholderText = "Search Patient";
-            this.SearchPatientTextBox.Size = new System.Drawing.Size(302, 25);
+            this.SearchPatientTextBox.Size = new System.Drawing.Size(302, 20);
             this.SearchPatientTextBox.TabIndex = 0;
             // 
             // SearchPatientButton
@@ -111,7 +111,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.SpecializationComboBox.FormattingEnabled = true;
             this.SpecializationComboBox.Location = new System.Drawing.Point(700, 100);
             this.SpecializationComboBox.Name = "SpecializationComboBox";
-            this.SpecializationComboBox.Size = new System.Drawing.Size(200, 32);
+            this.SpecializationComboBox.Size = new System.Drawing.Size(200, 27);
             this.SpecializationComboBox.TabIndex = 2;
             this.SpecializationComboBox.Text = "Specialization";
             // 
@@ -122,7 +122,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.VisitDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.VisitDateTimePicker.Location = new System.Drawing.Point(1050, 97);
             this.VisitDateTimePicker.Name = "VisitDateTimePicker";
-            this.VisitDateTimePicker.Size = new System.Drawing.Size(200, 32);
+            this.VisitDateTimePicker.Size = new System.Drawing.Size(200, 27);
             this.VisitDateTimePicker.TabIndex = 3;
             // 
             // contextMenuStrip1
@@ -149,7 +149,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.PatientSurnameTextBox.Location = new System.Drawing.Point(1009, 619);
             this.PatientSurnameTextBox.Name = "PatientSurnameTextBox";
             this.PatientSurnameTextBox.ReadOnly = true;
-            this.PatientSurnameTextBox.Size = new System.Drawing.Size(241, 25);
+            this.PatientSurnameTextBox.Size = new System.Drawing.Size(241, 20);
             this.PatientSurnameTextBox.TabIndex = 6;
             // 
             // PatientNameTextBox
@@ -161,7 +161,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.PatientNameTextBox.Location = new System.Drawing.Point(700, 619);
             this.PatientNameTextBox.Name = "PatientNameTextBox";
             this.PatientNameTextBox.ReadOnly = true;
-            this.PatientNameTextBox.Size = new System.Drawing.Size(241, 25);
+            this.PatientNameTextBox.Size = new System.Drawing.Size(241, 20);
             this.PatientNameTextBox.TabIndex = 5;
             // 
             // DoctorNameTextBox
@@ -173,7 +173,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.DoctorNameTextBox.Location = new System.Drawing.Point(700, 680);
             this.DoctorNameTextBox.Name = "DoctorNameTextBox";
             this.DoctorNameTextBox.ReadOnly = true;
-            this.DoctorNameTextBox.Size = new System.Drawing.Size(241, 25);
+            this.DoctorNameTextBox.Size = new System.Drawing.Size(241, 20);
             this.DoctorNameTextBox.TabIndex = 7;
             // 
             // DoctorSurnameTextBox
@@ -185,7 +185,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.DoctorSurnameTextBox.Location = new System.Drawing.Point(1009, 680);
             this.DoctorSurnameTextBox.Name = "DoctorSurnameTextBox";
             this.DoctorSurnameTextBox.ReadOnly = true;
-            this.DoctorSurnameTextBox.Size = new System.Drawing.Size(241, 25);
+            this.DoctorSurnameTextBox.Size = new System.Drawing.Size(241, 20);
             this.DoctorSurnameTextBox.TabIndex = 8;
             // 
             // VisitDateTextBox
@@ -197,7 +197,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.VisitDateTextBox.Location = new System.Drawing.Point(700, 741);
             this.VisitDateTextBox.Name = "VisitDateTextBox";
             this.VisitDateTextBox.ReadOnly = true;
-            this.VisitDateTextBox.Size = new System.Drawing.Size(241, 25);
+            this.VisitDateTextBox.Size = new System.Drawing.Size(241, 20);
             this.VisitDateTextBox.TabIndex = 9;
             // 
             // VisitTimeTextBox
@@ -209,7 +209,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.VisitTimeTextBox.Location = new System.Drawing.Point(1009, 741);
             this.VisitTimeTextBox.Name = "VisitTimeTextBox";
             this.VisitTimeTextBox.ReadOnly = true;
-            this.VisitTimeTextBox.Size = new System.Drawing.Size(241, 25);
+            this.VisitTimeTextBox.Size = new System.Drawing.Size(241, 20);
             this.VisitTimeTextBox.TabIndex = 11;
             // 
             // NewVisitButton
@@ -230,7 +230,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             // 
             // NewVisitForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(247)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(1300, 900);
