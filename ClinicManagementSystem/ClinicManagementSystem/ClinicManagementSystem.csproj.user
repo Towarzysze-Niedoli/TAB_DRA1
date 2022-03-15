@@ -4,6 +4,9 @@
     <Compile Update="Forms\CustomElements\ListElement.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="Forms\SideForms\ListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forms\SideForms\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
