@@ -34,17 +34,22 @@ namespace ClinicManagementSystem.Forms.SideForms
             // 
             // ListFlowPanel
             // 
-            this.ListFlowPanel.AccessibleRole = System.Windows.Forms.AccessibleRole.ScrollBar;
+            this.ListFlowPanel.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
+            this.ListFlowPanel.HorizontalScroll.Maximum = 0;
+            this.ListFlowPanel.AutoScroll = false;
+            this.ListFlowPanel.VerticalScroll.Visible = false;
+            this.ListFlowPanel.HorizontalScroll.Visible = false;
             this.ListFlowPanel.AutoScroll = true;
-            this.ListFlowPanel.Location = new System.Drawing.Point(12, 12);
+            this.ListFlowPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ListFlowPanel.Location = new System.Drawing.Point(0, 0);
             this.ListFlowPanel.Name = "ListFlowPanel";
-            this.ListFlowPanel.Size = new System.Drawing.Size(526, 381);
+            this.ListFlowPanel.Size = new System.Drawing.Size(550, 405);
             this.ListFlowPanel.TabIndex = 0;
             // 
             // ListForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
+            this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(189)))), ((int)(((byte)(213)))), ((int)(((byte)(234)))));
             this.ClientSize = new System.Drawing.Size(550, 405);
             this.Controls.Add(this.ListFlowPanel);

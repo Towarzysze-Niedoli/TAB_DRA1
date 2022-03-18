@@ -64,6 +64,8 @@ namespace ClinicManagementSystem.Forms.MainForms
             // 
             this.SearchPatientButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(115)))), ((int)(((byte)(153)))));
             this.SearchPatientButton.FlatAppearance.BorderSize = 0;
+            this.SearchPatientButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(88)))), ((int)(((byte)(103)))));
+            this.SearchPatientButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(117)))), ((int)(((byte)(144)))));
             this.SearchPatientButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SearchPatientButton.Font = new System.Drawing.Font("Corbel", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.SearchPatientButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(247)))), ((int)(((byte)(255)))));
@@ -73,27 +75,30 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.SearchPatientButton.TabIndex = 1;
             this.SearchPatientButton.Text = "Search";
             this.SearchPatientButton.UseVisualStyleBackColor = false;
+            this.SearchPatientButton.Click += new System.EventHandler(this.SearchPatientButton_Click);
             // 
             // PatientPanel
             // 
             this.PatientPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(189)))), ((int)(((byte)(213)))), ((int)(((byte)(234)))));
-            this.PatientPanel.Location = new System.Drawing.Point(50, 165);
+            this.PatientPanel.Location = new System.Drawing.Point(50, 144);
             this.PatientPanel.Name = "PatientPanel";
-            this.PatientPanel.Size = new System.Drawing.Size(550, 405);
+            this.PatientPanel.Size = new System.Drawing.Size(550, 439);
             this.PatientPanel.TabIndex = 2;
             // 
             // DoctorsListPanel
             // 
             this.DoctorsListPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(189)))), ((int)(((byte)(213)))), ((int)(((byte)(234)))));
-            this.DoctorsListPanel.Location = new System.Drawing.Point(700, 165);
+            this.DoctorsListPanel.Location = new System.Drawing.Point(700, 144);
             this.DoctorsListPanel.Name = "DoctorsListPanel";
-            this.DoctorsListPanel.Size = new System.Drawing.Size(550, 405);
+            this.DoctorsListPanel.Size = new System.Drawing.Size(550, 439);
             this.DoctorsListPanel.TabIndex = 3;
             // 
             // NewPatientButton
             // 
             this.NewPatientButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(115)))), ((int)(((byte)(153)))));
             this.NewPatientButton.FlatAppearance.BorderSize = 0;
+            this.NewPatientButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(88)))), ((int)(((byte)(103)))));
+            this.NewPatientButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(117)))), ((int)(((byte)(144)))));
             this.NewPatientButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.NewPatientButton.Font = new System.Drawing.Font("Corbel", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.NewPatientButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(247)))), ((int)(((byte)(255)))));
@@ -103,6 +108,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.NewPatientButton.TabIndex = 13;
             this.NewPatientButton.Text = "New Patient";
             this.NewPatientButton.UseVisualStyleBackColor = false;
+            this.NewPatientButton.Click += new System.EventHandler(this.NewPatientButton_Click);
             // 
             // SpecializationComboBox
             // 
@@ -227,6 +233,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.NewVisitButton.TabIndex = 12;
             this.NewVisitButton.Text = "Add Visit";
             this.NewVisitButton.UseVisualStyleBackColor = false;
+            this.NewVisitButton.Click += new System.EventHandler(this.NewVisitButton_Click);
             // 
             // NewVisitForm
             // 

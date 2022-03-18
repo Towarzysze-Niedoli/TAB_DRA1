@@ -89,8 +89,7 @@ namespace ClinicManagementSystem.Forms.CustomElements
             // 
             // ListElement
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(189)))), ((int)(((byte)(213)))), ((int)(((byte)(234)))));
             this.Controls.Add(this.BottomLabelTwo);
             this.Controls.Add(this.BottomLabelOne);
@@ -100,7 +99,7 @@ namespace ClinicManagementSystem.Forms.CustomElements
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(247)))), ((int)(((byte)(255)))));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "ListElement";
-            this.Size = new System.Drawing.Size(500, 90);
+            this.Size = new System.Drawing.Size(526, 90);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ListElement_MouseDown);
             this.MouseLeave += new System.EventHandler(this.ListElement_MouseLeave);
             this.MouseHover += new System.EventHandler(this.ListElement_MouseHover);

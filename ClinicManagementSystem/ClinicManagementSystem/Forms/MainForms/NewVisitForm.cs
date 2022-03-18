@@ -24,5 +24,20 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.DoctorsListPanel.Controls.Add(DoctorsList);
             DoctorsList.Show();
         }
+
+        private void SearchPatientButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void NewVisitButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void NewPatientButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

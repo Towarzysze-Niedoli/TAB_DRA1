@@ -40,6 +40,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.LogoBox.Show();
             this.LogoText.Show();
             this.LogoutButton.Hide();
+            this.SideUpperPanel.Controls.Remove(_currentSideForm);
             ShowLoginForm();
         }
 
@@ -54,8 +55,15 @@ namespace ClinicManagementSystem.Forms.MainForms
 
         private void ShowSideMenuForm(UserLevel level)
         {
-            _currentSideForm = new SideMenu(level, ShowNewVisitForm);
+            _currentSideForm = new SideMenu(level, ShowVisitMainForm);
             InitializeForm(_currentSideForm, FormType.SideForm);
+        }
+
+        private void ShowVisitMainForm()
+        {
+            this.MainPanel.Controls.Remove(_currentMainForm);
+            _currentMainForm = new VisitsMainForm(ShowNewVisitForm);
+            InitializeForm(_currentMainForm, FormType.MainForm);
         }
 
         private void ShowNewVisitForm()
