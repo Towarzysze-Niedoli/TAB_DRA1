@@ -11,13 +11,15 @@ namespace ClinicManagementSystem.Forms.SideForms
     public partial class SideMenu : Form
     {
         private Action _openVisitsForm;
+        private Action _openLaboratoryForm;
 
         private SideMenuTab _currentTab;
-        public SideMenu(UserLevel level, Action openVisitForms)
+        public SideMenu(UserLevel level, Action openVisitForms, Action openLaboratoryForms)
         {
             InitializeComponent();
             SetComponentsVisiblity(level);
             _openVisitsForm += openVisitForms;
+            _openLaboratoryForm += openLaboratoryForms;//tutaj
         }
 
         private void SetComponentsVisiblity(UserLevel level)
@@ -75,6 +77,7 @@ namespace ClinicManagementSystem.Forms.SideForms
         private void LaboratoryButton_Click(object sender, EventArgs e)
         {
             SetTabsColors(SideMenuTab.Laboratory);
+            _openLaboratoryForm.Invoke();
         }
 
         private void ManagementButton_Click(object sender, EventArgs e)
