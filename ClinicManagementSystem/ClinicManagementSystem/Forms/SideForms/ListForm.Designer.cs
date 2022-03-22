@@ -38,7 +38,6 @@ namespace ClinicManagementSystem.Forms.SideForms
             this.ListFlowPanel.HorizontalScroll.Maximum = 0;
             this.ListFlowPanel.AutoScroll = false;
             this.ListFlowPanel.VerticalScroll.Visible = false;
-            this.ListFlowPanel.HorizontalScroll.Visible = false;
             this.ListFlowPanel.AutoScroll = true;
             this.ListFlowPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ListFlowPanel.Location = new System.Drawing.Point(0, 0);
@@ -63,6 +62,6 @@ namespace ClinicManagementSystem.Forms.SideForms
 
         #endregion
 
-        private System.Windows.Forms.FlowLayoutPanel ListFlowPanel;
+        protected System.Windows.Forms.FlowLayoutPanel ListFlowPanel;
     }
 }

@@ -112,6 +112,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             // 
             // SpecializationComboBox
             // 
+            this.SpecializationComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.SpecializationComboBox.Font = new System.Drawing.Font("Corbel", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.SpecializationComboBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(115)))), ((int)(((byte)(153)))));
             this.SpecializationComboBox.FormattingEnabled = true;
@@ -119,7 +120,6 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.SpecializationComboBox.Name = "SpecializationComboBox";
             this.SpecializationComboBox.Size = new System.Drawing.Size(200, 32);
             this.SpecializationComboBox.TabIndex = 2;
-            this.SpecializationComboBox.Text = "Specialization";
             // 
             // VisitDateTimePicker
             // 

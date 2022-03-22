@@ -6,40 +6,55 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using ClinicManagementSystem.Forms.CustomElements;
+using ClinicManagementSystem.Forms.EventArguments;
 
 namespace ClinicManagementSystem.Forms.SideForms
 {
     public partial class ListForm : Form
     {
-        List<ListElement> elements;
+        public delegate void DoctorElementClickedEventHandler(object source, ListElementClickedDoctorArgs args);
+
+        public event DoctorElementClickedEventHandler ElementClicked;
+
+        protected int _currentIndex = -1;
+
+        protected List<ListElement> _elements;
+
         public ListForm()
         {
             InitializeComponent();
+
             Dock = DockStyle.Fill;
             this.TopMost = true;
             this.TopLevel = false;
+            
             PopulateListExample();
         }
 
-        private void PopulateListExample()
+        protected virtual void PopulateListExample() { }
+
+        protected void OnElementClicked(object source, ListElementClickedDoctorArgs args)
         {
-            elements = new List<ListElement>
+            if (_currentIndex >= 0)
             {
-                new ListElement("Andrzej Duda", "Długopis", "Thu - 15.03.2022 - 8:00"),
-                new ListElement("Andrzej Duda", "Długopis", "Thu - 15.03.2022 - 8:30"),
-                new ListElement("Andrzej Duda", "Długopis", "Thu - 15.03.2022 - 9:00"),
-                new ListElement("Andrzej Duda", "Długopis", "Thu - 15.03.2022 - 9:30"),
-                new ListElement("Andrzej Duda", "Długopis", "Thu - 15.03.2022 - 10:00"),
-                new ListElement("Andrzej Duda", "Długopis", "Thu - 15.03.2022 - 10:30"),
-                new ListElement("Andrzej Duda", "Długopis", "Thu - 15.03.2022 - 11:00"),
-                new ListElement("Andrzej Duda", "Długopis", "Thu - 15.03.2022 - 11:30"),
-                new ListElement("Andrzej Duda", "Długopis", "Thu - 15.03.2022 - 12:00")
-            };
-            this.ListFlowPanel.Controls.Clear();
-            foreach(ListElement element in elements)
-            {
-                this.ListFlowPanel.Controls.Add(element);
+                ChangeElementColoring();
             }
+
+            _currentIndex = args.Index;
+            ChangeElementColoring();
+
+            ElementClicked.Invoke(this, args);
+        }
+
+        private void ChangeElementColoring()
+        {
+            _elements[_currentIndex].ChangeStatus();
+            _elements[_currentIndex].SetNoHoverColor();
+        }
+        
+        protected void OnElementClicked(ListElementClickedDoctorArgs args)
+        {
+            ElementClicked.Invoke(this, args);
         }
     }
 }

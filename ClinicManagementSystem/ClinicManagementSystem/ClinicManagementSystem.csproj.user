@@ -1,13 +1,25 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+    <Compile Update="Forms\CustomElements\DisabledLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Forms\CustomElements\DoctorListElement.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="Forms\CustomElements\ListElement.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Forms\CustomElements\VisitListElement.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="Forms\MainForms\PerformVisitForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\MainForms\VisitsMainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\SideForms\DoctorListForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\SideForms\ListForm.cs">
@@ -26,6 +38,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\SideForms\SideMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\SideForms\VisitsListForm.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>

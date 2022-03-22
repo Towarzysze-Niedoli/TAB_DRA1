@@ -63,6 +63,16 @@ namespace ClinicManagementSystem.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap calendar_white {
+            get {
+                object obj = ResourceManager.GetObject("calendar-white", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap medical__1_ {
             get {
                 object obj = ResourceManager.GetObject("medical (1)", resourceCulture);
