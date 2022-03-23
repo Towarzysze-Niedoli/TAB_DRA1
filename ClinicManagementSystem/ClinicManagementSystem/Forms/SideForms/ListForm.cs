@@ -12,7 +12,7 @@ namespace ClinicManagementSystem.Forms.SideForms
 {
     public partial class ListForm : Form
     {
-        public delegate void DoctorElementClickedEventHandler(object source, ListElementClickedDoctorArgs args);
+        public delegate void DoctorElementClickedEventHandler(object source, ListElementClickedArgs args);
 
         public event DoctorElementClickedEventHandler ElementClicked;
 
@@ -33,7 +33,7 @@ namespace ClinicManagementSystem.Forms.SideForms
 
         protected virtual void PopulateListExample() { }
 
-        protected void OnElementClicked(object source, ListElementClickedDoctorArgs args)
+        protected void OnElementClicked(object source, ListElementClickedArgs args)
         {
             if (_currentIndex >= 0)
             {
@@ -52,7 +52,7 @@ namespace ClinicManagementSystem.Forms.SideForms
             _elements[_currentIndex].SetNoHoverColor();
         }
         
-        protected void OnElementClicked(ListElementClickedDoctorArgs args)
+        protected void OnElementClicked(ListElementClickedArgs args)
         {
             ElementClicked.Invoke(this, args);
         }

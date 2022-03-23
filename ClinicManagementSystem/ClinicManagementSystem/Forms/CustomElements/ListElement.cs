@@ -9,7 +9,7 @@ namespace ClinicManagementSystem.Forms.CustomElements
 {
     public class ListElement : UserControl
     {
-        public delegate void ElementClickedEventHandler(object source, ListElementClickedDoctorArgs args);
+        public delegate void ElementClickedEventHandler(object source, ListElementClickedArgs args);
         public event ElementClickedEventHandler ListElementClicked;
 
         protected Color _inactiveColor = Color.FromArgb(189, 213, 234);
@@ -54,7 +54,7 @@ namespace ClinicManagementSystem.Forms.CustomElements
 
         protected virtual void ListElement_MouseDown(object sender, MouseEventArgs e) {}
 
-        protected void OnListElementClicked(ListElementClickedDoctorArgs args)
+        protected void OnListElementClicked(ListElementClickedArgs args)
         {
             ListElementClicked.Invoke(this, args);
         }

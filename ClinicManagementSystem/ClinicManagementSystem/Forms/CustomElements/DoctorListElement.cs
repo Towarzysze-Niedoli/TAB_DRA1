@@ -22,8 +22,7 @@ namespace ClinicManagementSystem.Forms.CustomElements
         protected override void ListElement_MouseDown(object sender, MouseEventArgs e)
         {
             SetNoHoverColor();
-            OnListElementClicked(new EventArguments.ListElementClickedDoctorArgs(_index, this.UpperMainLabel.Text, this.BottomLabelTwo.Text));
-        
+            OnListElementClicked(new EventArguments.ListElementClickedArgs(_index));
         }
     }
 }

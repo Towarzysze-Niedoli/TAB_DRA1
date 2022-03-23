@@ -5,7 +5,7 @@ using ClinicManagementSystem.Forms.CustomElements;
 using ClinicManagementSystem.Forms.EventArguments;
 
 namespace ClinicManagementSystem.Forms.SideForms
-{
+{   
     class DoctorListForm : ListForm
     {
         protected override void PopulateListExample()

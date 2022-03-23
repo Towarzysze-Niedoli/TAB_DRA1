@@ -48,14 +48,9 @@ namespace ClinicManagementSystem.Forms.MainForms
 
         }
 
-        private void FillDoctorTextFields(object source, ListElementClickedDoctorArgs args)
+        private void FillDoctorTextFields(object source, ListElementClickedArgs args)
         {
-            string[] nameAndSurname = args.Name.Split(' ');
-            string[] dateTime = args.Date.Split('-');
-            this.DoctorNameTextBox.Text = nameAndSurname[0];
-            this.DoctorSurnameTextBox.Text = nameAndSurname[1];
-            this.VisitDateTextBox.Text = dateTime[0] + dateTime[1];
-            this.VisitTimeTextBox.Text = dateTime[2];
+            //@todo get info from model and put it into text fields
         }
     }
 }
