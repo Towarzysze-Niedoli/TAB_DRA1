@@ -7,13 +7,13 @@ namespace ClinicManagementSystem.Entities.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class AddressTest : IMigrationMetadata
+    public sealed partial class PatientsAndAdressesTest : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddressTest));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(PatientsAndAdressesTest));
         
         string IMigrationMetadata.Id
         {
-            get { return "202203242129426_AddressTest"; }
+            get { return "202203242323532_PatientsAndAdressesTest"; }
         }
         
         string IMigrationMetadata.Source
