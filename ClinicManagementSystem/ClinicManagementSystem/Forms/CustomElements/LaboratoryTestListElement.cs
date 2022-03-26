@@ -10,9 +10,26 @@ namespace ClinicManagementSystem.Forms.CustomElements
 {
     public partial class LaboratoryTestListElement : UserControl
     {
-        public LaboratoryTestListElement()
+        public LaboratoryTestListElement(string upperText, string lowerText)
         {
             InitializeComponent();
+            this.UpperMainLabel.Text = upperText;
+            this.BottomLabelOne.Text = lowerText;
+        }
+
+        private void LabTestElement_MouseHover(object sender, EventArgs e)
+        {
+            this.BackColor = Color.FromArgb(87, 115, 153);
+        }
+
+        private void LabTestElement_MouseLeave(object sender, EventArgs e)
+        {
+            this.BackColor = Color.FromArgb(189, 213, 234);
+        }
+
+        private void LabTestElement_MouseDown(object sender, MouseEventArgs e)
+        {
+            this.BackColor = Color.FromArgb(73, 88, 103);
         }
     }
 }

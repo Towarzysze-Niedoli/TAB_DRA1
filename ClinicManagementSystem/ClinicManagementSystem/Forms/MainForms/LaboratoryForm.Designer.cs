@@ -43,7 +43,7 @@
             this.LaboratoryTestsPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(189)))), ((int)(((byte)(213)))), ((int)(((byte)(234)))));
             this.LaboratoryTestsPanel.Location = new System.Drawing.Point(50, 145);
             this.LaboratoryTestsPanel.Name = "LaboratoryTestsPanel";
-            this.LaboratoryTestsPanel.Size = new System.Drawing.Size(350, 556);
+            this.LaboratoryTestsPanel.Size = new System.Drawing.Size(500, 556);
             this.LaboratoryTestsPanel.TabIndex = 2;
             this.LaboratoryTestsPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
@@ -52,9 +52,9 @@
             this.dateTimePicker1.CalendarFont = new System.Drawing.Font("Corbel", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.dateTimePicker1.Font = new System.Drawing.Font("Corbel", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(199, 99);
+            this.dateTimePicker1.Location = new System.Drawing.Point(350, 99);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 27);
+            this.dateTimePicker1.Size = new System.Drawing.Size(200, 32);
             this.dateTimePicker1.TabIndex = 3;
             // 
             // DescriptionPanel
@@ -137,7 +137,7 @@
             // 
             // LaboratoryForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(247)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(1284, 861);
