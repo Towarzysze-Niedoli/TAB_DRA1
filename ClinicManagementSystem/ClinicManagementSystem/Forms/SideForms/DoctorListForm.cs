@@ -12,15 +12,15 @@ namespace ClinicManagementSystem.Forms.SideForms
         {
             _elements = new List<ListElement>
             {
-                new DoctorListElement(0, "Andrzej Duda", "Długopis", "Thu - 15.03.2022 - 8:00"),
-                new DoctorListElement(1, "Andrzej Duda", "Długopis", "Thu - 15.03.2022 - 8:30"),
-                new DoctorListElement(2, "Andrzej Duda", "Długopis", "Thu - 15.03.2022 - 9:00"),
-                new DoctorListElement(3, "Andrzej Duda", "Długopis", "Thu - 15.03.2022 - 9:30"),
-                new DoctorListElement(4, "Andrzej Duda", "Długopis", "Thu - 15.03.2022 - 10:00"),
-                new DoctorListElement(5, "Andrzej Duda", "Długopis", "Thu - 15.03.2022 - 10:30"),
-                new DoctorListElement(6, "Andrzej Duda", "Długopis", "Thu - 15.03.2022 - 11:00"),
-                new DoctorListElement(7, "Andrzej Duda", "Długopis", "Thu - 15.03.2022 - 11:30"),
-                new DoctorListElement(8, "Andrzej Duda", "Długopis", "Thu - 15.03.2022 - 12:00")
+                new DoctorListElement(0, "Michał Kalke", "Internist", "Thu - 15.03.2022 - 8:00"),
+                new DoctorListElement(1, "Michał Kalke", "Internist", "Thu - 15.03.2022 - 8:30"),
+                new DoctorListElement(2, "Michał Kalke", "Internist", "Thu - 15.03.2022 - 9:00"),
+                new DoctorListElement(3, "Michał Kalke", "Internist", "Thu - 15.03.2022 - 9:30"),
+                new DoctorListElement(4, "Michał Kalke", "Internist", "Thu - 15.03.2022 - 10:00"),
+                new DoctorListElement(5, "Michał Kalke", "Internist", "Thu - 15.03.2022 - 10:30"),
+                new DoctorListElement(6, "Michał Kalke", "Internist", "Thu - 15.03.2022 - 11:00"),
+                new DoctorListElement(7, "Michał Kalke", "Internist", "Thu - 15.03.2022 - 11:30"),
+                new DoctorListElement(8, "Michał Kalke", "Internist", "Thu - 15.03.2022 - 12:00")
             };
             this.ListFlowPanel.Controls.Clear();
             foreach (ListElement element in _elements)

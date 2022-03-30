@@ -27,5 +27,17 @@ namespace ClinicManagementSystem.Forms.SideForms
                 this.ListFlowPanel.Controls.Add(element);
             }
         }
+
+        private void InitializeComponent()
+        {
+            this.SuspendLayout();
+            // 
+            // VisitsListForm
+            // 
+            this.ClientSize = new System.Drawing.Size(1513, 830);
+            this.Name = "VisitsListForm";
+            this.ResumeLayout(false);
+
+        }
     }
 }
