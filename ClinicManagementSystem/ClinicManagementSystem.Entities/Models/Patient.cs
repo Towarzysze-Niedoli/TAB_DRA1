@@ -7,31 +7,14 @@ using System.Text;
 
 namespace ClinicManagementSystem.Entities.Models
 {
-    class Patient
+    class Patient : Person
     {
-        [Key]
-        public int Id { get; set; }
-
         [Required]
-        [RegularExpression(@"^[a-zA-Z''-'\s]{1,50}$")] // up to 50 uppercase and lowercase characters
-        public string FirstName { get; set; }
-
-        [Required]
-        [RegularExpression(@"^[a-zA-Z''-'\s]{1,50}$")] // up to 50 uppercase and lowercase characters
-        public string LastName { get; set; }
-
-        [Required]
+        [RegularExpression(@"^[0-9]{11}$")]
         public string PersonalIdentityNumber { get; set; } // TODO klasa PESEL ? ~PR
 
         [Required]
         public Address Address { get; set; }
-
-        [EmailAddress]
-        public string? Email { get; set; } // TODO klasa email ? ~PR
-
-        [Phone]
-        public string? PhoneNumber { get; set; } // TODO klasa phone number ? ~PR
-
 
         //public Patient(string firstName, string lastName, string personalIdentityNumber, string? email, string? phoneNumber)
         //{
