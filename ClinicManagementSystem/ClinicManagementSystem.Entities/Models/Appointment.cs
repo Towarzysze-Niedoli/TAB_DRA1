@@ -13,9 +13,9 @@ namespace ClinicManagementSystem.Entities.Models
         [Key]
         public int Id { get; set; }
 
-        string Description { get; set; }
+        string? Description { get; set; }
 
-        string Diagnosis { get; set; } // string? enum? enum[]? ~PR
+        string? Diagnosis { get; set; }
 
         [Required]
         Status Status { get; set; } = Status.Pending;
