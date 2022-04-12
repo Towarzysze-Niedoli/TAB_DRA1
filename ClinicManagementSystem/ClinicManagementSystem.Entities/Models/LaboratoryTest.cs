@@ -35,6 +35,8 @@ namespace ClinicManagementSystem.Entities.Models
         [Required]
         Examination Examination { get; set; }
 
-        // TODO add relation to laborant and head of lab
+        LaboratoryManager LaboratoryManager { get; set; }
+        
+        LabTechnician LabTechnician { get; set; }
     }
 }
