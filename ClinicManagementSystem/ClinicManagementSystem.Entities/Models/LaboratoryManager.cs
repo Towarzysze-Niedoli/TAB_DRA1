@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ClinicManagementSystem.Entities.Models
 {
-    class LaboratoryManager : Person
+    public class LaboratoryManager : Person
     {
         public Address? Address { get; set; }
     }

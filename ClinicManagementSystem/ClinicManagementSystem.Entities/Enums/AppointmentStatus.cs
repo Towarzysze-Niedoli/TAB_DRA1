@@ -2,7 +2,7 @@
 
 namespace ClinicManagementSystem.Entities.Enums
 {
-    public enum Status
+    public enum AppointmentStatus
     {
         Pending,
         Accepted,

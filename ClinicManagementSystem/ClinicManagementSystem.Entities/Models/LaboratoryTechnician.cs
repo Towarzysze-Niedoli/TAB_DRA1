@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ClinicManagementSystem.Entities.Models
 {
-    class LabTechnician : Person
+    public class LaboratoryTechnician : Person
     {
         public Address? Address { get; set; }
     }

@@ -9,11 +9,12 @@ namespace ClinicManagementSystem.Entities.Models
     public class Examination
     {
         [Key]
-        public int Code { get; set; }
+        [RegularExpression(@"^Z[0-9]{2}.[0-9]$")]
+        public string Code { get; set; } // ICD-10 code, eg. Z46.3
 
         [Required]
-        ExaminationType ExamType { get; set; }
+        public ExaminationType ExamType { get; set; }
 
-        string? ExaminationName;
+        public string? ExaminationName;
     }
 }

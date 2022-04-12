@@ -1,38 +1,43 @@
-﻿#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
-
-using ClinicManagementSystem.Entities.Enums;
+﻿using ClinicManagementSystem.Entities.Enums;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace ClinicManagementSystem.Entities.Models
 {
-    class Appointment
+    public class Appointment
     {
         [Key]
         public int Id { get; set; }
 
-        string? Description { get; set; }
+        public string? Description { get; set; }
 
-        string? Diagnosis { get; set; }
-
-        [Required]
-        Status Status { get; set; } = Status.Pending;
-
-        DateTime? RegistrationDate { get; set; }
-
-        DateTime? CompletionDate { get; set; }
+        public string? Diagnosis { get; set; }
 
         [Required]
-        Receptionist Receptionist { get; set; }
+        public AppointmentStatus AppointmentStatus { get; set; } = AppointmentStatus.Pending;
+
+        public DateTime? RegistrationDate { get; set; }
+
+        public DateTime? CompletionDate { get; set; }
 
         [Required]
-        Doctor Doctor { get; set; }
+        public Receptionist Receptionist { get; set; }
 
         [Required]
-        Patient Patient { get; set; }
+        public Doctor Doctor { get; set; }
+
+        [Required]
+        public Patient Patient { get; set; }
+
+        [InverseProperty("Appointment")] // explicit bidirectional mapping, default lazy loading
+        public List<LaboratoryExam> LaboratoryExams { get; set; }
+
+        [InverseProperty("Appointment")] // explicit bidirectional mapping, default lazy loading
+        public List<PhysicalExam> PhysicalExams { get; set; }
+
+
     }
 }
-
-#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
