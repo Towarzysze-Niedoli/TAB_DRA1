@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "2suJMv1WcTCfTSoDEaM5wRv+xTRNaj8SdFXyb7w1dbA68gsWTiFwfZrFJmc5ljfqOyPia/+5dLxhv1tBRqmdcw==",
+  "dgSpecHash": "cjY7QgZb2Np6fLgixhM9+b9jA33LJ/HP4E9jSXzqWThpZ1Ro8L/Ef5DJRjO0m/VdpSxHKDByNuK/+N+ZAYvTXw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\matad\\OneDrive\\Dokumenty\\GitHub\\TAB_DRA1\\ClinicManagementSystem\\ClinicManagementSystem\\ClinicManagementSystem.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\michal\\Desktop\\TABNEW\\ClinicManagementSystem\\ClinicManagementSystem\\ClinicManagementSystem.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\michal\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.21\\microsoft.netcore.app.host.win-x64.3.1.21.nupkg.sha512"
+  ],
   "logs": []
 }

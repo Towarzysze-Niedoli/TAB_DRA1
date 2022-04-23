@@ -3,15 +3,10 @@
     "",
     "\\ClinicManagementSystem",
     "\\ClinicManagementSystem\\ClinicManagementSystem",
-    "\\ClinicManagementSystem\\ClinicManagementSystem\\bin",
-    "\\ClinicManagementSystem\\ClinicManagementSystem\\bin\\Debug",
-    "\\ClinicManagementSystem\\ClinicManagementSystem\\bin\\Debug\\netcoreapp3.1",
     "\\ClinicManagementSystem\\ClinicManagementSystem\\Forms",
-    "\\ClinicManagementSystem\\ClinicManagementSystem\\Forms\\CustomElements",
     "\\ClinicManagementSystem\\ClinicManagementSystem\\Forms\\MainForms",
-    "\\ClinicManagementSystem\\ClinicManagementSystem\\Forms\\SideForms",
-    "\\ClinicManagementSystem\\ClinicManagementSystem\\obj"
+    "\\ClinicManagementSystem\\ClinicManagementSystem\\Forms\\SideForms"
   ],
-  "SelectedNode": "\\ClinicManagementSystem\\ClinicManagementSystem\\Forms\\SideForms\\ListForm.cs",
+  "SelectedNode": "\\ClinicManagementSystem\\ClinicManagementSystem\\Forms\\SideForms\\LaboratoryListForm.cs",
   "PreviewInSolutionExplorer": false
 }

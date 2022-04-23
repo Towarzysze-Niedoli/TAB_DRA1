@@ -16,6 +16,7 @@ namespace ClinicManagementSystem.Forms.MainForms
         {
             InitializeComponent();
             InitializeTestList();
+            LaboratoryTestsComboBox.SelectedIndex = 0;
         }
 
         void InitializeTestList()
@@ -43,6 +44,13 @@ namespace ClinicManagementSystem.Forms.MainForms
         private void LaboratoryForm_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void LaboratoryTestsComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int index = LaboratoryTestsComboBox.SelectedIndex;
+            LaboratoryListForm obj = new LaboratoryListForm();
+            obj.ComboBoxIndex(index);
         }
     }
 }

@@ -32,10 +32,10 @@
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.DescriptionPanel = new System.Windows.Forms.Panel();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.made = new System.Windows.Forms.Button();
             this.approveBtn = new System.Windows.Forms.Button();
             this.cancelBtn = new System.Windows.Forms.Button();
             this.returnBtn = new System.Windows.Forms.Button();
+            this.LaboratoryTestsComboBox = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // LaboratoryTestsPanel
@@ -60,35 +60,20 @@
             // DescriptionPanel
             // 
             this.DescriptionPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(189)))), ((int)(((byte)(213)))), ((int)(((byte)(234)))));
-            this.DescriptionPanel.Location = new System.Drawing.Point(654, 145);
+            this.DescriptionPanel.Location = new System.Drawing.Point(654, 99);
             this.DescriptionPanel.Name = "DescriptionPanel";
-            this.DescriptionPanel.Size = new System.Drawing.Size(596, 299);
+            this.DescriptionPanel.Size = new System.Drawing.Size(596, 337);
             this.DescriptionPanel.TabIndex = 4;
             this.DescriptionPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint_1);
             // 
             // textBox1
             // 
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Location = new System.Drawing.Point(654, 450);
+            this.textBox1.Location = new System.Drawing.Point(654, 442);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(596, 159);
             this.textBox1.TabIndex = 5;
-            // 
-            // made
-            // 
-            this.made.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(115)))), ((int)(((byte)(153)))));
-            this.made.FlatAppearance.BorderSize = 0;
-            this.made.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.made.Font = new System.Drawing.Font("Corbel", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.made.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(247)))), ((int)(((byte)(255)))));
-            this.made.Location = new System.Drawing.Point(1099, 99);
-            this.made.Name = "made";
-            this.made.Size = new System.Drawing.Size(151, 32);
-            this.made.TabIndex = 1;
-            this.made.Text = "Done";
-            this.made.UseVisualStyleBackColor = false;
-            this.made.Click += new System.EventHandler(this.made_Click);
             // 
             // approveBtn
             // 
@@ -135,18 +120,35 @@
             this.returnBtn.UseVisualStyleBackColor = false;
             this.returnBtn.Click += new System.EventHandler(this.made_Click);
             // 
+            // LaboratoryTestsComboBox
+            // 
+            this.LaboratoryTestsComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.LaboratoryTestsComboBox.Font = new System.Drawing.Font("Corbel", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.LaboratoryTestsComboBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(115)))), ((int)(((byte)(153)))));
+            this.LaboratoryTestsComboBox.Items.AddRange(new object[] {
+            "To Do",
+            "Done",
+            "Returned",
+            "Canceled",
+            "Approved"});
+            this.LaboratoryTestsComboBox.Location = new System.Drawing.Point(50, 99);
+            this.LaboratoryTestsComboBox.Name = "LaboratoryTestsComboBox";
+            this.LaboratoryTestsComboBox.Size = new System.Drawing.Size(151, 32);
+            this.LaboratoryTestsComboBox.TabIndex = 6;
+            this.LaboratoryTestsComboBox.SelectedIndexChanged += new System.EventHandler(this.LaboratoryTestsComboBox_SelectedIndexChanged);
+            // 
             // LaboratoryForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(247)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(1284, 861);
+            this.Controls.Add(this.LaboratoryTestsComboBox);
             this.Controls.Add(this.cancelBtn);
             this.Controls.Add(this.returnBtn);
             this.Controls.Add(this.approveBtn);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.DescriptionPanel);
-            this.Controls.Add(this.made);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.LaboratoryTestsPanel);
             this.Font = new System.Drawing.Font("Corbel", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -166,9 +168,9 @@
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Panel DescriptionPanel;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button made;
         private System.Windows.Forms.Button approveBtn;
         private System.Windows.Forms.Button cancelBtn;
         private System.Windows.Forms.Button returnBtn;
+        public System.Windows.Forms.ComboBox LaboratoryTestsComboBox;
     }
 }

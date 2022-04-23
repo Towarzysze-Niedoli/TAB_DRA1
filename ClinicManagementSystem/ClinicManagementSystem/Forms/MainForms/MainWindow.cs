@@ -65,7 +65,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             InitializeForm(_currentMainForm, FormType.MainForm);
         }
 
-        private void ShowLaboratoryForm()//tutaj
+        private void ShowLaboratoryForm()
         {
             this.MainPanel.Controls.Remove(_currentMainForm);
             _currentMainForm = new LaboratoryForm();
