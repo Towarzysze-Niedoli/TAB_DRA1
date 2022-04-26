@@ -73,3 +73,4 @@ C:\Users\michal\Desktop\TABNEW\ClinicManagementSystem\ClinicManagementSystem\obj
 C:\Users\michal\Desktop\TABNEW\ClinicManagementSystem\ClinicManagementSystem\obj\Debug\netcoreapp3.1\ClinicManagementSystem.dll
 C:\Users\michal\Desktop\TABNEW\ClinicManagementSystem\ClinicManagementSystem\obj\Debug\netcoreapp3.1\ClinicManagementSystem.pdb
 C:\Users\michal\Desktop\TABNEW\ClinicManagementSystem\ClinicManagementSystem\obj\Debug\netcoreapp3.1\ClinicManagementSystem.genruntimeconfig.cache
+C:\Users\michal\Desktop\TABNEW\ClinicManagementSystem\ClinicManagementSystem\obj\Debug\netcoreapp3.1\ClinicManagementSystem.Forms.SideForms.LaboratoryTestResults.resources

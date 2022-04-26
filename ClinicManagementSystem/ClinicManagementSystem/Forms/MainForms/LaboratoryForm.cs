@@ -9,13 +9,19 @@ using ClinicManagementSystem.Forms.SideForms;
 
 namespace ClinicManagementSystem.Forms.MainForms
 {
+
     public partial class LaboratoryForm : Form
     {
         LaboratoryListForm TestsList;
+        LaboratoryTestResults TestsResults;
+
+        public delegate void PassSelectedIndex(int index);
+        public PassSelectedIndex PassIndex;
         public LaboratoryForm()
         {
             InitializeComponent();
             InitializeTestList();
+            InitializeTestResults();
             LaboratoryTestsComboBox.SelectedIndex = 0;
         }
 
@@ -25,6 +31,15 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.LaboratoryTestsPanel.Controls.Add(TestsList);
             TestsList.Show();
         }
+
+        void InitializeTestResults()
+        {
+            TestsResults = new LaboratoryTestResults();
+            this.DescriptionPanel.Controls.Add(TestsResults);
+            TestsResults.Show();
+        }
+
+
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
@@ -46,11 +61,18 @@ namespace ClinicManagementSystem.Forms.MainForms
 
         }
 
+
+
         private void LaboratoryTestsComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             int index = LaboratoryTestsComboBox.SelectedIndex;
+            //stworzenie delegate'a
             LaboratoryListForm obj = new LaboratoryListForm();
-            obj.ComboBoxIndex(index);
+            this.PassIndex += new PassSelectedIndex(obj.SetIndex);
+            PassIndex(index);
+           // InitializeTestList();
+            // obj.ComboBoxIndex(index);
+            //LabManagerComboBox.Text = index.ToString();
         }
     }
 }

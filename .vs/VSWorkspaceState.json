@@ -4,9 +4,10 @@
     "\\ClinicManagementSystem",
     "\\ClinicManagementSystem\\ClinicManagementSystem",
     "\\ClinicManagementSystem\\ClinicManagementSystem\\Forms",
+    "\\ClinicManagementSystem\\ClinicManagementSystem\\Forms\\CustomElements",
     "\\ClinicManagementSystem\\ClinicManagementSystem\\Forms\\MainForms",
     "\\ClinicManagementSystem\\ClinicManagementSystem\\Forms\\SideForms"
   ],
-  "SelectedNode": "\\ClinicManagementSystem\\ClinicManagementSystem\\Forms\\SideForms\\LaboratoryListForm.cs",
+  "SelectedNode": "\\ClinicManagementSystem\\ClinicManagementSystem\\Forms\\SideForms\\LaboratoryTestResults.cs",
   "PreviewInSolutionExplorer": false
 }

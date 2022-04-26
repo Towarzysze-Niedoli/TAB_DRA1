@@ -15,6 +15,7 @@ namespace ClinicManagementSystem.Forms.CustomElements
             InitializeComponent();
             this.UpperMainLabel.Text = upperText;
             this.BottomLabelOne.Text = lowerText;
+            
         }
 
         private void LabTestElement_MouseHover(object sender, EventArgs e)

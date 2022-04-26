@@ -31,7 +31,7 @@
             this.LaboratoryTestsPanel = new System.Windows.Forms.Panel();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.DescriptionPanel = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.LabManagerComboBox = new System.Windows.Forms.TextBox();
             this.approveBtn = new System.Windows.Forms.Button();
             this.cancelBtn = new System.Windows.Forms.Button();
             this.returnBtn = new System.Windows.Forms.Button();
@@ -66,14 +66,14 @@
             this.DescriptionPanel.TabIndex = 4;
             this.DescriptionPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint_1);
             // 
-            // textBox1
+            // LabManagerComboBox
             // 
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Location = new System.Drawing.Point(654, 442);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(596, 159);
-            this.textBox1.TabIndex = 5;
+            this.LabManagerComboBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.LabManagerComboBox.Location = new System.Drawing.Point(654, 442);
+            this.LabManagerComboBox.Multiline = true;
+            this.LabManagerComboBox.Name = "LabManagerComboBox";
+            this.LabManagerComboBox.Size = new System.Drawing.Size(596, 159);
+            this.LabManagerComboBox.TabIndex = 5;
             // 
             // approveBtn
             // 
@@ -147,7 +147,7 @@
             this.Controls.Add(this.cancelBtn);
             this.Controls.Add(this.returnBtn);
             this.Controls.Add(this.approveBtn);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.LabManagerComboBox);
             this.Controls.Add(this.DescriptionPanel);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.LaboratoryTestsPanel);
@@ -167,7 +167,7 @@
         private System.Windows.Forms.Panel LaboratoryTestsPanel;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Panel DescriptionPanel;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox LabManagerComboBox;
         private System.Windows.Forms.Button approveBtn;
         private System.Windows.Forms.Button cancelBtn;
         private System.Windows.Forms.Button returnBtn;

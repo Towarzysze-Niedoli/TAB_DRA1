@@ -30,7 +30,6 @@ namespace ClinicManagementSystem.Forms.SideForms
         private void InitializeComponent()
         {
             this.LabListFlowPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.TestsScrollBar = new System.Windows.Forms.VScrollBar();
             this.SuspendLayout();
             // 
             // LabListFlowPanel
@@ -42,22 +41,12 @@ namespace ClinicManagementSystem.Forms.SideForms
             this.LabListFlowPanel.Size = new System.Drawing.Size(480, 532);
             this.LabListFlowPanel.TabIndex = 0;
             // 
-            // TestsScrollBar
-            // 
-            this.TestsScrollBar.Dock = System.Windows.Forms.DockStyle.Right;
-            this.TestsScrollBar.Location = new System.Drawing.Point(475, 0);
-            this.TestsScrollBar.Name = "TestsScrollBar";
-            this.TestsScrollBar.Size = new System.Drawing.Size(26, 556);
-            this.TestsScrollBar.TabIndex = 0;
-            this.TestsScrollBar.Scroll += new System.Windows.Forms.ScrollEventHandler(this.TestsScrollBar_Scroll);
-            // 
             // LaboratoryListForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(189)))), ((int)(((byte)(213)))), ((int)(((byte)(234)))));
             this.ClientSize = new System.Drawing.Size(501, 556);
-            this.Controls.Add(this.TestsScrollBar);
             this.Controls.Add(this.LabListFlowPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -71,6 +60,5 @@ namespace ClinicManagementSystem.Forms.SideForms
         #endregion
 
         private System.Windows.Forms.FlowLayoutPanel LabListFlowPanel;
-        private System.Windows.Forms.VScrollBar TestsScrollBar;
     }
 }
