@@ -7,6 +7,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClinicManagementSystem", "C
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClinicManagementSystem.Entities", "ClinicManagementSystem.Entities\ClinicManagementSystem.Entities.csproj", "{2E6AEE50-1FE2-4788-8E62-028D8344DA16}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClinicManagementSystem.Auth", "ClinicManagementSystem.Auth\ClinicManagementSystem.Auth.csproj", "{ED4B6AAE-D0BB-48B0-B183-995132E53E14}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClinicManagementSystem.Auth.Test", "ClinicManagementSystem.Auth.Test\ClinicManagementSystem.Auth.Test.csproj", "{C3A6C529-8B4C-4D80-AEF8-25CB6EABACE0}"
+	ProjectSection(ProjectDependencies) = postProject
+		{ED4B6AAE-D0BB-48B0-B183-995132E53E14} = {ED4B6AAE-D0BB-48B0-B183-995132E53E14}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +28,14 @@ Global
 		{2E6AEE50-1FE2-4788-8E62-028D8344DA16}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2E6AEE50-1FE2-4788-8E62-028D8344DA16}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2E6AEE50-1FE2-4788-8E62-028D8344DA16}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED4B6AAE-D0BB-48B0-B183-995132E53E14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED4B6AAE-D0BB-48B0-B183-995132E53E14}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED4B6AAE-D0BB-48B0-B183-995132E53E14}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED4B6AAE-D0BB-48B0-B183-995132E53E14}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3A6C529-8B4C-4D80-AEF8-25CB6EABACE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3A6C529-8B4C-4D80-AEF8-25CB6EABACE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3A6C529-8B4C-4D80-AEF8-25CB6EABACE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3A6C529-8B4C-4D80-AEF8-25CB6EABACE0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
