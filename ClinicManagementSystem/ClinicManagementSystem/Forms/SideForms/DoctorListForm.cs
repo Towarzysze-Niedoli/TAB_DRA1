@@ -29,5 +29,17 @@ namespace ClinicManagementSystem.Forms.SideForms
                 this.ListFlowPanel.Controls.Add(element);
             }
         }
+
+        private void InitializeComponent()
+        {
+            this.SuspendLayout();
+            // 
+            // DoctorListForm
+            // 
+            this.ClientSize = new System.Drawing.Size(1241, 818);
+            this.Name = "DoctorListForm";
+            this.ResumeLayout(false);
+
+        }
     }
 }

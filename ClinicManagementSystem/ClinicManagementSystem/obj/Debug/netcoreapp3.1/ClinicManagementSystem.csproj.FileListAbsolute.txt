@@ -29,3 +29,5 @@ C:\Users\matad\OneDrive\Dokumenty\GitHub\TAB_DRA1\ClinicManagementSystem\ClinicM
 C:\Users\matad\OneDrive\Dokumenty\GitHub\TAB_DRA1\ClinicManagementSystem\ClinicManagementSystem\obj\Debug\netcoreapp3.1\ClinicManagementSystem.Forms.CustomElements.LaboratoryTestListElement.resources
 C:\Users\matad\OneDrive\Dokumenty\GitHub\TAB_DRA1\ClinicManagementSystem\ClinicManagementSystem\obj\Debug\netcoreapp3.1\ClinicManagementSystem.Forms.MainForms.LaboratoryForm.resources
 C:\Users\matad\OneDrive\Dokumenty\GitHub\TAB_DRA1\ClinicManagementSystem\ClinicManagementSystem\obj\Debug\netcoreapp3.1\ClinicManagementSystem.Forms.SideForms.LaboratoryListForm.resources
+C:\Users\matad\OneDrive\Dokumenty\GitHub\TAB_DRA1\ClinicManagementSystem\ClinicManagementSystem\obj\Debug\netcoreapp3.1\ClinicManagementSystem.Forms.SideForms.DoctorListForm.resources
+C:\Users\matad\OneDrive\Dokumenty\GitHub\TAB_DRA1\ClinicManagementSystem\ClinicManagementSystem\obj\Debug\netcoreapp3.1\ClinicManagementSystem.Forms.SideForms.VisitTextsForm.resources

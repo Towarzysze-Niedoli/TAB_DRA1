@@ -62,7 +62,8 @@ namespace ClinicManagementSystem.Forms.MainForms
         private void ShowVisitMainForm()
         {
             this.MainPanel.Controls.Remove(_currentMainForm);
-            _currentMainForm = new VisitsMainForm(ShowNewVisitForm);
+            //_currentMainForm = new VisitsMainForm(ShowNewVisitForm);
+            _currentMainForm = new PerformVisitForm();
             InitializeForm(_currentMainForm, FormType.MainForm);
         }
 

@@ -51,10 +51,5 @@ namespace ClinicManagementSystem.Forms.SideForms
             _elements[_currentIndex].ChangeStatus();
             _elements[_currentIndex].SetNoHoverColor();
         }
-        
-        protected void OnElementClicked(ListElementClickedArgs args)
-        {
-            ElementClicked.Invoke(this, args);
-        }
     }
 }
