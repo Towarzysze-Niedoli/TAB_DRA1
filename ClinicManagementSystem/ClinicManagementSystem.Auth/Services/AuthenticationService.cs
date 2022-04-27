@@ -10,8 +10,81 @@ using ClinicManagementSystem.Entities.Models;
 
 namespace ClinicManagementSystem.Auth.Services
 {
-    public class AuthService
+    public class AuthenticationService
     {
+        public ApplicationUser Authenticate(string emailOrPhone, string password)
+        {
+            using SystemContext dbContext = new SystemContext();
+
+            var (userPredicate, personPredicate) = GetPredicates(emailOrPhone);
+
+            ApplicationUser user = FindUser(emailOrPhone, userPredicate);
+
+            if (!PasswordHasher.Verify(password, user.Password))
+                throw new InvalidPasswordException($"Invalid password for user with email address {user.Email}");
+
+            return user;
+        }
+        
+        public ApplicationUser CreateNewUser(string? email, string? phoneNumber, string password)
+        {
+            if (email == null && phoneNumber == null)
+                throw new ArgumentNullException("email && phoneNumber");
+
+            using SystemContext dbContext = new SystemContext();
+
+            if (dbContext.ApplicationUsers.Where(user => user.Email == email || user.PhoneNumber == phoneNumber).Any())
+                throw new InvalidLoginException("Email or phone number already exists!");
+
+            ApplicationUser user = new ApplicationUser()
+            {
+                Email = email,
+                PhoneNumber = phoneNumber,
+                Password = PasswordHasher.Hash(password)
+            };
+            dbContext.ApplicationUsers.Add(user);
+            dbContext.SaveChanges();
+            return user;
+        }
+
+        public ApplicationUser ChangePasswordForUser(ApplicationUser user, string newPassword)
+        {
+            if (PasswordHasher.Verify(newPassword, user.Password))
+                throw new InvalidPasswordException("Password cannot be identical to the previous one");
+
+            using SystemContext dbContext = new SystemContext();
+
+            user = dbContext.ApplicationUsers.Attach(user);
+            user.Password = PasswordHasher.Hash(newPassword);
+            dbContext.SaveChanges();
+            return user;
+        }
+
+        public ApplicationUser ChangePasswordForUser(string emailOrPhone, string newPassword)
+        {
+            using SystemContext dbContext = new SystemContext();
+
+            var (userPredicate, personPredicate) = GetPredicates(emailOrPhone);
+            ApplicationUser user = FindUser(emailOrPhone, userPredicate);
+            return ChangePasswordForUser(user, newPassword);
+        }
+
+        public ApplicationUser ChangeUserData(ApplicationUser user, string? newEmail, string? newPhoneNumber)
+        {
+            using SystemContext dbContext = new SystemContext();
+
+            user = dbContext.ApplicationUsers.Attach(user);
+            if (newEmail != null)
+                user.Email = newEmail;
+            if (newPhoneNumber != null)
+                user.PhoneNumber = newPhoneNumber;
+
+            dbContext.SaveChanges();
+            return user;
+        }
+
+        
+
         private (Func<ApplicationUser, bool> userPredicate, Func<Person, bool> personPredicate) GetPredicates(string emailOrPhone)
         {
             if (new EmailAddressAttribute().IsValid(emailOrPhone))
@@ -41,83 +114,10 @@ namespace ClinicManagementSystem.Auth.Services
             {
                 return dbContext.ApplicationUsers.Where(userPredicate).Single();
             }
-            catch (ArgumentNullException ex)
+            catch (InvalidOperationException ex)
             {
                 throw new InvalidLoginException($"Invalid login: {emailOrPhone}", ex);
             }
-        }
-
-        public Person? Authenticate(string emailOrPhone, string password)
-        {
-            using SystemContext dbContext = new SystemContext();
-
-            var (userPredicate, personPredicate) = GetPredicates(emailOrPhone);
-
-            ApplicationUser user = FindUser(emailOrPhone, userPredicate);
-
-            if (!PasswordHasher.Verify(password, user.Password))
-                throw new InvalidPasswordException($"Invalid password for user with email address {user.Email}");
-
-            DbSet[] dbUsers = { dbContext.SystemAdministrators, dbContext.Doctors, dbContext.LaboratoryManagers, dbContext.LaboratoryTechnicians, dbContext.Receptionists };
-
-            Person? person = null;
-            foreach (DbSet dbSet in dbUsers)
-            {
-                person = dbSet.Cast<Person>().Where(personPredicate).SingleOrDefault(null);
-                if (person != null)
-                    break; // forgive me
-            }
-
-            return person;
-        }
-
-        
-        public ApplicationUser CreateNewUser(string? email, string? phoneNumber, string password)
-        {
-            using SystemContext dbContext = new SystemContext();
-
-            ApplicationUser user = new ApplicationUser()
-            {
-                Email = email,
-                PhoneNumber = phoneNumber,
-                Password = PasswordHasher.Hash(password)
-            };
-            dbContext.ApplicationUsers.Add(user);
-            dbContext.SaveChanges();
-            return user;
-        }
-
-        public ApplicationUser ChangePasswordForUser(ApplicationUser user, string newPassword)
-        {
-            using SystemContext dbContext = new SystemContext();
-
-            // user = dbContext.ApplicationUsers.Find(user.Id); // ?
-            user.Password = PasswordHasher.Hash(newPassword);
-            dbContext.SaveChanges();
-            return user;
-        }
-
-        public ApplicationUser ChangePasswordForUser(string emailOrPhone, string newPassword)
-        {
-            using SystemContext dbContext = new SystemContext();
-
-            var (userPredicate, personPredicate) = GetPredicates(emailOrPhone);
-            ApplicationUser user = FindUser(emailOrPhone, userPredicate);
-            return ChangePasswordForUser(user, newPassword);
-        }
-
-        public ApplicationUser ChangeUserData(ApplicationUser user, string? newEmail, string? newPhoneNumber)
-        {
-            using SystemContext dbContext = new SystemContext();
-
-            // user = dbContext.ApplicationUsers.Find(user.Id); // ?
-            if (newEmail != null)
-                user.Email = newEmail;
-            if (newPhoneNumber != null)
-                user.PhoneNumber = newPhoneNumber;
-
-            dbContext.SaveChanges();
-            return user;
         }
     }
 }
