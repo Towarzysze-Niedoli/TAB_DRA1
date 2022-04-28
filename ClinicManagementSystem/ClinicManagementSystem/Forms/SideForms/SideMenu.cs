@@ -12,14 +12,20 @@ namespace ClinicManagementSystem.Forms.SideForms
     {
         private Action _openVisitsForm;
         private Action _openLaboratoryForm;
+        private Action _openManagerDoctorForm;
+        private Action _openManagerPatientForm;
+        private Action _openManagerLabForm;
 
         private SideMenuTab _currentTab;
-        public SideMenu(UserLevel level, Action openVisitForms, Action openLaboratoryForms)
+        public SideMenu(UserLevel level, Action openVisitForms, Action openLaboratoryForms, Action openManagerDoctorForms, Action openManagerPatientForms, Action openManagerLabForms)
         {
             InitializeComponent();
             SetComponentsVisiblity(level);
             _openVisitsForm += openVisitForms;
             _openLaboratoryForm += openLaboratoryForms;//tutaj
+            _openManagerDoctorForm += openManagerDoctorForms;
+            _openManagerPatientForm += openManagerPatientForms;
+            _openManagerLabForm += openManagerLabForms;
         }
 
         private void SetComponentsVisiblity(UserLevel level)
@@ -67,17 +73,20 @@ namespace ClinicManagementSystem.Forms.SideForms
         private void MedicsButton_Click(object sender, EventArgs e)
         {
             SetTabsColors(SideMenuTab.Medics);
+            _openManagerDoctorForm.Invoke();
         }
 
         private void PatiensButton_Click(object sender, EventArgs e)
         {
             SetTabsColors(SideMenuTab.Patients);
+            _openManagerPatientForm.Invoke();
         }
 
         private void LaboratoryButton_Click(object sender, EventArgs e)
         {
             SetTabsColors(SideMenuTab.Laboratory);
             _openLaboratoryForm.Invoke();
+            //_openManagerLabForm.Invoke();
         }
 
         private void ManagementButton_Click(object sender, EventArgs e)

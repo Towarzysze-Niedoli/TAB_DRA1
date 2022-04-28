@@ -49,9 +49,9 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.UpdateButton = new System.Windows.Forms.Button();
             this.DeleteButton = new System.Windows.Forms.Button();
             this.SpecializationComboBox = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.DoctoralLabel = new System.Windows.Forms.Label();
+            this.LabTechicianRadioButton = new System.Windows.Forms.RadioButton();
+            this.LabManagerRadioButton = new System.Windows.Forms.RadioButton();
             this.PatientPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -82,9 +82,8 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.EMailTextBox.Location = new System.Drawing.Point(27, 417);
             this.EMailTextBox.Name = "EMailTextBox";
             this.EMailTextBox.PlaceholderText = "E-mail";
-            this.EMailTextBox.ReadOnly = true;
             this.EMailTextBox.Size = new System.Drawing.Size(205, 25);
-            this.EMailTextBox.TabIndex = 24;
+            this.EMailTextBox.TabIndex = 10;
             // 
             // NumberTextBox
             // 
@@ -95,9 +94,8 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.NumberTextBox.Location = new System.Drawing.Point(306, 343);
             this.NumberTextBox.Name = "NumberTextBox";
             this.NumberTextBox.PlaceholderText = "Number";
-            this.NumberTextBox.ReadOnly = true;
             this.NumberTextBox.Size = new System.Drawing.Size(205, 25);
-            this.NumberTextBox.TabIndex = 23;
+            this.NumberTextBox.TabIndex = 9;
             // 
             // StreetTextBox
             // 
@@ -108,9 +106,8 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.StreetTextBox.Location = new System.Drawing.Point(27, 343);
             this.StreetTextBox.Name = "StreetTextBox";
             this.StreetTextBox.PlaceholderText = "Street";
-            this.StreetTextBox.ReadOnly = true;
             this.StreetTextBox.Size = new System.Drawing.Size(205, 25);
-            this.StreetTextBox.TabIndex = 22;
+            this.StreetTextBox.TabIndex = 8;
             // 
             // ZIPCodeTextBox
             // 
@@ -121,9 +118,8 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.ZIPCodeTextBox.Location = new System.Drawing.Point(306, 272);
             this.ZIPCodeTextBox.Name = "ZIPCodeTextBox";
             this.ZIPCodeTextBox.PlaceholderText = "ZIP Code";
-            this.ZIPCodeTextBox.ReadOnly = true;
             this.ZIPCodeTextBox.Size = new System.Drawing.Size(205, 25);
-            this.ZIPCodeTextBox.TabIndex = 21;
+            this.ZIPCodeTextBox.TabIndex = 7;
             // 
             // CityTextBox
             // 
@@ -134,9 +130,8 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.CityTextBox.Location = new System.Drawing.Point(27, 272);
             this.CityTextBox.Name = "CityTextBox";
             this.CityTextBox.PlaceholderText = "City";
-            this.CityTextBox.ReadOnly = true;
             this.CityTextBox.Size = new System.Drawing.Size(205, 25);
-            this.CityTextBox.TabIndex = 20;
+            this.CityTextBox.TabIndex = 6;
             // 
             // PhoneTextBox
             // 
@@ -147,9 +142,8 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.PhoneTextBox.Location = new System.Drawing.Point(306, 126);
             this.PhoneTextBox.Name = "PhoneTextBox";
             this.PhoneTextBox.PlaceholderText = "Phone";
-            this.PhoneTextBox.ReadOnly = true;
             this.PhoneTextBox.Size = new System.Drawing.Size(205, 25);
-            this.PhoneTextBox.TabIndex = 19;
+            this.PhoneTextBox.TabIndex = 3;
             // 
             // PESELTextBox
             // 
@@ -160,9 +154,8 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.PESELTextBox.Location = new System.Drawing.Point(27, 126);
             this.PESELTextBox.Name = "PESELTextBox";
             this.PESELTextBox.PlaceholderText = "PESEL";
-            this.PESELTextBox.ReadOnly = true;
             this.PESELTextBox.Size = new System.Drawing.Size(205, 25);
-            this.PESELTextBox.TabIndex = 18;
+            this.PESELTextBox.TabIndex = 2;
             // 
             // PatientSurnameTextBox
             // 
@@ -173,9 +166,8 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.PatientSurnameTextBox.Location = new System.Drawing.Point(306, 200);
             this.PatientSurnameTextBox.Name = "PatientSurnameTextBox";
             this.PatientSurnameTextBox.PlaceholderText = "Last Name";
-            this.PatientSurnameTextBox.ReadOnly = true;
             this.PatientSurnameTextBox.Size = new System.Drawing.Size(205, 25);
-            this.PatientSurnameTextBox.TabIndex = 17;
+            this.PatientSurnameTextBox.TabIndex = 5;
             // 
             // UpperMainLabel
             // 
@@ -197,9 +189,8 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.PatientNameTextBox.Location = new System.Drawing.Point(27, 200);
             this.PatientNameTextBox.Name = "PatientNameTextBox";
             this.PatientNameTextBox.PlaceholderText = "First Name";
-            this.PatientNameTextBox.ReadOnly = true;
             this.PatientNameTextBox.Size = new System.Drawing.Size(205, 25);
-            this.PatientNameTextBox.TabIndex = 6;
+            this.PatientNameTextBox.TabIndex = 4;
             // 
             // AddButton
             // 
@@ -227,7 +218,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.SearchPatientTextBox.Name = "SearchPatientTextBox";
             this.SearchPatientTextBox.PlaceholderText = "Search User for Update";
             this.SearchPatientTextBox.Size = new System.Drawing.Size(302, 25);
-            this.SearchPatientTextBox.TabIndex = 14;
+            this.SearchPatientTextBox.TabIndex = 13;
             // 
             // SearchPatientButton
             // 
@@ -239,7 +230,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.SearchPatientButton.Location = new System.Drawing.Point(497, 133);
             this.SearchPatientButton.Name = "SearchPatientButton";
             this.SearchPatientButton.Size = new System.Drawing.Size(94, 32);
-            this.SearchPatientButton.TabIndex = 15;
+            this.SearchPatientButton.TabIndex = 1;
             this.SearchPatientButton.Text = "Search";
             this.SearchPatientButton.UseVisualStyleBackColor = false;
             // 
@@ -263,9 +254,8 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.LoginTextBox.Location = new System.Drawing.Point(713, 248);
             this.LoginTextBox.Name = "LoginTextBox";
             this.LoginTextBox.PlaceholderText = "User\'s Login";
-            this.LoginTextBox.ReadOnly = true;
             this.LoginTextBox.Size = new System.Drawing.Size(205, 25);
-            this.LoginTextBox.TabIndex = 26;
+            this.LoginTextBox.TabIndex = 11;
             // 
             // PasswordTextBox
             // 
@@ -276,9 +266,8 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.PasswordTextBox.Location = new System.Drawing.Point(713, 304);
             this.PasswordTextBox.Name = "PasswordTextBox";
             this.PasswordTextBox.PlaceholderText = "User\'s Password";
-            this.PasswordTextBox.ReadOnly = true;
             this.PasswordTextBox.Size = new System.Drawing.Size(205, 25);
-            this.PasswordTextBox.TabIndex = 27;
+            this.PasswordTextBox.TabIndex = 12;
             // 
             // UpdateButton
             // 
@@ -314,51 +303,56 @@ namespace ClinicManagementSystem.Forms.MainForms
             // 
             // SpecializationComboBox
             // 
+            this.SpecializationComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.SpecializationComboBox.Font = new System.Drawing.Font("Corbel", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.SpecializationComboBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(115)))), ((int)(((byte)(153)))));
             this.SpecializationComboBox.FormattingEnabled = true;
+            this.SpecializationComboBox.Items.AddRange(new object[] {
+            "Specialization",
+            "Spec 1",
+            "Spec 2",
+            "Spec 3"});
             this.SpecializationComboBox.Location = new System.Drawing.Point(1040, 371);
             this.SpecializationComboBox.Name = "SpecializationComboBox";
             this.SpecializationComboBox.Size = new System.Drawing.Size(200, 32);
             this.SpecializationComboBox.TabIndex = 30;
-            this.SpecializationComboBox.Text = "Specialization";
             // 
-            // label2
+            // DoctoralLabel
             // 
-            this.label2.AutoEllipsis = true;
-            this.label2.Font = new System.Drawing.Font("Corbel", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(115)))), ((int)(((byte)(153)))));
-            this.label2.Location = new System.Drawing.Point(713, 364);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(312, 39);
-            this.label2.TabIndex = 31;
-            this.label2.Text = "Doctoral Specialization:";
+            this.DoctoralLabel.AutoEllipsis = true;
+            this.DoctoralLabel.Font = new System.Drawing.Font("Corbel", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.DoctoralLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(115)))), ((int)(((byte)(153)))));
+            this.DoctoralLabel.Location = new System.Drawing.Point(713, 364);
+            this.DoctoralLabel.Name = "DoctoralLabel";
+            this.DoctoralLabel.Size = new System.Drawing.Size(312, 39);
+            this.DoctoralLabel.TabIndex = 31;
+            this.DoctoralLabel.Text = "Doctoral Specialization:";
             // 
-            // radioButton1
+            // LabTechicianRadioButton
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.radioButton1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(115)))), ((int)(((byte)(153)))));
-            this.radioButton1.Location = new System.Drawing.Point(713, 450);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(158, 32);
-            this.radioButton1.TabIndex = 32;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Lab Technician";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.LabTechicianRadioButton.AutoSize = true;
+            this.LabTechicianRadioButton.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.LabTechicianRadioButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(115)))), ((int)(((byte)(153)))));
+            this.LabTechicianRadioButton.Location = new System.Drawing.Point(713, 450);
+            this.LabTechicianRadioButton.Name = "LabTechicianRadioButton";
+            this.LabTechicianRadioButton.Size = new System.Drawing.Size(158, 32);
+            this.LabTechicianRadioButton.TabIndex = 32;
+            this.LabTechicianRadioButton.TabStop = true;
+            this.LabTechicianRadioButton.Text = "Lab Technician";
+            this.LabTechicianRadioButton.UseVisualStyleBackColor = true;
             // 
-            // radioButton2
+            // LabManagerRadioButton
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.radioButton2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(115)))), ((int)(((byte)(157)))));
-            this.radioButton2.Location = new System.Drawing.Point(1040, 450);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(212, 32);
-            this.radioButton2.TabIndex = 33;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Laboratory Manager";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.LabManagerRadioButton.AutoSize = true;
+            this.LabManagerRadioButton.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.LabManagerRadioButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(115)))), ((int)(((byte)(157)))));
+            this.LabManagerRadioButton.Location = new System.Drawing.Point(1040, 450);
+            this.LabManagerRadioButton.Name = "LabManagerRadioButton";
+            this.LabManagerRadioButton.Size = new System.Drawing.Size(212, 32);
+            this.LabManagerRadioButton.TabIndex = 33;
+            this.LabManagerRadioButton.TabStop = true;
+            this.LabManagerRadioButton.Text = "Laboratory Manager";
+            this.LabManagerRadioButton.UseVisualStyleBackColor = true;
             // 
             // ManagerForm
             // 
@@ -366,9 +360,9 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(247)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(1300, 900);
-            this.Controls.Add(this.radioButton2);
-            this.Controls.Add(this.radioButton1);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.LabManagerRadioButton);
+            this.Controls.Add(this.LabTechicianRadioButton);
+            this.Controls.Add(this.DoctoralLabel);
             this.Controls.Add(this.SpecializationComboBox);
             this.Controls.Add(this.DeleteButton);
             this.Controls.Add(this.UpdateButton);
@@ -411,8 +405,8 @@ namespace ClinicManagementSystem.Forms.MainForms
         private System.Windows.Forms.Button UpdateButton;
         private System.Windows.Forms.Button DeleteButton;
         private System.Windows.Forms.ComboBox SpecializationComboBox;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.Label DoctoralLabel;
+        private System.Windows.Forms.RadioButton LabTechicianRadioButton;
+        private System.Windows.Forms.RadioButton LabManagerRadioButton;
     }
 }
