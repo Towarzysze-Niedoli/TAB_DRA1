@@ -39,16 +39,16 @@ namespace ClinicManagementSystem.Auth.Test
             for (int i = 0; i < n; i++)
             {
                 if (emails[i] == null && phones[i] == null)
-                    Assert.ThrowsException<ArgumentNullException>(() => authenticationService.CreateNewUser(emails[i], phones[i], passwords[i]));
+                    Assert.ThrowsException<ArgumentNullException>(() => authenticationService.AddNewUser(emails[i], phones[i], passwords[i]));
                 else
                 {
-                    ApplicationUser createdUser = authenticationService.CreateNewUser(emails[i], phones[i], passwords[i]);
+                    ApplicationUser createdUser = authenticationService.AddNewUser(emails[i], phones[i], passwords[i]);
                     ApplicationUser foundUser = dbContext.ApplicationUsers.Find(createdUser.Id);
                     Assert.AreEqual(emails[i], foundUser.Email);
                     Assert.AreEqual(phones[i], foundUser.PhoneNumber);
                     Assert.AreEqual(createdUser.Password, foundUser.Password);
                     // double insertion:
-                    Assert.ThrowsException<InvalidLoginException>(() => authenticationService.CreateNewUser(emails[i], phones[i], passwords[i]));
+                    Assert.ThrowsException<InvalidLoginException>(() => authenticationService.AddNewUser(emails[i], phones[i], passwords[i]));
                 }
             }
         }
@@ -69,12 +69,12 @@ namespace ClinicManagementSystem.Auth.Test
                     if (phones[i] != null)
                         Assert.ThrowsException<InvalidLoginException>(() => authenticationService.Authenticate(phones[i], passwords[i]));
 
-                    ApplicationUser createdUser = authenticationService.CreateNewUser(emails[i], phones[i], passwords[i]);
+                    ApplicationUser createdUser = authenticationService.AddNewUser(emails[i], phones[i], passwords[i]);
 
                     if (emails[i] != null)
-                        Assert.AreEqual(authenticationService.Authenticate(emails[i], passwords[i]).Id, createdUser.Id);
+                        Assert.AreEqual(createdUser.Id, authenticationService.Authenticate(emails[i], passwords[i]).Id);
                     if (phones[i] != null)
-                        Assert.AreEqual(authenticationService.Authenticate(phones[i], passwords[i]).Id, createdUser.Id);
+                        Assert.AreEqual(createdUser.Id, authenticationService.Authenticate(phones[i], passwords[i]).Id);
                 }
             }
         }
@@ -90,7 +90,7 @@ namespace ClinicManagementSystem.Auth.Test
             {
                 if (emails[i] != null || phones[i] != null)
                 {
-                    ApplicationUser user = authenticationService.CreateNewUser(emails[i], phones[i], passwords[i]);
+                    ApplicationUser user = authenticationService.AddNewUser(emails[i], phones[i], passwords[i]);
                     
                     Assert.ThrowsException<InvalidPasswordException>(() => authenticationService.ChangePasswordForUser(user, passwords[i]));
                     string newPassword = passwords[i] + "an0th3r!#@$";
@@ -112,7 +112,7 @@ namespace ClinicManagementSystem.Auth.Test
             {
                 if (emails[i] != null || phones[i] != null)
                 {
-                    ApplicationUser user = authenticationService.CreateNewUser(emails[i], phones[i], passwords[i]);
+                    ApplicationUser user = authenticationService.AddNewUser(emails[i], phones[i], passwords[i]);
 
                     if (user.Email != null)
                     {
@@ -148,7 +148,7 @@ namespace ClinicManagementSystem.Auth.Test
                 dbContext.ApplicationUsers.RemoveRange(dbContext.ApplicationUsers.Where(user => baseEmail == user.Email || basePhone == user.PhoneNumber));
                 dbContext.SaveChanges();
 
-                ApplicationUser user = authenticationService.CreateNewUser(baseEmail, basePhone, basePassword);
+                ApplicationUser user = authenticationService.AddNewUser(baseEmail, basePhone, basePassword);
 
                 user = authenticationService.ChangeUserData(user, emails[i], phones[i]);
 
@@ -170,12 +170,12 @@ namespace ClinicManagementSystem.Auth.Test
             if (email != null)
             {
                 Assert.ThrowsException<InvalidPasswordException>(() => authenticationService.Authenticate(email, oldPassword));
-                Assert.AreEqual(authenticationService.Authenticate(email, newPassword).Id, userId);
+                Assert.AreEqual(userId, authenticationService.Authenticate(email, newPassword).Id);
             }
             if (phone != null)
             {
                 Assert.ThrowsException<InvalidPasswordException>(() => authenticationService.Authenticate(phone, oldPassword));
-                Assert.AreEqual(authenticationService.Authenticate(phone, newPassword).Id, userId);
+                Assert.AreEqual(userId, authenticationService.Authenticate(phone, newPassword).Id);
             }
         }
     }
