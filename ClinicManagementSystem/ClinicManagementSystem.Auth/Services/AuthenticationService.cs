@@ -26,6 +26,22 @@ namespace ClinicManagementSystem.Auth.Services
             return user;
         }
         
+        public ApplicationUser AddNewUser(string? email, string? phoneNumber, string password)
+        {
+            using SystemContext dbContext = new SystemContext();
+            ApplicationUser user = CreateNewUser(email, phoneNumber, password);
+            dbContext.ApplicationUsers.Add(user);
+            dbContext.SaveChanges();
+            return user;
+        }
+
+        /// <summary>
+        /// Only creates a new user and returns it, DOES NOT ADD IT TO THE DATABASE!
+        /// </summary>
+        /// <param name="email"></param>
+        /// <param name="phoneNumber"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
         public ApplicationUser CreateNewUser(string? email, string? phoneNumber, string password)
         {
             if (email == null && phoneNumber == null)
@@ -36,15 +52,12 @@ namespace ClinicManagementSystem.Auth.Services
             if (dbContext.ApplicationUsers.Where(user => user.Email == email || user.PhoneNumber == phoneNumber).Any())
                 throw new InvalidLoginException("Email or phone number already exists!");
 
-            ApplicationUser user = new ApplicationUser()
+            return new ApplicationUser()
             {
                 Email = email,
                 PhoneNumber = phoneNumber,
                 Password = PasswordHasher.Hash(password)
             };
-            dbContext.ApplicationUsers.Add(user);
-            dbContext.SaveChanges();
-            return user;
         }
 
         public ApplicationUser ChangePasswordForUser(ApplicationUser user, string newPassword)
