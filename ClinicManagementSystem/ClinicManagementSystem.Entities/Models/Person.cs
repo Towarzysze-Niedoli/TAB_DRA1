@@ -11,11 +11,11 @@ namespace ClinicManagementSystem.Entities.Models
         public int Id { get; set; }
 
         [Required]
-        [RegularExpression(@"^[a-zA-Z''-'\s]{1,50}$")] // up to 50 uppercase and lowercase characters
+        [RegularExpression(@"^[a-zA-Ząćęłńóśżź'\- ]{1,50}$")] // up to 50 uppercase and lowercase characters
         public string FirstName { get; set; }
 
         [Required]
-        [RegularExpression(@"^[a-zA-Z''-'\s]{1,50}$")] // up to 50 uppercase and lowercase characters
+        [RegularExpression(@"^[a-zA-Ząćęłńóśżź'\- ]{1,50}$")] // up to 50 uppercase and lowercase characters
         public string LastName { get; set; }
 
         [EmailAddress]
