@@ -1,10 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "cjY7QgZb2Np6fLgixhM9+b9jA33LJ/HP4E9jSXzqWThpZ1Ro8L/Ef5DJRjO0m/VdpSxHKDByNuK/+N+ZAYvTXw==",
+  "dgSpecHash": "scIVV/JcUVxZIth1Yxk6TDMC/EcpgBZKVdZjVb19Zg/awzKmD9NTh40Mpb5BxyWvhlVR+Jsb3DW6l4DByUj2Hw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\michal\\Desktop\\TABNEW\\ClinicManagementSystem\\ClinicManagementSystem\\ClinicManagementSystem.csproj",
+  "projectFilePath": "C:\\Users\\Dom\\source\\repos\\TAB_DRA1\\ClinicManagementSystem\\ClinicManagementSystem\\ClinicManagementSystem.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\michal\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.21\\microsoft.netcore.app.host.win-x64.3.1.21.nupkg.sha512"
+    "C:\\Users\\Dom\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.24\\microsoft.netcore.app.host.win-x64.3.1.24.nupkg.sha512",
+    "C:\\Users\\Dom\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.1.10\\microsoft.aspnetcore.app.ref.3.1.10.nupkg.sha512",
+    "C:\\Users\\Dom\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\3.1.0\\microsoft.windowsdesktop.app.ref.3.1.0.nupkg.sha512",
+    "C:\\Users\\Dom\\.nuget\\packages\\microsoft.netcore.app.ref\\3.1.0\\microsoft.netcore.app.ref.3.1.0.nupkg.sha512"
   ],
   "logs": []
 }

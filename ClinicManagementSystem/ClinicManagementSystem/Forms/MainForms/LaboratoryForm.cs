@@ -12,6 +12,9 @@ namespace ClinicManagementSystem.Forms.MainForms
 
     public partial class LaboratoryForm : Form
     {
+        public delegate void LaboratoryTestsListChanged(int index);
+        public LaboratoryTestsListChanged LaboratoryTestsList;
+
         LaboratoryListForm TestsList;
         LaboratoryTestResults TestsResults;
 
@@ -66,13 +69,13 @@ namespace ClinicManagementSystem.Forms.MainForms
         private void LaboratoryTestsComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             int index = LaboratoryTestsComboBox.SelectedIndex;
-            //stworzenie delegate'a
-            LaboratoryListForm obj = new LaboratoryListForm();
-            this.PassIndex += new PassSelectedIndex(obj.SetIndex);
-            PassIndex(index);
-           // InitializeTestList();
-            // obj.ComboBoxIndex(index);
-            //LabManagerComboBox.Text = index.ToString();
+            LaboratoryTestsList = TestsList.LaboratoryTestsList;
+
+            if (LaboratoryTestsList != null)
+            {
+                LaboratoryTestsList.Invoke(index);
+            }
+
         }
     }
 }
