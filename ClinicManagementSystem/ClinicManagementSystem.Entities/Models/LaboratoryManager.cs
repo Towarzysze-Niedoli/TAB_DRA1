@@ -7,6 +7,5 @@ namespace ClinicManagementSystem.Entities.Models
 {
     public class LaboratoryManager : Person
     {
-        public Address? Address { get; set; }
     }
 }

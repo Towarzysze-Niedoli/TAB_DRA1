@@ -10,8 +10,15 @@ using ClinicManagementSystem.Entities.Models;
 
 namespace ClinicManagementSystem.Auth.Services
 {
-    public class AuthenticationService
+    public class AuthenticationService : IAuthenticationService
     {
+        private IPasswordHasher passwordHasher;
+
+        public AuthenticationService(IPasswordHasher _passwordHasher)
+        {
+            passwordHasher = _passwordHasher;
+        }
+
         public ApplicationUser Authenticate(string emailOrPhone, string password)
         {
             using SystemContext dbContext = new SystemContext();
@@ -20,12 +27,12 @@ namespace ClinicManagementSystem.Auth.Services
 
             ApplicationUser user = FindUser(emailOrPhone, userPredicate);
 
-            if (!PasswordHasher.Verify(password, user.Password))
+            if (!passwordHasher.Verify(password, user.Password))
                 throw new InvalidPasswordException($"Invalid password for user with email address {user.Email}");
 
             return user;
         }
-        
+
         public ApplicationUser AddNewUser(string? email, string? phoneNumber, string password)
         {
             using SystemContext dbContext = new SystemContext();
@@ -35,13 +42,6 @@ namespace ClinicManagementSystem.Auth.Services
             return user;
         }
 
-        /// <summary>
-        /// Only creates a new user and returns it, DOES NOT ADD IT TO THE DATABASE!
-        /// </summary>
-        /// <param name="email"></param>
-        /// <param name="phoneNumber"></param>
-        /// <param name="password"></param>
-        /// <returns></returns>
         public ApplicationUser CreateNewUser(string? email, string? phoneNumber, string password)
         {
             if (email == null && phoneNumber == null)
@@ -56,19 +56,19 @@ namespace ClinicManagementSystem.Auth.Services
             {
                 Email = email,
                 PhoneNumber = phoneNumber,
-                Password = PasswordHasher.Hash(password)
+                Password = passwordHasher.Hash(password)
             };
         }
 
         public ApplicationUser ChangePasswordForUser(ApplicationUser user, string newPassword)
         {
-            if (PasswordHasher.Verify(newPassword, user.Password))
+            if (passwordHasher.Verify(newPassword, user.Password))
                 throw new InvalidPasswordException("Password cannot be identical to the previous one");
 
             using SystemContext dbContext = new SystemContext();
 
             user = dbContext.ApplicationUsers.Attach(user);
-            user.Password = PasswordHasher.Hash(newPassword);
+            user.Password = passwordHasher.Hash(newPassword);
             dbContext.SaveChanges();
             return user;
         }
@@ -96,8 +96,13 @@ namespace ClinicManagementSystem.Auth.Services
             return user;
         }
 
-        
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="emailOrPhone"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentException">when given string is not a valid email address or phone number</exception>
         private (Func<ApplicationUser, bool> userPredicate, Func<Person, bool> personPredicate) GetPredicates(string emailOrPhone)
         {
             if (new EmailAddressAttribute().IsValid(emailOrPhone))
@@ -120,6 +125,12 @@ namespace ClinicManagementSystem.Auth.Services
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="emailOrPhone"></param>
+        /// <param name="userPredicate"></param>
+        /// <returns></returns>
         private ApplicationUser FindUser(string emailOrPhone, Func<ApplicationUser, bool> userPredicate)
         {
             using SystemContext dbContext = new SystemContext();

@@ -9,6 +9,7 @@ namespace ClinicManagementSystem.Auth.Test
     [TestClass]
     public class PasswordHasherTests
     {
+        private IPasswordHasher passwordHasher = new PasswordHasher();
         private readonly string[] passwords =
             {
                 "testPassword123",
@@ -32,8 +33,8 @@ namespace ClinicManagementSystem.Auth.Test
         {
             foreach (string password in passwords)
             {
-                string hash1 = PasswordHasher.Hash(password);
-                string hash2 = PasswordHasher.Hash(password);
+                string hash1 = passwordHasher.Hash(password);
+                string hash2 = passwordHasher.Hash(password);
 
                 // assert non-consistent hashing with salt:
                 Assert.AreNotEqual(hash1, hash2);
@@ -48,7 +49,7 @@ namespace ClinicManagementSystem.Auth.Test
                 // assert correct salt detection and password verification:
                 for(int i = 0; i < 3; i++)
                 {
-                    Assert.IsTrue(PasswordHasher.Verify(password, PasswordHasher.Hash(password)));
+                    Assert.IsTrue(passwordHasher.Verify(password, passwordHasher.Hash(password)));
                 }
             }
         }

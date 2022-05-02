@@ -12,7 +12,7 @@ namespace ClinicManagementSystem.Auth.Test
     [TestClass]
     public class AuthorizationServiceTests
     {
-        readonly AuthorizationService authorizationService = new AuthorizationService();
+        readonly IAuthorizationService authorizationService = new AuthorizationService(new AuthenticationService(new PasswordHasher()));
 
         const int n = 5;
         readonly static string[] firstnames = new string[n] { "Jan", "Jan", "Anna Maria", "Zażółćgęśląjaźń", "Jan" };
@@ -56,7 +56,8 @@ namespace ClinicManagementSystem.Auth.Test
                     FirstName = firstnames[i],
                     LastName = lastnames[i],
                     Email = emails[i],
-                    PhoneNumber = phones[i]
+                    PhoneNumber = phones[i],
+                    Address = addresses[i]
                 };
                 doctors[i] = new Doctor()
                 {
@@ -134,11 +135,15 @@ namespace ClinicManagementSystem.Auth.Test
                 else
                 {
                     T addedPerson = authorizationService.AddPerson<T>(people[i], passwords[i]);
-                    T foundPerson = dbContext.Set<T>().Find(addedPerson.Id);
+                    T foundPerson = dbContext.Set<T>().Include("Address").Where(p => p.Id == addedPerson.Id).Single();
                     Assert.AreEqual(firstnames[i], foundPerson.FirstName);
                     Assert.AreEqual(lastnames[i], foundPerson.LastName);
                     Assert.AreEqual(emails[i], foundPerson.Email);
                     Assert.AreEqual(phones[i], foundPerson.PhoneNumber);
+                    if (addresses[i] != null)
+                    {
+                        Assert.AreEqual(addresses[i].Street, foundPerson.Address.Street);
+                    }
                     // double insertion:
                     Assert.ThrowsException<InvalidLoginException>(() => authorizationService.AddPerson<T>(people[i], passwords[i]));
                 }

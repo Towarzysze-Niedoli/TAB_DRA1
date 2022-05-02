@@ -23,5 +23,7 @@ namespace ClinicManagementSystem.Entities.Models
 
         [Phone]
         public string? PhoneNumber { get; set; }
+
+        public Address? Address { get; set; }
     }
 }
