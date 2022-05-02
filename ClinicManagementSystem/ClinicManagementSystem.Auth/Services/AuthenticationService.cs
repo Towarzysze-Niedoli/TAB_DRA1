@@ -12,17 +12,17 @@ namespace ClinicManagementSystem.Auth.Services
 {
     public class AuthenticationService : IAuthenticationService
     {
-        private IPasswordHasher passwordHasher;
+        private readonly IPasswordHasher passwordHasher;
+        private readonly SystemContext dbContext;
 
-        public AuthenticationService(IPasswordHasher _passwordHasher)
+        public AuthenticationService(IPasswordHasher _passwordHasher, SystemContext systemContext)
         {
             passwordHasher = _passwordHasher;
+            dbContext = systemContext;
         }
 
         public ApplicationUser Authenticate(string emailOrPhone, string password)
         {
-            using SystemContext dbContext = new SystemContext();
-
             var (userPredicate, personPredicate) = GetPredicates(emailOrPhone);
 
             ApplicationUser user = FindUser(emailOrPhone, userPredicate);
@@ -35,7 +35,6 @@ namespace ClinicManagementSystem.Auth.Services
 
         public ApplicationUser AddNewUser(string? email, string? phoneNumber, string password)
         {
-            using SystemContext dbContext = new SystemContext();
             ApplicationUser user = CreateNewUser(email, phoneNumber, password);
             dbContext.ApplicationUsers.Add(user);
             dbContext.SaveChanges();
@@ -46,8 +45,6 @@ namespace ClinicManagementSystem.Auth.Services
         {
             if (email == null && phoneNumber == null)
                 throw new ArgumentNullException("email && phoneNumber");
-
-            using SystemContext dbContext = new SystemContext();
 
             if (dbContext.ApplicationUsers.Where(user => user.Email == email || user.PhoneNumber == phoneNumber).Any())
                 throw new InvalidLoginException("Email or phone number already exists!");
@@ -65,8 +62,6 @@ namespace ClinicManagementSystem.Auth.Services
             if (passwordHasher.Verify(newPassword, user.Password))
                 throw new InvalidPasswordException("Password cannot be identical to the previous one");
 
-            using SystemContext dbContext = new SystemContext();
-
             user = dbContext.ApplicationUsers.Attach(user);
             user.Password = passwordHasher.Hash(newPassword);
             dbContext.SaveChanges();
@@ -75,8 +70,6 @@ namespace ClinicManagementSystem.Auth.Services
 
         public ApplicationUser ChangePasswordForUser(string emailOrPhone, string newPassword)
         {
-            using SystemContext dbContext = new SystemContext();
-
             var (userPredicate, personPredicate) = GetPredicates(emailOrPhone);
             ApplicationUser user = FindUser(emailOrPhone, userPredicate);
             return ChangePasswordForUser(user, newPassword);
@@ -84,8 +77,6 @@ namespace ClinicManagementSystem.Auth.Services
 
         public ApplicationUser ChangeUserData(ApplicationUser user, string? newEmail, string? newPhoneNumber)
         {
-            using SystemContext dbContext = new SystemContext();
-
             user = dbContext.ApplicationUsers.Attach(user);
             if (newEmail != null)
                 user.Email = newEmail;
@@ -133,7 +124,6 @@ namespace ClinicManagementSystem.Auth.Services
         /// <returns></returns>
         private ApplicationUser FindUser(string emailOrPhone, Func<ApplicationUser, bool> userPredicate)
         {
-            using SystemContext dbContext = new SystemContext();
             try
             {
                 return dbContext.ApplicationUsers.Where(userPredicate).Single();

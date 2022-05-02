@@ -12,7 +12,8 @@ namespace ClinicManagementSystem.Auth.Test
     [TestClass]
     public class AuthorizationServiceTests
     {
-        readonly IAuthorizationService authorizationService = new AuthorizationService(new AuthenticationService(new PasswordHasher()));
+        private static readonly SystemContext dbContext = new SystemContext();
+        readonly IAuthorizationService authorizationService = new AuthorizationService(new AuthenticationService(new PasswordHasher(), dbContext), dbContext);
 
         const int n = 5;
         readonly static string[] firstnames = new string[n] { "Jan", "Jan", "Anna Maria", "Zażółćgęśląjaźń", "Jan" };
@@ -97,7 +98,6 @@ namespace ClinicManagementSystem.Auth.Test
 
         private static int RemoveEntries()
         {
-            using SystemContext dbContext = new SystemContext();
             // remove necessary existing entries:
             dbContext.ApplicationUsers.RemoveRange(
                 dbContext.ApplicationUsers.Where(user => emails.Contains(user.Email) || phones.Contains(user.PhoneNumber))
@@ -126,7 +126,6 @@ namespace ClinicManagementSystem.Auth.Test
             if (people.Length != n)
                 throw new ArgumentException("people.Length != n");
 
-            using SystemContext dbContext = new SystemContext();
             RemoveEntries();
             for (int i = 0; i < n; i++)
             {
@@ -186,7 +185,6 @@ namespace ClinicManagementSystem.Auth.Test
             if (people.Length != n)
                 throw new ArgumentException("people.Length != n");
 
-            using SystemContext dbContext = new SystemContext();
             RemoveEntries();
             for (int i = 0; i < n; i++)
             {
@@ -242,7 +240,6 @@ namespace ClinicManagementSystem.Auth.Test
 
         private void UserToPersonTestHelper<T>(T[] people) where T : Person, new()
         {
-            using SystemContext dbContext = new SystemContext();
             RemoveEntries();
             for (int i = 0; i < n; i++)
             {
