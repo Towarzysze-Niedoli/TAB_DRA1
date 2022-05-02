@@ -12,10 +12,12 @@ namespace ClinicManagementSystem.Auth.Services
     public class AuthorizationService : IAuthorizationService
     {
         private readonly IAuthenticationService authenticationService;
+        private readonly SystemContext dbContext;
 
-        public AuthorizationService(IAuthenticationService _authenticationService)
+        public AuthorizationService(IAuthenticationService _authenticationService, SystemContext systemContext)
         {
             authenticationService = _authenticationService;
+            dbContext = systemContext;
         }
 
         public T? IsType<T>(ApplicationUser user, Func<Person, bool>? personPredicate = null) where T : Person
@@ -23,7 +25,6 @@ namespace ClinicManagementSystem.Auth.Services
             if (personPredicate == null)
                 personPredicate = GetPersonPredicate(user.Email ?? user.PhoneNumber ?? throw new ArgumentNullException("email && phoneNumber"));
 
-            using SystemContext dbContext = new SystemContext();
             IEnumerable<T> queryResult = dbContext.Set<T>().Where<T>(personPredicate);
             if (queryResult.Count() == 1)
                 return queryResult.Single();
@@ -65,8 +66,6 @@ namespace ClinicManagementSystem.Auth.Services
 
         public Person? UserToPerson(ApplicationUser user)
         {
-            using SystemContext dbContext = new SystemContext();
-
             var personPredicate = GetPersonPredicate(user.Email ?? user.PhoneNumber ?? throw new ArgumentNullException("email && phoneNumber"));
 
             Person? person = IsType<Admin>(user, personPredicate);

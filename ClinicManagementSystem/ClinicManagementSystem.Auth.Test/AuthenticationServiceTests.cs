@@ -12,7 +12,8 @@ namespace ClinicManagementSystem.Auth.Test
     [TestClass]
     public class AuthenticationServiceTests
     {
-        readonly IAuthenticationService authenticationService = new AuthenticationService(new PasswordHasher());
+        private static readonly SystemContext dbContext = new SystemContext();
+        readonly IAuthenticationService authenticationService = new AuthenticationService(new PasswordHasher(), dbContext);
 
         const int n = 5;
         readonly static string[] emails = new string[n] { "email@email.com", "second@different.pl", "another@some.com.pl", null, null };
@@ -21,7 +22,6 @@ namespace ClinicManagementSystem.Auth.Test
 
         private static int RemoveEntries()
         {
-            using SystemContext dbContext = new SystemContext();
             // remove necessary existing entries:
             dbContext.ApplicationUsers.RemoveRange(
                 dbContext.ApplicationUsers.Where(user => emails.Contains(user.Email) || phones.Contains(user.PhoneNumber))
@@ -32,7 +32,6 @@ namespace ClinicManagementSystem.Auth.Test
         [TestMethod]
         public void CreateUserTest()
         {
-            using SystemContext dbContext = new SystemContext();
             RemoveEntries();
 
             // insert:
@@ -56,7 +55,6 @@ namespace ClinicManagementSystem.Auth.Test
         [TestMethod]
         public void AuthenticateUserTest()
         {
-            using SystemContext dbContext = new SystemContext();
             RemoveEntries();
 
             // insert and auth:
@@ -82,7 +80,6 @@ namespace ClinicManagementSystem.Auth.Test
         [TestMethod]
         public void ChangePasswordForUserTest()
         {
-            using SystemContext dbContext = new SystemContext();
             RemoveEntries();
 
             // insert and auth:
@@ -104,7 +101,6 @@ namespace ClinicManagementSystem.Auth.Test
         [TestMethod]
         public void ChangePasswordByLoginTest()
         {
-            using SystemContext dbContext = new SystemContext();
             RemoveEntries();
 
             // insert and auth:
@@ -136,7 +132,6 @@ namespace ClinicManagementSystem.Auth.Test
         [TestMethod]
         public void ChangeUserDataTest()
         {
-            using SystemContext dbContext = new SystemContext();
             RemoveEntries();
             string baseEmail = "blah@someemail.blah";
             string basePhone = "844530198";
