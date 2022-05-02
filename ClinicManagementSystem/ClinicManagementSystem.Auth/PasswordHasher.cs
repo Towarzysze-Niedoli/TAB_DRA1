@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ClinicManagementSystem.Auth
 {
-    public static class PasswordHasher
+    public class PasswordHasher : IPasswordHasher
     {
         /// <summary>
         /// Size of salt.
@@ -22,13 +22,7 @@ namespace ClinicManagementSystem.Auth
         /// </summary>
         private const int Iterations = 10000;
 
-        /// <summary>
-        /// Creates a hash from a password.
-        /// </summary>
-        /// <param name="password">password</param>
-        /// <param name="iterations">number of iterations</param>
-        /// <returns>hashed password</returns>
-        public static string Hash(string password, int iterations)
+        public string Hash(string password, int iterations)
         {
             // Create salt
             byte[] salt;
@@ -50,23 +44,12 @@ namespace ClinicManagementSystem.Auth
             return string.Format("{0}${1}", iterations, base64Hash);
         }
 
-        /// <summary>
-        /// Creates a hash from a password with default number of iterations
-        /// </summary>
-        /// <param name="password">password</param>
-        /// <returns>hashed password</returns>
-        public static string Hash(string password)
+        public string Hash(string password)
         {
             return Hash(password, Iterations);
         }
 
-        /// <summary>
-        /// Verifies a password against a hash.
-        /// </summary>
-        /// <param name="password">password</param>
-        /// <param name="hashedPassword">hash</param>
-        /// <returns>true if matches</returns>
-        public static bool Verify(string password, string hashedPassword)
+        public bool Verify(string password, string hashedPassword)
         {
             // Extract iteration and Base64 string
             string[] splittedHashString = hashedPassword.Split('$');

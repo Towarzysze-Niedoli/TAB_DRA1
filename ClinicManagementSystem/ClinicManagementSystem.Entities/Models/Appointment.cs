@@ -23,13 +23,11 @@ namespace ClinicManagementSystem.Entities.Models
 
         public DateTime? CompletionDate { get; set; }
 
-        [Required]
         public Receptionist Receptionist { get; set; }
 
         [Required]
         public Doctor Doctor { get; set; }
 
-        [Required]
         public Patient Patient { get; set; }
 
         [InverseProperty("Appointment")] // explicit bidirectional mapping, default lazy loading

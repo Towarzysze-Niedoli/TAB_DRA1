@@ -9,9 +9,14 @@ using System.Text;
 
 namespace ClinicManagementSystem.Auth.Services
 {
-    public class AuthorizationService
+    public class AuthorizationService : IAuthorizationService
     {
-        private readonly AuthenticationService authenticationService = new AuthenticationService();
+        private readonly IAuthenticationService authenticationService;
+
+        public AuthorizationService(IAuthenticationService _authenticationService)
+        {
+            authenticationService = _authenticationService;
+        }
 
         public T? IsType<T>(ApplicationUser user, Func<Person, bool>? personPredicate = null) where T : Person
         {
@@ -38,6 +43,17 @@ namespace ClinicManagementSystem.Auth.Services
             {
                 ApplicationUser createdUser = authenticationService.CreateNewUser(person.Email, person.PhoneNumber, password);
 
+                // link address if exists (EF creates a new entry by default)
+                if (person.Address != null)
+                {
+                    var addresses = dbContext.Addresses.Where(a => a.Street == person.Address.Street
+                                                        && a.HomeNumber == person.Address.HomeNumber
+                                                        && a.ZipCode == person.Address.ZipCode
+                                                        && a.City == person.Address.City);
+                    if (addresses.Count() == 1)
+                        person.Address = addresses.Single();
+                }
+                
                 DbContextTransaction transaction = dbContext.Database.BeginTransaction();
                 dbContext.ApplicationUsers.Add(createdUser);
                 T addedPerson = dbContext.Set<T>().Add(person);
