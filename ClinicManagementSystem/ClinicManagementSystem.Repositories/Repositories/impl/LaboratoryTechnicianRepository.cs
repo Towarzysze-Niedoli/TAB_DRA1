@@ -1,9 +1,10 @@
-﻿using ClinicManagementSystem.Entities.Models;
+﻿using ClinicManagementSystem.Entities;
+using ClinicManagementSystem.Entities.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace ClinicManagementSystem.Entities.Repositories.impl
+namespace ClinicManagementSystem.Repositories.Repositories.impl
 {
     internal class LaboratoryTechnicianRepository: ILaboratoryTechnicianRepository, IDisposable
     {

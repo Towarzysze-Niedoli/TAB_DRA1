@@ -10,4 +10,9 @@
     <PackageReference Include="EntityFramework" Version="6.4.4" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ClinicManagementSystem.Entities\ClinicManagementSystem.Entities.csproj" />
+    <ProjectReference Include="..\ClinicManagementSystem.Repositories\ClinicManagementSystem.Repositories.csproj" />
+  </ItemGroup>
+
 </Project>

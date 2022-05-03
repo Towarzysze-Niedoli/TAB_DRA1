@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace ClinicManagementSystem.Entities.Repositories
+namespace ClinicManagementSystem.Repositories.Repositories
 {
     internal interface IDoctorRepository : IDisposable
     {
