@@ -54,7 +54,7 @@ namespace ClinicManagementSystem.Forms.MainForms
 
         private void ShowSideMenuForm(UserLevel level)
         {
-            _currentSideForm = new SideMenu(level, ShowNewVisitForm, ShowLaboratoryForm, ShowManagerDoctorForm, ShowManagerPatientForm, ShowManagerLabForm);//tutaj
+            _currentSideForm = new SideMenu(level, ShowNewVisitForm, ShowLaboratoryForm, ShowManagerDoctorForm, ShowManagerPatientForm, ShowManagerLabForm, ShowReceptionistForm);//tutaj
             InitializeForm(_currentSideForm, FormType.SideForm);
         }
 
@@ -90,6 +90,13 @@ namespace ClinicManagementSystem.Forms.MainForms
         {
             this.MainPanel.Controls.Remove(_currentMainForm);
             _currentMainForm = new ManagerForm(2);
+            InitializeForm(_currentMainForm, FormType.MainForm);
+        }
+
+        private void ShowReceptionistForm()
+        {
+            this.MainPanel.Controls.Remove(_currentMainForm);
+            _currentMainForm = new ManagerForm(3);
             InitializeForm(_currentMainForm, FormType.MainForm);
         }
 

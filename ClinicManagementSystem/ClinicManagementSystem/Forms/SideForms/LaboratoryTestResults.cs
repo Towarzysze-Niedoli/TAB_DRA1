@@ -31,8 +31,8 @@ namespace ClinicManagementSystem.Forms.SideForms
 
         protected void WriteLaboratoryResults(object source, LaboratoryListElementClickedArgs args)
         {
-            /*TestName.Text = args.TestName;
-            TestResults.Text = args.Results;*/
+            TestName.Text = args.TestName;
+            TestResults.Text = args.Results;
         }
     }
 }
