@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using ClinicManagementSystem.Forms.EventArguments;
 using ClinicManagementSystem.Forms.SideForms;
 
 namespace ClinicManagementSystem.Forms.MainForms
@@ -12,6 +13,10 @@ namespace ClinicManagementSystem.Forms.MainForms
 
     public partial class LaboratoryForm : Form
     {
+
+        public delegate void TestClickedHandler(object sender, LaboratoryListElementClickedArgs args); 
+        public event TestClickedHandler TestClicked;
+
         public delegate void LaboratoryTestsListChanged(int index);
         public LaboratoryTestsListChanged LaboratoryTestsList;
 
@@ -28,9 +33,15 @@ namespace ClinicManagementSystem.Forms.MainForms
             LaboratoryTestsComboBox.SelectedIndex = 0;
         }
 
+        public LaboratoryForm(int tmp)
+        {
+
+        }
+
         void InitializeTestList()
         {
             TestsList = new LaboratoryListForm();
+            TestsList.LabElementClicked += OnTestElementClicked;
             this.LaboratoryTestsPanel.Controls.Add(TestsList);
             TestsList.Show();
         }
@@ -64,6 +75,10 @@ namespace ClinicManagementSystem.Forms.MainForms
 
         }
 
+        protected void OnTestElementClicked(object source, LaboratoryListElementClickedArgs args)
+        {
+            TestClicked.Invoke(this, args);
+        }
 
 
         private void LaboratoryTestsComboBox_SelectedIndexChanged(object sender, EventArgs e)

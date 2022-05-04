@@ -1,4 +1,5 @@
 ﻿using ClinicManagementSystem.Forms.CustomElements;
+using ClinicManagementSystem.Forms.EventArguments;
 using ClinicManagementSystem.Forms.MainForms;
 using System;
 using System.Collections.Generic;
@@ -12,8 +13,11 @@ namespace ClinicManagementSystem.Forms.SideForms
 {
     public partial class LaboratoryListForm : Form
     {
-       
-        
+
+        public delegate void LabTestClickedEventHandler(object sender, LaboratoryListElementClickedArgs args); //dodane
+        public event LabTestClickedEventHandler LabElementClicked;
+
+
         List<LaboratoryTestListElement> tests;
         public LaboratoryListForm()
         {
@@ -49,6 +53,7 @@ namespace ClinicManagementSystem.Forms.SideForms
                 this.LabListFlowPanel.Controls.Clear();
                 foreach (LaboratoryTestListElement test in tests)
                 {
+                    test.LabTestElementClicked += OnElementClicked;
                     this.LabListFlowPanel.Controls.Add(test);
                 }
             }
@@ -69,13 +74,17 @@ namespace ClinicManagementSystem.Forms.SideForms
                 this.LabListFlowPanel.Controls.Clear();
                 foreach (LaboratoryTestListElement test in tests)
                 {
+                    test.LabTestElementClicked += OnElementClicked;
                     this.LabListFlowPanel.Controls.Add(test);
                 }
             }
         }
 
-        
-       
+        protected void OnElementClicked(object source, LaboratoryListElementClickedArgs args)
+        {
+            LabElementClicked.Invoke(this, args);
+        }
+
 
         private void LaboratoryListForm_Load(object sender, EventArgs e)
         {

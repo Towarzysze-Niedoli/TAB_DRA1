@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Dom\\Source\\Repos\\TAB_DRA1\\ClinicManagementSystem\\ClinicManagementSystem\\ClinicManagementSystem.csproj",
+      "projectUniqueName": "C:\\Users\\Dom\\source\\repos\\TAB_DRA1\\ClinicManagementSystem\\ClinicManagementSystem\\ClinicManagementSystem.csproj",
       "projectName": "ClinicManagementSystem",
-      "projectPath": "C:\\Users\\Dom\\Source\\Repos\\TAB_DRA1\\ClinicManagementSystem\\ClinicManagementSystem\\ClinicManagementSystem.csproj",
+      "projectPath": "C:\\Users\\Dom\\source\\repos\\TAB_DRA1\\ClinicManagementSystem\\ClinicManagementSystem\\ClinicManagementSystem.csproj",
       "packagesPath": "C:\\Users\\Dom\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Dom\\Source\\Repos\\TAB_DRA1\\ClinicManagementSystem\\ClinicManagementSystem\\obj\\",
+      "outputPath": "C:\\Users\\Dom\\source\\repos\\TAB_DRA1\\ClinicManagementSystem\\ClinicManagementSystem\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Dom\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -55,24 +55,6 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[3.1.10, 3.1.10]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Host.win-x64",
-            "version": "[3.1.24, 3.1.24]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Ref",
-            "version": "[3.1.0, 3.1.0]"
-          },
-          {
-            "name": "Microsoft.WindowsDesktop.App.Ref",
-            "version": "[3.1.0, 3.1.0]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
