@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ClinicManagementSystem.Forms.SideForms
 {
-    public enum VisitsTextFieldMode
+    public enum PerformVisitFormMode
     {
         Interview,
         Physical,

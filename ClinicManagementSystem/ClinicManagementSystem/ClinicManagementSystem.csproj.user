@@ -13,6 +13,9 @@
     <Compile Update="Forms\CustomElements\ListElement.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="Forms\CustomElements\OrderLabListElement.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="Forms\CustomElements\VisitListElement.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -43,7 +46,16 @@
     <Compile Update="Forms\MainForms\NewVisitForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forms\SideForms\OrderLabForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\SideForms\OrderLabListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forms\SideForms\PersonInfoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\SideForms\PhysicalForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\SideForms\SideMenu.cs">

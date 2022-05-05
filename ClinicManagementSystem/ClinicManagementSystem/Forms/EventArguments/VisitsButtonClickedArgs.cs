@@ -7,9 +7,9 @@ namespace ClinicManagementSystem.Forms.EventArguments
 {
     public class VisitsButtonClickedArgs : EventArgs
     {
-        public VisitsTextFieldMode Mode;
+        public PerformVisitFormMode Mode;
 
-        public VisitsButtonClickedArgs(VisitsTextFieldMode mode)
+        public VisitsButtonClickedArgs(PerformVisitFormMode mode)
         {
             Mode = mode;
         }

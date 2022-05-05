@@ -46,6 +46,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.VisitDateTextBox = new System.Windows.Forms.TextBox();
             this.VisitTimeTextBox = new System.Windows.Forms.TextBox();
             this.NewVisitButton = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // SearchPatientTextBox
@@ -126,7 +127,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.VisitDateTimePicker.CalendarFont = new System.Drawing.Font("Corbel", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.VisitDateTimePicker.Font = new System.Drawing.Font("Corbel", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.VisitDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.VisitDateTimePicker.Location = new System.Drawing.Point(1050, 97);
+            this.VisitDateTimePicker.Location = new System.Drawing.Point(926, 100);
             this.VisitDateTimePicker.Name = "VisitDateTimePicker";
             this.VisitDateTimePicker.Size = new System.Drawing.Size(200, 32);
             this.VisitDateTimePicker.TabIndex = 3;
@@ -235,12 +236,30 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.NewVisitButton.UseVisualStyleBackColor = false;
             this.NewVisitButton.Click += new System.EventHandler(this.NewVisitButton_Click);
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(115)))), ((int)(((byte)(153)))));
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(88)))), ((int)(((byte)(103)))));
+            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(117)))), ((int)(((byte)(144)))));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Corbel", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(247)))), ((int)(((byte)(255)))));
+            this.button1.Location = new System.Drawing.Point(1156, 100);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(94, 32);
+            this.button1.TabIndex = 14;
+            this.button1.Text = "Search";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // NewVisitForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(247)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(1300, 900);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.NewVisitButton);
             this.Controls.Add(this.VisitTimeTextBox);
             this.Controls.Add(this.VisitDateTextBox);
@@ -284,5 +303,6 @@ namespace ClinicManagementSystem.Forms.MainForms
         private System.Windows.Forms.TextBox VisitDateTextBox;
         private System.Windows.Forms.TextBox VisitTimeTextBox;
         private System.Windows.Forms.Button NewVisitButton;
+        private System.Windows.Forms.Button button1;
     }
 }

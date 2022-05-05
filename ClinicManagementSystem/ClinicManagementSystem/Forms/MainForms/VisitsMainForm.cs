@@ -12,14 +12,14 @@ namespace ClinicManagementSystem.Forms.MainForms
 {
     public partial class VisitsMainForm : Form
     {
-        private Action _newVisitAction;
+        private Action _nextPageActiom;
 
         private ListForm _visitsListForm;
-        public VisitsMainForm(Action newVisitAction)
+        public VisitsMainForm(Action nextPageAction)
         {
             InitializeComponent();
 
-            _newVisitAction += newVisitAction;
+            _nextPageActiom += nextPageAction;
 
             _visitsListForm = new VisitsListForm();
             _visitsListForm.ElementClicked += FillVisitTextFields;
@@ -30,7 +30,7 @@ namespace ClinicManagementSystem.Forms.MainForms
 
         private void NewVisitButton_Click(object sender, EventArgs e)
         {
-            _newVisitAction.Invoke();
+            _nextPageActiom.Invoke();
         }
 
         private void CancelVisitButton_Click(object sender, EventArgs e)
@@ -46,6 +46,11 @@ namespace ClinicManagementSystem.Forms.MainForms
         private void FillVisitTextFields(object sender, ListElementClickedArgs args)
         {
             //@todo get info from model and put it into text fields
+        }
+
+        private void PerformVisitButton_Click(object sender, EventArgs e)
+        {
+            _nextPageActiom.Invoke();
         }
     }
 }

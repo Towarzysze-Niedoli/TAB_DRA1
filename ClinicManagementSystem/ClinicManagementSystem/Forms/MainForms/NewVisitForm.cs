@@ -52,5 +52,10 @@ namespace ClinicManagementSystem.Forms.MainForms
         {
             //@todo get info from model and put it into text fields
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

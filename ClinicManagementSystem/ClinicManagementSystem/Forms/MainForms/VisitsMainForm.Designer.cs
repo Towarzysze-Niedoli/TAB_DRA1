@@ -30,7 +30,6 @@ namespace ClinicManagementSystem.Forms.MainForms
         private void InitializeComponent()
         {
             this.VisitsListPanel = new System.Windows.Forms.Panel();
-            this.textBox5 = new System.Windows.Forms.TextBox();
             this.VisitDateTextBox = new System.Windows.Forms.TextBox();
             this.DoctorNameTextBox = new System.Windows.Forms.TextBox();
             this.PatientNameTextBox = new System.Windows.Forms.TextBox();
@@ -41,6 +40,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.SearchPatientTextBox = new System.Windows.Forms.TextBox();
             this.NewVisitButton = new System.Windows.Forms.Button();
             this.SearchPatientButton = new System.Windows.Forms.Button();
+            this.PerformVisitButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // VisitsListPanel
@@ -51,24 +51,13 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.VisitsListPanel.Size = new System.Drawing.Size(760, 687);
             this.VisitsListPanel.TabIndex = 18;
             // 
-            // textBox5
-            // 
-            this.textBox5.BackColor = System.Drawing.SystemColors.Window;
-            this.textBox5.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox5.Location = new System.Drawing.Point(788, 643);
-            this.textBox5.Multiline = true;
-            this.textBox5.Name = "textBox5";
-            this.textBox5.ReadOnly = true;
-            this.textBox5.Size = new System.Drawing.Size(500, 181);
-            this.textBox5.TabIndex = 9;
-            // 
             // VisitDateTextBox
             // 
             this.VisitDateTextBox.BackColor = System.Drawing.SystemColors.Window;
             this.VisitDateTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.VisitDateTextBox.Font = new System.Drawing.Font("Corbel", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.VisitDateTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(115)))), ((int)(((byte)(153)))));
-            this.VisitDateTextBox.Location = new System.Drawing.Point(788, 582);
+            this.VisitDateTextBox.Location = new System.Drawing.Point(788, 724);
             this.VisitDateTextBox.Name = "VisitDateTextBox";
             this.VisitDateTextBox.ReadOnly = true;
             this.VisitDateTextBox.Size = new System.Drawing.Size(241, 25);
@@ -80,7 +69,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.DoctorNameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.DoctorNameTextBox.Font = new System.Drawing.Font("Corbel", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.DoctorNameTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(115)))), ((int)(((byte)(153)))));
-            this.DoctorNameTextBox.Location = new System.Drawing.Point(788, 521);
+            this.DoctorNameTextBox.Location = new System.Drawing.Point(788, 663);
             this.DoctorNameTextBox.Name = "DoctorNameTextBox";
             this.DoctorNameTextBox.ReadOnly = true;
             this.DoctorNameTextBox.Size = new System.Drawing.Size(241, 25);
@@ -92,7 +81,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.PatientNameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.PatientNameTextBox.Font = new System.Drawing.Font("Corbel", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.PatientNameTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(115)))), ((int)(((byte)(153)))));
-            this.PatientNameTextBox.Location = new System.Drawing.Point(788, 460);
+            this.PatientNameTextBox.Location = new System.Drawing.Point(788, 602);
             this.PatientNameTextBox.Name = "PatientNameTextBox";
             this.PatientNameTextBox.ReadOnly = true;
             this.PatientNameTextBox.Size = new System.Drawing.Size(241, 25);
@@ -104,7 +93,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.VisitTimeTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.VisitTimeTextBox.Font = new System.Drawing.Font("Corbel", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.VisitTimeTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(115)))), ((int)(((byte)(153)))));
-            this.VisitTimeTextBox.Location = new System.Drawing.Point(1047, 582);
+            this.VisitTimeTextBox.Location = new System.Drawing.Point(1047, 724);
             this.VisitTimeTextBox.Name = "VisitTimeTextBox";
             this.VisitTimeTextBox.ReadOnly = true;
             this.VisitTimeTextBox.Size = new System.Drawing.Size(241, 25);
@@ -116,7 +105,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.DoctorSurnameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.DoctorSurnameTextBox.Font = new System.Drawing.Font("Corbel", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.DoctorSurnameTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(115)))), ((int)(((byte)(153)))));
-            this.DoctorSurnameTextBox.Location = new System.Drawing.Point(1047, 521);
+            this.DoctorSurnameTextBox.Location = new System.Drawing.Point(1047, 663);
             this.DoctorSurnameTextBox.Name = "DoctorSurnameTextBox";
             this.DoctorSurnameTextBox.ReadOnly = true;
             this.DoctorSurnameTextBox.Size = new System.Drawing.Size(241, 25);
@@ -128,7 +117,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.PatientSurnameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.PatientSurnameTextBox.Font = new System.Drawing.Font("Corbel", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.PatientSurnameTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(115)))), ((int)(((byte)(153)))));
-            this.PatientSurnameTextBox.Location = new System.Drawing.Point(1047, 460);
+            this.PatientSurnameTextBox.Location = new System.Drawing.Point(1047, 602);
             this.PatientSurnameTextBox.Name = "PatientSurnameTextBox";
             this.PatientSurnameTextBox.ReadOnly = true;
             this.PatientSurnameTextBox.Size = new System.Drawing.Size(241, 25);
@@ -196,18 +185,35 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.SearchPatientButton.Text = "Search";
             this.SearchPatientButton.UseVisualStyleBackColor = false;
             // 
+            // PerformVisitButton
+            // 
+            this.PerformVisitButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(115)))), ((int)(((byte)(153)))));
+            this.PerformVisitButton.FlatAppearance.BorderSize = 0;
+            this.PerformVisitButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(88)))), ((int)(((byte)(103)))));
+            this.PerformVisitButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(117)))), ((int)(((byte)(144)))));
+            this.PerformVisitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.PerformVisitButton.Font = new System.Drawing.Font("Corbel", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.PerformVisitButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(247)))), ((int)(((byte)(255)))));
+            this.PerformVisitButton.Location = new System.Drawing.Point(788, 769);
+            this.PerformVisitButton.Name = "PerformVisitButton";
+            this.PerformVisitButton.Size = new System.Drawing.Size(500, 50);
+            this.PerformVisitButton.TabIndex = 24;
+            this.PerformVisitButton.Text = "Perform Visit";
+            this.PerformVisitButton.UseVisualStyleBackColor = false;
+            this.PerformVisitButton.Click += new System.EventHandler(this.PerformVisitButton_Click);
+            // 
             // VisitsMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(247)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(1300, 900);
+            this.Controls.Add(this.PerformVisitButton);
             this.Controls.Add(this.SearchPatientButton);
             this.Controls.Add(this.NewVisitButton);
             this.Controls.Add(this.SearchPatientTextBox);
             this.Controls.Add(this.CancelVisitButton);
             this.Controls.Add(this.VisitTimeTextBox);
-            this.Controls.Add(this.textBox5);
             this.Controls.Add(this.VisitDateTextBox);
             this.Controls.Add(this.DoctorSurnameTextBox);
             this.Controls.Add(this.VisitsListPanel);
@@ -226,7 +232,6 @@ namespace ClinicManagementSystem.Forms.MainForms
 
         #endregion
         private System.Windows.Forms.Panel VisitsListPanel;
-        private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.TextBox VisitDateTextBox;
         private System.Windows.Forms.TextBox DoctorNameTextBox;
         private System.Windows.Forms.TextBox PatientNameTextBox;
@@ -237,5 +242,6 @@ namespace ClinicManagementSystem.Forms.MainForms
         private System.Windows.Forms.TextBox SearchPatientTextBox;
         private System.Windows.Forms.Button NewVisitButton;
         private System.Windows.Forms.Button SearchPatientButton;
+        private System.Windows.Forms.Button PerformVisitButton;
     }
 }

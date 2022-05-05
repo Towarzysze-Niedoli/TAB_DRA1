@@ -11,11 +11,9 @@ namespace ClinicManagementSystem.Forms.SideForms
 {
     public partial class VisitTextsForm : Form
     {
-        private VisitsTextFieldMode _mode;
+        private PerformVisitFormMode _mode;
 
         private string _interviewText;
-        private string _physicalText;
-        private string _labText;
         private string _diagnosisText;
         
         public VisitTextsForm()
@@ -24,12 +22,10 @@ namespace ClinicManagementSystem.Forms.SideForms
             SetDocking();
         }
 
-        public VisitTextsForm(string interviewText, string physicalText, string labText, string diagnosisText)
+        public VisitTextsForm(string interviewText, string diagnosisText)
         {
             InitializeComponent();
             _interviewText = interviewText;
-            _physicalText = physicalText;
-            _labText = labText;
             _diagnosisText = diagnosisText;
 
             SetDocking();
@@ -43,41 +39,32 @@ namespace ClinicManagementSystem.Forms.SideForms
             ChangeTextFieldText();
         }
 
+        public void SetDisabled()
+        {
+            this.TextBox.Enabled = false;
+        }
+
         private void SaveCurrentTextField()
         {
-            switch(_mode)
+            if(_mode == PerformVisitFormMode.Diagnosis)
             {
-                case VisitsTextFieldMode.Diagnosis:
-                    _diagnosisText = TextBox.Text;
-                    break;
-                case VisitsTextFieldMode.Interview:
-                    _interviewText = TextBox.Text;
-                    break;
-                case VisitsTextFieldMode.Laboratory:
-                    _labText = TextBox.Text;
-                    break;
-                default:
-                    _physicalText = TextBox.Text;
-                    break;
+                _diagnosisText = TextBox.Text;
+            }
+            else
+            {
+                _interviewText = TextBox.Text;
             }
         }
 
         private void ChangeTextFieldText()
         {
-            switch (_mode)
+            if (_mode == PerformVisitFormMode.Diagnosis)
             {
-                case VisitsTextFieldMode.Diagnosis:
-                    TextBox.Text = _diagnosisText; 
-                    break;
-                case VisitsTextFieldMode.Interview:
-                    TextBox.Text = _interviewText;
-                    break;
-                case VisitsTextFieldMode.Laboratory:
-                    TextBox.Text = _labText;
-                    break;
-                default:
-                    TextBox.Text = _physicalText;
-                    break;
+                TextBox.Text = _diagnosisText;
+            }
+            else
+            {
+                TextBox.Text = _interviewText;
             }
         }
 
@@ -86,7 +73,7 @@ namespace ClinicManagementSystem.Forms.SideForms
             Dock = DockStyle.Fill;
             this.TopMost = true;
             this.TopLevel = false;
-            _mode = VisitsTextFieldMode.Diagnosis;
+            _mode = PerformVisitFormMode.Diagnosis;
         }
     }
 }

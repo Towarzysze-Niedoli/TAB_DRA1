@@ -30,15 +30,25 @@ namespace ClinicManagementSystem.Forms.SideForms
         private void InitializeComponent()
         {
             this.LabListFlowPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.LabListFlowPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // LabListFlowPanel
             // 
             this.LabListFlowPanel.AccessibleRole = System.Windows.Forms.AccessibleRole.ScrollBar;
+            this.LabListFlowPanel.Controls.Add(this.flowLayoutPanel1);
             this.LabListFlowPanel.Location = new System.Drawing.Point(11, 12);
             this.LabListFlowPanel.Name = "LabListFlowPanel";
             this.LabListFlowPanel.Size = new System.Drawing.Size(480, 532);
             this.LabListFlowPanel.TabIndex = 0;
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 3);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(250, 125);
+            this.flowLayoutPanel1.TabIndex = 0;
             // 
             // LaboratoryListForm
             // 
@@ -52,6 +62,7 @@ namespace ClinicManagementSystem.Forms.SideForms
             this.Name = "LaboratoryListForm";
             this.Text = "LaboratoryListForm";
             this.Load += new System.EventHandler(this.LaboratoryListForm_Load);
+            this.LabListFlowPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -59,5 +70,6 @@ namespace ClinicManagementSystem.Forms.SideForms
         #endregion
 
         private System.Windows.Forms.FlowLayoutPanel LabListFlowPanel;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
     }
 }
