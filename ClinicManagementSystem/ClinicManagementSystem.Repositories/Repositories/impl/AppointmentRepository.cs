@@ -1,21 +1,30 @@
-﻿using ClinicManagementSystem.Entities.Models;
+﻿using ClinicManagementSystem.Entities;
+using ClinicManagementSystem.Entities.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace ClinicManagementSystem.Repositories.Repositories.impl
 {
     public class AppointmentRepository : IAppointmentRepository, IDisposable
     {
+        private SystemContext context;
+
+        public AppointmentRepository(SystemContext context)
+        {
+            this.context = context;
+        }
+
         public void DeleteAppointment(int appointmentId)
         {
             throw new NotImplementedException();
         }
 
        
-        public void GetAppointmentForDoctor(Doctor doctor)
+        public IEnumerable<Appointment> GetAppointmentsForDoctor(Doctor doctor)
         {
-            throw new NotImplementedException();
+            return context.Appointments.Where(a => a.Doctor == doctor);
         }
 
         public IEnumerable<Appointment> GetAppointments()
@@ -30,12 +39,12 @@ namespace ClinicManagementSystem.Repositories.Repositories.impl
 
         public void InsertAppointment(Appointment appointment)
         {
-            throw new NotImplementedException();
+            context.Appointments.Add(appointment);
         }
 
         public void Save()
         {
-            throw new NotImplementedException();
+            context.SaveChanges();
         }
 
         public void UpdateAppointment(Appointment appointment)

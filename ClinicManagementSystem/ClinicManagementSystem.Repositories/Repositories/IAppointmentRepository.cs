@@ -13,6 +13,6 @@ namespace ClinicManagementSystem.Repositories.Repositories
         void DeleteAppointment(int appointmentId);
         void UpdateAppointment(Appointment appointment);
         void Save();
-        void GetAppointmentForDoctor(Doctor doctor);
+        IEnumerable<Appointment> GetAppointmentsForDoctor(Doctor doctor);
     }
 }
