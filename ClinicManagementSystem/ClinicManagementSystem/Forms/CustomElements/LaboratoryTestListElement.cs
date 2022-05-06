@@ -13,10 +13,10 @@ namespace ClinicManagementSystem.Forms.CustomElements
     public partial class LaboratoryTestListElement : UserControl
     {
 
-        public delegate void LabTestElementClickedEventHandler(object sender, LaboratoryListElementClickedArgs args); //zmiana //chyba do wywalenia
+        public delegate void LabTestElementClickedEventHandler(object sender, LaboratoryListElementClickedArgs args); 
         public event LabTestElementClickedEventHandler LabTestElementClicked;
 
-       // LaboratoryTestResults LabResults;
+     
 
         public string results;
         public string testName;

@@ -14,7 +14,7 @@ namespace ClinicManagementSystem.Forms.SideForms
     public partial class LaboratoryListForm : Form
     {
 
-        public delegate void LabTestClickedEventHandler(object sender, LaboratoryListElementClickedArgs args); //dodane
+        public delegate void LabTestClickedEventHandler(object sender, LaboratoryListElementClickedArgs args); 
         public event LabTestClickedEventHandler LabElementClicked;
 
 
@@ -40,8 +40,7 @@ namespace ClinicManagementSystem.Forms.SideForms
             {
                 tests = new List<LaboratoryTestListElement>
             {
-                //new LaboratoryTestListElement(lab.IndexLaboratoryTestsComboBox, "Fri - 25.03.2022 - 7:00"),
-                new LaboratoryTestListElement(index.ToString()/*"Complete Blood Count"*/, "Fri - 25.03.2022 - 7:00"),
+                new LaboratoryTestListElement("Complete Blood Count", "Fri - 25.03.2022 - 7:00"),
                 new LaboratoryTestListElement("Prothrombin Time", "Fri - 25.03.2022 - 7:30"),
                 new LaboratoryTestListElement("Basic Metabolic Panel", "Fri - 25.03.2022 - 8:00"),
                 new LaboratoryTestListElement("Lipid Panel", "Fri - 25.03.2022 - 8:30"),
@@ -61,8 +60,7 @@ namespace ClinicManagementSystem.Forms.SideForms
             {
                 tests = new List<LaboratoryTestListElement>
             {
-                //new LaboratoryTestListElement(lab.IndexLaboratoryTestsComboBox, "Fri - 25.03.2022 - 7:00"),
-                new LaboratoryTestListElement(index.ToString(), "Fri - 25.03.2022 - 7:00"),
+                new LaboratoryTestListElement("Not a Blood Count", "Fri - 25.03.2022 - 7:00"),
                 new LaboratoryTestListElement("da Time", "Fri - 25.03.2022 - 7:30"),
                 new LaboratoryTestListElement("da Metabolic Panel", "Fri - 25.03.2022 - 8:00"),
                 new LaboratoryTestListElement("Lipadaid Panel", "Fri - 25.03.2022 - 8:30"),

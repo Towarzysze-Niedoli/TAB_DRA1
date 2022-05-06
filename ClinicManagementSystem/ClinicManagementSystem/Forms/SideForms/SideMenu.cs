@@ -23,7 +23,7 @@ namespace ClinicManagementSystem.Forms.SideForms
             InitializeComponent();
             SetComponentsVisiblity(level);
             _openVisitsForm += openVisitForms;
-            _openLaboratoryForm += openLaboratoryForms;//tutaj
+            _openLaboratoryForm += openLaboratoryForms;
             _openManagerDoctorForm += openManagerDoctorForms;
             _openManagerPatientForm += openManagerPatientForms;
             _openManagerLabForm += openManagerLabForms;
