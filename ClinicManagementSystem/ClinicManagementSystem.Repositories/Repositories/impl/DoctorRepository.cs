@@ -27,7 +27,7 @@ namespace ClinicManagementSystem.Repositories.Repositories.impl
             return context.Doctors;
         }
 
-        public Doctor GetDoctortByID(int doctorId)
+        public Doctor GetDoctorByID(int doctorId)
         {
             return context.Doctors.Find(doctorId);
         }

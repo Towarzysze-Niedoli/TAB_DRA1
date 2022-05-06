@@ -8,7 +8,7 @@ namespace ClinicManagementSystem.Repositories.Repositories
     internal interface IDoctorRepository : IDisposable
     {
         IEnumerable<Doctor> GetDoctors();
-        Doctor GetDoctortByID(int doctorId);
+        Doctor GetDoctorByID(int doctorId);
         void InsertDoctor(Doctor doctor);
         void DeleteDoctor(int doctorId);
         void UpdateDoctor(Doctor doctor);
