@@ -30,8 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LaboratoryTestListElement));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.UpperMainLabel = new System.Windows.Forms.Label();
-            this.BottomLabelOne = new System.Windows.Forms.Label();
+            this.UpperMainLabel = new DisabledLabel();
+            this.BottomLabelOne = new DisabledLabel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -45,13 +45,14 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
-            this.pictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.LabTestElement_MouseDown);
-            this.pictureBox1.MouseLeave += new System.EventHandler(this.LabTestElement_MouseLeave);
-            this.pictureBox1.MouseHover += new System.EventHandler(this.LabTestElement_MouseHover);
+            //this.pictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.LabTestElement_MouseDown);
+            //this.pictureBox1.MouseLeave += new System.EventHandler(this.LabTestElement_MouseLeave);
+            //this.pictureBox1.MouseHover += new System.EventHandler(this.LabTestElement_MouseHover);
             // 
             // UpperMainLabel
             // 
             this.UpperMainLabel.AutoEllipsis = true;
+            this.UpperMainLabel.AutoSize = true;
             this.UpperMainLabel.Font = new System.Drawing.Font("Corbel", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.UpperMainLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(247)))), ((int)(((byte)(255)))));
             this.UpperMainLabel.Location = new System.Drawing.Point(70, 4);
@@ -59,9 +60,9 @@
             this.UpperMainLabel.Size = new System.Drawing.Size(289, 64);
             this.UpperMainLabel.TabIndex = 1;
             this.UpperMainLabel.Text = "UpperMainText";
-            this.UpperMainLabel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.LabTestElement_MouseDown);
-            this.UpperMainLabel.MouseLeave += new System.EventHandler(this.LabTestElement_MouseLeave);
-            this.UpperMainLabel.MouseHover += new System.EventHandler(this.LabTestElement_MouseHover);
+            //this.UpperMainLabel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.LabTestElement_MouseDown);
+            //this.UpperMainLabel.MouseLeave += new System.EventHandler(this.LabTestElement_MouseLeave);
+            //this.UpperMainLabel.MouseHover += new System.EventHandler(this.LabTestElement_MouseHover);
             // 
             // BottomLabelOne
             // 
@@ -73,9 +74,9 @@
             this.BottomLabelOne.Size = new System.Drawing.Size(289, 43);
             this.BottomLabelOne.TabIndex = 2;
             this.BottomLabelOne.Text = "BottomTextOne";
-            this.BottomLabelOne.MouseDown += new System.Windows.Forms.MouseEventHandler(this.LabTestElement_MouseDown);
-            this.BottomLabelOne.MouseLeave += new System.EventHandler(this.LabTestElement_MouseLeave);
-            this.BottomLabelOne.MouseHover += new System.EventHandler(this.LabTestElement_MouseHover);
+            //this.BottomLabelOne.MouseDown += new System.Windows.Forms.MouseEventHandler(this.LabTestElement_MouseDown);
+            //this.BottomLabelOne.MouseLeave += new System.EventHandler(this.LabTestElement_MouseLeave);
+            //this.BottomLabelOne.MouseHover += new System.EventHandler(this.LabTestElement_MouseHover);
             // 
             // LaboratoryTestListElement
             // 
@@ -87,10 +88,10 @@
             this.Controls.Add(this.pictureBox1);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "LaboratoryTestListElement";
-            this.Size = new System.Drawing.Size(480, 120);
-            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.LabTestElement_MouseDown);
-            this.MouseLeave += new System.EventHandler(this.LabTestElement_MouseLeave);
-            this.MouseHover += new System.EventHandler(this.LabTestElement_MouseHover);
+            this.Size = new System.Drawing.Size(500, 110);
+            //this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.LabTestElement_MouseDown);
+            //this.MouseLeave += new System.EventHandler(this.LabTestElement_MouseLeave);
+            //this.MouseHover += new System.EventHandler(this.LabTestElement_MouseHover);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 

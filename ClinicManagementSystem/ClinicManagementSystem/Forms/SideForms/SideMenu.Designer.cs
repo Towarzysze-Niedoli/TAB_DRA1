@@ -122,7 +122,7 @@ namespace ClinicManagementSystem.Forms.SideForms
             this.ManagementButton.Name = "ManagementButton";
             this.ManagementButton.Size = new System.Drawing.Size(300, 57);
             this.ManagementButton.TabIndex = 4;
-            this.ManagementButton.Text = "Management";
+            this.ManagementButton.Text = "Receptionist";
             this.ManagementButton.UseVisualStyleBackColor = false;
             this.ManagementButton.Click += new System.EventHandler(this.ManagementButton_Click);
             // 

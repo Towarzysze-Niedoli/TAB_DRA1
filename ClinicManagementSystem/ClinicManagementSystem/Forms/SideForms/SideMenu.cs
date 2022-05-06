@@ -14,18 +14,35 @@ namespace ClinicManagementSystem.Forms.SideForms
 
         private Action _openLaboratoryForm;
 
+        private Action _openManagerDoctorForm;
+
+        private Action _openManagerPatientForm;
+
+        private Action _openManagerLabForm;
+
+        private Action _openManagerReceptionistForm;
+
         private SideMenuTab _currentTab;
-        public SideMenu(UserLevel level, Action openVisitForms, Action  openLaboratoryForm)
+
+        private UserLevel _userLevel;
+        public SideMenu(UserLevel level, Action openVisitForms, Action  openLaboratoryForm, Action openManagerDoctorForms,
+            Action openManagerPatientForms, Action openManagerLabForms, Action openManagerReceptionistForms)
         {
             InitializeComponent();
-            SetComponentsVisiblity(level);
+
+            _userLevel = level;
+            SetComponentsVisiblity();
             _openVisitsForm += openVisitForms;
             _openLaboratoryForm = openLaboratoryForm;
+            _openManagerDoctorForm += openManagerDoctorForms;
+            _openManagerPatientForm += openManagerPatientForms;
+            _openManagerLabForm += openManagerLabForms;
+            _openManagerReceptionistForm += openManagerReceptionistForms;
         }
 
-        private void SetComponentsVisiblity(UserLevel level)
+        private void SetComponentsVisiblity()
         {
-            if(level == UserLevel.Manager)
+            if(_userLevel == UserLevel.Manager)
             {
                 this.VisitsButton.Show();
                 this.MedicsButton.Show();
@@ -33,7 +50,7 @@ namespace ClinicManagementSystem.Forms.SideForms
                 this.LaboratoryButton.Show();
                 this.ManagementButton.Show();
             }
-            else if(level == UserLevel.Doctor)
+            else if(_userLevel == UserLevel.Doctor)
             {
                 this.VisitsButton.Show();
                 this.PatiensButton.Show();
@@ -41,7 +58,7 @@ namespace ClinicManagementSystem.Forms.SideForms
                 this.LaboratoryButton.Hide();
                 this.ManagementButton.Hide();
             }
-            else if(level == UserLevel.Laborant || level == UserLevel.HeadOfLab)
+            else if(_userLevel == UserLevel.Laborant || _userLevel == UserLevel.HeadOfLab)
             {
                 this.LaboratoryButton.Show();
                 this.VisitsButton.Hide();
@@ -67,22 +84,33 @@ namespace ClinicManagementSystem.Forms.SideForms
 
         private void MedicsButton_Click(object sender, EventArgs e)
         {
+            _openManagerDoctorForm.Invoke();
             SetTabsColors(SideMenuTab.Medics);
         }
 
         private void PatiensButton_Click(object sender, EventArgs e)
         {
+            _openManagerPatientForm.Invoke();
+
             SetTabsColors(SideMenuTab.Patients);
         }
 
         private void LaboratoryButton_Click(object sender, EventArgs e)
         {
+            if (_userLevel == UserLevel.Manager)
+            {
+                _openManagerLabForm.Invoke();
+            }
+            else if (_userLevel == UserLevel.Laborant || _userLevel == UserLevel.HeadOfLab)
+            {
+                _openLaboratoryForm.Invoke();
+            }
             SetTabsColors(SideMenuTab.Laboratory);
-            _openLaboratoryForm.Invoke();
         }
 
         private void ManagementButton_Click(object sender, EventArgs e)
         {
+            _openManagerReceptionistForm.Invoke();
             SetTabsColors(SideMenuTab.Management);
         }
 

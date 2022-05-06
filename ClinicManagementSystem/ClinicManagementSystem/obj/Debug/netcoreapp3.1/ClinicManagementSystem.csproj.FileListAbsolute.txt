@@ -35,3 +35,5 @@ C:\Users\matad\OneDrive\Dokumenty\GitHub\TAB_DRA1\ClinicManagementSystem\ClinicM
 C:\Users\matad\OneDrive\Dokumenty\GitHub\TAB_DRA1\ClinicManagementSystem\ClinicManagementSystem\obj\Debug\netcoreapp3.1\ClinicManagementSystem.Forms.CustomElements.OrderLabListElement.resources
 C:\Users\matad\OneDrive\Dokumenty\GitHub\TAB_DRA1\ClinicManagementSystem\ClinicManagementSystem\obj\Debug\netcoreapp3.1\ClinicManagementSystem.Forms.SideForms.OrderLabListForm.resources
 C:\Users\matad\OneDrive\Dokumenty\GitHub\TAB_DRA1\ClinicManagementSystem\ClinicManagementSystem\obj\Debug\netcoreapp3.1\ClinicManagementSystem.Forms.SideForms.OrderLabForm.resources
+C:\Users\matad\OneDrive\Dokumenty\GitHub\TAB_DRA1\ClinicManagementSystem\ClinicManagementSystem\obj\Debug\netcoreapp3.1\ClinicManagementSystem.Forms.MainForms.ManagerForm.resources
+C:\Users\matad\OneDrive\Dokumenty\GitHub\TAB_DRA1\ClinicManagementSystem\ClinicManagementSystem\obj\Debug\netcoreapp3.1\ClinicManagementSystem.Forms.SideForms.LaboratoryTestResults.resources

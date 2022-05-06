@@ -30,39 +30,29 @@ namespace ClinicManagementSystem.Forms.SideForms
         private void InitializeComponent()
         {
             this.LabListFlowPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.LabListFlowPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // LabListFlowPanel
             // 
             this.LabListFlowPanel.AccessibleRole = System.Windows.Forms.AccessibleRole.ScrollBar;
-            this.LabListFlowPanel.Controls.Add(this.flowLayoutPanel1);
-            this.LabListFlowPanel.Location = new System.Drawing.Point(11, 12);
+            this.LabListFlowPanel.AutoScroll = true;
+            this.LabListFlowPanel.Location = new System.Drawing.Point(10, 12);
             this.LabListFlowPanel.Name = "LabListFlowPanel";
             this.LabListFlowPanel.Size = new System.Drawing.Size(480, 532);
             this.LabListFlowPanel.TabIndex = 0;
-            // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 3);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(250, 125);
-            this.flowLayoutPanel1.TabIndex = 0;
             // 
             // LaboratoryListForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(189)))), ((int)(((byte)(213)))), ((int)(((byte)(234)))));
-            this.ClientSize = new System.Drawing.Size(500, 556);
+            this.ClientSize = new System.Drawing.Size(501, 556);
             this.Controls.Add(this.LabListFlowPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "LaboratoryListForm";
             this.Text = "LaboratoryListForm";
-            this.Load += new System.EventHandler(this.LaboratoryListForm_Load);
-            this.LabListFlowPanel.ResumeLayout(false);
+            //this.Load += new System.EventHandler(this.LaboratoryListForm_Load);
             this.ResumeLayout(false);
 
         }
@@ -70,6 +60,5 @@ namespace ClinicManagementSystem.Forms.SideForms
         #endregion
 
         private System.Windows.Forms.FlowLayoutPanel LabListFlowPanel;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
     }
 }
