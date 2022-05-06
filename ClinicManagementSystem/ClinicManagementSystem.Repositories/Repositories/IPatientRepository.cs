@@ -9,6 +9,7 @@ namespace ClinicManagementSystem.Repositories.Repositories
     {
         IEnumerable<Patient> GetPatients();
         Patient GetPatientByID(int patientId);
+        Patient GetPatientByPersonalIdentityNumber(string personalIdentityNumber);
         void InsertPatient(Patient patient);
         void DeletePatient(int patientId);
         void UpdatePatient(Patient patient);

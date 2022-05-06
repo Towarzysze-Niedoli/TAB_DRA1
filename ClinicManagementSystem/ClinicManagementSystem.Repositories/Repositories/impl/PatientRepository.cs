@@ -2,6 +2,7 @@
 using ClinicManagementSystem.Entities.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace ClinicManagementSystem.Repositories.Repositories.impl
@@ -47,6 +48,13 @@ namespace ClinicManagementSystem.Repositories.Repositories.impl
             context.Entry(patient).State = System.Data.Entity.EntityState.Modified;
         }
 
+        public Patient GetPatientByPersonalIdentityNumber(string personalIdentityNumber)
+        {
+            List<Patient> patients = context.Patients.Where(p => p.PersonalIdentityNumber.Equals(personalIdentityNumber)).ToList();
+            return patients.Count() != 0 ? patients.First() : null;
+
+        }
+
         private bool disposed = false;
 
         protected virtual void Dispose(bool disposing)
@@ -66,5 +74,7 @@ namespace ClinicManagementSystem.Repositories.Repositories.impl
             Dispose(true);
             GC.SuppressFinalize(this);
         }
+
+        
     }
 }
