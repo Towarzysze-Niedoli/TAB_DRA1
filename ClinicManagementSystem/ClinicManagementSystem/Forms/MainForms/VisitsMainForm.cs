@@ -12,15 +12,19 @@ namespace ClinicManagementSystem.Forms.MainForms
 {
     public partial class VisitsMainForm : Form
     {
-        private Action _nextPageActiom;
+        public delegate void NextPageButtonClicked(object source, PageControllingButtonClickedArgs args);
+
+        public event NextPageButtonClicked ButtonClicked;
 
         private ListForm _visitsListForm;
-        public VisitsMainForm(Action nextPageAction)
+
+        private UserLevel _level;
+        public VisitsMainForm(UserLevel level)
         {
             InitializeComponent();
 
-            _nextPageActiom += nextPageAction;
-
+            _level = level;
+            SetVisibility();
             _visitsListForm = new VisitsListForm();
             _visitsListForm.ElementClicked += FillVisitTextFields;
             this.VisitsListPanel.Controls.Add(_visitsListForm);
@@ -30,7 +34,7 @@ namespace ClinicManagementSystem.Forms.MainForms
 
         private void NewVisitButton_Click(object sender, EventArgs e)
         {
-            _nextPageActiom.Invoke();
+            ButtonClicked.Invoke(this, new PageControllingButtonClickedArgs(MainFormType.NewVisit, _level));
         }
 
         private void CancelVisitButton_Click(object sender, EventArgs e)
@@ -50,7 +54,19 @@ namespace ClinicManagementSystem.Forms.MainForms
 
         private void PerformVisitButton_Click(object sender, EventArgs e)
         {
-            _nextPageActiom.Invoke();
+            ButtonClicked.Invoke(this, new PageControllingButtonClickedArgs(MainFormType.PerformVisit, _level));
+        }
+
+        private void SetVisibility()
+        {
+            if(_level==UserLevel.Doctor)
+            {
+                this.NewVisitButton.Hide();
+            }
+            else if(_level == UserLevel.Receptionist)
+            {
+                this.PerformVisitButton.Hide();
+            }
         }
     }
 }

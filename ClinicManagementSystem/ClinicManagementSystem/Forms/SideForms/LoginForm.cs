@@ -5,21 +5,23 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using ClinicManagementSystem.Forms.EventArguments;
 
 namespace ClinicManagementSystem.Forms.SideForms
 {
     public partial class LoginForm : Form
     {
-        private Action _loginButtonClicked;
-        public LoginForm(Action loginButtonClicked)
+        public delegate void NextPageButtonClicked(object source, PageControllingButtonClickedArgs args);
+
+        public event NextPageButtonClicked ButtonClicked;
+        public LoginForm()
         {
             InitializeComponent();
-            _loginButtonClicked += loginButtonClicked;
         }
 
         private void loginButton_Click(object sender, EventArgs e)
         {
-            _loginButtonClicked.Invoke();
+            ButtonClicked.Invoke(this, new PageControllingButtonClickedArgs(MainForms.MainFormType.Main, UserLevel.Receptionist));
         }
     }
 }

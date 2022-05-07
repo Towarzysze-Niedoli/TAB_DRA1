@@ -38,7 +38,6 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.SpecializationComboBox = new System.Windows.Forms.ComboBox();
             this.VisitDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.textBox5 = new System.Windows.Forms.TextBox();
             this.PatientSurnameTextBox = new System.Windows.Forms.TextBox();
             this.PatientNameTextBox = new System.Windows.Forms.TextBox();
             this.DoctorNameTextBox = new System.Windows.Forms.TextBox();
@@ -137,15 +136,6 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
-            // 
-            // textBox5
-            // 
-            this.textBox5.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox5.Location = new System.Drawing.Point(50, 619);
-            this.textBox5.Multiline = true;
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(550, 240);
-            this.textBox5.TabIndex = 4;
             // 
             // PatientSurnameTextBox
             // 
@@ -267,7 +257,6 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.Controls.Add(this.DoctorNameTextBox);
             this.Controls.Add(this.PatientNameTextBox);
             this.Controls.Add(this.PatientSurnameTextBox);
-            this.Controls.Add(this.textBox5);
             this.Controls.Add(this.VisitDateTimePicker);
             this.Controls.Add(this.SpecializationComboBox);
             this.Controls.Add(this.NewPatientButton);
@@ -295,7 +284,6 @@ namespace ClinicManagementSystem.Forms.MainForms
         private System.Windows.Forms.ComboBox SpecializationComboBox;
         private System.Windows.Forms.DateTimePicker VisitDateTimePicker;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.TextBox PatientSurnameTextBox;
         private System.Windows.Forms.TextBox PatientNameTextBox;
         private System.Windows.Forms.TextBox DoctorNameTextBox;

@@ -41,6 +41,8 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.NewVisitButton = new System.Windows.Forms.Button();
             this.SearchPatientButton = new System.Windows.Forms.Button();
             this.PerformVisitButton = new System.Windows.Forms.Button();
+            this.VisitStatusComboBox = new System.Windows.Forms.ComboBox();
+            this.VisitDatePicker = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
             // 
             // VisitsListPanel
@@ -145,7 +147,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.SearchPatientTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.SearchPatientTextBox.Font = new System.Drawing.Font("Corbel", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.SearchPatientTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(115)))), ((int)(((byte)(153)))));
-            this.SearchPatientTextBox.Location = new System.Drawing.Point(12, 98);
+            this.SearchPatientTextBox.Location = new System.Drawing.Point(12, 150);
             this.SearchPatientTextBox.MaxLength = 20;
             this.SearchPatientTextBox.Name = "SearchPatientTextBox";
             this.SearchPatientTextBox.PlaceholderText = "Search Patient";
@@ -178,7 +180,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.SearchPatientButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SearchPatientButton.Font = new System.Drawing.Font("Corbel", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.SearchPatientButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(247)))), ((int)(((byte)(255)))));
-            this.SearchPatientButton.Location = new System.Drawing.Point(678, 98);
+            this.SearchPatientButton.Location = new System.Drawing.Point(678, 146);
             this.SearchPatientButton.Name = "SearchPatientButton";
             this.SearchPatientButton.Size = new System.Drawing.Size(94, 32);
             this.SearchPatientButton.TabIndex = 23;
@@ -202,12 +204,40 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.PerformVisitButton.UseVisualStyleBackColor = false;
             this.PerformVisitButton.Click += new System.EventHandler(this.PerformVisitButton_Click);
             // 
+            // VisitStatusComboBox
+            // 
+            this.VisitStatusComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.VisitStatusComboBox.Font = new System.Drawing.Font("Corbel", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.VisitStatusComboBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(115)))), ((int)(((byte)(153)))));
+            this.VisitStatusComboBox.Items.AddRange(new object[] {
+            "To Do",
+            "Done",
+            "Returned",
+            "Canceled",
+            "Approved"});
+            this.VisitStatusComboBox.Location = new System.Drawing.Point(12, 94);
+            this.VisitStatusComboBox.Name = "VisitStatusComboBox";
+            this.VisitStatusComboBox.Size = new System.Drawing.Size(201, 32);
+            this.VisitStatusComboBox.TabIndex = 25;
+            // 
+            // VisitDatePicker
+            // 
+            this.VisitDatePicker.CalendarFont = new System.Drawing.Font("Corbel", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.VisitDatePicker.Font = new System.Drawing.Font("Corbel", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.VisitDatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.VisitDatePicker.Location = new System.Drawing.Point(318, 91);
+            this.VisitDatePicker.Name = "VisitDatePicker";
+            this.VisitDatePicker.Size = new System.Drawing.Size(200, 32);
+            this.VisitDatePicker.TabIndex = 26;
+            // 
             // VisitsMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(247)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(1300, 900);
+            this.Controls.Add(this.VisitDatePicker);
+            this.Controls.Add(this.VisitStatusComboBox);
             this.Controls.Add(this.PerformVisitButton);
             this.Controls.Add(this.SearchPatientButton);
             this.Controls.Add(this.NewVisitButton);
@@ -243,5 +273,7 @@ namespace ClinicManagementSystem.Forms.MainForms
         private System.Windows.Forms.Button NewVisitButton;
         private System.Windows.Forms.Button SearchPatientButton;
         private System.Windows.Forms.Button PerformVisitButton;
+        public System.Windows.Forms.ComboBox VisitStatusComboBox;
+        private System.Windows.Forms.DateTimePicker VisitDatePicker;
     }
 }
