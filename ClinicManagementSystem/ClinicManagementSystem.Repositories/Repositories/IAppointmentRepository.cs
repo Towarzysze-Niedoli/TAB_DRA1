@@ -14,5 +14,7 @@ namespace ClinicManagementSystem.Repositories.Repositories
         void UpdateAppointment(Appointment appointment);
         void Save();
         IEnumerable<Appointment> GetAppointmentsForDoctor(Doctor doctor);
+        IEnumerable<Appointment> GetAcceptedAppointmentsForPatient(Patient patient);
+        IEnumerable<Appointment> GetAppointmentsByDate(DateTime date);
     }
 }

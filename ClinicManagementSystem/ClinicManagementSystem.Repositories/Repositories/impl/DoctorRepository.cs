@@ -21,7 +21,6 @@ namespace ClinicManagementSystem.Repositories.Repositories.impl
             context.Doctors.Remove(doctor);
         }
 
-
         public IEnumerable<Doctor> GetDoctors()
         {
             return context.Doctors;

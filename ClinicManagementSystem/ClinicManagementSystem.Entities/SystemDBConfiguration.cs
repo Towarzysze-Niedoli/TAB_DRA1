@@ -12,7 +12,7 @@ namespace ClinicManagementSystem.Entities.Models
         public SystemDBConfiguration()
         {
             SetExecutionStrategy("System.Data.SqlClient", () => new DefaultExecutionStrategy());
-            SetDefaultConnectionFactory(new SqlConnectionFactory("Data Source=localhost;Persist Security Info=True;User ID=sa;Password=TAB_DRA1"));
+            SetDefaultConnectionFactory(new SqlConnectionFactory("Data Source=localhost;Persist Security Info=True;User ID=user;Password=123"));
         }
     }
 }

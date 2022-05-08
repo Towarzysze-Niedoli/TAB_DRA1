@@ -18,23 +18,33 @@ namespace ClinicManagementSystem.Repositories.Repositories.impl
 
         public void DeleteAppointment(int appointmentId)
         {
-            throw new NotImplementedException();
+            Appointment appointment = context.Appointments.Find(appointmentId);
+            context.Appointments.Remove(appointment);
         }
 
-       
         public IEnumerable<Appointment> GetAppointmentsForDoctor(Doctor doctor)
         {
             return context.Appointments.Where(a => a.Doctor == doctor);
         }
 
-        public IEnumerable<Appointment> GetAppointments()
+        public IEnumerable<Appointment> GetAcceptedAppointmentsForPatient(Patient patient)
+        {
+            return context.Appointments.Where(a => a.Patient == patient).Where(a => a.AppointmentStatus == Entities.Enums.AppointmentStatus.Accepted);
+        }
+
+        public IEnumerable<Appointment> GetAppointmentsByDate(DateTime date)
         {
             throw new NotImplementedException();
         }
 
+        public IEnumerable<Appointment> GetAppointments()
+        {
+            return context.Appointments;
+        }
+
         public Appointment GetAppointmenttByID(int appointmentId)
         {
-            throw new NotImplementedException();
+            return context.Appointments.Find(appointmentId);
         }
 
         public void InsertAppointment(Appointment appointment)
@@ -49,7 +59,7 @@ namespace ClinicManagementSystem.Repositories.Repositories.impl
 
         public void UpdateAppointment(Appointment appointment)
         {
-            throw new NotImplementedException();
+            context.Entry(appointment).State = System.Data.Entity.EntityState.Modified;
         }
 
         private bool disposed = false;
