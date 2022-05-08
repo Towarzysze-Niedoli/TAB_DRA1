@@ -32,9 +32,9 @@ namespace ClinicManagementSystem.Repositories.Repositories.impl
             return context.Appointments.Where(a => a.Patient == patient).Where(a => a.AppointmentStatus == Entities.Enums.AppointmentStatus.Accepted);
         }
 
-        public IEnumerable<Appointment> GetAppointmentsByCompletionDate(DateTime date)
+        public IEnumerable<Appointment> GetAppointmentsByCompletionDate(DateTime completionDate)
         {
-            return context.Appointments.Where(a => a.CompletionDate == date);
+            return context.Appointments.Where(a => a.CompletionDate == completionDate);
         }
 
         public IEnumerable<Appointment> GetAppointments()
@@ -42,9 +42,15 @@ namespace ClinicManagementSystem.Repositories.Repositories.impl
             return context.Appointments;
         }
 
-        public Appointment GetAppointmenttByID(int appointmentId)
+        public Appointment GetAppointmentByID(int appointmentId)
         {
             return context.Appointments.Find(appointmentId);
+        }
+
+        public Appointment GetAppointmentForPatientByCompletionDate(Patient patient, DateTime completionDate)
+        {
+            List<Appointment> appointments = context.Appointments.Where(a => a.Patient == patient).Where(a => a.CompletionDate == completionDate).ToList();
+            return appointments.Count() != 0 ? appointments.First() : null;
         }
 
         public void InsertAppointment(Appointment appointment)
