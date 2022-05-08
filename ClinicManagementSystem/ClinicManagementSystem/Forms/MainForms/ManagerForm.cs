@@ -10,21 +10,25 @@ namespace ClinicManagementSystem.Forms.MainForms
 {
     public partial class ManagerForm : Form
     {
-        private int whichForm;
-        public ManagerForm(int num)
+        private MainFormType _formType;
+        public ManagerForm(MainFormType formType)
         {
-            this.whichForm = num;
+            this._formType = formType;
             InitializeComponent();
             SpecializationComboBox.SelectedIndex = 0;
             ShowCorrectElements();
+        }
+
+        private void HideBtns()
+        {
+            UpdateButton.Hide();
+            DeleteButton.Hide();
         }
 
         private void HideForDoctor()
         {
             LabTechicianRadioButton.Hide();
             LabManagerRadioButton.Hide();
-            UpdateButton.Hide();
-            DeleteButton.Hide();
         }
 
         private void HideForLab()
@@ -46,18 +50,21 @@ namespace ClinicManagementSystem.Forms.MainForms
             ReceptionistRadioBtn.Visible = true;
             HideForLab();
             HideForDoctor();
+            HideBtns();
             SetUserCategories("Receptionist");
         }
 
         private void Doctor()
         {
             HideForDoctor();
+            HideBtns();
             SetUserCategories("Doctor");
         }
 
         private void Lab()
         {
             HideForLab();
+            HideBtns();
             SetUserCategories("Lab Worker");
         }
 
@@ -66,6 +73,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             HideLogin();
             HideForDoctor();
             HideForLab();
+            HideBtns();
             SetUserCategories("Patient");
         }
 
@@ -74,32 +82,37 @@ namespace ClinicManagementSystem.Forms.MainForms
             SearchUserTextBox.PlaceholderText = "Search " + user + " for Update";
             LoginTextBox.PlaceholderText = user + "'s Login";
             PasswordTextBox.PlaceholderText = user + "'s Password";
+            AddButton.Text = "Add " + user;
+            UpdateButton.Text = "Update " + user;
+            DeleteButton.Text = "Delete " + user;
         }
 
         private void ShowCorrectElements()
         {
-            switch(whichForm)
+            switch (_formType)
             {
-                case 1:
+                case MainFormType.ManagerDoctors:
                     Doctor();
                     break;
-                case 2:
+                case MainFormType.ManagerLaboratory:
                     Lab();
                     break;
-                case 3:
+                case MainFormType.ManagerReceptionist:
                     Receptionist();
                     break;
-                default:
+                case MainFormType.ManagerPatients:
                     Patient();
+                    break;
+                default:
                     break;
             }
         }
 
         private void SearchUserButton_Click(object sender, EventArgs e)
         {
-            if(SearchUserTextBox.Text != "")
+            if (SearchUserTextBox.Text != "")
             {
-                if(SearchUserTextBox.Text == "997")
+                if (SearchUserTextBox.Text == "997")
                 {
                     SearchUserTextBox.Clear();
                     UpdateButton.Show();
@@ -119,7 +132,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             }
         }
 
-       
+
         private void ClearData()
         {
             PESELTextBox.Clear();

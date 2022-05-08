@@ -69,12 +69,13 @@ namespace ClinicManagementSystem.Forms.MainForms
         private void LaboratoryTestsComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             int index = LaboratoryTestsComboBox.SelectedIndex;
-            //LaboratoryTestsList = TestsList.LaboratoryTestsList;
+            LaboratoryTestsList = TestsList.LaboratoryTestsList;
 
             if (LaboratoryTestsList != null)
             {
                 LaboratoryTestsList.Invoke(index);
             }
+
         }
 
         private void SetAccessability()

@@ -118,7 +118,7 @@ namespace ClinicManagementSystem.Forms.MainForms
         private void ShowManagerDoctorForm()
         {
             UnloadMainForm();
-            _managerForm = new ManagerForm(1);
+            _managerForm = new ManagerForm(MainFormType.ManagerDoctors);
             _activeMainForm = MainFormType.ManagerDoctors;
             InitializeForm(_managerForm, FormType.MainForm);
         }
@@ -126,7 +126,7 @@ namespace ClinicManagementSystem.Forms.MainForms
         private void ShowManagerPatientForm()
         {
             UnloadMainForm();
-            _managerForm = new ManagerForm(0);
+            _managerForm = new ManagerForm(MainFormType.ManagerPatients);
             _activeMainForm = MainFormType.ManagerPatients;
             InitializeForm(_managerForm, FormType.MainForm);
         }
@@ -134,7 +134,7 @@ namespace ClinicManagementSystem.Forms.MainForms
         private void ShowManagerLabForm()
         {
             UnloadMainForm();
-            _managerForm = new ManagerForm(2);
+            _managerForm = new ManagerForm(MainFormType.ManagerLaboratory);
             _activeMainForm = MainFormType.ManagerLaboratory;
             InitializeForm(_managerForm, FormType.MainForm);
         }
@@ -142,7 +142,7 @@ namespace ClinicManagementSystem.Forms.MainForms
         private void ShowReceptionistForm()
         {
             UnloadMainForm();
-            _managerForm = new ManagerForm(3);
+            _managerForm = new ManagerForm(MainFormType.ManagerReceptionist);
             _activeMainForm = MainFormType.ManagerReceptionist;
             InitializeForm(_managerForm, FormType.MainForm);
         }
