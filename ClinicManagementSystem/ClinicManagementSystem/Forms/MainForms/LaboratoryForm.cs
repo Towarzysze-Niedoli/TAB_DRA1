@@ -25,11 +25,15 @@ namespace ClinicManagementSystem.Forms.MainForms
 
         public delegate void PassSelectedIndex(int index);
         public PassSelectedIndex PassIndex;
-        public LaboratoryForm()
+
+        private UserLevel _level;
+        public LaboratoryForm(UserLevel level)
         {
             InitializeComponent();
             InitializeTestList();
             InitializeTestResults();
+            _level = level;
+            SetAccessability();
             LaboratoryTestsComboBox.SelectedIndex = 0;
         }
 
@@ -71,7 +75,18 @@ namespace ClinicManagementSystem.Forms.MainForms
             {
                 LaboratoryTestsList.Invoke(index);
             }
+        }
 
+        private void SetAccessability()
+        {
+            if(_level == UserLevel.Laborant)
+            {
+                this.LabManagerComboBox.Enabled = false;
+            }
+            else
+            {
+                TestsResults.SetDisabled();
+            }
         }
     }
 }

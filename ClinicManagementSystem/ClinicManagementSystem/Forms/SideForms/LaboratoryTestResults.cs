@@ -34,5 +34,10 @@ namespace ClinicManagementSystem.Forms.SideForms
             TestName.Text = args.TestName;
             TestResults.Text = args.Results;
         }
+
+        public void SetDisabled()
+        {
+            TestResults.Enabled = false;
+        }
     }
 }

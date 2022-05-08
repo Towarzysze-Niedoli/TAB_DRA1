@@ -21,7 +21,7 @@ namespace ClinicManagementSystem.Forms.SideForms
 
         private void loginButton_Click(object sender, EventArgs e)
         {
-            ButtonClicked.Invoke(this, new PageControllingButtonClickedArgs(MainForms.MainFormType.Main, UserLevel.Receptionist));
+            ButtonClicked.Invoke(this, new PageControllingButtonClickedArgs(MainForms.MainFormType.Main, UserLevel.Manager));
         }
     }
 }

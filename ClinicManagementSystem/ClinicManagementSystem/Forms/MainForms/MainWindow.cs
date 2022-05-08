@@ -101,7 +101,7 @@ namespace ClinicManagementSystem.Forms.MainForms
         private void ShowLaboratoryForm()
         {
             UnloadMainForm();
-            _laboratoryForm = new LaboratoryForm();
+            _laboratoryForm = new LaboratoryForm(_level);
             _activeMainForm = MainFormType.Laboratory;
             InitializeForm(_laboratoryForm, FormType.MainForm);
         }

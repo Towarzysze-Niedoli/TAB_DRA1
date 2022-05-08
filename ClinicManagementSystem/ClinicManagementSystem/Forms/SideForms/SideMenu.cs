@@ -32,7 +32,7 @@ namespace ClinicManagementSystem.Forms.SideForms
             {
                 this.VisitsButton.Hide();
                 this.MedicsButton.Show();
-                this.PatiensButton.Show();
+                this.PatiensButton.Hide();
                 this.LaboratoryButton.Show();
                 this.ManagementButton.Show();
             }
