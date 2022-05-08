@@ -32,9 +32,9 @@ namespace ClinicManagementSystem.Repositories.Repositories.impl
             return context.Appointments.Where(a => a.Patient == patient).Where(a => a.AppointmentStatus == Entities.Enums.AppointmentStatus.Accepted);
         }
 
-        public IEnumerable<Appointment> GetAppointmentsByDate(DateTime date)
+        public IEnumerable<Appointment> GetAppointmentsByCompletionDate(DateTime date)
         {
-            throw new NotImplementedException();
+            return context.Appointments.Where(a => a.CompletionDate == date);
         }
 
         public IEnumerable<Appointment> GetAppointments()
