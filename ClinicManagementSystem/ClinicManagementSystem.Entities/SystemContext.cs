@@ -18,11 +18,20 @@ namespace ClinicManagementSystem.Entities
         public DbSet<Examination> Examinations { get; set; }
         public DbSet<LaboratoryTechnician> LaboratoryTechnicians { get; set; }
         public DbSet<LaboratoryManager> LaboratoryManagers { get; set; }
-
+        public DbSet<Admin> SystemAdministrators { get; set; }
+        public DbSet<ApplicationUser> ApplicationUsers { get; set; }
 
         public SystemContext() : base("CMS")
         {
 
         }
+
+        //protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        //{
+        //    modelBuilder.Entity<Entry>()
+        //        .Ignore(e => e.IsManaged)
+        //        .Ignore(e => e.IsValid)
+        //         //etc.
+        //}
     }
 }
