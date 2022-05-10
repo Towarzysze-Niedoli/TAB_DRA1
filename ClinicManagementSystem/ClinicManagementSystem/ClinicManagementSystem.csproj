@@ -15,4 +15,9 @@
     <ProjectReference Include="..\ClinicManagementSystem.Auth\ClinicManagementSystem.Auth.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ClinicManagementSystem.Entities\ClinicManagementSystem.Entities.csproj" />
+    <ProjectReference Include="..\ClinicManagementSystem.Repositories\ClinicManagementSystem.Repositories.csproj" />
+  </ItemGroup>
+
 </Project>

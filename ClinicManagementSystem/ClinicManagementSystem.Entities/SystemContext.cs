@@ -16,7 +16,7 @@ namespace ClinicManagementSystem.Entities
         public DbSet<LaboratoryExam> LaboratoryExams { get; set; }
         public DbSet<PhysicalExam> PhysicalExams { get; set; }
         public DbSet<Examination> Examinations { get; set; }
-        public  DbSet<LaboratoryTechnician> LaboratoryTechnicians { get; set; }
+        public DbSet<LaboratoryTechnician> LaboratoryTechnicians { get; set; }
         public DbSet<LaboratoryManager> LaboratoryManagers { get; set; }
         public DbSet<Admin> SystemAdministrators { get; set; }
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }

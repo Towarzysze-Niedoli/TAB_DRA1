@@ -1,3 +1,6 @@
+using ClinicManagementSystem.Entities;
+using ClinicManagementSystem.Entities.Models;
+using ClinicManagementSystem.Repositories.Repositories.impl;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -24,9 +27,7 @@ namespace ClinicManagementSystem
             Application.SetCompatibleTextRenderingDefault(false);
 
             var services = new ServiceCollection();
-
             ConfigureServices(services);
-
 
             Application.Run(new MainWindow());
         }

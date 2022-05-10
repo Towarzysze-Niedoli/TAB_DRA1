@@ -9,6 +9,8 @@ namespace ClinicManagementSystem.Entities.Models
     {
         [Required]
         [RegularExpression(@"^[1-9][0-9]{6}$")]
-        public int LicenseNumber { get; set; } // numer PWZ
+        public string LicenseNumber { get; set; } // numer PWZ
+
+        public Address? Address { get; set; }
     }
 }
