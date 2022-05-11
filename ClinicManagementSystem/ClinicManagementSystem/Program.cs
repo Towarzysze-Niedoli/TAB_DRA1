@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ClinicManagementSystem.Forms.MainForms;
 using ClinicManagementSystem.Auth.Services;
 using ClinicManagementSystem.Auth;
 using System.Data.Entity;
@@ -29,7 +30,7 @@ namespace ClinicManagementSystem
             var services = new ServiceCollection();
             ConfigureServices(services);
 
-            Application.Run(new MainWindow());
+            Application.Run(new MainWindow(Forms.UserLevel.Undetermined));
         }
 
         private static void ConfigureServices(IServiceCollection services)
