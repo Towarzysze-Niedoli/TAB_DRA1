@@ -67,7 +67,7 @@ namespace ClinicManagementSystem.Auth.Test
                     Email = emails[i],
                     PhoneNumber = phones[i],
                     Address = addresses[i],
-                    LicenseNumber = 1234567
+                    LicenseNumber = "1234567"
                 };
                 laboratoryManagers[i] = new LaboratoryManager()
                 {
@@ -261,7 +261,7 @@ namespace ClinicManagementSystem.Auth.Test
                     if (typeof(T) == typeof(Doctor))
                     {
                         Doctor doc = person as Doctor;
-                        Assert.AreEqual(1234567, doc.LicenseNumber);
+                        Assert.AreEqual("1234567", doc.LicenseNumber);
                     }
                 }
             }

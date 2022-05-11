@@ -12,7 +12,8 @@ namespace ClinicManagementSystem.Entities.Models
         public SystemDBConfiguration()
         {
             SetExecutionStrategy("System.Data.SqlClient", () => new DefaultExecutionStrategy());
-            SetDefaultConnectionFactory(new SqlConnectionFactory("Data Source=localhost;Persist Security Info=True;User ID=user;Password=123"));
+            //SetDefaultConnectionFactory(new SqlConnectionFactory("Data Source=localhost;Persist Security Info=True;User ID=user;Password=123")); // wersja Ani
+            SetDefaultConnectionFactory(new SqlConnectionFactory("Data Source=localhost;Persist Security Info=True;User ID=sa;Password=TAB_DRA1"));
         }
     }
 }
