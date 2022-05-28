@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using ClinicManagementSystem.Forms.SideForms;
 using ClinicManagementSystem.Forms.MainForms;
 using ClinicManagementSystem.Forms.EventArguments;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace ClinicManagementSystem.Forms.MainForms
 {
@@ -24,11 +25,13 @@ namespace ClinicManagementSystem.Forms.MainForms
         private LoginForm _loginForm;
         private SideMenu _sideMenuForm;
 
+        private IServiceProvider _provider;
         private UserLevel _level;
 
         private MainFormType _activeMainForm;
-        public MainWindow(UserLevel level)
+        public MainWindow(IServiceProvider provider, UserLevel level)
         {
+            _provider = provider;
             _level = level;
             _activeMainForm = MainFormType.Main;
             InitializeComponent();
@@ -43,7 +46,7 @@ namespace ClinicManagementSystem.Forms.MainForms
 
         private void ShowLoginForm()
         {
-            _loginForm = new LoginForm();
+            _loginForm = new LoginForm(_provider);
             _loginForm.ButtonClicked += LoginButtonClicked;
             InitializeForm(_loginForm, FormType.SideForm);
         }
@@ -161,6 +164,8 @@ namespace ClinicManagementSystem.Forms.MainForms
                 this.MainPanel.Controls.Add(form);
             }
             form.Show();
+            // dummy query to initialize connection
+            new Task(() => _ = _provider.GetService<Entities.ISystemContext>().Set<Entities.Models.ApplicationUser>().FirstOrDefault()).Start();
         }
 
         private void LoadMainForm(object sender, PageControllingButtonClickedArgs args)

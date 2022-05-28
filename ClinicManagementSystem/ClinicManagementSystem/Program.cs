@@ -11,7 +11,6 @@ using ClinicManagementSystem.Forms.MainForms;
 using ClinicManagementSystem.Auth.Services;
 using ClinicManagementSystem.Auth;
 using System.Data.Entity;
-using ClinicManagementSystem.Entities;
 
 namespace ClinicManagementSystem
 {
@@ -29,13 +28,15 @@ namespace ClinicManagementSystem
 
             var services = new ServiceCollection();
             ConfigureServices(services);
+            var provider = services.BuildServiceProvider();
 
-            Application.Run(new MainWindow(Forms.UserLevel.Undetermined));
+            Application.Run(new MainWindow(provider, Forms.UserLevel.Undetermined));
         }
 
         private static void ConfigureServices(IServiceCollection services)
         {
-            services.AddSingleton<IPasswordHasher, PasswordHasher>()
+            services.AddSingleton<ISystemContext, SystemContext>()
+                    .AddSingleton<IPasswordHasher, PasswordHasher>()
                     .AddScoped<IAuthenticationService, AuthenticationService>()
                     .AddScoped<IAuthorizationService, AuthorizationService>();
                     

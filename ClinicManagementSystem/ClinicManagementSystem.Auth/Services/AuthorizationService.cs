@@ -12,9 +12,9 @@ namespace ClinicManagementSystem.Auth.Services
     public class AuthorizationService : IAuthorizationService
     {
         private readonly IAuthenticationService authenticationService;
-        private readonly SystemContext dbContext;
+        private readonly ISystemContext dbContext;
 
-        public AuthorizationService(IAuthenticationService _authenticationService, SystemContext systemContext)
+        public AuthorizationService(IAuthenticationService _authenticationService, ISystemContext systemContext)
         {
             authenticationService = _authenticationService;
             dbContext = systemContext;

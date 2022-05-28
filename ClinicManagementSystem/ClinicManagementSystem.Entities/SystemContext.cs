@@ -6,7 +6,7 @@ using System.Text;
 
 namespace ClinicManagementSystem.Entities
 {
-    public class SystemContext : DbContext
+    public class SystemContext : DbContext, ISystemContext
     {
         public DbSet<Patient> Patients { get; set; }
         public DbSet<Address> Addresses { get; set; }

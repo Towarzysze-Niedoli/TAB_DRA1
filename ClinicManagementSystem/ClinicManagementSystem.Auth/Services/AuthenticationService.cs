@@ -13,9 +13,9 @@ namespace ClinicManagementSystem.Auth.Services
     public class AuthenticationService : IAuthenticationService
     {
         private readonly IPasswordHasher passwordHasher;
-        private readonly SystemContext dbContext;
+        private readonly ISystemContext dbContext;
 
-        public AuthenticationService(IPasswordHasher _passwordHasher, SystemContext systemContext)
+        public AuthenticationService(IPasswordHasher _passwordHasher, ISystemContext systemContext)
         {
             passwordHasher = _passwordHasher;
             dbContext = systemContext;

@@ -12,7 +12,7 @@ namespace ClinicManagementSystem.Auth.Test
     [TestClass]
     public class AuthorizationServiceTests
     {
-        private static readonly SystemContext dbContext = new SystemContext();
+        private static readonly ISystemContext dbContext = new SystemContext();
         readonly IAuthorizationService authorizationService = new AuthorizationService(new AuthenticationService(new PasswordHasher(), dbContext), dbContext);
 
         const int n = 5;
@@ -25,8 +25,8 @@ namespace ClinicManagementSystem.Auth.Test
             new Address()
             {
                 City = "Gliwice",
-                Street = "Akademicka",
-                HomeNumber = "16",
+                Street = "Jakaś",
+                HomeNumber = "1",
                 ZipCode = "44-100"
             },
             new Address()
