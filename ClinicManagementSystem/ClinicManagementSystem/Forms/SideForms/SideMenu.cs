@@ -11,6 +11,7 @@ namespace ClinicManagementSystem.Forms.SideForms
 {
     public partial class SideMenu : Form
     {
+
         public delegate void NextPageButtonClicked(object source, PageControllingButtonClickedArgs args);
 
         public event NextPageButtonClicked ButtonClicked;
@@ -18,6 +19,8 @@ namespace ClinicManagementSystem.Forms.SideForms
         private SideMenuTab _currentTab;
 
         private UserLevel _userLevel;
+
+
         public SideMenu(UserLevel level)
         {
             InitializeComponent();

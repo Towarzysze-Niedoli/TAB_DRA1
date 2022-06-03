@@ -12,10 +12,16 @@ using ClinicManagementSystem.Forms.MainForms;
 using ClinicManagementSystem.Forms.EventArguments;
 using Microsoft.Extensions.DependencyInjection;
 
+
+
 namespace ClinicManagementSystem.Forms.MainForms
 {
     public partial class MainWindow : Form
     {
+
+        private int move;
+        private int moveX;
+        private int moveY;
         private LaboratoryForm _laboratoryForm;
         private ManagerForm _managerForm;
         private VisitsMainForm _visitsMainForm;
@@ -29,14 +35,54 @@ namespace ClinicManagementSystem.Forms.MainForms
         private UserLevel _level;
 
         private MainFormType _activeMainForm;
+
         public MainWindow(IServiceProvider provider, UserLevel level)
         {
+            
             _provider = provider;
             _level = level;
             _activeMainForm = MainFormType.Main;
             InitializeComponent();
             ShowLoginForm();
             this.LogoutButton.Hide();
+        }
+
+
+
+        bool flag = false;
+
+        private void Form1_MouseDown(object sender, MouseEventArgs e)
+
+        {
+
+            flag = true;
+
+        }
+
+        private void Form1_MouseMove(object sender, MouseEventArgs e)
+
+        {
+
+            //Check if Flag is True ??? if so then make form position same
+
+            //as Cursor position
+
+            if (flag == true)
+
+            {
+
+                this.Location = Cursor.Position;
+
+            }
+
+        }
+
+        private void Form1_MouseUp(object sender, MouseEventArgs e)
+
+        {
+
+            flag = false;
+
         }
 
         private void CancelButton_Click(object sender, EventArgs e)
@@ -261,6 +307,26 @@ namespace ClinicManagementSystem.Forms.MainForms
                 default:
                     break;
             }
+        }
+
+        private void panel1_MouseDown(object sender, MouseEventArgs e)
+        {
+            move = 1;
+            moveX = e.X;
+            moveY = e.Y;
+        }
+
+        private void panel1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if(move==1)
+            {
+                this.SetDesktopLocation(MousePosition.X - moveX, MousePosition.Y - moveY);
+            }
+        }
+
+        private void panel1_MouseUp(object sender, MouseEventArgs e)
+        {
+            move = 0;
         }
     }
 }
