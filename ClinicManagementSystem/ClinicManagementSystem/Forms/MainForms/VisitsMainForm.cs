@@ -19,6 +19,7 @@ namespace ClinicManagementSystem.Forms.MainForms
         private ListForm _visitsListForm;
 
         private UserLevel _level;
+
         public VisitsMainForm(UserLevel level)
         {
             InitializeComponent();
