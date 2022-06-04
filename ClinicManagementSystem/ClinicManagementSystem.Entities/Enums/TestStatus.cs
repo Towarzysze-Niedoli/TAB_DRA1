@@ -9,6 +9,7 @@ namespace ClinicManagementSystem.Entities.Enums
         Pending = AppointmentStatus.Pending,
         Accepted = AppointmentStatus.Accepted,
         Cancelled = AppointmentStatus.Cancelled,
-        WaitingToBeAccepted
+        WaitingToBeAccepted,
+        Returned
     }
 }

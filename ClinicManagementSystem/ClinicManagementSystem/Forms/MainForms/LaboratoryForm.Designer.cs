@@ -53,7 +53,7 @@
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateTimePicker1.Location = new System.Drawing.Point(350, 99);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 32);
+            this.dateTimePicker1.Size = new System.Drawing.Size(200, 27);
             this.dateTimePicker1.TabIndex = 3;
             // 
             // DescriptionPanel
@@ -120,21 +120,15 @@
             this.LaboratoryTestsComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.LaboratoryTestsComboBox.Font = new System.Drawing.Font("Corbel", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LaboratoryTestsComboBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(115)))), ((int)(((byte)(153)))));
-            this.LaboratoryTestsComboBox.Items.AddRange(new object[] {
-            "To Do",
-            "Done",
-            "Returned",
-            "Canceled",
-            "Approved"});
             this.LaboratoryTestsComboBox.Location = new System.Drawing.Point(50, 99);
             this.LaboratoryTestsComboBox.Name = "LaboratoryTestsComboBox";
-            this.LaboratoryTestsComboBox.Size = new System.Drawing.Size(151, 32);
+            this.LaboratoryTestsComboBox.Size = new System.Drawing.Size(151, 27);
             this.LaboratoryTestsComboBox.TabIndex = 6;
             this.LaboratoryTestsComboBox.SelectedIndexChanged += new System.EventHandler(this.LaboratoryTestsComboBox_SelectedIndexChanged);
             // 
             // LaboratoryForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(247)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(1284, 861);
