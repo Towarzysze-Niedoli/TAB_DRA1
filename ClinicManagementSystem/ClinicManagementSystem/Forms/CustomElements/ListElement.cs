@@ -19,6 +19,13 @@ namespace ClinicManagementSystem.Forms.CustomElements
         protected bool _status = false;
         protected int _index;
 
+        [Obsolete("Designer only", true)]
+        public ListElement()
+        {
+            InitializeComponent();
+            _index = -1;
+        }
+
         public ListElement(int index)
         {
             InitializeComponent();
