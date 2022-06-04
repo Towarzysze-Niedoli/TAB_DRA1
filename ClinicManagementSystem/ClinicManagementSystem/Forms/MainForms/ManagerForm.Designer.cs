@@ -197,7 +197,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.EMailTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.EMailTextBox.Font = new System.Drawing.Font("Corbel", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.EMailTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(115)))), ((int)(((byte)(153)))));
-            this.EMailTextBox.Location = new System.Drawing.Point(24, 313);
+            this.EMailTextBox.Location = new System.Drawing.Point(24, 314);
             this.EMailTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.EMailTextBox.Name = "EMailTextBox";
             this.EMailTextBox.PlaceholderText = "E-mail";
@@ -210,7 +210,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.NumberTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.NumberTextBox.Font = new System.Drawing.Font("Corbel", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.NumberTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(115)))), ((int)(((byte)(153)))));
-            this.NumberTextBox.Location = new System.Drawing.Point(268, 257);
+            this.NumberTextBox.Location = new System.Drawing.Point(268, 258);
             this.NumberTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.NumberTextBox.Name = "NumberTextBox";
             this.NumberTextBox.PlaceholderText = "Number";
@@ -223,7 +223,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.StreetTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.StreetTextBox.Font = new System.Drawing.Font("Corbel", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.StreetTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(115)))), ((int)(((byte)(153)))));
-            this.StreetTextBox.Location = new System.Drawing.Point(24, 257);
+            this.StreetTextBox.Location = new System.Drawing.Point(24, 258);
             this.StreetTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.StreetTextBox.Name = "StreetTextBox";
             this.StreetTextBox.PlaceholderText = "Street";
@@ -236,7 +236,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.ZIPCodeTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.ZIPCodeTextBox.Font = new System.Drawing.Font("Corbel", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.ZIPCodeTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(115)))), ((int)(((byte)(153)))));
-            this.ZIPCodeTextBox.Location = new System.Drawing.Point(268, 204);
+            this.ZIPCodeTextBox.Location = new System.Drawing.Point(268, 205);
             this.ZIPCodeTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ZIPCodeTextBox.Name = "ZIPCodeTextBox";
             this.ZIPCodeTextBox.PlaceholderText = "ZIP Code";
@@ -249,7 +249,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.CityTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.CityTextBox.Font = new System.Drawing.Font("Corbel", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.CityTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(115)))), ((int)(((byte)(153)))));
-            this.CityTextBox.Location = new System.Drawing.Point(24, 204);
+            this.CityTextBox.Location = new System.Drawing.Point(24, 205);
             this.CityTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.CityTextBox.Name = "CityTextBox";
             this.CityTextBox.PlaceholderText = "City";
@@ -262,7 +262,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.PhoneTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.PhoneTextBox.Font = new System.Drawing.Font("Corbel", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.PhoneTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(115)))), ((int)(((byte)(153)))));
-            this.PhoneTextBox.Location = new System.Drawing.Point(268, 94);
+            this.PhoneTextBox.Location = new System.Drawing.Point(268, 95);
             this.PhoneTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PhoneTextBox.Name = "PhoneTextBox";
             this.PhoneTextBox.PlaceholderText = "Phone";
@@ -275,7 +275,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.PESELTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.PESELTextBox.Font = new System.Drawing.Font("Corbel", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.PESELTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(115)))), ((int)(((byte)(153)))));
-            this.PESELTextBox.Location = new System.Drawing.Point(24, 94);
+            this.PESELTextBox.Location = new System.Drawing.Point(24, 95);
             this.PESELTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PESELTextBox.Name = "PESELTextBox";
             this.PESELTextBox.PlaceholderText = "PESEL";
@@ -288,7 +288,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.UserSurnameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.UserSurnameTextBox.Font = new System.Drawing.Font("Corbel", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.UserSurnameTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(115)))), ((int)(((byte)(153)))));
-            this.UserSurnameTextBox.Location = new System.Drawing.Point(268, 150);
+            this.UserSurnameTextBox.Location = new System.Drawing.Point(268, 151);
             this.UserSurnameTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.UserSurnameTextBox.Name = "UserSurnameTextBox";
             this.UserSurnameTextBox.PlaceholderText = "Last Name";
@@ -312,7 +312,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.UserNameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.UserNameTextBox.Font = new System.Drawing.Font("Corbel", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.UserNameTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(115)))), ((int)(((byte)(153)))));
-            this.UserNameTextBox.Location = new System.Drawing.Point(24, 150);
+            this.UserNameTextBox.Location = new System.Drawing.Point(24, 151);
             this.UserNameTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.UserNameTextBox.Name = "UserNameTextBox";
             this.UserNameTextBox.PlaceholderText = "First Name";
@@ -342,7 +342,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.SearchUserTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.SearchUserTextBox.Font = new System.Drawing.Font("Corbel", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.SearchUserTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(115)))), ((int)(((byte)(153)))));
-            this.SearchUserTextBox.Location = new System.Drawing.Point(36, 100);
+            this.SearchUserTextBox.Location = new System.Drawing.Point(36, 98);
             this.SearchUserTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.SearchUserTextBox.MaxLength = 20;
             this.SearchUserTextBox.Name = "SearchUserTextBox";
@@ -357,10 +357,10 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.SearchUserButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SearchUserButton.Font = new System.Drawing.Font("Corbel", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.SearchUserButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(247)))), ((int)(((byte)(255)))));
-            this.SearchUserButton.Location = new System.Drawing.Point(435, 100);
+            this.SearchUserButton.Location = new System.Drawing.Point(435, 92);
             this.SearchUserButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.SearchUserButton.Name = "SearchUserButton";
-            this.SearchUserButton.Size = new System.Drawing.Size(82, 24);
+            this.SearchUserButton.Size = new System.Drawing.Size(82, 32);
             this.SearchUserButton.TabIndex = 1;
             this.SearchUserButton.Text = "Search";
             this.SearchUserButton.UseVisualStyleBackColor = false;

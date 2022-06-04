@@ -39,10 +39,10 @@ namespace ClinicManagementSystem.Forms.SideForms
             this.SearchTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.SearchTextBox.Font = new System.Drawing.Font("Corbel", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.SearchTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(115)))), ((int)(((byte)(153)))));
-            this.SearchTextBox.Location = new System.Drawing.Point(12, 21);
+            this.SearchTextBox.Location = new System.Drawing.Point(12, 26);
             this.SearchTextBox.MaxLength = 20;
             this.SearchTextBox.Name = "SearchTextBox";
-            this.SearchTextBox.Size = new System.Drawing.Size(506, 25);
+            this.SearchTextBox.Size = new System.Drawing.Size(506, 20);
             this.SearchTextBox.TabIndex = 2;
             // 
             // SearchButton
@@ -68,7 +68,7 @@ namespace ClinicManagementSystem.Forms.SideForms
             this.ListPanel.Size = new System.Drawing.Size(642, 368);
             this.ListPanel.TabIndex = 25;
             // 
-            // OrderLabListForm
+            // OrderLabForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(189)))), ((int)(((byte)(213)))), ((int)(((byte)(234)))));
@@ -77,7 +77,7 @@ namespace ClinicManagementSystem.Forms.SideForms
             this.Controls.Add(this.SearchButton);
             this.Controls.Add(this.SearchTextBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "OrderLabListForm";
+            this.Name = "OrderLabForm";
             this.Text = "OrderLabListForm";
             this.ResumeLayout(false);
             this.PerformLayout();
