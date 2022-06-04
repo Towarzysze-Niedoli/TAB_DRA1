@@ -11,8 +11,7 @@ using ClinicManagementSystem.Forms.SideForms;
 using ClinicManagementSystem.Forms.MainForms;
 using ClinicManagementSystem.Forms.EventArguments;
 using Microsoft.Extensions.DependencyInjection;
-
-
+using ClinicManagementSystem.Services;
 
 namespace ClinicManagementSystem.Forms.MainForms
 {
@@ -119,7 +118,7 @@ namespace ClinicManagementSystem.Forms.MainForms
         private void ShowVisitMainForm()
         {
             UnloadMainForm();
-            _visitsMainForm = new VisitsMainForm(_level);
+            _visitsMainForm = new VisitsMainForm(_level, _provider.GetService<IAppointmentService>());
             _visitsMainForm.ButtonClicked += LoadMainForm;
             _activeMainForm = MainFormType.VisitMainForm;
             InitializeForm(_visitsMainForm, FormType.MainForm);

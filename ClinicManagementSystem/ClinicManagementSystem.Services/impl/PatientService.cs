@@ -5,13 +5,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace ClinicManagementSystem.Repositories.Repositories.impl
+namespace ClinicManagementSystem.Services.impl
 {
-    public class PatientRepository : IPatientRepository, IDisposable
+    public class PatientService : IPatientService, IDisposable
     {
-        private SystemContext context;
+        private ISystemContext context;
 
-        public PatientRepository(SystemContext context)
+        public PatientService(ISystemContext context)
         {
             this.context = context;
         }

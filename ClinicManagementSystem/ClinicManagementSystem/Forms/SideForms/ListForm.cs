@@ -31,6 +31,8 @@ namespace ClinicManagementSystem.Forms.SideForms
             PopulateListExample();
         }
 
+        public virtual void PopulateList(List<ListElement> elements) { }
+
         protected virtual void PopulateListExample() { }
 
         protected void OnElementClicked(object source, ListElementClickedArgs args)

@@ -4,13 +4,13 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace ClinicManagementSystem.Repositories.Repositories.impl
+namespace ClinicManagementSystem.Services.impl
 {
-    public class ReceptionistRepository : IReceptionistRepository, IDisposable
+    public class ReceptionistService : IReceptionistService, IDisposable
     {
-        private SystemContext context;
+        private ISystemContext context;
 
-        public ReceptionistRepository(SystemContext context)
+        public ReceptionistService(ISystemContext context)
         {
             this.context = context;
         }

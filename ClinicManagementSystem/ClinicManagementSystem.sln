@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.1.32319.34
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32407.337
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClinicManagementSystem", "ClinicManagementSystem\ClinicManagementSystem.csproj", "{1BCE6E64-1C8F-445E-B433-7B1B05151941}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -11,10 +11,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClinicManagementSystem", "C
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClinicManagementSystem.Entities", "ClinicManagementSystem.Entities\ClinicManagementSystem.Entities.csproj", "{2E6AEE50-1FE2-4788-8E62-028D8344DA16}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClinicManagementSystem.Repositories", "ClinicManagementSystem.Repositories\ClinicManagementSystem.Repositories.csproj", "{5C7F1E4A-49B8-4C70-A4C1-8A2B2ADB6856}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClinicManagementSystem.Services", "ClinicManagementSystem.Services\ClinicManagementSystem.Services.csproj", "{5C7F1E4A-49B8-4C70-A4C1-8A2B2ADB6856}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClinicManagementSystem.Auth", "ClinicManagementSystem.Auth\ClinicManagementSystem.Auth.csproj", "{ED4B6AAE-D0BB-48B0-B183-995132E53E14}"
 	ProjectSection(ProjectDependencies) = postProject
 		{2E6AEE50-1FE2-4788-8E62-028D8344DA16} = {2E6AEE50-1FE2-4788-8E62-028D8344DA16}
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClinicManagementSystem.Auth", "ClinicManagementSystem.Auth\ClinicManagementSystem.Auth.csproj", "{ED4B6AAE-D0BB-48B0-B183-995132E53E14}"
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClinicManagementSystem.Auth.Test", "ClinicManagementSystem.Auth.Test\ClinicManagementSystem.Auth.Test.csproj", "{C3A6C529-8B4C-4D80-AEF8-25CB6EABACE0}"
 	ProjectSection(ProjectDependencies) = postProject

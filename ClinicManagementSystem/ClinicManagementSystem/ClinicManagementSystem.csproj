@@ -17,7 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ClinicManagementSystem.Entities\ClinicManagementSystem.Entities.csproj" />
-    <ProjectReference Include="..\ClinicManagementSystem.Repositories\ClinicManagementSystem.Repositories.csproj" />
+    <ProjectReference Include="..\ClinicManagementSystem.Services\ClinicManagementSystem.Services.csproj" />
   </ItemGroup>
 
   <ItemGroup>

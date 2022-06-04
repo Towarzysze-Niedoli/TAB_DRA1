@@ -3,9 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace ClinicManagementSystem.Repositories.Repositories
+namespace ClinicManagementSystem.Services
 {
-    internal interface IAppointmentRepository: IDisposable
+    public interface IAppointmentService: IDisposable
     {
         IEnumerable<Appointment> GetAppointments();
         Appointment GetAppointmentByID(int appointmentId);

@@ -7,6 +7,8 @@ using System.Text;
 using System.Windows.Forms;
 using ClinicManagementSystem.Forms.SideForms;
 using ClinicManagementSystem.Forms.EventArguments;
+using ClinicManagementSystem.Services;
+using ClinicManagementSystem.Forms.CustomElements;
 
 namespace ClinicManagementSystem.Forms.MainForms
 {
@@ -19,8 +21,9 @@ namespace ClinicManagementSystem.Forms.MainForms
         private ListForm _visitsListForm;
 
         private UserLevel _level;
+        private IAppointmentService _service;
 
-        public VisitsMainForm(UserLevel level)
+        public VisitsMainForm(UserLevel level, IAppointmentService appointmentService)
         {
             InitializeComponent();
             SearchPatientTextBox.KeyDown += (sender, args) => { // search on enter click
@@ -29,8 +32,24 @@ namespace ClinicManagementSystem.Forms.MainForms
             };
 
             _level = level;
+            _service = appointmentService;
             SetVisibility();
             _visitsListForm = new VisitsListForm();
+
+            var appointments = _service.GetAppointments();
+            var elements = new List<ListElement>();
+            int index = 0;
+            foreach (var appointment in appointments)
+            {
+                string patientName = appointment.Patient != null ? appointment.Patient.FirstName + ' ' + appointment.Patient.LastName : "";
+                var el = new VisitListElement(index++, 
+                    patientName,
+                    $"{appointment.Doctor.FirstName} {appointment.Doctor.LastName}", 
+                    appointment.RegistrationDate.ToString());
+                elements.Add(el);
+            }
+            _visitsListForm.PopulateList(elements);
+
             _visitsListForm.ElementClicked += FillVisitTextFields;
             this.VisitsListPanel.Controls.Add(_visitsListForm);
 

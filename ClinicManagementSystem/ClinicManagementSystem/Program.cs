@@ -1,6 +1,6 @@
 using ClinicManagementSystem.Entities;
 using ClinicManagementSystem.Entities.Models;
-using ClinicManagementSystem.Repositories.Repositories.impl;
+using ClinicManagementSystem.Services.impl;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -11,6 +11,7 @@ using ClinicManagementSystem.Forms.MainForms;
 using ClinicManagementSystem.Auth.Services;
 using ClinicManagementSystem.Auth;
 using System.Data.Entity;
+using ClinicManagementSystem.Services;
 
 namespace ClinicManagementSystem
 {
@@ -38,7 +39,12 @@ namespace ClinicManagementSystem
             services.AddSingleton<ISystemContext, SystemContext>()
                     .AddSingleton<IPasswordHasher, PasswordHasher>()
                     .AddScoped<IAuthenticationService, AuthenticationService>()
-                    .AddScoped<IAuthorizationService, AuthorizationService>();
+                    .AddScoped<IAuthorizationService, AuthorizationService>()
+                    .AddScoped<IAppointmentService, AppointmentService>()
+                    .AddScoped<IDoctorService, DoctorService>()
+                    .AddScoped<ILaboratoryTechnicianService, LaboratoryTechnicianService>()
+                    .AddScoped<IPatientService, PatientService>()
+                    .AddScoped<IReceptionistService, ReceptionistService>();
                     
             //.AddLogging(configure => configure.AddConsole())
         }

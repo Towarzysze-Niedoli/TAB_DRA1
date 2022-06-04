@@ -3,9 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace ClinicManagementSystem.Repositories.Repositories
+namespace ClinicManagementSystem.Services
 {
-    internal interface IDoctorRepository : IDisposable
+    public interface IDoctorService : IDisposable
     {
         IEnumerable<Doctor> GetDoctors();
         Doctor GetDoctorByID(int doctorId);

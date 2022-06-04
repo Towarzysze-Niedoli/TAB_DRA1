@@ -3,9 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace ClinicManagementSystem.Repositories.Repositories
+namespace ClinicManagementSystem.Services
 {
-    internal interface ILaboratoryTechnicianRepository : IDisposable
+    public interface ILaboratoryTechnicianService : IDisposable
     {
         IEnumerable<LaboratoryTechnician> GetLaboratoryTechnicians();
         LaboratoryTechnician GetLaboratoryTechniciantByID(int LaboratoryTechnicianId);

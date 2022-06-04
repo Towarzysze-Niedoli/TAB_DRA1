@@ -2,6 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
+using System.Data.Entity.Validation;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -27,6 +29,10 @@ namespace ClinicManagementSystem.Entities
         int SaveChanges();
         Task<int> SaveChangesAsync();
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
+        void Dispose();
+        DbEntityEntry Entry(object entity);
+        DbEntityEntry<TEntity> Entry<TEntity>(TEntity entity) where TEntity : class;
+        IEnumerable<DbEntityValidationResult> GetValidationErrors();
 
     }
 }
