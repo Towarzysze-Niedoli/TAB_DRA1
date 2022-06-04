@@ -87,6 +87,13 @@ namespace ClinicManagementSystem.Auth.Services
             return user;
         }
 
+        public ApplicationUser ChangeUserData(string emailOrPhone, string? newEmail, string? newPhoneNumber)
+        {
+            var (userPredicate, personPredicate) = GetPredicates(emailOrPhone);
+            ApplicationUser user = FindUser(emailOrPhone, userPredicate);
+            return ChangeUserData(user, newEmail, newPhoneNumber);
+        }
+
 
         /// <summary>
         /// 

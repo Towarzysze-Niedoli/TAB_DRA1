@@ -68,5 +68,14 @@ namespace ClinicManagementSystem.Auth.Services
         /// <param name="newPhoneNumber"></param>
         /// <returns>user with changed data</returns>
         public ApplicationUser ChangeUserData(ApplicationUser user, string? newEmail, string? newPhoneNumber);
+
+        /// <summary>
+        /// Changes user's email address and/or phone number. 
+        /// </summary>
+        /// <param name="emailOrPhone"></param>
+        /// <param name="newEmail"></param>
+        /// <param name="newPhoneNumber"></param>
+        /// <returns>user with changed data</returns>
+        public ApplicationUser ChangeUserData(string emailOrPhone, string? newEmail, string? newPhoneNumber);
     }
 }

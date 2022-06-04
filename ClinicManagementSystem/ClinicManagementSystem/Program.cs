@@ -36,7 +36,7 @@ namespace ClinicManagementSystem
 
         private static void ConfigureServices(IServiceCollection services)
         {
-            services.AddSingleton<ISystemContext, SystemContext>()
+            services.AddScoped<ISystemContext, SystemContext>()
                     .AddSingleton<IPasswordHasher, PasswordHasher>()
                     .AddScoped<IAuthenticationService, AuthenticationService>()
                     .AddScoped<IAuthorizationService, AuthorizationService>()

@@ -13,7 +13,8 @@ namespace ClinicManagementSystem.Auth.Test
     public class AuthorizationServiceTests
     {
         private static readonly ISystemContext dbContext = new SystemContext();
-        readonly IAuthorizationService authorizationService = new AuthorizationService(new AuthenticationService(new PasswordHasher(), dbContext), dbContext);
+        private static readonly IAuthenticationService authenticationService = new AuthenticationService(new PasswordHasher(), dbContext);
+        readonly IAuthorizationService authorizationService = new AuthorizationService(authenticationService, dbContext);
 
         const int n = 5;
         readonly static string[] firstnames = new string[n] { "Jan", "Jan", "Anna Maria", "Zażółćgęśląjaźń", "Jan" };
@@ -100,22 +101,22 @@ namespace ClinicManagementSystem.Auth.Test
         {
             // remove necessary existing entries:
             dbContext.ApplicationUsers.RemoveRange(
-                dbContext.ApplicationUsers.Where(user => emails.Contains(user.Email) || phones.Contains(user.PhoneNumber))
+                dbContext.ApplicationUsers.Where(user => emails.Contains(user.Email) || phones.Contains(user.PhoneNumber) || user.Email.StartsWith("changed") || user.PhoneNumber.StartsWith("000"))
             );
             dbContext.SystemAdministrators.RemoveRange(
-                dbContext.SystemAdministrators.Where(user => emails.Contains(user.Email) || phones.Contains(user.PhoneNumber))
+                dbContext.SystemAdministrators.Where(user => emails.Contains(user.Email) || phones.Contains(user.PhoneNumber) || user.Email.StartsWith("changed") || user.PhoneNumber.StartsWith("000"))
             );
             dbContext.Doctors.RemoveRange(
-                dbContext.Doctors.Where(user => emails.Contains(user.Email) || phones.Contains(user.PhoneNumber))
+                dbContext.Doctors.Where(user => emails.Contains(user.Email) || phones.Contains(user.PhoneNumber) || user.Email.StartsWith("changed") || user.PhoneNumber.StartsWith("000"))
             );
             dbContext.LaboratoryManagers.RemoveRange(
-                dbContext.LaboratoryManagers.Where(user => emails.Contains(user.Email) || phones.Contains(user.PhoneNumber))
+                dbContext.LaboratoryManagers.Where(user => emails.Contains(user.Email) || phones.Contains(user.PhoneNumber) || user.Email.StartsWith("changed") || user.PhoneNumber.StartsWith("000"))
             );
             dbContext.LaboratoryTechnicians.RemoveRange(
-                dbContext.LaboratoryTechnicians.Where(user => emails.Contains(user.Email) || phones.Contains(user.PhoneNumber))
+                dbContext.LaboratoryTechnicians.Where(user => emails.Contains(user.Email) || phones.Contains(user.PhoneNumber) || user.Email.StartsWith("changed") || user.PhoneNumber.StartsWith("000"))
             );
             dbContext.Receptionists.RemoveRange(
-                dbContext.Receptionists.Where(user => emails.Contains(user.Email) || phones.Contains(user.PhoneNumber))
+                dbContext.Receptionists.Where(user => emails.Contains(user.Email) || phones.Contains(user.PhoneNumber) || user.Email.StartsWith("changed") || user.PhoneNumber.StartsWith("000"))
             );
             return dbContext.SaveChanges();
         }
@@ -295,6 +296,82 @@ namespace ClinicManagementSystem.Auth.Test
         public void UserToReceptionistTest()
         {
             IsPersonTestHelper<Receptionist>(receptionists);
+        }
+
+
+        public void UpdateUserTestHelper<T>(T[] people) where T : Person, new()
+        {
+            if (people.Length != n)
+                throw new ArgumentException("people.Length != n");
+
+            RemoveEntries();
+            for (int i = 0; i < n; i++)
+            {
+                if (people[i].Email != null || people[i].PhoneNumber != null)
+                {
+                    int id = authorizationService.AddPerson(people[i], passwords[i]).Id;
+                    T addedPerson = dbContext.Set<T>().AsNoTracking().Where(p => p.Id == id).Single();
+
+                    string newEmail = $"changed{i}@email.com";
+                    addedPerson.Email = newEmail;
+                    string newFirstName = $"changed{(char)(65+i)}";
+                    addedPerson.FirstName = newFirstName;
+                    addedPerson.Address = addresses[i];
+
+                    T xyz = authorizationService.UpdatePerson(addedPerson);
+                    id = xyz.Id;
+                    T updatedPerson = dbContext.Set<T>().AsNoTracking().Where(p => p.Id == id).Single();
+
+                    T foundPerson = dbContext.Set<T>().Include("Address").Where(p => p.Id == id).Single();
+                    Assert.AreEqual(newFirstName, foundPerson.FirstName);
+                    Assert.AreEqual(lastnames[i], foundPerson.LastName);
+                    Assert.AreEqual(newEmail, foundPerson.Email);
+                    Assert.AreEqual(phones[i], foundPerson.PhoneNumber);
+                    if (addresses[i] != null)
+                    {
+                        Assert.AreEqual(addresses[i].Street, foundPerson.Address.Street);
+                    }
+                    Assert.AreEqual(dbContext.ApplicationUsers.Where(user => user.Email == newEmail).Count(), 1);
+
+                    string newPhoneNumber = $"000{i}{i}{i}000";
+                    updatedPerson.PhoneNumber = newPhoneNumber;
+                    string newPassword = $"some{i}Password";
+                    T updatedAgainPerson = authorizationService.UpdatePerson(updatedPerson, newPassword);
+                    Assert.AreEqual(dbContext.ApplicationUsers.Where(user => user.PhoneNumber == newPhoneNumber).Count(), 1);
+                    Assert.IsNotNull(authenticationService.Authenticate(updatedAgainPerson.Email, newPassword));
+                    Assert.IsNotNull(authenticationService.Authenticate(updatedAgainPerson.PhoneNumber, newPassword));
+                }
+            }
+        }
+
+        [TestMethod]
+        public void UpdateAdminTest()
+        {
+            UpdateUserTestHelper<Admin>(admins);
+        }
+
+        [TestMethod]
+        public void UpdateDoctorTest()
+        {
+            UpdateUserTestHelper<Doctor>(doctors);
+        }
+
+        [TestMethod]
+        public void UpdateLabManagerTest()
+        {
+            UpdateUserTestHelper<LaboratoryManager>(laboratoryManagers);
+        }
+
+        [TestMethod]
+        public void UpdateLabTechnicianTest()
+        {
+            UpdateUserTestHelper<LaboratoryTechnician>(laboratoryTechnicians);
+        }
+
+        [TestMethod]
+        public void UpdateReceptionistTest()
+        {
+            UpdateUserTestHelper<Receptionist>(receptionists);
         }
     }
 }

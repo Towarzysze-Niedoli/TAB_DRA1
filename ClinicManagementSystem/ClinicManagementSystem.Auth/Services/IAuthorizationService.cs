@@ -36,5 +36,14 @@ namespace ClinicManagementSystem.Auth.Services
         /// <exception cref="ArgumentException">when user's login (email or phone number) is not a valid email address or phone number</exception>
         /// <exception cref="ArgumentNullException">when user does not have email address nor phone number</exception>
         public Person? UserToPerson(ApplicationUser user);
+
+        /// <summary>
+        /// Updates person data and their account.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="person">must include person id</param>
+        /// <param name="password">null if no change</param>
+        /// <returns></returns>
+        public T UpdatePerson<T>(T person, string? password = null) where T : Person;
     }
 }

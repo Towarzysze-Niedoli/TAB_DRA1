@@ -1,4 +1,5 @@
-﻿using ClinicManagementSystem.Entities;
+﻿using ClinicManagementSystem.Auth.Services;
+using ClinicManagementSystem.Entities;
 using ClinicManagementSystem.Entities.Models;
 using System;
 using System.Collections.Generic;
@@ -9,10 +10,12 @@ namespace ClinicManagementSystem.Services.impl
     public class ReceptionistService : IReceptionistService, IDisposable
     {
         private ISystemContext context;
+        private IAuthorizationService authorizationService;
 
-        public ReceptionistService(ISystemContext context)
+        public ReceptionistService(IAuthorizationService service, ISystemContext context)
         {
             this.context = context;
+            authorizationService = service;
         }
 
         public void DeleteReceptionist(int receptionistId)
@@ -32,9 +35,9 @@ namespace ClinicManagementSystem.Services.impl
             return context.Receptionists.Find(receptionistId);
         }
 
-        public void InsertReceptionist(Receptionist receptionist)
+        public void InsertReceptionist(Receptionist receptionist, string password)
         {
-            context.Receptionists.Add(receptionist);
+            authorizationService.AddPerson(receptionist, password);
         }
 
         public void Save()
@@ -42,9 +45,9 @@ namespace ClinicManagementSystem.Services.impl
             context.SaveChanges();
         }
 
-        public void UpdateReceptionist(Receptionist receptionist)
+        public void UpdateReceptionist(Receptionist receptionist, string password)
         {
-            context.Entry(receptionist).State = System.Data.Entity.EntityState.Modified;
+            authorizationService.UpdatePerson(receptionist, password);
         }
 
         private bool disposed = false;

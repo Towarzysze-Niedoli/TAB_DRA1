@@ -40,28 +40,58 @@ namespace ClinicManagementSystem.Auth.Services
             if (password == null)
                 throw new ArgumentNullException("password");
 
-            using (SystemContext dbContext = new SystemContext())
-            {
-                ApplicationUser createdUser = authenticationService.CreateNewUser(person.Email, person.PhoneNumber, password);
+            ApplicationUser createdUser = authenticationService.CreateNewUser(person.Email, person.PhoneNumber, password);
 
-                // link address if exists (EF creates a new entry by default)
-                if (person.Address != null)
-                {
-                    var addresses = dbContext.Addresses.Where(a => a.Street == person.Address.Street
-                                                        && a.HomeNumber == person.Address.HomeNumber
-                                                        && a.ZipCode == person.Address.ZipCode
-                                                        && a.City == person.Address.City);
-                    if (addresses.Count() == 1)
-                        person.Address = addresses.Single();
-                }
-                
-                DbContextTransaction transaction = dbContext.Database.BeginTransaction();
-                dbContext.ApplicationUsers.Add(createdUser);
-                T addedPerson = dbContext.Set<T>().Add(person);
-                dbContext.SaveChanges();
-                transaction.Commit();
-                return addedPerson;
+            // link address if exists (EF creates a new entry by default)
+            if (person.Address != null)
+            {
+                var addresses = dbContext.Addresses.Where(a => a.Street == person.Address.Street
+                                                    && a.HomeNumber == person.Address.HomeNumber
+                                                    && a.ZipCode == person.Address.ZipCode
+                                                    && a.City == person.Address.City);
+                if (addresses.Count() == 1)
+                    person.Address = addresses.Single();
             }
+                
+            DbContextTransaction transaction = dbContext.Database.BeginTransaction();
+            dbContext.ApplicationUsers.Add(createdUser);
+            T addedPerson = dbContext.Set<T>().Add(person);
+            dbContext.SaveChanges();
+            transaction.Commit();
+            return addedPerson;
+        }
+
+        public T UpdatePerson<T>(T person, string? password) where T : Person
+        {
+            if (person == null)
+                throw new ArgumentNullException("person");
+
+            T oldPerson = dbContext.Set<T>().Find(person.Id);
+
+            DbContextTransaction transaction = dbContext.Database.BeginTransaction();
+
+            if (person.Email != oldPerson.Email || person.PhoneNumber != oldPerson.PhoneNumber)
+                authenticationService.ChangeUserData(oldPerson.Email ?? oldPerson.PhoneNumber ?? "shouldNotHappen", person.Email, person.PhoneNumber);
+            if (password != null)
+                authenticationService.ChangePasswordForUser(oldPerson.Email ?? oldPerson.PhoneNumber ?? "shouldNotHappen", password);
+
+            // link address if changed and exists (EF creates a new entry by default)
+            if (person.Address == null)
+                oldPerson.Address = null;
+            else if (person.Address != oldPerson.Address)
+            {
+                var addresses = dbContext.Addresses.Where(a => a.Street == person.Address.Street
+                                                    && a.HomeNumber == person.Address.HomeNumber
+                                                    && a.ZipCode == person.Address.ZipCode
+                                                    && a.City == person.Address.City);
+                if (addresses.Count() == 1)
+                    person.Address = addresses.Single();
+            }
+            dbContext.Entry(oldPerson).CurrentValues.SetValues(person);
+
+            dbContext.SaveChanges();
+            transaction.Commit();
+            return person;
         }
 
         public Person? UserToPerson(ApplicationUser user)
@@ -85,7 +115,6 @@ namespace ClinicManagementSystem.Auth.Services
                 return person;
             return null;
         }
-
 
         private Func<Person, bool> GetPersonPredicate(string emailOrPhone)
         {

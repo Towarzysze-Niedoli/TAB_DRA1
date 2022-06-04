@@ -9,9 +9,9 @@ namespace ClinicManagementSystem.Services
     {
         IEnumerable<LaboratoryTechnician> GetLaboratoryTechnicians();
         LaboratoryTechnician GetLaboratoryTechniciantByID(int LaboratoryTechnicianId);
-        void InsertLaboratoryTechnician(LaboratoryTechnician LaboratoryTechnician);
+        void InsertLaboratoryTechnician(LaboratoryTechnician LaboratoryTechnician, string password);
         void DeleteLaboratoryTechnician(int LaboratoryTechnicianId);
-        void UpdateLaboratoryTechnician(LaboratoryTechnician LaboratoryTechnician);
+        void UpdateLaboratoryTechnician(LaboratoryTechnician LaboratoryTechnician, string password = null);
         void Save();
     }
 }

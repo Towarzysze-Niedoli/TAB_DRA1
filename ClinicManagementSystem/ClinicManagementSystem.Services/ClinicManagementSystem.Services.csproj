@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ClinicManagementSystem.Auth\ClinicManagementSystem.Auth.csproj" />
     <ProjectReference Include="..\ClinicManagementSystem.Entities\ClinicManagementSystem.Entities.csproj" />
   </ItemGroup>
 

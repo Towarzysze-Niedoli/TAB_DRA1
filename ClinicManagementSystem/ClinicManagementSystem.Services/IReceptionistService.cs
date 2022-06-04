@@ -9,9 +9,9 @@ namespace ClinicManagementSystem.Services
     {
         IEnumerable<Receptionist> GetReceptionists();
         Receptionist GetReceptionistByID(int receptionistId);
-        void InsertReceptionist(Receptionist receptionist);
+        void InsertReceptionist(Receptionist receptionist, string password);
         void DeleteReceptionist(int receptionistId);
-        void UpdateReceptionist(Receptionist receptionist);
+        void UpdateReceptionist(Receptionist receptionist, string password = null);
         void Save();
     }
 }

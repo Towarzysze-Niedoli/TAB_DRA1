@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ClinicManagementSystem.Entities
 {
-    public interface ISystemContext
+    public interface ISystemContext: IDisposable, IObjectContextAdapter
     {
         DbSet<Patient> Patients { get; set; }
         DbSet<Address> Addresses { get; set; }
@@ -25,11 +25,14 @@ namespace ClinicManagementSystem.Entities
         DbSet<Admin> SystemAdministrators { get; set; }
         DbSet<ApplicationUser> ApplicationUsers { get; set; }
 
+        public Database Database { get; }
+        public DbChangeTracker ChangeTracker { get; }
+        public DbContextConfiguration Configuration { get; }
+
         DbSet<TEntity> Set<TEntity>() where TEntity : class;
         int SaveChanges();
         Task<int> SaveChangesAsync();
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
-        void Dispose();
         DbEntityEntry Entry(object entity);
         DbEntityEntry<TEntity> Entry<TEntity>(TEntity entity) where TEntity : class;
         IEnumerable<DbEntityValidationResult> GetValidationErrors();

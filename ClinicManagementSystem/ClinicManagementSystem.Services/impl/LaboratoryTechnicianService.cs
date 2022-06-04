@@ -1,4 +1,5 @@
-﻿using ClinicManagementSystem.Entities;
+﻿using ClinicManagementSystem.Auth.Services;
+using ClinicManagementSystem.Entities;
 using ClinicManagementSystem.Entities.Models;
 using System;
 using System.Collections.Generic;
@@ -9,10 +10,12 @@ namespace ClinicManagementSystem.Services.impl
     public class LaboratoryTechnicianService: ILaboratoryTechnicianService, IDisposable
     {
         private ISystemContext context;
+        private IAuthorizationService authorizationService;
 
-        public LaboratoryTechnicianService(ISystemContext context)
+        public LaboratoryTechnicianService(IAuthorizationService service, ISystemContext context)
         {
             this.context = context;
+            authorizationService = service;
         }
 
         public void DeleteLaboratoryTechnician(int LaboratoryTechnicianId)
@@ -32,9 +35,9 @@ namespace ClinicManagementSystem.Services.impl
             return context.LaboratoryTechnicians.Find(LaboratoryTechnicianId);
         }
 
-        public void InsertLaboratoryTechnician(LaboratoryTechnician LaboratoryTechnician)
+        public void InsertLaboratoryTechnician(LaboratoryTechnician LaboratoryTechnician, string password)
         {
-            context.LaboratoryTechnicians.Add(LaboratoryTechnician);
+            authorizationService.AddPerson(LaboratoryTechnician, password);
         }
 
         public void Save()
@@ -42,9 +45,9 @@ namespace ClinicManagementSystem.Services.impl
             context.SaveChanges();
         }
 
-        public void UpdateLaboratoryTechnician(LaboratoryTechnician LaboratoryTechnician)
+        public void UpdateLaboratoryTechnician(LaboratoryTechnician LaboratoryTechnician, string password)
         {
-            context.Entry(LaboratoryTechnician).State = System.Data.Entity.EntityState.Modified;
+            authorizationService.UpdatePerson(LaboratoryTechnician, password);
         }
 
         private bool disposed = false;
