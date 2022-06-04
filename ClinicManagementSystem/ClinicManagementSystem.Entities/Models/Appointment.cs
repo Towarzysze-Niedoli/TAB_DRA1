@@ -19,7 +19,7 @@ namespace ClinicManagementSystem.Entities.Models
         [Required]
         public AppointmentStatus AppointmentStatus { get; set; } = AppointmentStatus.Pending;
 
-        public DateTime? RegistrationDate { get; set; }
+        public DateTime RegistrationDate { get; set; }
 
         public DateTime? CompletionDate { get; set; }
 
@@ -28,7 +28,7 @@ namespace ClinicManagementSystem.Entities.Models
         [Required]
         public Doctor Doctor { get; set; }
 
-        public Patient Patient { get; set; }
+        public Patient? Patient { get; set; }
 
         [InverseProperty("Appointment")] // explicit bidirectional mapping, default lazy loading
         public List<LaboratoryExam> LaboratoryExams { get; set; }
