@@ -16,6 +16,10 @@ namespace ClinicManagementSystem.Forms.SideForms
         public OrderLabForm()
         {
             InitializeComponent();
+            SearchTextBox.KeyDown += (sender, args) => { // search on enter click
+                if (args.KeyCode == Keys.Enter || args.KeyCode == Keys.Return)
+                    SearchButton.PerformClick();
+            };
 
             _orderLabListForm = new OrderLabListForm();
             _orderLabListForm.ElementClicked += ListElementClicked;

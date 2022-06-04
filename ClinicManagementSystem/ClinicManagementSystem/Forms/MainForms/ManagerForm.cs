@@ -15,6 +15,10 @@ namespace ClinicManagementSystem.Forms.MainForms
         {
             this._formType = formType;
             InitializeComponent();
+            SearchUserTextBox.KeyDown += (sender, args) => { // search on enter click
+                if (args.KeyCode == Keys.Enter || args.KeyCode == Keys.Return)
+                    SearchUserButton_Click(sender, args);
+            };
             SpecializationComboBox.SelectedIndex = 0;
             ShowCorrectElements();
         }
@@ -41,7 +45,6 @@ namespace ClinicManagementSystem.Forms.MainForms
         private void HideLogin()
         {
             LoginLabel.Hide();
-            LoginTextBox.Hide();
             PasswordTextBox.Hide();
         }
 
@@ -80,7 +83,6 @@ namespace ClinicManagementSystem.Forms.MainForms
         private void SetUserCategories(string user)
         {
             SearchUserTextBox.PlaceholderText = "Search " + user + " for Update";
-            LoginTextBox.PlaceholderText = user + "'s Login";
             PasswordTextBox.PlaceholderText = user + "'s Password";
             AddButton.Text = "Add " + user;
             UpdateButton.Text = "Update " + user;
@@ -126,7 +128,6 @@ namespace ClinicManagementSystem.Forms.MainForms
                     ZIPCodeTextBox.Text = "12-345";
                     NumberTextBox.Text = "12";
                     EMailTextBox.Text = "szybkimail@hot.com";
-                    LoginTextBox.Text = "997";
                     PasswordTextBox.Text = "1234";
                 }
             }
@@ -144,7 +145,6 @@ namespace ClinicManagementSystem.Forms.MainForms
             ZIPCodeTextBox.Clear();
             NumberTextBox.Clear();
             EMailTextBox.Clear();
-            LoginTextBox.Clear();
             PasswordTextBox.Clear();
         }
 

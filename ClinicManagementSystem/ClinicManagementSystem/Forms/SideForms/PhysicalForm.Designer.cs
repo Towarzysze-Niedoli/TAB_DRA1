@@ -46,7 +46,7 @@ namespace ClinicManagementSystem.Forms.SideForms
             this.TemperatureTextBox.Location = new System.Drawing.Point(362, 66);
             this.TemperatureTextBox.Name = "TemperatureTextBox";
             this.TemperatureTextBox.ReadOnly = true;
-            this.TemperatureTextBox.Size = new System.Drawing.Size(241, 25);
+            this.TemperatureTextBox.Size = new System.Drawing.Size(241, 20);
             this.TemperatureTextBox.TabIndex = 6;
             // 
             // label1
@@ -55,7 +55,7 @@ namespace ClinicManagementSystem.Forms.SideForms
             this.label1.Font = new System.Drawing.Font("Corbel", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label1.Location = new System.Drawing.Point(83, 66);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(146, 24);
+            this.label1.Size = new System.Drawing.Size(116, 19);
             this.label1.TabIndex = 7;
             this.label1.Text = "Temperature [C}";
             // 
@@ -65,9 +65,9 @@ namespace ClinicManagementSystem.Forms.SideForms
             this.label2.Font = new System.Drawing.Font("Corbel", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label2.Location = new System.Drawing.Point(83, 138);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(197, 24);
+            this.label2.Size = new System.Drawing.Size(161, 19);
             this.label2.TabIndex = 9;
-            this.label2.Text = "Blood Presure[mmHg]";
+            this.label2.Text = "Blood Presure [mmHg]";
             // 
             // PreasureTextBox
             // 
@@ -78,7 +78,7 @@ namespace ClinicManagementSystem.Forms.SideForms
             this.PreasureTextBox.Location = new System.Drawing.Point(362, 138);
             this.PreasureTextBox.Name = "PreasureTextBox";
             this.PreasureTextBox.ReadOnly = true;
-            this.PreasureTextBox.Size = new System.Drawing.Size(241, 25);
+            this.PreasureTextBox.Size = new System.Drawing.Size(241, 20);
             this.PreasureTextBox.TabIndex = 8;
             // 
             // label3
@@ -87,7 +87,7 @@ namespace ClinicManagementSystem.Forms.SideForms
             this.label3.Font = new System.Drawing.Font("Corbel", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label3.Location = new System.Drawing.Point(83, 211);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(232, 24);
+            this.label3.Size = new System.Drawing.Size(186, 19);
             this.label3.TabIndex = 11;
             this.label3.Text = "Blood Suger Level [mg/dL]";
             // 
@@ -100,7 +100,7 @@ namespace ClinicManagementSystem.Forms.SideForms
             this.SugerLevelTextBox.Location = new System.Drawing.Point(362, 211);
             this.SugerLevelTextBox.Name = "SugerLevelTextBox";
             this.SugerLevelTextBox.ReadOnly = true;
-            this.SugerLevelTextBox.Size = new System.Drawing.Size(241, 25);
+            this.SugerLevelTextBox.Size = new System.Drawing.Size(241, 20);
             this.SugerLevelTextBox.TabIndex = 10;
             // 
             // PhysicalForm

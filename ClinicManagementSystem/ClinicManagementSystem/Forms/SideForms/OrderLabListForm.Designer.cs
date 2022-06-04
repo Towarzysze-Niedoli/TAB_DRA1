@@ -45,11 +45,11 @@ namespace ClinicManagementSystem.Forms.SideForms
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(189)))), ((int)(((byte)(213)))), ((int)(((byte)(234)))));
-            this.ClientSize = new System.Drawing.Size(642, 368);
+            this.ClientSize = new System.Drawing.Size(1461, 669);
             this.Controls.Add(this.ListPanel);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "OrderLabListForm";
             this.Text = "OrderLabListForm";
+            this.Controls.SetChildIndex(this.ListPanel, 0);
             this.ResumeLayout(false);
 
         }

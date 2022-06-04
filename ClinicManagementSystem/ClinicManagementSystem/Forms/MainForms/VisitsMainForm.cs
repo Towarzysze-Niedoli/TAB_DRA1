@@ -23,6 +23,10 @@ namespace ClinicManagementSystem.Forms.MainForms
         public VisitsMainForm(UserLevel level)
         {
             InitializeComponent();
+            SearchPatientTextBox.KeyDown += (sender, args) => { // search on enter click
+                if (args.KeyCode == Keys.Enter || args.KeyCode == Keys.Return)
+                    SearchPatientButton_Click(sender, args);
+            };
 
             _level = level;
             SetVisibility();

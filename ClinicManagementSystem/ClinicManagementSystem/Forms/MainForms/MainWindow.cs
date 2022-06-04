@@ -22,6 +22,7 @@ namespace ClinicManagementSystem.Forms.MainForms
         private int move;
         private int moveX;
         private int moveY;
+        private bool mouseDownFlag = false;
         private LaboratoryForm _laboratoryForm;
         private ManagerForm _managerForm;
         private VisitsMainForm _visitsMainForm;
@@ -45,44 +46,29 @@ namespace ClinicManagementSystem.Forms.MainForms
             InitializeComponent();
             ShowLoginForm();
             this.LogoutButton.Hide();
+            // dummy query to initialize connection
+            new Task(() => _ = _provider.GetService<Entities.ISystemContext>().Set<Entities.Models.ApplicationUser>().FirstOrDefault()).Start();
         }
 
 
-
-        bool flag = false;
-
         private void Form1_MouseDown(object sender, MouseEventArgs e)
-
         {
-
-            flag = true;
-
+            mouseDownFlag = true;
         }
 
         private void Form1_MouseMove(object sender, MouseEventArgs e)
-
         {
-
             //Check if Flag is True ??? if so then make form position same
-
             //as Cursor position
-
-            if (flag == true)
-
+            if (mouseDownFlag == true)
             {
-
                 this.Location = Cursor.Position;
-
             }
-
         }
 
         private void Form1_MouseUp(object sender, MouseEventArgs e)
-
         {
-
-            flag = false;
-
+            mouseDownFlag = false;
         }
 
         private void CancelButton_Click(object sender, EventArgs e)
@@ -108,7 +94,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.LogoBox.Show();
             this.LogoText.Show();
             this.LogoutButton.Hide();
-            this.SideUpperPanel.Controls.Remove(_loginForm);
+            this.SideUpperPanel.Controls.Remove(_sideMenuForm);
             ShowLoginForm();
         }
 
@@ -210,8 +196,6 @@ namespace ClinicManagementSystem.Forms.MainForms
                 this.MainPanel.Controls.Add(form);
             }
             form.Show();
-            // dummy query to initialize connection
-            new Task(() => _ = _provider.GetService<Entities.ISystemContext>().Set<Entities.Models.ApplicationUser>().FirstOrDefault()).Start();
         }
 
         private void LoadMainForm(object sender, PageControllingButtonClickedArgs args)

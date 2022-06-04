@@ -17,6 +17,10 @@ namespace ClinicManagementSystem.Forms.MainForms
         public NewVisitForm()
         {
             InitializeComponent();
+            SearchPatientTextBox.KeyDown += (sender, args) => { // search on enter click
+                if (args.KeyCode == Keys.Enter || args.KeyCode == Keys.Return)
+                    SearchPatientButton_Click(sender, args);
+            };
             InitializeList();
         }
 

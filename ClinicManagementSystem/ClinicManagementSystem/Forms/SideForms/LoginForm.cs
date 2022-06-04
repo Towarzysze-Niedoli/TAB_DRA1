@@ -29,6 +29,7 @@ namespace ClinicManagementSystem.Forms.SideForms
             _authorizationService = _provider.GetService<IAuthorizationService>();
 
             InitializeComponent();
+            AcceptButton = loginButton;
         }
 
         private void loginButton_Click(object sender, EventArgs e)

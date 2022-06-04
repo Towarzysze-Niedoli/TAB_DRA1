@@ -51,7 +51,7 @@ namespace ClinicManagementSystem.Forms.SideForms
             // 
             this.passwordTextBox.Font = new System.Drawing.Font("Corbel", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.passwordTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(115)))), ((int)(((byte)(153)))));
-            this.passwordTextBox.Location = new System.Drawing.Point(22, 194);
+            this.passwordTextBox.Location = new System.Drawing.Point(22, 193);
             this.passwordTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.passwordTextBox.MaxLength = 32;
             this.passwordTextBox.Name = "passwordTextBox";
@@ -64,7 +64,7 @@ namespace ClinicManagementSystem.Forms.SideForms
             this.loginLabel.AutoSize = true;
             this.loginLabel.Font = new System.Drawing.Font("Corbel", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.loginLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(247)))), ((int)(((byte)(255)))));
-            this.loginLabel.Location = new System.Drawing.Point(22, 176);
+            this.loginLabel.Location = new System.Drawing.Point(22, 172);
             this.loginLabel.Name = "loginLabel";
             this.loginLabel.Size = new System.Drawing.Size(39, 17);
             this.loginLabel.TabIndex = 7;
@@ -92,7 +92,7 @@ namespace ClinicManagementSystem.Forms.SideForms
             // 
             this.loginTextBox.Font = new System.Drawing.Font("Corbel", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.loginTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(115)))), ((int)(((byte)(153)))));
-            this.loginTextBox.Location = new System.Drawing.Point(22, 150);
+            this.loginTextBox.Location = new System.Drawing.Point(22, 145);
             this.loginTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.loginTextBox.MaxLength = 32;
             this.loginTextBox.Name = "loginTextBox";

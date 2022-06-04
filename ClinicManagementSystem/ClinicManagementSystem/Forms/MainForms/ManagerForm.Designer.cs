@@ -53,7 +53,6 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.SearchUserTextBox = new System.Windows.Forms.TextBox();
             this.SearchUserButton = new System.Windows.Forms.Button();
             this.LoginLabel = new System.Windows.Forms.Label();
-            this.LoginTextBox = new System.Windows.Forms.TextBox();
             this.PasswordTextBox = new System.Windows.Forms.TextBox();
             this.UpdateButton = new System.Windows.Forms.Button();
             this.DeleteButton = new System.Windows.Forms.Button();
@@ -376,20 +375,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.LoginLabel.Name = "LoginLabel";
             this.LoginLabel.Size = new System.Drawing.Size(302, 31);
             this.LoginLabel.TabIndex = 25;
-            this.LoginLabel.Text = "Login";
-            // 
-            // LoginTextBox
-            // 
-            this.LoginTextBox.BackColor = System.Drawing.SystemColors.Window;
-            this.LoginTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.LoginTextBox.Font = new System.Drawing.Font("Corbel", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LoginTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(115)))), ((int)(((byte)(153)))));
-            this.LoginTextBox.Location = new System.Drawing.Point(624, 186);
-            this.LoginTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.LoginTextBox.Name = "LoginTextBox";
-            this.LoginTextBox.PlaceholderText = "User\'s Login";
-            this.LoginTextBox.Size = new System.Drawing.Size(179, 20);
-            this.LoginTextBox.TabIndex = 11;
+            this.LoginLabel.Text = "Password";
             // 
             // PasswordTextBox
             // 
@@ -397,7 +383,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.PasswordTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.PasswordTextBox.Font = new System.Drawing.Font("Corbel", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.PasswordTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(115)))), ((int)(((byte)(153)))));
-            this.PasswordTextBox.Location = new System.Drawing.Point(624, 228);
+            this.PasswordTextBox.Location = new System.Drawing.Point(624, 177);
             this.PasswordTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PasswordTextBox.Name = "PasswordTextBox";
             this.PasswordTextBox.PlaceholderText = "User\'s Password";
@@ -501,7 +487,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.ReceptionistRadioBtn.Enabled = false;
             this.ReceptionistRadioBtn.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.ReceptionistRadioBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(115)))), ((int)(((byte)(157)))));
-            this.ReceptionistRadioBtn.Location = new System.Drawing.Point(916, 204);
+            this.ReceptionistRadioBtn.Location = new System.Drawing.Point(916, 172);
             this.ReceptionistRadioBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ReceptionistRadioBtn.Name = "ReceptionistRadioBtn";
             this.ReceptionistRadioBtn.Size = new System.Drawing.Size(113, 25);
@@ -525,7 +511,6 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.Controls.Add(this.DeleteButton);
             this.Controls.Add(this.UpdateButton);
             this.Controls.Add(this.PasswordTextBox);
-            this.Controls.Add(this.LoginTextBox);
             this.Controls.Add(this.LoginLabel);
             this.Controls.Add(this.SearchUserButton);
             this.Controls.Add(this.SearchUserTextBox);
@@ -559,7 +544,6 @@ namespace ClinicManagementSystem.Forms.MainForms
         private System.Windows.Forms.TextBox UserSurnameTextBox;
         private System.Windows.Forms.Label UpperMainLabel;
         private System.Windows.Forms.Label LoginLabel;
-        private System.Windows.Forms.TextBox LoginTextBox;
         private System.Windows.Forms.TextBox PasswordTextBox;
         private System.Windows.Forms.Button UpdateButton;
         private System.Windows.Forms.Button DeleteButton;
