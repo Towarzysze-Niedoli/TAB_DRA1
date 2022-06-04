@@ -200,64 +200,52 @@ namespace ClinicManagementSystem.Forms.MainForms
 
         private void LoadMainForm(object sender, PageControllingButtonClickedArgs args)
         {
-            if (args.UserLevel == UserLevel.Manager)
+            switch (args.UserLevel)
             {
-                if (args.WindowType == MainFormType.ManagerLaboratory)
-                {
-                    ShowManagerLabForm();
-                }
-                else if (args.WindowType == MainFormType.ManagerDoctors)
-                {
-                    ShowManagerDoctorForm();
-                }
-                else if (args.WindowType == MainFormType.ManagerReceptionist)
-                {
-                    ShowReceptionistForm();
-                }
-                else
-                {
-                    ShowManagerPatientForm();
-                }
-            }
-            else if (args.UserLevel == UserLevel.Doctor)
-            {
-                if (args.WindowType == MainFormType.VisitMainForm)
-                {
-                    ShowVisitMainForm();
-                }
-                else if (args.WindowType == MainFormType.PerformVisit)
-                {
-                    ShowPerformVisitForm();
-                }
-            }
-            else if (args.UserLevel == UserLevel.HeadOfLab)
-            {
-                if (args.WindowType == MainFormType.Laboratory)
-                {
-                    ShowLaboratoryForm();
-                }
-            }
-            else if (args.UserLevel == UserLevel.Laborant)//these two are gonna need some work because we dont differentiate between form modes
-            {
-                if (args.WindowType == MainFormType.Laboratory)
-                {
-                    ShowLaboratoryForm();
-                }
-            }
-            else if(args.UserLevel==UserLevel.Receptionist)
-            {
-                if (args.WindowType == MainFormType.VisitMainForm)
-                {
-                    ShowVisitMainForm();
-                }
-                else if(args.WindowType == MainFormType.ManagerPatients)
-                {
-                    ShowManagerPatientForm();
-                }
-                else if(args.WindowType == MainFormType.NewVisit)
-                {
-                    ShowNewVisitForm();
-                }
+                case UserLevel.Manager:
+                    {
+                        if (args.WindowType == MainFormType.ManagerLaboratory)
+                            ShowManagerLabForm();
+                        else if (args.WindowType == MainFormType.ManagerDoctors)
+                            ShowManagerDoctorForm();
+                        else if (args.WindowType == MainFormType.ManagerReceptionist)
+                            ShowReceptionistForm();
+                        else
+                            ShowManagerPatientForm();
+                        break;
+                    }
+
+                case UserLevel.Doctor:
+                    {
+                        if (args.WindowType == MainFormType.VisitMainForm)
+                            ShowVisitMainForm();
+                        else if (args.WindowType == MainFormType.PerformVisit)
+                            ShowPerformVisitForm();
+                        break;
+                    }
+
+                case UserLevel.Laborant:
+                case UserLevel.HeadOfLab:
+                    {
+                        if (args.WindowType == MainFormType.Laboratory)
+                            ShowLaboratoryForm();
+                        break;
+                    }
+
+                case UserLevel.Receptionist:
+                    {
+                        if (args.WindowType == MainFormType.VisitMainForm)
+                            ShowVisitMainForm();
+                        else if (args.WindowType == MainFormType.ManagerPatients)
+                            ShowManagerPatientForm();
+                        else if (args.WindowType == MainFormType.NewVisit)
+                            ShowNewVisitForm();
+                        break;
+                    }
+
+                case UserLevel.Undetermined:
+                default:
+                    break;
             }
         }
         private void UnloadMainForm()
