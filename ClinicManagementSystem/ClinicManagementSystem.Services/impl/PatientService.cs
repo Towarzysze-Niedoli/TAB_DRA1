@@ -3,6 +3,7 @@ using ClinicManagementSystem.Entities.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Data.Entity;
 using System.Text;
 
 namespace ClinicManagementSystem.Services.impl
@@ -57,7 +58,7 @@ namespace ClinicManagementSystem.Services.impl
 
         public Patient GetPatientByName(string firstName, string lastName)
         {
-            List<Patient> patients = context.Patients.Where(p => p.FirstName.Equals(firstName) && p.LastName.Equals(lastName)).ToList();
+            List<Patient> patients = context.Patients.Include(p => p.Address).Where(p => p.FirstName.Equals(firstName) && p.LastName.Equals(lastName)).ToList();
             return patients.Count() != 0 ? patients.First() : null;
         }
 

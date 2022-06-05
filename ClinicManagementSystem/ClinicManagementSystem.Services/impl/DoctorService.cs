@@ -3,6 +3,8 @@ using ClinicManagementSystem.Entities.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Data.Entity;
+using System.Linq;
 
 namespace ClinicManagementSystem.Services.impl
 {
@@ -44,6 +46,12 @@ namespace ClinicManagementSystem.Services.impl
         public void UpdateDoctor(Doctor doctor)
         {
             context.Entry(doctor).State = System.Data.Entity.EntityState.Modified;
+        }
+
+        public Doctor GetDoctorByName(string firstName, string lastName)
+        {
+            List<Doctor> doctors = context.Doctors.Include(d => d.Address).Where(d => d.FirstName.Equals(firstName) && d.LastName.Equals(lastName)).ToList();
+            return doctors.Count() != 0 ? doctors.First() : null;
         }
 
         private bool disposed = false;

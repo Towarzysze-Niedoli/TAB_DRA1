@@ -4,6 +4,8 @@ using ClinicManagementSystem.Entities.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Data.Entity;
+using System.Linq;
 
 namespace ClinicManagementSystem.Services.impl
 {
@@ -48,6 +50,12 @@ namespace ClinicManagementSystem.Services.impl
         public void UpdateReceptionist(Receptionist receptionist, string password)
         {
             authorizationService.UpdatePerson(receptionist, password);
+        }
+
+        public Receptionist GetReceptionistByName(string firstName, string lastName)
+        {
+            List<Receptionist> receptionists = context.Receptionists.Include(r => r.Address).Where(r => r.FirstName.Equals(firstName) && r.LastName.Equals(lastName)).ToList();
+            return receptionists.Count() != 0 ? receptionists.First() : null;
         }
 
         private bool disposed = false;

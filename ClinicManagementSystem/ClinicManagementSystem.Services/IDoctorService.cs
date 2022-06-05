@@ -12,6 +12,7 @@ namespace ClinicManagementSystem.Services
         void InsertDoctor(Doctor doctor);
         void DeleteDoctor(int doctorId);
         void UpdateDoctor(Doctor doctor);
+        Doctor GetDoctorByName(string firstName, string lastName);
         void Save();
     }
 }

@@ -12,6 +12,7 @@ namespace ClinicManagementSystem.Services
         void InsertReceptionist(Receptionist receptionist, string password);
         void DeleteReceptionist(int receptionistId);
         void UpdateReceptionist(Receptionist receptionist, string password = null);
+        Receptionist GetReceptionistByName(string firstName, string lastName);
         void Save();
     }
 }
