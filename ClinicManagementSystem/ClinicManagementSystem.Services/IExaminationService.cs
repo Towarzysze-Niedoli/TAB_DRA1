@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ClinicManagementSystem.Services
 {
-    internal interface IExaminationService
+    internal interface IExaminationService: IDisposable
     {
         IEnumerable<Examination> GetExaminations();
         Examination GetExaminationByID(int examinationId);
