@@ -55,6 +55,12 @@ namespace ClinicManagementSystem.Services.impl
 
         }
 
+        public Patient GetPatientByName(string firstName, string lastName)
+        {
+            List<Patient> patients = context.Patients.Where(p => p.FirstName.Equals(firstName) && p.LastName.Equals(lastName)).ToList();
+            return patients.Count() != 0 ? patients.First() : null;
+        }
+
         private bool disposed = false;
 
         protected virtual void Dispose(bool disposing)

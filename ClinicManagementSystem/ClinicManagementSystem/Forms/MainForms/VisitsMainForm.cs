@@ -9,6 +9,8 @@ using ClinicManagementSystem.Forms.SideForms;
 using ClinicManagementSystem.Forms.EventArguments;
 using ClinicManagementSystem.Services;
 using ClinicManagementSystem.Forms.CustomElements;
+using ClinicManagementSystem.Entities.Models;
+using ClinicManagementSystem.Services.impl;
 
 namespace ClinicManagementSystem.Forms.MainForms
 {
@@ -22,8 +24,10 @@ namespace ClinicManagementSystem.Forms.MainForms
 
         private UserLevel _level;
         private IAppointmentService _service;
+        private IPatientService _patientService;
+        private IDoctorService _doctorService;
 
-        public VisitsMainForm(UserLevel level, IAppointmentService appointmentService)
+        public VisitsMainForm(UserLevel level, IAppointmentService appointmentService, IPatientService patientService, IDoctorService doctorService)
         {
             InitializeComponent();
             SearchPatientTextBox.KeyDown += (sender, args) => { // search on enter click
@@ -33,29 +37,35 @@ namespace ClinicManagementSystem.Forms.MainForms
 
             _level = level;
             _service = appointmentService;
+            _patientService = patientService;
+            _doctorService = doctorService;
             SetVisibility();
             _visitsListForm = new VisitsListForm();
 
             var appointments = _service.GetAppointments();
-            var elements = new List<ListElement>();
-            int index = 0;
-            foreach (var appointment in appointments)
-            {
-                string patientName = appointment.Patient != null ? appointment.Patient.FirstName + ' ' + appointment.Patient.LastName : "";
-                var el = new VisitListElement(index++, 
-                    patientName,
-                    $"{appointment.Doctor.FirstName} {appointment.Doctor.LastName}", 
-                    appointment.RegistrationDate.ToString());
-                elements.Add(el);
-            }
-            _visitsListForm.PopulateList(elements);
+            DisplayAppointments(appointments);
 
             _visitsListForm.ElementClicked += FillVisitTextFields;
             this.VisitsListPanel.Controls.Add(_visitsListForm);
 
-            _visitsListForm.Show();
         }
+        private void DisplayAppointments(IEnumerable<Appointment> appointments)
+        {
+            var elements = new List<ListElement>();
+            int index = 0;
+            foreach (Appointment appointment in appointments)
+            {
+                string patientName = appointment.Patient != null ? appointment.Patient.FirstName + ' ' + appointment.Patient.LastName : "";
+                var el = new VisitListElement(index++,
+                    patientName,
+                    $"{appointment.Doctor.FirstName} {appointment.Doctor.LastName}",
+                    appointment.RegistrationDate.ToString());
+                elements.Add(el);
+            }
+            _visitsListForm.PopulateList(elements);
+            _visitsListForm.Show();
 
+        }
         private void NewVisitButton_Click(object sender, EventArgs e)
         {
             ButtonClicked.Invoke(this, new PageControllingButtonClickedArgs(MainFormType.NewVisit, _level));
@@ -92,5 +102,21 @@ namespace ClinicManagementSystem.Forms.MainForms
                 this.PerformVisitButton.Hide();
             }
         }
+
+        private void SearchPatientButton_Click_1(object sender, EventArgs e)
+        {
+            string [] name = SearchPatientTextBox.Text.Split(' ');
+            if (name.Length > 1)
+            {
+                Patient searchedPatient = _patientService.GetPatientByName(name[0], name[1]);
+                var appointments = _service.GetAcceptedAppointmentsForPatient(searchedPatient);
+                DisplayAppointments(appointments);
+            }
+            else
+            {
+                // TODO something
+            }
+        }
+
     }
 }

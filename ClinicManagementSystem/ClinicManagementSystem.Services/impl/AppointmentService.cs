@@ -29,7 +29,7 @@ namespace ClinicManagementSystem.Services.impl
 
         public IEnumerable<Appointment> GetAcceptedAppointmentsForPatient(Patient patient)
         {
-            return context.Appointments.Where(a => a.Patient == patient).Where(a => a.AppointmentStatus == Entities.Enums.AppointmentStatus.Accepted);
+            return context.Appointments.ToList().Where(a => a.Patient == patient && a.AppointmentStatus == Entities.Enums.AppointmentStatus.Accepted).ToList();
         }
 
         public IEnumerable<Appointment> GetAppointmentsByCompletionDate(DateTime completionDate)

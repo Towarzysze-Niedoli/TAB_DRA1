@@ -118,7 +118,7 @@ namespace ClinicManagementSystem.Forms.MainForms
         private void ShowVisitMainForm()
         {
             UnloadMainForm();
-            _visitsMainForm = new VisitsMainForm(_level, _provider.GetService<IAppointmentService>());
+            _visitsMainForm = new VisitsMainForm(_level, _provider.GetService<IAppointmentService>(), _provider.GetService<IPatientService>(), _provider.GetService<IDoctorService>());
             _visitsMainForm.ButtonClicked += LoadMainForm;
             _activeMainForm = MainFormType.VisitMainForm;
             InitializeForm(_visitsMainForm, FormType.MainForm);

@@ -10,6 +10,7 @@ namespace ClinicManagementSystem.Services
         IEnumerable<Patient> GetPatients();
         Patient GetPatientByID(int patientId);
         Patient GetPatientByPersonalIdentityNumber(string personalIdentityNumber);
+        Patient GetPatientByName(string firstName, string lastName);
         void InsertPatient(Patient patient);
         void DeletePatient(int patientId);
         void UpdatePatient(Patient patient);
