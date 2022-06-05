@@ -2,6 +2,7 @@
 using ClinicManagementSystem.Entities.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 
@@ -39,7 +40,7 @@ namespace ClinicManagementSystem.Services.impl
 
         public IEnumerable<Appointment> GetAppointments()
         {
-            return context.Appointments;
+            return context.Appointments.Include(a => a.Patient).Include(a => a.Doctor);
         }
 
         public Appointment GetAppointmentByID(int appointmentId)
