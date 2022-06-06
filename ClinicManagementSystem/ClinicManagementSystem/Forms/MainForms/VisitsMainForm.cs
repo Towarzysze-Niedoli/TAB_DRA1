@@ -26,6 +26,7 @@ namespace ClinicManagementSystem.Forms.MainForms
         private IAppointmentService _service;
         private IPatientService _patientService;
         private IDoctorService _doctorService;
+        IEnumerable<Appointment> appointments;
 
         public VisitsMainForm(UserLevel level, IAppointmentService appointmentService, IPatientService patientService, IDoctorService doctorService)
         {
@@ -42,7 +43,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             SetVisibility();
             _visitsListForm = new VisitsListForm();
 
-            var appointments = _service.GetAppointments();
+            appointments = _service.GetAppointments();
             DisplayAppointments(appointments);
 
             _visitsListForm.ElementClicked += FillVisitTextFields;
@@ -59,7 +60,7 @@ namespace ClinicManagementSystem.Forms.MainForms
                 var el = new VisitListElement(index++,
                     patientName,
                     $"{appointment.Doctor.FirstName} {appointment.Doctor.LastName}",
-                    appointment.RegistrationDate.ToString());
+                    $"{appointment.RegistrationDate.Date.ToShortDateString()} {appointment.RegistrationDate.TimeOfDay.Hours.ToString() + ":" + appointment.RegistrationDate.TimeOfDay.Minutes.ToString()}");
                 elements.Add(el);
             }
             _visitsListForm.PopulateList(elements);
@@ -83,7 +84,25 @@ namespace ClinicManagementSystem.Forms.MainForms
 
         private void FillVisitTextFields(object sender, ListElementClickedArgs args)
         {
-            //@todo get info from model and put it into text fields
+            int index = 0;
+            foreach(var a in appointments)
+            {
+                if(args.Index == index)
+                {
+
+                    PatientNameTextBox.Text = a.Patient.FirstName;
+                    PatientSurnameTextBox.Text = a.Patient.LastName;
+                    DoctorNameTextBox.Text = a.Doctor.FirstName;
+                    DoctorSurnameTextBox.Text = a.Doctor.LastName;
+                    VisitDateTextBox.Text = a.RegistrationDate.Date.ToShortDateString();
+                    VisitTimeTextBox.Text = a.RegistrationDate.TimeOfDay.Hours.ToString() + ":" + a.RegistrationDate.TimeOfDay.Minutes.ToString();
+                    break;
+                }
+                else
+                {
+                    index++;
+                }
+            }
         }
 
         private void PerformVisitButton_Click(object sender, EventArgs e)
@@ -109,7 +128,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             if (name.Length > 1)
             {
                 Patient searchedPatient = _patientService.GetPatientByName(name[0], name[1]);
-                var appointments = _service.GetAcceptedAppointmentsForPatient(searchedPatient);
+                appointments = _service.GetAcceptedAppointmentsForPatient(searchedPatient);
                 DisplayAppointments(appointments);
             }
             else
