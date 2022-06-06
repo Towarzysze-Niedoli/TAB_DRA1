@@ -143,7 +143,7 @@ namespace ClinicManagementSystem.Forms.MainForms
         private void ShowNewVisitForm()
         {
             UnloadMainForm();
-            _newVisitForm = new NewVisitForm();
+            _newVisitForm = new NewVisitForm(_provider);
             _activeMainForm = MainFormType.NewVisit;
             InitializeForm(_newVisitForm, FormType.MainForm);
         }

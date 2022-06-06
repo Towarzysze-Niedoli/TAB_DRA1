@@ -7,6 +7,9 @@ using System.Text;
 using System.Windows.Forms;
 using ClinicManagementSystem.Forms.SideForms;
 using ClinicManagementSystem.Forms.EventArguments;
+using ClinicManagementSystem.Services;
+using Microsoft.Extensions.DependencyInjection;
+using ClinicManagementSystem.Entities.Models;
 
 namespace ClinicManagementSystem.Forms.MainForms
 {
@@ -14,14 +17,20 @@ namespace ClinicManagementSystem.Forms.MainForms
     {
         private ListForm _doctorsList;
         private PersonInfoForm _patientInfo;
-        public NewVisitForm()
+        private IPatientService _patientService;
+        private IAppointmentService _appointmentService;
+
+        public NewVisitForm(IServiceProvider serviceProvider)
         {
             InitializeComponent();
-            SearchPatientTextBox.KeyDown += (sender, args) => { // search on enter click
+            SearchPatientTextBox.KeyDown += (sender, args) =>
+            { // search on enter click
                 if (args.KeyCode == Keys.Enter || args.KeyCode == Keys.Return)
                     SearchPatientButton_Click(sender, args);
             };
             InitializeList();
+            _patientService = serviceProvider.GetService<IPatientService>();
+            _appointmentService = serviceProvider.GetService<IAppointmentService>();
         }
 
         void InitializeList()
@@ -34,12 +43,19 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.PatientPanel.Controls.Add(_patientInfo);
             
             _doctorsList.Show();
-            _patientInfo.Show();
+            //_patientInfo.Show();
         }
 
         private void SearchPatientButton_Click(object sender, EventArgs e)
         {
-
+            string[] name = SearchPatientTextBox.Text.Split(' ');
+            if(name.Length == 2)
+            {
+                Patient patient = _patientService.GetPatientByName(name[0], name[1]);
+                _patientInfo.InitializeValues(patient.PersonalIdentityNumber, patient.PhoneNumber, patient.Address.City, patient.Address.ZipCode, patient.Address.Street, patient.Address.HomeNumber, patient.Email ,DateTime.Now);
+                // TODO - last vist - change in model in patient or service method?
+                _patientInfo.Show();
+            }
         }
 
         private void NewVisitButton_Click(object sender, EventArgs e)
