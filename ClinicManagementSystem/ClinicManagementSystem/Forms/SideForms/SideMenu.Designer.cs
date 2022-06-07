@@ -38,17 +38,17 @@ namespace ClinicManagementSystem.Forms.SideForms
             // 
             // VisitsButton
             // 
-            this.VisitsButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(189)))), ((int)(((byte)(213)))), ((int)(((byte)(234)))));
+            this.VisitsButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(119)))), ((int)(((byte)(182)))));
             this.VisitsButton.Dock = System.Windows.Forms.DockStyle.Top;
             this.VisitsButton.FlatAppearance.BorderSize = 0;
-            this.VisitsButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(88)))), ((int)(((byte)(103)))));
-            this.VisitsButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(117)))), ((int)(((byte)(144)))));
+            this.VisitsButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(4)))), ((int)(((byte)(94)))));
+            this.VisitsButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(62)))), ((int)(((byte)(138)))));
             this.VisitsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.VisitsButton.Font = new System.Drawing.Font("Corbel", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.VisitsButton.Font = new System.Drawing.Font("Verdana", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.VisitsButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(247)))), ((int)(((byte)(255)))));
             this.VisitsButton.Location = new System.Drawing.Point(0, 0);
             this.VisitsButton.Name = "VisitsButton";
-            this.VisitsButton.Size = new System.Drawing.Size(300, 57);
+            this.VisitsButton.Size = new System.Drawing.Size(375, 71);
             this.VisitsButton.TabIndex = 0;
             this.VisitsButton.Text = "Visits";
             this.VisitsButton.UseVisualStyleBackColor = false;
@@ -56,17 +56,17 @@ namespace ClinicManagementSystem.Forms.SideForms
             // 
             // MedicsButton
             // 
-            this.MedicsButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(189)))), ((int)(((byte)(213)))), ((int)(((byte)(234)))));
+            this.MedicsButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(119)))), ((int)(((byte)(182)))));
             this.MedicsButton.Dock = System.Windows.Forms.DockStyle.Top;
             this.MedicsButton.FlatAppearance.BorderSize = 0;
-            this.MedicsButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(88)))), ((int)(((byte)(103)))));
-            this.MedicsButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(117)))), ((int)(((byte)(144)))));
+            this.MedicsButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(4)))), ((int)(((byte)(94)))));
+            this.MedicsButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(62)))), ((int)(((byte)(138)))));
             this.MedicsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.MedicsButton.Font = new System.Drawing.Font("Corbel", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.MedicsButton.Font = new System.Drawing.Font("Verdana", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.MedicsButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(247)))), ((int)(((byte)(255)))));
-            this.MedicsButton.Location = new System.Drawing.Point(0, 57);
+            this.MedicsButton.Location = new System.Drawing.Point(0, 71);
             this.MedicsButton.Name = "MedicsButton";
-            this.MedicsButton.Size = new System.Drawing.Size(300, 57);
+            this.MedicsButton.Size = new System.Drawing.Size(375, 71);
             this.MedicsButton.TabIndex = 1;
             this.MedicsButton.Text = "Doctors";
             this.MedicsButton.UseVisualStyleBackColor = false;
@@ -74,17 +74,17 @@ namespace ClinicManagementSystem.Forms.SideForms
             // 
             // PatiensButton
             // 
-            this.PatiensButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(189)))), ((int)(((byte)(213)))), ((int)(((byte)(234)))));
+            this.PatiensButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(119)))), ((int)(((byte)(182)))));
             this.PatiensButton.Dock = System.Windows.Forms.DockStyle.Top;
             this.PatiensButton.FlatAppearance.BorderSize = 0;
-            this.PatiensButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(88)))), ((int)(((byte)(103)))));
-            this.PatiensButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(117)))), ((int)(((byte)(144)))));
+            this.PatiensButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(4)))), ((int)(((byte)(94)))));
+            this.PatiensButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(62)))), ((int)(((byte)(138)))));
             this.PatiensButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.PatiensButton.Font = new System.Drawing.Font("Corbel", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.PatiensButton.Font = new System.Drawing.Font("Verdana", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.PatiensButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(247)))), ((int)(((byte)(255)))));
-            this.PatiensButton.Location = new System.Drawing.Point(0, 114);
+            this.PatiensButton.Location = new System.Drawing.Point(0, 142);
             this.PatiensButton.Name = "PatiensButton";
-            this.PatiensButton.Size = new System.Drawing.Size(300, 57);
+            this.PatiensButton.Size = new System.Drawing.Size(300, 71);
             this.PatiensButton.TabIndex = 2;
             this.PatiensButton.Text = "Patients";
             this.PatiensButton.UseVisualStyleBackColor = false;
@@ -92,17 +92,17 @@ namespace ClinicManagementSystem.Forms.SideForms
             // 
             // LaboratoryButton
             // 
-            this.LaboratoryButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(189)))), ((int)(((byte)(213)))), ((int)(((byte)(234)))));
+            this.LaboratoryButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(119)))), ((int)(((byte)(182)))));
             this.LaboratoryButton.Dock = System.Windows.Forms.DockStyle.Top;
             this.LaboratoryButton.FlatAppearance.BorderSize = 0;
-            this.LaboratoryButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(88)))), ((int)(((byte)(103)))));
-            this.LaboratoryButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(117)))), ((int)(((byte)(144)))));
+            this.LaboratoryButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(4)))), ((int)(((byte)(94)))));
+            this.LaboratoryButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(62)))), ((int)(((byte)(138)))));
             this.LaboratoryButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.LaboratoryButton.Font = new System.Drawing.Font("Corbel", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.LaboratoryButton.Font = new System.Drawing.Font("Verdana", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LaboratoryButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(247)))), ((int)(((byte)(255)))));
-            this.LaboratoryButton.Location = new System.Drawing.Point(0, 171);
+            this.LaboratoryButton.Location = new System.Drawing.Point(0, 213);
             this.LaboratoryButton.Name = "LaboratoryButton";
-            this.LaboratoryButton.Size = new System.Drawing.Size(300, 57);
+            this.LaboratoryButton.Size = new System.Drawing.Size(375, 71);
             this.LaboratoryButton.TabIndex = 3;
             this.LaboratoryButton.Text = "Laboratory";
             this.LaboratoryButton.UseVisualStyleBackColor = false;
@@ -110,17 +110,17 @@ namespace ClinicManagementSystem.Forms.SideForms
             // 
             // ManagementButton
             // 
-            this.ManagementButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(189)))), ((int)(((byte)(213)))), ((int)(((byte)(234)))));
+            this.ManagementButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(119)))), ((int)(((byte)(182)))));
             this.ManagementButton.Dock = System.Windows.Forms.DockStyle.Top;
             this.ManagementButton.FlatAppearance.BorderSize = 0;
-            this.ManagementButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(88)))), ((int)(((byte)(103)))));
-            this.ManagementButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(117)))), ((int)(((byte)(144)))));
+            this.ManagementButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(4)))), ((int)(((byte)(94)))));
+            this.ManagementButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(62)))), ((int)(((byte)(138)))));
             this.ManagementButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ManagementButton.Font = new System.Drawing.Font("Corbel", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.ManagementButton.Font = new System.Drawing.Font("Verdana", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.ManagementButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(247)))), ((int)(((byte)(255)))));
-            this.ManagementButton.Location = new System.Drawing.Point(0, 228);
+            this.ManagementButton.Location = new System.Drawing.Point(0, 284);
             this.ManagementButton.Name = "ManagementButton";
-            this.ManagementButton.Size = new System.Drawing.Size(300, 57);
+            this.ManagementButton.Size = new System.Drawing.Size(375, 71);
             this.ManagementButton.TabIndex = 4;
             this.ManagementButton.Text = "Receptionist";
             this.ManagementButton.UseVisualStyleBackColor = false;
@@ -130,8 +130,8 @@ namespace ClinicManagementSystem.Forms.SideForms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(189)))), ((int)(((byte)(213)))), ((int)(((byte)(234)))));
-            this.ClientSize = new System.Drawing.Size(300, 570);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(119)))), ((int)(((byte)(182)))));
+            this.ClientSize = new System.Drawing.Size(375, 713);
             this.Controls.Add(this.ManagementButton);
             this.Controls.Add(this.LaboratoryButton);
             this.Controls.Add(this.PatiensButton);

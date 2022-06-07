@@ -34,7 +34,7 @@ namespace ClinicManagementSystem.Forms.SideForms
             // 
             // VisitsListForm
             // 
-            this.ClientSize = new System.Drawing.Size(1513, 830);
+            this.ClientSize = new System.Drawing.Size(1138, 658);
             this.Name = "VisitsListForm";
             this.ResumeLayout(false);
 
