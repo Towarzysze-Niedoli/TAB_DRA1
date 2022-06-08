@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
@@ -175,7 +175,7 @@ namespace ClinicManagementSystem.Auth.Services
         {
             try
             {
-                return dbContext.ApplicationUsers.Where(userPredicate).Single();
+                return dbContext.ApplicationUsers.Single(userPredicate);
             }
             catch (InvalidOperationException ex)
             {

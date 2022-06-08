@@ -1,4 +1,4 @@
-using ClinicManagementSystem.Entities.Models;
+﻿using ClinicManagementSystem.Entities.Models;
 using ClinicManagementSystem.Auth.Exceptions;
 using System;
 using System.Collections.Generic;
@@ -17,6 +17,7 @@ namespace ClinicManagementSystem.Auth.Services
         /// <exception cref="ArgumentException">when given login is not a valid email address or phone number</exception>
         /// <exception cref="InvalidLoginException">when given login does not exists in database</exception>
         /// <exception cref="InvalidPasswordException">when password for user is invalid</exception>
+        ApplicationUser Authenticate(string emailOrPhone, string password);
 
         void UserLogout();
 
@@ -28,7 +29,7 @@ namespace ClinicManagementSystem.Auth.Services
         /// <param name="phoneNumber"></param>
         /// <param name="password"></param>
         /// <returns>added user</returns>
-        public ApplicationUser AddNewUser(string? email, string? phoneNumber, string password);
+        ApplicationUser AddNewUser(string? email, string? phoneNumber, string password);
 
         /// <summary>
         /// Only creates a new user and returns it, DOES NOT ADD IT TO THE DATABASE!
@@ -39,7 +40,7 @@ namespace ClinicManagementSystem.Auth.Services
         /// <param name="password"></param>
         /// <returns>created user</returns>
         /// <exception cref="InvalidLoginException">when given login does not exists in database</exception>
-        public ApplicationUser CreateNewUser(string? email, string? phoneNumber, string password);
+        ApplicationUser CreateNewUser(string? email, string? phoneNumber, string password);
 
         /// <summary>
         /// Changes password for given user.
@@ -48,7 +49,7 @@ namespace ClinicManagementSystem.Auth.Services
         /// <param name="newPassword"></param>
         /// <returns>user with changed password</returns>
         /// <exception cref="InvalidPasswordException">when password is identical to previous one</exception>
-        public ApplicationUser ChangePasswordForUser(ApplicationUser user, string newPassword);
+        ApplicationUser ChangePasswordForUser(ApplicationUser user, string newPassword);
 
         /// <summary>
         /// Changes password for given user.
@@ -59,7 +60,7 @@ namespace ClinicManagementSystem.Auth.Services
         /// <exception cref="InvalidPasswordException">when password is identical to previous one</exception>
         /// <exception cref="ArgumentException">when given login is not a valid email address or phone number</exception>
         /// <exception cref="InvalidLoginException">when given login does not exist in the database</exception>
-        public ApplicationUser ChangePasswordForUser(string emailOrPhone, string newPassword);
+        ApplicationUser ChangePasswordForUser(string emailOrPhone, string newPassword);
 
         /// <summary>
         /// Changes user's email address and/or phone number. 

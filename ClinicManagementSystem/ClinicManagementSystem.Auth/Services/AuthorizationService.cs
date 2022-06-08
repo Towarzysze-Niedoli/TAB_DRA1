@@ -1,3 +1,4 @@
+﻿using ClinicManagementSystem.Auth.Exceptions;
 using ClinicManagementSystem.Entities;
 using ClinicManagementSystem.Entities.Models;
 using System;
@@ -41,6 +42,8 @@ namespace ClinicManagementSystem.Auth.Services
             if (password == null)
                 throw new ArgumentNullException("password");
 
+            CheckAdminRole();
+
             ApplicationUser createdUser = authenticationService.CreateNewUser(person.Email, person.PhoneNumber, password);
 
             // link address if exists (EF creates a new entry by default)
@@ -66,6 +69,8 @@ namespace ClinicManagementSystem.Auth.Services
         {
             if (person == null)
                 throw new ArgumentNullException("person");
+            if (person.Email == null && person.PhoneNumber == null)
+                throw new ArgumentNullException("person.Email && person.PhoneNumber");
 
             T oldPerson = dbContext.Set<T>().Find(person.Id);
 
@@ -76,19 +81,21 @@ namespace ClinicManagementSystem.Auth.Services
             if (password != null)
                 authenticationService.ChangePasswordForUser(oldPerson.Email ?? oldPerson.PhoneNumber ?? "shouldNotHappen", password);
 
-            // link address if changed and exists (EF creates a new entry by default)
-            if (person.Address == null)
-                oldPerson.Address = null;
-            else if (person.Address != oldPerson.Address)
+            var entry = dbContext.Entry(oldPerson);
+            entry.CurrentValues.SetValues(person);
+
+            // link address if exists or create a new entry
+            if (person.Address != null)
             {
                 var addresses = dbContext.Addresses.Where(a => a.Street == person.Address.Street
                                                     && a.HomeNumber == person.Address.HomeNumber
                                                     && a.ZipCode == person.Address.ZipCode
                                                     && a.City == person.Address.City);
                 if (addresses.Count() == 1)
-                    person.Address = addresses.Single();
+                    entry.Entity.Address = addresses.Single();
+                else
+                    entry.Entity.Address = dbContext.Addresses.Add(person.Address);
             }
-            dbContext.Entry(oldPerson).CurrentValues.SetValues(person);
 
             dbContext.SaveChanges();
             transaction.Commit();
@@ -151,6 +158,11 @@ namespace ClinicManagementSystem.Auth.Services
             return null;
         }
 
+        private void CheckAdminRole()
+        {
+            if (!(currentlyLoggedPerson is Admin))
+                throw new PermissionException("You need to be an administrator to perform this action");
+        }
 
         private Func<PersonWithAccount, bool> GetPersonPredicate(string emailOrPhone)
         {
