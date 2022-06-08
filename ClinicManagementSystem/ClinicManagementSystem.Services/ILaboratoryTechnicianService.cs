@@ -5,13 +5,13 @@ using System.Text;
 
 namespace ClinicManagementSystem.Services
 {
-    public interface ILaboratoryTechnicianService : IDisposable
+    public interface ILaboratoryTechnicianService : IBaseService
     {
         IEnumerable<LaboratoryTechnician> GetLaboratoryTechnicians();
-        LaboratoryTechnician GetLaboratoryTechniciantByID(int LaboratoryTechnicianId);
-        void InsertLaboratoryTechnician(LaboratoryTechnician LaboratoryTechnician, string password);
-        void DeleteLaboratoryTechnician(int LaboratoryTechnicianId);
-        void UpdateLaboratoryTechnician(LaboratoryTechnician LaboratoryTechnician, string password = null);
-        void Save();
+        LaboratoryTechnician GetLaboratoryTechnicianByID(int laboratoryTechnicianId);
+        LaboratoryTechnician InsertLaboratoryTechnician(LaboratoryTechnician laboratoryTechnician, string password);
+        void UpdateLaboratoryTechnician(LaboratoryTechnician laboratoryTechnician, string password = null);
+        void DisableLaboratoryTechnicianAccount(int laboratoryTechnicianId);
+        void EnableLaboratoryTechnicianAccount(int laboratoryTechnicianId);
     }
 }

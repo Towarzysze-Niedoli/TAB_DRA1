@@ -9,23 +9,14 @@ using System.Linq;
 
 namespace ClinicManagementSystem.Services.impl
 {
-    public class ReceptionistService : IReceptionistService, IDisposable
+    public class ReceptionistService : BaseService, IReceptionistService
     {
-        private ISystemContext context;
-        private IAuthorizationService authorizationService;
+        private readonly IAuthorizationService authorizationService;
 
-        public ReceptionistService(IAuthorizationService service, ISystemContext context)
+        public ReceptionistService(IAuthorizationService service, ISystemContext context) : base(context)
         {
-            this.context = context;
             authorizationService = service;
         }
-
-        public void DeleteReceptionist(int receptionistId)
-        {
-            Receptionist receptionist = context.Receptionists.Find(receptionistId);
-            context.Receptionists.Remove(receptionist);
-        }
-
 
         public IEnumerable<Receptionist> GetReceptionists()
         {
@@ -37,19 +28,24 @@ namespace ClinicManagementSystem.Services.impl
             return context.Receptionists.Find(receptionistId);
         }
 
-        public void InsertReceptionist(Receptionist receptionist, string password)
+        public Receptionist InsertReceptionist(Receptionist receptionist, string password)
         {
-            authorizationService.AddPerson(receptionist, password);
-        }
-
-        public void Save()
-        {
-            context.SaveChanges();
+            return authorizationService.AddPerson(receptionist, password);
         }
 
         public void UpdateReceptionist(Receptionist receptionist, string password)
         {
             authorizationService.UpdatePerson(receptionist, password);
+        }
+
+        public void DisableReceptionistAccount(int receptionistId)
+        {
+            authorizationService.DisablePersonAccount<Receptionist>(receptionistId);
+        }
+
+        public void EnableReceptionistAccount(int receptionistId)
+        {
+            authorizationService.EnablePersonAccount<Receptionist>(receptionistId);
         }
 
         public Receptionist GetReceptionistByName(string firstName, string lastName)
@@ -58,24 +54,6 @@ namespace ClinicManagementSystem.Services.impl
             return receptionists.Count() != 0 ? receptionists.First() : null;
         }
 
-        private bool disposed = false;
-
-        protected virtual void Dispose(bool disposing)
-        {
-            if (!this.disposed)
-            {
-                if (disposing)
-                {
-                    context.Dispose();
-                }
-            }
-            this.disposed = true;
-        }
-
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
+        
     }
 }

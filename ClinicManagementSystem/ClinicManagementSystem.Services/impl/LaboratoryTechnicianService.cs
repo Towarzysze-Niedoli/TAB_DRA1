@@ -7,67 +7,42 @@ using System.Text;
 
 namespace ClinicManagementSystem.Services.impl
 {
-    public class LaboratoryTechnicianService: ILaboratoryTechnicianService, IDisposable
+    public class LaboratoryTechnicianService : BaseService, ILaboratoryTechnicianService
     {
-        private ISystemContext context;
-        private IAuthorizationService authorizationService;
-
-        public LaboratoryTechnicianService(IAuthorizationService service, ISystemContext context)
+        private readonly IAuthorizationService authorizationService;
+        
+        public LaboratoryTechnicianService(IAuthorizationService service, ISystemContext context) : base(context)
         {
-            this.context = context;
             authorizationService = service;
         }
-
-        public void DeleteLaboratoryTechnician(int LaboratoryTechnicianId)
-        {
-            LaboratoryTechnician laboratoryTechnician = context.LaboratoryTechnicians.Find(LaboratoryTechnicianId);
-            context.LaboratoryTechnicians.Remove(laboratoryTechnician);
-        }
-
 
         public IEnumerable<LaboratoryTechnician> GetLaboratoryTechnicians()
         {
             return context.LaboratoryTechnicians;
         }
 
-        public LaboratoryTechnician GetLaboratoryTechniciantByID(int LaboratoryTechnicianId)
+        public LaboratoryTechnician GetLaboratoryTechnicianByID(int laboratoryTechnicianId)
         {
-            return context.LaboratoryTechnicians.Find(LaboratoryTechnicianId);
+            return context.LaboratoryTechnicians.Find(laboratoryTechnicianId);
         }
 
-        public void InsertLaboratoryTechnician(LaboratoryTechnician LaboratoryTechnician, string password)
+        public LaboratoryTechnician InsertLaboratoryTechnician(LaboratoryTechnician laboratoryTechnician, string password)
         {
-            authorizationService.AddPerson(LaboratoryTechnician, password);
+            return authorizationService.AddPerson(laboratoryTechnician, password);
         }
 
-        public void Save()
+        public void UpdateLaboratoryTechnician(LaboratoryTechnician laboratoryTechnician, string password)
         {
-            context.SaveChanges();
+            authorizationService.UpdatePerson(laboratoryTechnician, password);
         }
 
-        public void UpdateLaboratoryTechnician(LaboratoryTechnician LaboratoryTechnician, string password)
+        public void DisableLaboratoryTechnicianAccount(int laboratoryTechnicianId)
         {
-            authorizationService.UpdatePerson(LaboratoryTechnician, password);
+            authorizationService.DisablePersonAccount<LaboratoryTechnician>(laboratoryTechnicianId);
         }
-
-        private bool disposed = false;
-
-        protected virtual void Dispose(bool disposing)
+        public void EnableLaboratoryTechnicianAccount(int laboratoryTechnicianId)
         {
-            if (!this.disposed)
-            {
-                if (disposing)
-                {
-                    context.Dispose();
-                }
-            }
-            this.disposed = true;
-        }
-
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
+            authorizationService.EnablePersonAccount<LaboratoryTechnician>(laboratoryTechnicianId);
         }
     }
 }

@@ -5,14 +5,14 @@ using System.Text;
 
 namespace ClinicManagementSystem.Services
 {
-    public interface IDoctorService : IDisposable
+    public interface IDoctorService : IBaseService
     {
         IEnumerable<Doctor> GetDoctors();
         Doctor GetDoctorByID(int doctorId);
-        void InsertDoctor(Doctor doctor);
-        void DeleteDoctor(int doctorId);
-        void UpdateDoctor(Doctor doctor);
+        Doctor InsertDoctor(Doctor doctor, string password);
+        void UpdateDoctor(Doctor doctor, string password = null);
+        void DisableDoctorAccount(int doctorId);
+        void EnableDoctorAccount(int doctorId);
         Doctor GetDoctorByName(string firstName, string lastName);
-        void Save();
     }
 }

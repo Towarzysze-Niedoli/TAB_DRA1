@@ -5,14 +5,14 @@ using System.Text;
 
 namespace ClinicManagementSystem.Services
 {
-    public interface IReceptionistService
+    public interface IReceptionistService : IBaseService
     {
         IEnumerable<Receptionist> GetReceptionists();
         Receptionist GetReceptionistByID(int receptionistId);
-        void InsertReceptionist(Receptionist receptionist, string password);
-        void DeleteReceptionist(int receptionistId);
+        Receptionist InsertReceptionist(Receptionist receptionist, string password);
         void UpdateReceptionist(Receptionist receptionist, string password = null);
+        void DisableReceptionistAccount(int receptionistId);
+        void EnableReceptionistAccount(int receptionistId);
         Receptionist GetReceptionistByName(string firstName, string lastName);
-        void Save();
     }
 }

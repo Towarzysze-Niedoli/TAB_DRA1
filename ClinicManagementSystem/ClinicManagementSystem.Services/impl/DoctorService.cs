@@ -5,22 +5,17 @@ using System.Collections.Generic;
 using System.Text;
 using System.Data.Entity;
 using System.Linq;
+using ClinicManagementSystem.Auth.Services;
 
 namespace ClinicManagementSystem.Services.impl
 {
-    public class DoctorService : IDoctorService, IDisposable
+    public class DoctorService : BaseService, IDoctorService
     {
-        private ISystemContext context;
+        private readonly IAuthorizationService authorizationService;
 
-        public DoctorService(ISystemContext context)
+        public DoctorService(IAuthorizationService service, ISystemContext context) : base(context)
         {
-            this.context = context;
-        }
-
-        public void DeleteDoctor(int doctorId)
-        {
-            Doctor doctor = context.Doctors.Find(doctorId);
-            context.Doctors.Remove(doctor);
+            authorizationService = service;
         }
 
         public IEnumerable<Doctor> GetDoctors()
@@ -32,46 +27,30 @@ namespace ClinicManagementSystem.Services.impl
         {
             return context.Doctors.Find(doctorId);
         }
-
-        public void InsertDoctor(Doctor doctor)
+        public Doctor InsertDoctor(Doctor doctor, string password)
         {
-            context.Doctors.Add(doctor);
+            return authorizationService.AddPerson(doctor, password);
         }
 
-        public void Save()
+        public void UpdateDoctor(Doctor doctor, string password)
         {
-            context.SaveChanges();
+            authorizationService.UpdatePerson(doctor, password);
         }
 
-        public void UpdateDoctor(Doctor doctor)
+        public void DisableDoctorAccount(int doctorId)
         {
-            context.Entry(doctor).State = System.Data.Entity.EntityState.Modified;
+            authorizationService.DisablePersonAccount<Doctor>(doctorId);
+        }
+
+        public void EnableDoctorAccount(int doctorId)
+        {
+            authorizationService.EnablePersonAccount<Doctor>(doctorId);
         }
 
         public Doctor GetDoctorByName(string firstName, string lastName)
         {
             List<Doctor> doctors = context.Doctors.Include(d => d.Address).Where(d => d.FirstName.Equals(firstName) && d.LastName.Equals(lastName)).ToList();
             return doctors.Count() != 0 ? doctors.First() : null;
-        }
-
-        private bool disposed = false;
-
-        protected virtual void Dispose(bool disposing)
-        {
-            if (!this.disposed)
-            {
-                if (disposing)
-                {
-                    context.Dispose();
-                }
-            }
-            this.disposed = true;
-        }
-
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
         }
     }
 }
