@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ClinicManagementSystem.Entities.Models
 {
-    public class Admin : Person
+    public class Admin : PersonWithAccount
     {
     }
 }

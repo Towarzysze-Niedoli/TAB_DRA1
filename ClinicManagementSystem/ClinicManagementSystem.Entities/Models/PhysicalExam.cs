@@ -10,7 +10,7 @@ namespace ClinicManagementSystem.Entities.Models
         [Key]
         public int Id { get; set; }
 
-        public string? Result { get; set; }
+        public string Result { get; set; }
 
         [Required]
         public Appointment Appointment { get; set; }

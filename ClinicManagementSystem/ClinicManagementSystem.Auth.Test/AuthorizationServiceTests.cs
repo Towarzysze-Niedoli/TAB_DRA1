@@ -1,4 +1,4 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ClinicManagementSystem.Auth;
 using ClinicManagementSystem.Auth.Services;
 using ClinicManagementSystem.Entities.Models;
@@ -122,7 +122,7 @@ namespace ClinicManagementSystem.Auth.Test
         }
 
 
-        public void AddUserTestHelper<T>(T[] people) where T : Person, new()
+        public void AddUserTestHelper<T>(T[] people) where T : PersonWithAccount, new()
         {
             if (people.Length != n)
                 throw new ArgumentException("people.Length != n");
@@ -181,7 +181,7 @@ namespace ClinicManagementSystem.Auth.Test
         }
 
 
-        public void IsPersonTestHelper<T>(T[] people) where T : Person, new()
+        public void IsPersonTestHelper<T>(T[] people) where T : PersonWithAccount, new()
         {
             if (people.Length != n)
                 throw new ArgumentException("people.Length != n");
@@ -239,7 +239,7 @@ namespace ClinicManagementSystem.Auth.Test
         }
 
 
-        private void UserToPersonTestHelper<T>(T[] people) where T : Person, new()
+        private void UserToPersonTestHelper<T>(T[] people) where T : PersonWithAccount, new()
         {
             RemoveEntries();
             for (int i = 0; i < n; i++)
@@ -253,7 +253,7 @@ namespace ClinicManagementSystem.Auth.Test
                         PhoneNumber = people[i].PhoneNumber,
                         Password = passwords[i]
                     };
-                    Person person = authorizationService.UserToPerson(user);
+                    PersonWithAccount person = authorizationService.UserToPerson(user);
                     Assert.IsNotNull(person);
                     Assert.AreEqual(people[i].FirstName, person.FirstName);
                     Assert.AreEqual(people[i].LastName, person.LastName);
@@ -299,7 +299,7 @@ namespace ClinicManagementSystem.Auth.Test
         }
 
 
-        public void UpdateUserTestHelper<T>(T[] people) where T : Person, new()
+        public void UpdateUserTestHelper<T>(T[] people) where T : PersonWithAccount, new()
         {
             if (people.Length != n)
                 throw new ArgumentException("people.Length != n");

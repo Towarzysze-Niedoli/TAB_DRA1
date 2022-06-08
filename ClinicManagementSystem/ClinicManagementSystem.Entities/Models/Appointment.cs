@@ -12,9 +12,9 @@ namespace ClinicManagementSystem.Entities.Models
         [Key]
         public int Id { get; set; }
 
-        public string? Description { get; set; }
+        public string Description { get; set; }
 
-        public string? Diagnosis { get; set; }
+        public string Diagnosis { get; set; }
 
         [Required]
         public AppointmentStatus AppointmentStatus { get; set; } = AppointmentStatus.Pending;
@@ -28,7 +28,7 @@ namespace ClinicManagementSystem.Entities.Models
         [Required]
         public Doctor Doctor { get; set; }
 
-        public Patient? Patient { get; set; }
+        public Patient Patient { get; set; }
 
         [InverseProperty("Appointment")] // explicit bidirectional mapping, default lazy loading
         public List<LaboratoryExam> LaboratoryExams { get; set; }

@@ -11,11 +11,11 @@ namespace ClinicManagementSystem.Entities.Models
         [Key]
         public int Id { get; set; }
 
-        public string? Result { get; set; }
+        public string Result { get; set; }
 
-        public string? DoctorComment { get; set; }
+        public string DoctorComment { get; set; }
 
-        public string? LaboratoryManagerComment { get; set; }
+        public string LaboratoryManagerComment { get; set; }
 
         [Required]
         public DateTime ReferralDate { get; set; }
@@ -39,8 +39,8 @@ namespace ClinicManagementSystem.Entities.Models
         [Required]
         public Examination Examination { get; set; }
 
-        public LaboratoryManager? LaboratoryManager { get; set; }
+        public LaboratoryManager LaboratoryManager { get; set; }
 
-        public LaboratoryTechnician? LaboratoryTechnician { get; set; }
+        public LaboratoryTechnician LaboratoryTechnician { get; set; }
     }
 }

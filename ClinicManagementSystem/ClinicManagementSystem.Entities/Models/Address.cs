@@ -21,7 +21,7 @@ namespace ClinicManagementSystem.Entities
 
         [Required]
         [RegularExpression(@"^[0-9]{2}-[0-9]{3}$")]
-        public string ZipCode { get; set; } // TODO zmienic na klase zipcode? ~PR
+        public string ZipCode { get; set; }
 
     }
 

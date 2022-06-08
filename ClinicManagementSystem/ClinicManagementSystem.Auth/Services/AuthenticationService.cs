@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
@@ -101,7 +101,7 @@ namespace ClinicManagementSystem.Auth.Services
         /// <param name="emailOrPhone"></param>
         /// <returns></returns>
         /// <exception cref="ArgumentException">when given string is not a valid email address or phone number</exception>
-        private (Func<ApplicationUser, bool> userPredicate, Func<Person, bool> personPredicate) GetPredicates(string emailOrPhone)
+        private (Func<ApplicationUser, bool> userPredicate, Func<PersonWithAccount, bool> personPredicate) GetPredicates(string emailOrPhone)
         {
             if (new EmailAddressAttribute().IsValid(emailOrPhone))
             {

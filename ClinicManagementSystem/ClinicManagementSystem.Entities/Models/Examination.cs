@@ -15,6 +15,6 @@ namespace ClinicManagementSystem.Entities.Models
         [Required]
         public ExaminationType ExamType { get; set; }
 
-        public string? ExaminationName;
+        public string ExaminationName;
     }
 }

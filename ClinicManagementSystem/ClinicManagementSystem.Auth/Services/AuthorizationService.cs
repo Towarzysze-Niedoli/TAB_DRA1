@@ -1,4 +1,4 @@
-﻿using ClinicManagementSystem.Entities;
+using ClinicManagementSystem.Entities;
 using ClinicManagementSystem.Entities.Models;
 using System;
 using System.Collections.Generic;
@@ -20,7 +20,7 @@ namespace ClinicManagementSystem.Auth.Services
             dbContext = systemContext;
         }
 
-        public T? IsType<T>(ApplicationUser user, Func<Person, bool>? personPredicate = null) where T : Person
+        public T? IsType<T>(ApplicationUser user, Func<PersonWithAccount, bool>? personPredicate = null) where T : PersonWithAccount
         {
             if (personPredicate == null)
                 personPredicate = GetPersonPredicate(user.Email ?? user.PhoneNumber ?? throw new ArgumentNullException("email && phoneNumber"));
@@ -31,7 +31,7 @@ namespace ClinicManagementSystem.Auth.Services
             return null;
         }
 
-        public T AddPerson<T>(T person, string password) where T : Person
+        public T AddPerson<T>(T person, string password) where T : PersonWithAccount
         {
             if (person == null)
                 throw new ArgumentNullException("person");
@@ -61,7 +61,7 @@ namespace ClinicManagementSystem.Auth.Services
             return addedPerson;
         }
 
-        public T UpdatePerson<T>(T person, string? password) where T : Person
+        public T UpdatePerson<T>(T person, string? password) where T : PersonWithAccount
         {
             if (person == null)
                 throw new ArgumentNullException("person");
@@ -94,11 +94,11 @@ namespace ClinicManagementSystem.Auth.Services
             return person;
         }
 
-        public Person? UserToPerson(ApplicationUser user)
+        public PersonWithAccount? UserToPerson(ApplicationUser user)
         {
             var personPredicate = GetPersonPredicate(user.Email ?? user.PhoneNumber ?? throw new ArgumentNullException("email && phoneNumber"));
 
-            Person? person = IsType<Admin>(user, personPredicate);
+            PersonWithAccount? person = IsType<Admin>(user, personPredicate);
             if (person != null)
                 return person;
             person = IsType<Doctor>(user, personPredicate);
@@ -116,7 +116,8 @@ namespace ClinicManagementSystem.Auth.Services
             return null;
         }
 
-        private Func<Person, bool> GetPersonPredicate(string emailOrPhone)
+
+        private Func<PersonWithAccount, bool> GetPersonPredicate(string emailOrPhone)
         {
             if (new EmailAddressAttribute().IsValid(emailOrPhone))
             {

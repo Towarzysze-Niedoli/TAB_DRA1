@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ClinicManagementSystem.Entities.Models
 {
-    public class LaboratoryTechnician : PersonWithAccount
+    public abstract class PersonWithAccount : Person
     {
     }
 }
