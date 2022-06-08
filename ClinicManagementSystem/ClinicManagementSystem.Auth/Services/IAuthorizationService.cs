@@ -1,4 +1,4 @@
-using ClinicManagementSystem.Entities.Models;
+﻿using ClinicManagementSystem.Entities.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -28,6 +28,9 @@ namespace ClinicManagementSystem.Auth.Services
         /// <exception cref="ArgumentNullException">when user does not have email address nor phone number, or one of the parameters is null</exception>
         T AddPerson<T>(T person, string password) where T : PersonWithAccount;
 
+        PersonWithAccount? UserLogin(ApplicationUser user);
+
+        void UserLogout();
 
         /// <summary>
         /// Searches a PersonWithAccount instance for given user.
@@ -46,5 +49,9 @@ namespace ClinicManagementSystem.Auth.Services
         /// <param name="password">null if no change</param>
         /// <returns></returns>
         T UpdatePerson<T>(T person, string? password = null) where T : PersonWithAccount;
+
+        ApplicationUser DisablePersonAccount<T>(int id) where T : PersonWithAccount;
+
+        ApplicationUser EnablePersonAccount<T>(int id) where T : PersonWithAccount;
     }
 }

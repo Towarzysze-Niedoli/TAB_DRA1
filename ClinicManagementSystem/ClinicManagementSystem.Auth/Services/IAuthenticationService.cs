@@ -1,4 +1,4 @@
-﻿using ClinicManagementSystem.Entities.Models;
+using ClinicManagementSystem.Entities.Models;
 using ClinicManagementSystem.Auth.Exceptions;
 using System;
 using System.Collections.Generic;
@@ -17,7 +17,8 @@ namespace ClinicManagementSystem.Auth.Services
         /// <exception cref="ArgumentException">when given login is not a valid email address or phone number</exception>
         /// <exception cref="InvalidLoginException">when given login does not exists in database</exception>
         /// <exception cref="InvalidPasswordException">when password for user is invalid</exception>
-        public ApplicationUser Authenticate(string emailOrPhone, string password);
+
+        void UserLogout();
 
         /// <summary>
         /// Creates new user and adds it to database.
@@ -67,7 +68,7 @@ namespace ClinicManagementSystem.Auth.Services
         /// <param name="newEmail"></param>
         /// <param name="newPhoneNumber"></param>
         /// <returns>user with changed data</returns>
-        public ApplicationUser ChangeUserData(ApplicationUser user, string? newEmail, string? newPhoneNumber);
+        ApplicationUser ChangeUserData(ApplicationUser user, string? newEmail, string? newPhoneNumber);
 
         /// <summary>
         /// Changes user's email address and/or phone number. 
@@ -76,6 +77,14 @@ namespace ClinicManagementSystem.Auth.Services
         /// <param name="newEmail"></param>
         /// <param name="newPhoneNumber"></param>
         /// <returns>user with changed data</returns>
-        public ApplicationUser ChangeUserData(string emailOrPhone, string? newEmail, string? newPhoneNumber);
+        ApplicationUser ChangeUserData(string emailOrPhone, string? newEmail, string? newPhoneNumber);
+
+        ApplicationUser DisableAccountWithEmail(string email);
+
+        ApplicationUser EnableAccountWithEmail(string email);
+
+        ApplicationUser DisableAccountWithPhoneNumber(string phone);
+
+        ApplicationUser EnableAccountWithPhoneNumber(string phone);
     }
 }

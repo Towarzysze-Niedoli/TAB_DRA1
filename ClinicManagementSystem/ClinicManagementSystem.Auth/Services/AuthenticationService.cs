@@ -14,6 +14,7 @@ namespace ClinicManagementSystem.Auth.Services
     {
         private readonly IPasswordHasher passwordHasher;
         private readonly ISystemContext dbContext;
+        private ApplicationUser? currentUser;
 
         public AuthenticationService(IPasswordHasher _passwordHasher, ISystemContext systemContext)
         {
@@ -27,10 +28,19 @@ namespace ClinicManagementSystem.Auth.Services
 
             ApplicationUser user = FindUser(emailOrPhone, userPredicate);
 
-            if (!passwordHasher.Verify(password, user.Password))
-                throw new InvalidPasswordException($"Invalid password for user with email address {user.Email}");
+            if (user.IsDisabled)
+                throw new AccountDisabledException($"Account disabled for user with login {emailOrPhone}");
 
+            if (!passwordHasher.Verify(password, user.Password))
+                throw new InvalidPasswordException($"Invalid password for user with login {emailOrPhone}");
+
+            currentUser = user;
             return user;
+        }
+
+        public void UserLogout()
+        {
+            currentUser = null;
         }
 
         public ApplicationUser AddNewUser(string? email, string? phoneNumber, string password)
@@ -94,6 +104,38 @@ namespace ClinicManagementSystem.Auth.Services
             return ChangeUserData(user, newEmail, newPhoneNumber);
         }
 
+        public ApplicationUser DisableAccountWithEmail(string email)
+        {
+            return SetAccountDisabled(email, true, true);
+        }
+
+        public ApplicationUser EnableAccountWithEmail(string email)
+        {
+            return SetAccountDisabled(email, true, false);
+        }
+
+        public ApplicationUser DisableAccountWithPhoneNumber(string phone)
+        {
+            return SetAccountDisabled(phone, false, true);
+        }
+
+        public ApplicationUser EnableAccountWithPhoneNumber(string phone)
+        {
+            return SetAccountDisabled(phone, false, false);
+        }
+
+        private ApplicationUser SetAccountDisabled(string emailOrPhone, bool isEmail, bool disabled)
+        {
+            ApplicationUser user;
+            if (isEmail)
+                user = dbContext.ApplicationUsers.Single(u => u.Email == emailOrPhone);
+            else
+                user = dbContext.ApplicationUsers.Single(u => u.PhoneNumber == emailOrPhone);
+
+            user.IsDisabled = disabled;
+            dbContext.SaveChanges();
+            return user;
+        }
 
         /// <summary>
         /// 

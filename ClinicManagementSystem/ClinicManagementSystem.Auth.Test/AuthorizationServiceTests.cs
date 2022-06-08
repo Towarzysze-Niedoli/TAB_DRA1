@@ -1,4 +1,4 @@
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ClinicManagementSystem.Auth;
 using ClinicManagementSystem.Auth.Services;
 using ClinicManagementSystem.Entities.Models;
@@ -14,13 +14,13 @@ namespace ClinicManagementSystem.Auth.Test
     {
         private static readonly ISystemContext dbContext = new SystemContext();
         private static readonly IAuthenticationService authenticationService = new AuthenticationService(new PasswordHasher(), dbContext);
-        readonly IAuthorizationService authorizationService = new AuthorizationService(authenticationService, dbContext);
+        static readonly IAuthorizationService authorizationService = new AuthorizationService(authenticationService, dbContext);
 
         const int n = 5;
         readonly static string[] firstnames = new string[n] { "Jan", "Jan", "Anna Maria", "Zażółćgęśląjaźń", "Jan" };
         readonly static string[] lastnames = new string[n] { "Kowalski", "Nowak", "Kowalska-Nowak", "Zażółćgęśląjaźń", "Nowak" };
         readonly static string[] emails = new string[n] { "email@email.com", "second@different.pl", "another@some.com.pl", null, null };
-        readonly static string[] phones = new string[n] { "123456789", "322427042", null, "+48258147369", null };
+        readonly static string[] phones = new string[n] { "123456798", "322427042", null, "+48258147369", null };
         readonly static string[] passwords = new string[n] { "TAB_DRA1", "qwerty 123", "G33DqSg@fgmU9CJK", "#6j@&@7gQWEzck8V", "T3*w8$ijtPA$Uzz2" };
         readonly static Address[] addresses = new Address[n] { 
             new Address()
@@ -51,6 +51,7 @@ namespace ClinicManagementSystem.Auth.Test
         [ClassInitialize]
         public static void InitializeClass(TestContext testContext)
         {
+            authorizationService.UserLogin(authenticationService.Authenticate("admin@system.com", "admin"));
             for (int i = 0; i < n; i++)
             {
                 admins[i] = new Admin()
@@ -135,7 +136,7 @@ namespace ClinicManagementSystem.Auth.Test
                 else
                 {
                     T addedPerson = authorizationService.AddPerson<T>(people[i], passwords[i]);
-                    T foundPerson = dbContext.Set<T>().Include("Address").Where(p => p.Id == addedPerson.Id).Single();
+                    T foundPerson = dbContext.Set<T>().Include("Address").Single(p => p.Id == addedPerson.Id);
                     Assert.AreEqual(firstnames[i], foundPerson.FirstName);
                     Assert.AreEqual(lastnames[i], foundPerson.LastName);
                     Assert.AreEqual(emails[i], foundPerson.Email);
@@ -310,19 +311,17 @@ namespace ClinicManagementSystem.Auth.Test
                 if (people[i].Email != null || people[i].PhoneNumber != null)
                 {
                     int id = authorizationService.AddPerson(people[i], passwords[i]).Id;
-                    T addedPerson = dbContext.Set<T>().AsNoTracking().Where(p => p.Id == id).Single();
 
+                    T addedPerson = dbContext.Set<T>().AsNoTracking().Single(p => p.Id == id);
                     string newEmail = $"changed{i}@email.com";
                     addedPerson.Email = newEmail;
                     string newFirstName = $"changed{(char)(65+i)}";
                     addedPerson.FirstName = newFirstName;
                     addedPerson.Address = addresses[i];
 
-                    T xyz = authorizationService.UpdatePerson(addedPerson);
-                    id = xyz.Id;
-                    T updatedPerson = dbContext.Set<T>().AsNoTracking().Where(p => p.Id == id).Single();
+                    authorizationService.UpdatePerson(addedPerson);
 
-                    T foundPerson = dbContext.Set<T>().Include("Address").Where(p => p.Id == id).Single();
+                    T foundPerson = dbContext.Set<T>().Include("Address").Single(p => p.Id == id);
                     Assert.AreEqual(newFirstName, foundPerson.FirstName);
                     Assert.AreEqual(lastnames[i], foundPerson.LastName);
                     Assert.AreEqual(newEmail, foundPerson.Email);
@@ -333,10 +332,13 @@ namespace ClinicManagementSystem.Auth.Test
                     }
                     Assert.AreEqual(dbContext.ApplicationUsers.Where(user => user.Email == newEmail).Count(), 1);
 
+                    T updatedPerson = dbContext.Set<T>().AsNoTracking().Single(p => p.Id == id);
                     string newPhoneNumber = $"000{i}{i}{i}000";
                     updatedPerson.PhoneNumber = newPhoneNumber;
                     string newPassword = $"some{i}Password";
+
                     T updatedAgainPerson = authorizationService.UpdatePerson(updatedPerson, newPassword);
+
                     Assert.AreEqual(dbContext.ApplicationUsers.Where(user => user.PhoneNumber == newPhoneNumber).Count(), 1);
                     Assert.IsNotNull(authenticationService.Authenticate(updatedAgainPerson.Email, newPassword));
                     Assert.IsNotNull(authenticationService.Authenticate(updatedAgainPerson.PhoneNumber, newPassword));

@@ -13,6 +13,7 @@ namespace ClinicManagementSystem.Auth.Services
     {
         private readonly IAuthenticationService authenticationService;
         private readonly ISystemContext dbContext;
+        private PersonWithAccount? currentlyLoggedPerson;
 
         public AuthorizationService(IAuthenticationService _authenticationService, ISystemContext systemContext)
         {
@@ -92,6 +93,40 @@ namespace ClinicManagementSystem.Auth.Services
             dbContext.SaveChanges();
             transaction.Commit();
             return person;
+        }
+
+        public ApplicationUser DisablePersonAccount<T>(int id) where T : PersonWithAccount
+        {
+            return SetAccountDisabled<T>(id, true);
+        }
+
+        public ApplicationUser EnablePersonAccount<T>(int id) where T : PersonWithAccount
+        {
+            return SetAccountDisabled<T>(id, false);
+        }
+
+        private ApplicationUser SetAccountDisabled<T>(int personId, bool disabled) where T : PersonWithAccount
+        {
+            T person = dbContext.Set<T>().Find(personId);
+            if (person.Email != null)
+                return disabled ? authenticationService.DisableAccountWithEmail(person.Email) : authenticationService.EnableAccountWithEmail(person.Email);
+            else if (person.PhoneNumber != null)
+                return disabled ? authenticationService.DisableAccountWithPhoneNumber(person.PhoneNumber) : authenticationService.EnableAccountWithPhoneNumber(person.PhoneNumber);
+            else
+                throw new InvalidOperationException("person.Email == null && person.PhoneNumber == null");
+
+        }
+
+        public PersonWithAccount? UserLogin(ApplicationUser user)
+        {
+            currentlyLoggedPerson = UserToPerson(user);
+            return currentlyLoggedPerson;
+        }
+
+        public void UserLogout()
+        {
+            authenticationService.UserLogout();
+            currentlyLoggedPerson = null;
         }
 
         public PersonWithAccount? UserToPerson(ApplicationUser user)

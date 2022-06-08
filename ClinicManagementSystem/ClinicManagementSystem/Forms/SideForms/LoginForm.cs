@@ -55,7 +55,7 @@ namespace ClinicManagementSystem.Forms.SideForms
                 return;
             }
 
-            Person person = _authorizationService.UserToPerson(user);
+            PersonWithAccount person = _authorizationService.UserLogin(user);
             if (person is null)
             {
                 MessageBox.Show("Your account is not linked with any role. Please contact system administrator", "Role not found", MessageBoxButtons.OK);

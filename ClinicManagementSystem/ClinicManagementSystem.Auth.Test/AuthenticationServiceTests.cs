@@ -73,6 +73,21 @@ namespace ClinicManagementSystem.Auth.Test
                         Assert.AreEqual(createdUser.Id, authenticationService.Authenticate(emails[i], passwords[i]).Id);
                     if (phones[i] != null)
                         Assert.AreEqual(createdUser.Id, authenticationService.Authenticate(phones[i], passwords[i]).Id);
+
+                    if (emails[i] != null)
+                    {
+                        Assert.IsNotNull(authenticationService.DisableAccountWithEmail(emails[i]));
+                        Assert.ThrowsException<AccountDisabledException>(() => authenticationService.Authenticate(emails[i], passwords[i]));
+                        Assert.IsNotNull(authenticationService.EnableAccountWithEmail(emails[i]));
+                        Assert.AreEqual(createdUser.Id, authenticationService.Authenticate(emails[i], passwords[i]).Id);
+                    }
+                    if (phones[i] != null)
+                    {
+                        Assert.IsNotNull(authenticationService.DisableAccountWithPhoneNumber(phones[i]));
+                        Assert.ThrowsException<AccountDisabledException>(() => authenticationService.Authenticate(phones[i], passwords[i]));
+                        Assert.IsNotNull(authenticationService.EnableAccountWithPhoneNumber(phones[i]));
+                        Assert.AreEqual(createdUser.Id, authenticationService.Authenticate(phones[i], passwords[i]).Id);
+                    }
                 }
             }
         }

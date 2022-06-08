@@ -12,6 +12,7 @@ using ClinicManagementSystem.Forms.MainForms;
 using ClinicManagementSystem.Forms.EventArguments;
 using Microsoft.Extensions.DependencyInjection;
 using ClinicManagementSystem.Services;
+using ClinicManagementSystem.Auth.Services;
 
 namespace ClinicManagementSystem.Forms.MainForms
 {
@@ -84,6 +85,7 @@ namespace ClinicManagementSystem.Forms.MainForms
 
         private void LogoutButton_Click(object sender, EventArgs e)
         {
+            _provider.GetService<IAuthorizationService>().UserLogout();
             UnloadMainForm();
             _activeMainForm = MainFormType.Main;
             if(_sideMenuForm!=null)
