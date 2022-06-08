@@ -36,13 +36,13 @@ namespace ClinicManagementSystem.Forms.SideForms
             // 
             // SearchTextBox
             // 
-            this.SearchTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.SearchTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.SearchTextBox.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.SearchTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(119)))), ((int)(((byte)(182)))));
             this.SearchTextBox.Location = new System.Drawing.Point(12, 21);
             this.SearchTextBox.MaxLength = 20;
             this.SearchTextBox.Name = "SearchTextBox";
-            this.SearchTextBox.Size = new System.Drawing.Size(506, 20);
+            this.SearchTextBox.Size = new System.Drawing.Size(506, 27);
             this.SearchTextBox.TabIndex = 2;
             // 
             // SearchButton

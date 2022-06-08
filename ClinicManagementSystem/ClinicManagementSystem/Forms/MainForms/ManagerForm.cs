@@ -19,6 +19,12 @@ namespace ClinicManagementSystem.Forms.MainForms
             ShowCorrectElements();
         }
 
+        private void HidePesel()
+        {
+            PESELTextBox.Hide();
+            labelPesel.Hide();
+        }
+
         private void HideBtns()
         {
             UpdateButton.Hide();
@@ -47,6 +53,7 @@ namespace ClinicManagementSystem.Forms.MainForms
 
         private void Receptionist()
         {
+            HidePesel();
             HideForLab();
             HideForDoctor();
             HideBtns();
@@ -55,8 +62,8 @@ namespace ClinicManagementSystem.Forms.MainForms
 
         private void Doctor()
         {
-            this.PESELTextBox.Text = "Licence Number";
-            this.label1.Text = "Licence Number";
+            this.PESELTextBox.PlaceholderText = "Licence Number";
+            this.labelPesel.Text = "Licence Number";
             HideForDoctor();
             HideBtns();
             SetUserCategories("Doctor");
@@ -64,6 +71,7 @@ namespace ClinicManagementSystem.Forms.MainForms
 
         private void Lab()
         {
+            HidePesel();
             HideForLab();
             HideBtns();
             SetUserCategories("Lab Worker");

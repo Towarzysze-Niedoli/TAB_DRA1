@@ -46,6 +46,7 @@ namespace ClinicManagementSystem.Forms.SideForms
             // 
             // TestResults
             // 
+            this.TestResults.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TestResults.Location = new System.Drawing.Point(10, 60);
             this.TestResults.Multiline = true;
             this.TestResults.Name = "TestResults";

@@ -41,7 +41,7 @@ namespace ClinicManagementSystem.Forms.SideForms
             this.passwordLabel.AutoSize = true;
             this.passwordLabel.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.passwordLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(247)))), ((int)(((byte)(255)))));
-            this.passwordLabel.Location = new System.Drawing.Point(46, 259);
+            this.passwordLabel.Location = new System.Drawing.Point(33, 259);
             this.passwordLabel.Name = "passwordLabel";
             this.passwordLabel.Size = new System.Drawing.Size(100, 23);
             this.passwordLabel.TabIndex = 9;
@@ -49,14 +49,15 @@ namespace ClinicManagementSystem.Forms.SideForms
             // 
             // passwordTextBox
             // 
+            this.passwordTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.passwordTextBox.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.passwordTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(115)))), ((int)(((byte)(153)))));
-            this.passwordTextBox.Location = new System.Drawing.Point(46, 284);
+            this.passwordTextBox.Location = new System.Drawing.Point(33, 284);
             this.passwordTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.passwordTextBox.MaxLength = 32;
             this.passwordTextBox.Name = "passwordTextBox";
             this.passwordTextBox.PasswordChar = '*';
-            this.passwordTextBox.Size = new System.Drawing.Size(219, 31);
+            this.passwordTextBox.Size = new System.Drawing.Size(256, 31);
             this.passwordTextBox.TabIndex = 1;
             // 
             // loginLabel
@@ -64,7 +65,7 @@ namespace ClinicManagementSystem.Forms.SideForms
             this.loginLabel.AutoSize = true;
             this.loginLabel.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.loginLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(247)))), ((int)(((byte)(255)))));
-            this.loginLabel.Location = new System.Drawing.Point(46, 189);
+            this.loginLabel.Location = new System.Drawing.Point(33, 189);
             this.loginLabel.Name = "loginLabel";
             this.loginLabel.Size = new System.Drawing.Size(63, 23);
             this.loginLabel.TabIndex = 7;
@@ -90,13 +91,14 @@ namespace ClinicManagementSystem.Forms.SideForms
             // 
             // loginTextBox
             // 
+            this.loginTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.loginTextBox.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.loginTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(115)))), ((int)(((byte)(153)))));
-            this.loginTextBox.Location = new System.Drawing.Point(46, 214);
+            this.loginTextBox.Location = new System.Drawing.Point(33, 214);
             this.loginTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.loginTextBox.MaxLength = 32;
             this.loginTextBox.Name = "loginTextBox";
-            this.loginTextBox.Size = new System.Drawing.Size(219, 31);
+            this.loginTextBox.Size = new System.Drawing.Size(256, 31);
             this.loginTextBox.TabIndex = 0;
             // 
             // LoginForm

@@ -66,7 +66,7 @@
             // 
             // LabManagerComboBox
             // 
-            this.LabManagerComboBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.LabManagerComboBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.LabManagerComboBox.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LabManagerComboBox.Location = new System.Drawing.Point(818, 553);
             this.LabManagerComboBox.Multiline = true;

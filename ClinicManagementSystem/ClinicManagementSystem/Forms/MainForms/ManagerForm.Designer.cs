@@ -38,7 +38,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.labelPesel = new System.Windows.Forms.Label();
             this.EMailTextBox = new System.Windows.Forms.TextBox();
             this.NumberTextBox = new System.Windows.Forms.TextBox();
             this.StreetTextBox = new System.Windows.Forms.TextBox();
@@ -75,7 +75,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.PatientPanel.Controls.Add(this.label4);
             this.PatientPanel.Controls.Add(this.label3);
             this.PatientPanel.Controls.Add(this.label2);
-            this.PatientPanel.Controls.Add(this.label1);
+            this.PatientPanel.Controls.Add(this.labelPesel);
             this.PatientPanel.Controls.Add(this.EMailTextBox);
             this.PatientPanel.Controls.Add(this.NumberTextBox);
             this.PatientPanel.Controls.Add(this.StreetTextBox);
@@ -97,7 +97,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(247)))), ((int)(((byte)(255)))));
-            this.label9.Location = new System.Drawing.Point(43, 451);
+            this.label9.Location = new System.Drawing.Point(41, 412);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(72, 23);
             this.label9.TabIndex = 25;
@@ -108,7 +108,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(247)))), ((int)(((byte)(255)))));
-            this.label8.Location = new System.Drawing.Point(359, 378);
+            this.label8.Location = new System.Drawing.Point(350, 409);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(85, 23);
             this.label8.TabIndex = 24;
@@ -119,7 +119,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(247)))), ((int)(((byte)(255)))));
-            this.label7.Location = new System.Drawing.Point(43, 380);
+            this.label7.Location = new System.Drawing.Point(41, 341);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(67, 23);
             this.label7.TabIndex = 23;
@@ -130,7 +130,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(247)))), ((int)(((byte)(255)))));
-            this.label6.Location = new System.Drawing.Point(359, 307);
+            this.label6.Location = new System.Drawing.Point(350, 338);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(97, 23);
             this.label6.TabIndex = 22;
@@ -141,7 +141,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(247)))), ((int)(((byte)(255)))));
-            this.label5.Location = new System.Drawing.Point(43, 309);
+            this.label5.Location = new System.Drawing.Point(41, 270);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(47, 23);
             this.label5.TabIndex = 21;
@@ -152,7 +152,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(247)))), ((int)(((byte)(255)))));
-            this.label4.Location = new System.Drawing.Point(359, 237);
+            this.label4.Location = new System.Drawing.Point(350, 268);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(110, 23);
             this.label4.TabIndex = 20;
@@ -163,7 +163,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(247)))), ((int)(((byte)(255)))));
-            this.label3.Location = new System.Drawing.Point(43, 239);
+            this.label3.Location = new System.Drawing.Point(41, 200);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(113, 23);
             this.label3.TabIndex = 19;
@@ -174,125 +174,125 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(247)))), ((int)(((byte)(255)))));
-            this.label2.Location = new System.Drawing.Point(359, 171);
+            this.label2.Location = new System.Drawing.Point(350, 202);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(68, 23);
             this.label2.TabIndex = 18;
             this.label2.Text = "Phone";
             // 
-            // label1
+            // labelPesel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(247)))), ((int)(((byte)(255)))));
-            this.label1.Location = new System.Drawing.Point(43, 173);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(69, 23);
-            this.label1.TabIndex = 17;
-            this.label1.Text = "PESEL";
+            this.labelPesel.AutoSize = true;
+            this.labelPesel.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelPesel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(247)))), ((int)(((byte)(255)))));
+            this.labelPesel.Location = new System.Drawing.Point(41, 134);
+            this.labelPesel.Name = "labelPesel";
+            this.labelPesel.Size = new System.Drawing.Size(69, 23);
+            this.labelPesel.TabIndex = 17;
+            this.labelPesel.Text = "PESEL";
             // 
             // EMailTextBox
             // 
             this.EMailTextBox.BackColor = System.Drawing.SystemColors.Window;
-            this.EMailTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.EMailTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.EMailTextBox.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.EMailTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(119)))), ((int)(((byte)(182)))));
-            this.EMailTextBox.Location = new System.Drawing.Point(43, 474);
+            this.EMailTextBox.Location = new System.Drawing.Point(41, 435);
             this.EMailTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.EMailTextBox.Name = "EMailTextBox";
             this.EMailTextBox.PlaceholderText = "E-mail";
-            this.EMailTextBox.Size = new System.Drawing.Size(224, 20);
+            this.EMailTextBox.Size = new System.Drawing.Size(224, 27);
             this.EMailTextBox.TabIndex = 10;
             // 
             // NumberTextBox
             // 
             this.NumberTextBox.BackColor = System.Drawing.SystemColors.Window;
-            this.NumberTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.NumberTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.NumberTextBox.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.NumberTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(119)))), ((int)(((byte)(182)))));
-            this.NumberTextBox.Location = new System.Drawing.Point(359, 403);
+            this.NumberTextBox.Location = new System.Drawing.Point(350, 434);
             this.NumberTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.NumberTextBox.Name = "NumberTextBox";
             this.NumberTextBox.PlaceholderText = "Number";
-            this.NumberTextBox.Size = new System.Drawing.Size(224, 20);
+            this.NumberTextBox.Size = new System.Drawing.Size(224, 27);
             this.NumberTextBox.TabIndex = 9;
             // 
             // StreetTextBox
             // 
             this.StreetTextBox.BackColor = System.Drawing.SystemColors.Window;
-            this.StreetTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.StreetTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.StreetTextBox.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.StreetTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(119)))), ((int)(((byte)(182)))));
-            this.StreetTextBox.Location = new System.Drawing.Point(43, 403);
+            this.StreetTextBox.Location = new System.Drawing.Point(41, 364);
             this.StreetTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.StreetTextBox.Name = "StreetTextBox";
             this.StreetTextBox.PlaceholderText = "Street";
-            this.StreetTextBox.Size = new System.Drawing.Size(224, 20);
+            this.StreetTextBox.Size = new System.Drawing.Size(224, 27);
             this.StreetTextBox.TabIndex = 8;
             // 
             // ZIPCodeTextBox
             // 
             this.ZIPCodeTextBox.BackColor = System.Drawing.SystemColors.Window;
-            this.ZIPCodeTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.ZIPCodeTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.ZIPCodeTextBox.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.ZIPCodeTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(119)))), ((int)(((byte)(182)))));
-            this.ZIPCodeTextBox.Location = new System.Drawing.Point(359, 332);
+            this.ZIPCodeTextBox.Location = new System.Drawing.Point(350, 363);
             this.ZIPCodeTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ZIPCodeTextBox.Name = "ZIPCodeTextBox";
             this.ZIPCodeTextBox.PlaceholderText = "ZIP Code";
-            this.ZIPCodeTextBox.Size = new System.Drawing.Size(224, 20);
+            this.ZIPCodeTextBox.Size = new System.Drawing.Size(224, 27);
             this.ZIPCodeTextBox.TabIndex = 7;
             // 
             // CityTextBox
             // 
             this.CityTextBox.BackColor = System.Drawing.SystemColors.Window;
-            this.CityTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.CityTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.CityTextBox.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.CityTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(119)))), ((int)(((byte)(182)))));
-            this.CityTextBox.Location = new System.Drawing.Point(43, 332);
+            this.CityTextBox.Location = new System.Drawing.Point(41, 293);
             this.CityTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.CityTextBox.Name = "CityTextBox";
             this.CityTextBox.PlaceholderText = "City";
-            this.CityTextBox.Size = new System.Drawing.Size(224, 20);
+            this.CityTextBox.Size = new System.Drawing.Size(224, 27);
             this.CityTextBox.TabIndex = 6;
             // 
             // PhoneTextBox
             // 
             this.PhoneTextBox.BackColor = System.Drawing.SystemColors.Window;
-            this.PhoneTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.PhoneTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.PhoneTextBox.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.PhoneTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(119)))), ((int)(((byte)(182)))));
-            this.PhoneTextBox.Location = new System.Drawing.Point(359, 196);
+            this.PhoneTextBox.Location = new System.Drawing.Point(350, 227);
             this.PhoneTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PhoneTextBox.Name = "PhoneTextBox";
             this.PhoneTextBox.PlaceholderText = "Phone";
-            this.PhoneTextBox.Size = new System.Drawing.Size(224, 20);
+            this.PhoneTextBox.Size = new System.Drawing.Size(224, 27);
             this.PhoneTextBox.TabIndex = 3;
             // 
             // PESELTextBox
             // 
             this.PESELTextBox.BackColor = System.Drawing.SystemColors.Window;
-            this.PESELTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.PESELTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.PESELTextBox.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.PESELTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(119)))), ((int)(((byte)(182)))));
-            this.PESELTextBox.Location = new System.Drawing.Point(43, 196);
+            this.PESELTextBox.Location = new System.Drawing.Point(41, 157);
             this.PESELTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PESELTextBox.Name = "PESELTextBox";
             this.PESELTextBox.PlaceholderText = "PESEL";
-            this.PESELTextBox.Size = new System.Drawing.Size(224, 20);
+            this.PESELTextBox.Size = new System.Drawing.Size(224, 27);
             this.PESELTextBox.TabIndex = 2;
             // 
             // UserSurnameTextBox
             // 
             this.UserSurnameTextBox.BackColor = System.Drawing.SystemColors.Window;
-            this.UserSurnameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.UserSurnameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.UserSurnameTextBox.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.UserSurnameTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(119)))), ((int)(((byte)(182)))));
-            this.UserSurnameTextBox.Location = new System.Drawing.Point(359, 262);
+            this.UserSurnameTextBox.Location = new System.Drawing.Point(350, 293);
             this.UserSurnameTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.UserSurnameTextBox.Name = "UserSurnameTextBox";
             this.UserSurnameTextBox.PlaceholderText = "Last Name";
-            this.UserSurnameTextBox.Size = new System.Drawing.Size(224, 20);
+            this.UserSurnameTextBox.Size = new System.Drawing.Size(224, 27);
             this.UserSurnameTextBox.TabIndex = 5;
             // 
             // UpperMainLabel
@@ -309,14 +309,14 @@ namespace ClinicManagementSystem.Forms.MainForms
             // UserNameTextBox
             // 
             this.UserNameTextBox.BackColor = System.Drawing.SystemColors.Window;
-            this.UserNameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.UserNameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.UserNameTextBox.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.UserNameTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(119)))), ((int)(((byte)(182)))));
-            this.UserNameTextBox.Location = new System.Drawing.Point(43, 262);
+            this.UserNameTextBox.Location = new System.Drawing.Point(41, 223);
             this.UserNameTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.UserNameTextBox.Name = "UserNameTextBox";
             this.UserNameTextBox.PlaceholderText = "First Name";
-            this.UserNameTextBox.Size = new System.Drawing.Size(224, 20);
+            this.UserNameTextBox.Size = new System.Drawing.Size(224, 27);
             this.UserNameTextBox.TabIndex = 4;
             // 
             // AddButton
@@ -339,7 +339,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             // 
             // SearchUserTextBox
             // 
-            this.SearchUserTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.SearchUserTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.SearchUserTextBox.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.SearchUserTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(119)))), ((int)(((byte)(182)))));
             this.SearchUserTextBox.Location = new System.Drawing.Point(45, 114);
@@ -347,7 +347,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.SearchUserTextBox.MaxLength = 20;
             this.SearchUserTextBox.Name = "SearchUserTextBox";
             this.SearchUserTextBox.PlaceholderText = "Search User for Update";
-            this.SearchUserTextBox.Size = new System.Drawing.Size(330, 24);
+            this.SearchUserTextBox.Size = new System.Drawing.Size(330, 31);
             this.SearchUserTextBox.TabIndex = 13;
             // 
             // SearchUserButton
@@ -381,27 +381,27 @@ namespace ClinicManagementSystem.Forms.MainForms
             // LoginTextBox
             // 
             this.LoginTextBox.BackColor = System.Drawing.SystemColors.Window;
-            this.LoginTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.LoginTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.LoginTextBox.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LoginTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(119)))), ((int)(((byte)(182)))));
             this.LoginTextBox.Location = new System.Drawing.Point(900, 235);
             this.LoginTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.LoginTextBox.Name = "LoginTextBox";
             this.LoginTextBox.PlaceholderText = "User\'s Login";
-            this.LoginTextBox.Size = new System.Drawing.Size(282, 24);
+            this.LoginTextBox.Size = new System.Drawing.Size(282, 31);
             this.LoginTextBox.TabIndex = 11;
             // 
             // PasswordTextBox
             // 
             this.PasswordTextBox.BackColor = System.Drawing.SystemColors.Window;
-            this.PasswordTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.PasswordTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.PasswordTextBox.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.PasswordTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(119)))), ((int)(((byte)(182)))));
             this.PasswordTextBox.Location = new System.Drawing.Point(900, 287);
             this.PasswordTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PasswordTextBox.Name = "PasswordTextBox";
             this.PasswordTextBox.PlaceholderText = "User\'s Password";
-            this.PasswordTextBox.Size = new System.Drawing.Size(282, 24);
+            this.PasswordTextBox.Size = new System.Drawing.Size(282, 31);
             this.PasswordTextBox.TabIndex = 12;
             // 
             // UpdateButton
@@ -557,6 +557,6 @@ namespace ClinicManagementSystem.Forms.MainForms
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labelPesel;
     }
 }
