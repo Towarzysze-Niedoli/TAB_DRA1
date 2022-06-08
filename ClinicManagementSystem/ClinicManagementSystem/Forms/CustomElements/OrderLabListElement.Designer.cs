@@ -39,10 +39,10 @@ namespace ClinicManagementSystem.Forms.CustomElements
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(86, 13);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.pictureBox1.Location = new System.Drawing.Point(108, 16);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(74, 74);
+            this.pictureBox1.Size = new System.Drawing.Size(93, 93);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
@@ -51,28 +51,28 @@ namespace ClinicManagementSystem.Forms.CustomElements
             // 
             this.UpperMainLabel.AutoEllipsis = true;
             this.UpperMainLabel.AutoSize = true;
-            this.UpperMainLabel.Font = new System.Drawing.Font("Corbel", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.UpperMainLabel.Font = new System.Drawing.Font("Verdana", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.UpperMainLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(247)))), ((int)(((byte)(255)))));
-            this.UpperMainLabel.Location = new System.Drawing.Point(184, 23);
+            this.UpperMainLabel.Location = new System.Drawing.Point(230, 29);
             this.UpperMainLabel.Name = "UpperMainLabel";
-            this.UpperMainLabel.Size = new System.Drawing.Size(289, 49);
+            this.UpperMainLabel.Size = new System.Drawing.Size(361, 61);
             this.UpperMainLabel.TabIndex = 2;
             this.UpperMainLabel.Text = "UpperMainText";
             // 
             // Checkbox
             // 
             this.Checkbox.AutoSize = true;
-            this.Checkbox.Location = new System.Drawing.Point(28, 39);
+            this.Checkbox.Location = new System.Drawing.Point(35, 49);
             this.Checkbox.Name = "Checkbox";
-            this.Checkbox.Size = new System.Drawing.Size(18, 17);
+            this.Checkbox.Size = new System.Drawing.Size(23, 22);
             this.Checkbox.TabIndex = 3;
             this.Checkbox.UseVisualStyleBackColor = true;
             // 
             // OrderLabListElement
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(189)))), ((int)(((byte)(213)))), ((int)(((byte)(234)))));
-            this.ClientSize = new System.Drawing.Size(642, 100);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(119)))), ((int)(((byte)(182)))));
+            this.ClientSize = new System.Drawing.Size(803, 125);
             this.Controls.Add(this.Checkbox);
             this.Controls.Add(this.UpperMainLabel);
             this.Controls.Add(this.pictureBox1);

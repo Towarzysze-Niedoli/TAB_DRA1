@@ -12,9 +12,9 @@ namespace ClinicManagementSystem.Forms.CustomElements
         public delegate void ElementClickedEventHandler(object source, ListElementClickedArgs args);
         public event ElementClickedEventHandler ListElementClicked;
 
-        protected Color _inactiveColor = Color.FromArgb(189, 213, 234);
-        protected Color _activeColor = Color.FromArgb(73, 88, 103);
-        protected Color _hoverColor = Color.FromArgb(87, 115, 153);
+        protected Color _inactiveColor = Color.FromArgb(0, 119, 182);
+        protected Color _activeColor = Color.FromArgb(3, 4, 94);
+        protected Color _hoverColor = Color.FromArgb(2, 62, 138);
 
         protected bool _status = false;
         protected int _index;
@@ -65,11 +65,14 @@ namespace ClinicManagementSystem.Forms.CustomElements
             // 
             // ListElement
             // 
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(119)))), ((int)(((byte)(182)))));
             this.Name = "ListElement";
+            this.Size = new System.Drawing.Size(188, 188);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ListElement_MouseDown);
             this.MouseLeave += new System.EventHandler(this.ListElement_MouseLeave);
             this.MouseHover += new System.EventHandler(this.ListElement_MouseHover);
             this.ResumeLayout(false);
+
         }
     }
 }

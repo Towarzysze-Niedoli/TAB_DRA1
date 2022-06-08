@@ -55,6 +55,8 @@ namespace ClinicManagementSystem.Forms.MainForms
 
         private void Doctor()
         {
+            this.PESELTextBox.Text = "Licence Number";
+            this.label1.Text = "Licence Number";
             HideForDoctor();
             HideBtns();
             SetUserCategories("Doctor");
