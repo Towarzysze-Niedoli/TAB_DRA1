@@ -57,7 +57,7 @@ namespace ClinicManagementSystem.Forms.CustomElements
             this.UpperMainLabel.AutoSize = true;
             this.UpperMainLabel.CausesValidation = false;
             this.UpperMainLabel.Enabled = false;
-            this.UpperMainLabel.Font = new System.Drawing.Font("Corbel", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.UpperMainLabel.Font = new System.Drawing.Font("Verdana", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.UpperMainLabel.Location = new System.Drawing.Point(120, 5);
             this.UpperMainLabel.Name = "UpperMainLabel";
             this.UpperMainLabel.Size = new System.Drawing.Size(264, 46);
