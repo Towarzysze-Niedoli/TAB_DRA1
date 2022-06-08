@@ -47,7 +47,6 @@ namespace ClinicManagementSystem.Forms.MainForms
 
         private void Receptionist()
         {
-            ReceptionistRadioBtn.Visible = true;
             HideForLab();
             HideForDoctor();
             HideBtns();
@@ -159,6 +158,11 @@ namespace ClinicManagementSystem.Forms.MainForms
         }
 
         private void AddButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void LoginLabel_Click(object sender, EventArgs e)
         {
 
         }
