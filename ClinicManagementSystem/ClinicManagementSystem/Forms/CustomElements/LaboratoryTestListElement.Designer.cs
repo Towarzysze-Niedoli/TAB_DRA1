@@ -88,7 +88,7 @@
             this.Controls.Add(this.pictureBox1);
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "LaboratoryTestListElement";
-            this.Size = new System.Drawing.Size(625, 138);
+            this.Size = new System.Drawing.Size(800, 138);
             //this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.LabTestElement_MouseDown);
             //this.MouseLeave += new System.EventHandler(this.LabTestElement_MouseLeave);
             //this.MouseHover += new System.EventHandler(this.LabTestElement_MouseHover);

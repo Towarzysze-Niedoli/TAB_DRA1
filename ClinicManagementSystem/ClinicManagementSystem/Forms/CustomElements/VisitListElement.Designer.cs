@@ -88,7 +88,7 @@ namespace ClinicManagementSystem.Forms.CustomElements
             this.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(247)))), ((int)(((byte)(255)))));
             this.Name = "VisitListElement";
-            this.Size = new System.Drawing.Size(938, 113);
+            this.Size = new System.Drawing.Size(900, 113);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
