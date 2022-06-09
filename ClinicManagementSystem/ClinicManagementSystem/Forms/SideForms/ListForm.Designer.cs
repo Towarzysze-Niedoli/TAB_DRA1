@@ -35,9 +35,6 @@ namespace ClinicManagementSystem.Forms.SideForms
             // ListFlowPanel
             // 
             this.ListFlowPanel.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
-            this.ListFlowPanel.HorizontalScroll.Maximum = 0;
-            this.ListFlowPanel.AutoScroll = false;
-            this.ListFlowPanel.VerticalScroll.Visible = false;
             this.ListFlowPanel.AutoScroll = true;
             this.ListFlowPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ListFlowPanel.Location = new System.Drawing.Point(0, 0);
@@ -49,7 +46,7 @@ namespace ClinicManagementSystem.Forms.SideForms
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.AutoSize = true;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(189)))), ((int)(((byte)(213)))), ((int)(((byte)(234)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(119)))), ((int)(((byte)(182)))));
             this.ClientSize = new System.Drawing.Size(550, 405);
             this.Controls.Add(this.ListFlowPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;

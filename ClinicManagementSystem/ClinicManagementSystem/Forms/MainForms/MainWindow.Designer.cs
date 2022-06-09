@@ -45,13 +45,14 @@ namespace ClinicManagementSystem.Forms.MainForms
             // 
             // SideBottomPanel
             // 
+            this.SideBottomPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(119)))), ((int)(((byte)(182)))));
             this.SideBottomPanel.Controls.Add(this.LogoutButton);
             this.SideBottomPanel.Controls.Add(this.CancelButton);
             this.SideBottomPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.SideBottomPanel.Location = new System.Drawing.Point(0, 541);
+            this.SideBottomPanel.Location = new System.Drawing.Point(0, 908);
             this.SideBottomPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.SideBottomPanel.Name = "SideBottomPanel";
-            this.SideBottomPanel.Size = new System.Drawing.Size(262, 134);
+            this.SideBottomPanel.Size = new System.Drawing.Size(328, 168);
             this.SideBottomPanel.TabIndex = 0;
             // 
             // LogoutButton
@@ -61,12 +62,12 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.LogoutButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(57)))), ((int)(((byte)(70)))));
             this.LogoutButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(65)))), ((int)(((byte)(68)))));
             this.LogoutButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.LogoutButton.Font = new System.Drawing.Font("Corbel", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.LogoutButton.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LogoutButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(247)))), ((int)(((byte)(255)))));
-            this.LogoutButton.Location = new System.Drawing.Point(65, 30);
+            this.LogoutButton.Location = new System.Drawing.Point(82, 38);
             this.LogoutButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.LogoutButton.Name = "LogoutButton";
-            this.LogoutButton.Size = new System.Drawing.Size(131, 38);
+            this.LogoutButton.Size = new System.Drawing.Size(164, 48);
             this.LogoutButton.TabIndex = 0;
             this.LogoutButton.Text = "Log out";
             this.LogoutButton.UseVisualStyleBackColor = false;
@@ -79,12 +80,12 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.CancelButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(57)))), ((int)(((byte)(70)))));
             this.CancelButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(65)))), ((int)(((byte)(68)))));
             this.CancelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CancelButton.Font = new System.Drawing.Font("Corbel", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.CancelButton.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.CancelButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(247)))), ((int)(((byte)(255)))));
-            this.CancelButton.Location = new System.Drawing.Point(65, 87);
+            this.CancelButton.Location = new System.Drawing.Point(82, 109);
             this.CancelButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.CancelButton.Name = "CancelButton";
-            this.CancelButton.Size = new System.Drawing.Size(131, 38);
+            this.CancelButton.Size = new System.Drawing.Size(164, 48);
             this.CancelButton.TabIndex = 1;
             this.CancelButton.Text = "Close";
             this.CancelButton.UseVisualStyleBackColor = false;
@@ -92,13 +93,13 @@ namespace ClinicManagementSystem.Forms.MainForms
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(189)))), ((int)(((byte)(213)))), ((int)(((byte)(234)))));
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(119)))), ((int)(((byte)(182)))));
             this.panel1.Controls.Add(this.SideUpperPanel);
             this.panel1.Controls.Add(this.SideBottomPanel);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(262, 675);
+            this.panel1.Size = new System.Drawing.Size(328, 1076);
             this.panel1.TabIndex = 0;
             this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
             this.panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseMove);
@@ -106,41 +107,42 @@ namespace ClinicManagementSystem.Forms.MainForms
             // 
             // SideUpperPanel
             // 
-            this.SideUpperPanel.Location = new System.Drawing.Point(0, 108);
+            this.SideUpperPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(119)))), ((int)(((byte)(182)))));
+            this.SideUpperPanel.Location = new System.Drawing.Point(0, 145);
             this.SideUpperPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.SideUpperPanel.Name = "SideUpperPanel";
-            this.SideUpperPanel.Size = new System.Drawing.Size(262, 428);
+            this.SideUpperPanel.Size = new System.Drawing.Size(328, 772);
             this.SideUpperPanel.TabIndex = 1;
             // 
             // MainPanel
             // 
             this.MainPanel.Controls.Add(this.LogoText);
             this.MainPanel.Controls.Add(this.LogoBox);
-            this.MainPanel.Location = new System.Drawing.Point(262, 0);
+            this.MainPanel.Location = new System.Drawing.Point(328, 0);
             this.MainPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MainPanel.Name = "MainPanel";
-            this.MainPanel.Size = new System.Drawing.Size(1138, 675);
+            this.MainPanel.Size = new System.Drawing.Size(1605, 1076);
             this.MainPanel.TabIndex = 1;
             // 
             // LogoText
             // 
             this.LogoText.AutoSize = true;
-            this.LogoText.Font = new System.Drawing.Font("Corbel", 60.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.LogoText.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(115)))), ((int)(((byte)(153)))));
-            this.LogoText.Location = new System.Drawing.Point(220, 477);
+            this.LogoText.Font = new System.Drawing.Font("Verdana", 60.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.LogoText.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(62)))), ((int)(((byte)(138)))));
+            this.LogoText.Location = new System.Drawing.Point(411, 651);
             this.LogoText.Name = "LogoText";
-            this.LogoText.Size = new System.Drawing.Size(643, 100);
+            this.LogoText.Size = new System.Drawing.Size(814, 98);
             this.LogoText.TabIndex = 1;
             this.LogoText.Text = "MEDICAL CLINIC";
             // 
             // LogoBox
             // 
             this.LogoBox.Image = global::ClinicManagementSystem.Properties.Resources.medical__1_;
-            this.LogoBox.Location = new System.Drawing.Point(345, 108);
+            this.LogoBox.Location = new System.Drawing.Point(540, 169);
             this.LogoBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.LogoBox.Name = "LogoBox";
-            this.LogoBox.Size = new System.Drawing.Size(448, 384);
-            this.LogoBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.LogoBox.Size = new System.Drawing.Size(560, 480);
+            this.LogoBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.LogoBox.TabIndex = 0;
             this.LogoBox.TabStop = false;
             // 
@@ -149,7 +151,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(247)))), ((int)(((byte)(255)))));
-            this.ClientSize = new System.Drawing.Size(1400, 675);
+            this.ClientSize = new System.Drawing.Size(1943, 1076);
             this.Controls.Add(this.MainPanel);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;

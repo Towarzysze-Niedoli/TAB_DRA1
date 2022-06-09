@@ -123,19 +123,19 @@ namespace ClinicManagementSystem.Forms.SideForms
             switch (_currentTab)
             {
                 case SideMenuTab.Visits:
-                    this.VisitsButton.BackColor = Color.FromArgb(73, 88, 103);
+                    this.VisitsButton.BackColor = Color.FromArgb(3, 4, 94);
                     break;
                 case SideMenuTab.Patients:
-                    this.PatiensButton.BackColor = Color.FromArgb(73, 88, 103);
+                    this.PatiensButton.BackColor = Color.FromArgb(3, 4, 94);
                     break;
                 case SideMenuTab.Medics:
-                    this.MedicsButton.BackColor = Color.FromArgb(73, 88, 103);
+                    this.MedicsButton.BackColor = Color.FromArgb(3, 4, 94);
                     break;
                 case SideMenuTab.Laboratory:
-                    this.LaboratoryButton.BackColor = Color.FromArgb(73, 88, 103);
+                    this.LaboratoryButton.BackColor = Color.FromArgb(3, 4, 94);
                     break;
                 default:
-                    this.ManagementButton.BackColor = Color.FromArgb(73, 88, 103);
+                    this.ManagementButton.BackColor = Color.FromArgb(3, 4, 94);
                     break;
             }
         }
@@ -145,19 +145,19 @@ namespace ClinicManagementSystem.Forms.SideForms
             switch (_currentTab)
             {
                 case SideMenuTab.Visits:
-                    this.VisitsButton.BackColor = Color.FromArgb(189, 213, 234);
+                    this.VisitsButton.BackColor = Color.FromArgb(0, 119, 182);
                     break;
                 case SideMenuTab.Patients:
-                    this.PatiensButton.BackColor = Color.FromArgb(189, 213, 234);
+                    this.PatiensButton.BackColor = Color.FromArgb(0, 119, 182);
                     break;
                 case SideMenuTab.Medics:
-                    this.MedicsButton.BackColor = Color.FromArgb(189, 213, 234);
+                    this.MedicsButton.BackColor = Color.FromArgb(0, 119, 182);
                     break;
                 case SideMenuTab.Laboratory:
-                    this.LaboratoryButton.BackColor = Color.FromArgb(189, 213, 234);
+                    this.LaboratoryButton.BackColor = Color.FromArgb(0, 119, 182);
                     break;
                 default:
-                    this.ManagementButton.BackColor = Color.FromArgb(189, 213, 234);
+                    this.ManagementButton.BackColor = Color.FromArgb(0, 119, 182);
                     break;
             }
         }

@@ -34,9 +34,14 @@ namespace ClinicManagementSystem.Forms.SideForms
         {
             this.SuspendLayout();
             // 
+            // ListFlowPanel
+            // 
+            this.ListFlowPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(119)))), ((int)(((byte)(182)))));
+            this.ListFlowPanel.Size = new System.Drawing.Size(2167, 1071);
+            // 
             // DoctorListForm
             // 
-            this.ClientSize = new System.Drawing.Size(1241, 818);
+            this.ClientSize = new System.Drawing.Size(2167, 1071);
             this.Name = "DoctorListForm";
             this.ResumeLayout(false);
 

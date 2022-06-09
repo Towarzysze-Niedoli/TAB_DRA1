@@ -37,6 +37,12 @@ namespace ClinicManagementSystem.Forms.MainForms
             _technicianService = technicianService;
         }
 
+        private void HidePesel()
+        {
+            PESELTextBox.Hide();
+            labelPesel.Hide();
+        }
+
         private void HideBtns()
         {
             UpdateButton.Hide();
@@ -64,7 +70,7 @@ namespace ClinicManagementSystem.Forms.MainForms
 
         private void Receptionist()
         {
-            ReceptionistRadioBtn.Visible = true;
+            HidePesel();
             HideForLab();
             HideForDoctor();
             HideBtns();
@@ -73,6 +79,8 @@ namespace ClinicManagementSystem.Forms.MainForms
 
         private void Doctor()
         {
+            this.PESELTextBox.PlaceholderText = "Licence Number";
+            this.labelPesel.Text = "Licence Number";
             HideForDoctor();
             HideBtns();
             SetUserCategories("Doctor");
@@ -80,6 +88,7 @@ namespace ClinicManagementSystem.Forms.MainForms
 
         private void Lab()
         {
+            HidePesel();
             HideForLab();
             HideBtns();
             SetUserCategories("Lab Worker");
@@ -258,6 +267,11 @@ namespace ClinicManagementSystem.Forms.MainForms
         }
 
         private void AddButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void LoginLabel_Click(object sender, EventArgs e)
         {
 
         }

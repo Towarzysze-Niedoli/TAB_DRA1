@@ -34,18 +34,18 @@ namespace ClinicManagementSystem.Forms.SideForms
             // 
             // ListPanel
             // 
-            this.ListPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(189)))), ((int)(((byte)(213)))), ((int)(((byte)(234)))));
+            this.ListPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(119)))), ((int)(((byte)(182)))));
             this.ListPanel.Location = new System.Drawing.Point(0, 0);
             this.ListPanel.Name = "ListPanel";
             this.ListPanel.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.ListPanel.Size = new System.Drawing.Size(642, 368);
+            this.ListPanel.Size = new System.Drawing.Size(803, 460);
             this.ListPanel.TabIndex = 0;
             // 
             // OrderLabListForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(189)))), ((int)(((byte)(213)))), ((int)(((byte)(234)))));
-            this.ClientSize = new System.Drawing.Size(1461, 669);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(119)))), ((int)(((byte)(182)))));
+            this.ClientSize = new System.Drawing.Size(803, 460);
             this.Controls.Add(this.ListPanel);
             this.Name = "OrderLabListForm";
             this.Text = "OrderLabListForm";
