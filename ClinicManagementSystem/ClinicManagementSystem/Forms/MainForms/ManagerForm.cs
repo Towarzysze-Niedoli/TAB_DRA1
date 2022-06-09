@@ -106,6 +106,7 @@ namespace ClinicManagementSystem.Forms.MainForms
         private void SetUserCategories(string user)
         {
             SearchUserTextBox.PlaceholderText = "Search " + user + " for Update";
+            LoginTextBox.PlaceholderText = user + "'s Login";
             PasswordTextBox.PlaceholderText = user + "'s Password";
             AddButton.Text = "Add " + user;
             UpdateButton.Text = "Update " + user;

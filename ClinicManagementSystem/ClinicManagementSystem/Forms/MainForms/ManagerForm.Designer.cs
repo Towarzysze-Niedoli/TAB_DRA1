@@ -60,6 +60,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.DoctoralLabel = new System.Windows.Forms.Label();
             this.LabTechicianRadioButton = new System.Windows.Forms.RadioButton();
             this.LabManagerRadioButton = new System.Windows.Forms.RadioButton();
+            this.LoginTextBox = new System.Windows.Forms.TextBox();
             this.PatientPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -377,19 +378,6 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.LoginLabel.Text = "Login";
             this.LoginLabel.Click += new System.EventHandler(this.LoginLabel_Click);
             // 
-            // LoginTextBox
-            // 
-            this.LoginTextBox.BackColor = System.Drawing.SystemColors.Window;
-            this.LoginTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.LoginTextBox.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LoginTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(119)))), ((int)(((byte)(182)))));
-            this.LoginTextBox.Location = new System.Drawing.Point(900, 235);
-            this.LoginTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.LoginTextBox.Name = "LoginTextBox";
-            this.LoginTextBox.PlaceholderText = "User\'s Login";
-            this.LoginTextBox.Size = new System.Drawing.Size(282, 31);
-            this.LoginTextBox.TabIndex = 11;
-            // 
             // PasswordTextBox
             // 
             this.PasswordTextBox.BackColor = System.Drawing.SystemColors.Window;
@@ -493,12 +481,26 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.LabManagerRadioButton.Text = "Laboratory Manager";
             this.LabManagerRadioButton.UseVisualStyleBackColor = true;
             // 
+            // LoginTextBox
+            // 
+            this.LoginTextBox.BackColor = System.Drawing.SystemColors.Window;
+            this.LoginTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.LoginTextBox.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.LoginTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(119)))), ((int)(((byte)(182)))));
+            this.LoginTextBox.Location = new System.Drawing.Point(900, 233);
+            this.LoginTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.LoginTextBox.Name = "LoginTextBox";
+            this.LoginTextBox.PlaceholderText = "User\'s Login";
+            this.LoginTextBox.Size = new System.Drawing.Size(282, 31);
+            this.LoginTextBox.TabIndex = 34;
+            // 
             // ManagerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(247)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(1605, 1076);
+            this.Controls.Add(this.LoginTextBox);
             this.Controls.Add(this.LabManagerRadioButton);
             this.Controls.Add(this.LabTechicianRadioButton);
             this.Controls.Add(this.DoctoralLabel);
@@ -555,5 +557,6 @@ namespace ClinicManagementSystem.Forms.MainForms
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label labelPesel;
+        private System.Windows.Forms.TextBox LoginTextBox;
     }
 }
