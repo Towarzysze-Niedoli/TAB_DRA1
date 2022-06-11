@@ -43,6 +43,7 @@ namespace ClinicManagementSystem
                     .AddScoped<IAppointmentService, AppointmentService>()
                     .AddScoped<IDoctorService, DoctorService>()
                     .AddScoped<ILaboratoryTechnicianService, LaboratoryTechnicianService>()
+                    .AddScoped<ILaboratoryManagerService, LaboratoryManagerService>()
                     .AddScoped<IPatientService, PatientService>()
                     .AddScoped<IReceptionistService, ReceptionistService>();
                     

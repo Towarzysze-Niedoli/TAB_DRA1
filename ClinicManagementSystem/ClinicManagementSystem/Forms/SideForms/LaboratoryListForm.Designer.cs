@@ -32,11 +32,6 @@ namespace ClinicManagementSystem.Forms.SideForms
             this.LabListFlowPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.SuspendLayout();
             // 
-            // ListFlowPanel
-            // 
-            this.ListFlowPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.ListFlowPanel.Size = new System.Drawing.Size(2164, 1071);
-            // 
             // LabListFlowPanel
             // 
             this.LabListFlowPanel.AccessibleRole = System.Windows.Forms.AccessibleRole.ScrollBar;
@@ -52,13 +47,12 @@ namespace ClinicManagementSystem.Forms.SideForms
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(119)))), ((int)(((byte)(182)))));
-            this.ClientSize = new System.Drawing.Size(2164, 1071);
+            this.ClientSize = new System.Drawing.Size(1505, 666);
             this.Controls.Add(this.LabListFlowPanel);
             this.Margin = new System.Windows.Forms.Padding(3);
             this.Name = "LaboratoryListForm";
             this.Text = "LaboratoryListForm";
             this.Controls.SetChildIndex(this.LabListFlowPanel, 0);
-            this.Controls.SetChildIndex(this.ListFlowPanel, 0);
             this.ResumeLayout(false);
 
         }

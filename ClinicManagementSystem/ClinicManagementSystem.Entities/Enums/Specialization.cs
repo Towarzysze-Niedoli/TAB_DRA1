@@ -6,6 +6,7 @@ namespace ClinicManagementSystem.Entities.Enums
 {
     public enum Specialization
     { 
+        None,
         Internist,
         Radiologist,
         Neurologist,

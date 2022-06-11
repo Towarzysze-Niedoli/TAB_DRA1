@@ -19,9 +19,10 @@ namespace ClinicManagementSystem.Forms.SideForms
             this.TopLevel = false;
         }
 
-        public void InitializeValues(string pesel, string phoneNumber, string city, string zipCode,
+        public void InitializeValues(string name, string surname, string pesel, string phoneNumber, string city, string zipCode,
             string streetName, string houseNumber, string mail, DateTime lastVisit)
         {
+            this.NameSurnameLabel.Text = name + " " + surname;
             this.peselLabel.Text = pesel;
             this.PhoneLabel.Text = phoneNumber;
             this.CityLabel.Text = city;

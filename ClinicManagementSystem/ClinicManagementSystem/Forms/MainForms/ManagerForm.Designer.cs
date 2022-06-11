@@ -433,11 +433,6 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.SpecializationComboBox.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.SpecializationComboBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(119)))), ((int)(((byte)(182)))));
             this.SpecializationComboBox.FormattingEnabled = true;
-            this.SpecializationComboBox.Items.AddRange(new object[] {
-            "Specialization",
-            "Spec 1",
-            "Spec 2",
-            "Spec 3"});
             this.SpecializationComboBox.Location = new System.Drawing.Point(1260, 401);
             this.SpecializationComboBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.SpecializationComboBox.Name = "SpecializationComboBox";

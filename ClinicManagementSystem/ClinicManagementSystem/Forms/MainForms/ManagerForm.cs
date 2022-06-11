@@ -1,4 +1,5 @@
 ﻿using ClinicManagementSystem.Entities.Models;
+using ClinicManagementSystem.Entities.Enums;
 using ClinicManagementSystem.Services;
 using System;
 using System.Collections.Generic;
@@ -19,12 +20,14 @@ namespace ClinicManagementSystem.Forms.MainForms
         private IReceptionistService _receptionistService;
         private ILaboratoryTechnicianService _technicianService;
         private ILaboratoryManagerService _managerService;
+        private List<(Specialization, string)> _specialization;
 
         public ManagerForm(MainFormType formType, IPatientService patientService, IDoctorService doctorService, IReceptionistService receptionistService, ILaboratoryTechnicianService technicianService, ILaboratoryManagerService managerService)
         {
             
             this._formType = formType;
             InitializeComponent();
+            InitializeSpecializationCombobox();
             SetSearchOnEnterClick();
             ShowCorrectElements();
             _patientService = patientService;
@@ -34,6 +37,25 @@ namespace ClinicManagementSystem.Forms.MainForms
             _managerService = managerService;
         }
 
+        private void InitializeSpecializationCombobox()
+        {
+            _specialization = new List<(Specialization, string)>
+            {
+                (Specialization.None, "<Select Specialization>"),
+                (Specialization.Anesthesiologist, "Anesthesiologist"),
+                (Specialization.EmergencyPhysician, "Emergency Physician"),
+                (Specialization.Gynecologist, "Gynecologist"),
+                (Specialization.Internist, "Internist"),
+                (Specialization.Neurologist, "Neurologist"),
+                (Specialization.Pediatrician, "Pediatrician"),
+                (Specialization.Radiologist, "Radiologist")
+            };
+
+            _specialization.ForEach(((Specialization, string) tuple) => {
+                SpecializationComboBox.Items.Add(tuple.Item2);
+            });
+            SpecializationComboBox.SelectedIndex = 0;
+        }
         private void SetSearchOnEnterClick()
         {
             SearchUserTextBox.KeyDown += (sender, args) =>
@@ -259,43 +281,135 @@ namespace ClinicManagementSystem.Forms.MainForms
             NumberTextBox.Clear();
             EMailTextBox.Clear();
             PasswordTextBox.Clear();
+            LoginTextBox.Clear();
+            SpecializationComboBox.SelectedIndex = 0;
+            LabManagerRadioButton.Checked = false;
+            LabTechicianRadioButton.Checked = false;
         }
 
         private void UpdateButton_Click(object sender, EventArgs e)
         {
             switch (_formType)
             {
-                case MainFormType.ManagerReceptionist:
+                case MainFormType.ManagerPatients:
                     UpdatePatient();
+                    break;
+                case MainFormType.ManagerDoctors:
+                    UpdateDoctor();
+                    break;
+                case MainFormType.ManagerLaboratory:
+                    UpdateLaboratoryWorker();
+                    break;
+                case MainFormType.ManagerReceptionist:
+                    UpdateReceptionist();
                     break;
                 default:
                     break;
-            }  
-            ClearData();
+            }
         }
 
         private void DeleteButton_Click(object sender, EventArgs e)
         {
-
+            switch (_formType)
+            {
+                case MainFormType.ManagerPatients:
+                    //DeletePatient();
+                    break;
+                case MainFormType.ManagerDoctors:
+                    //DeleteDoctor();
+                    break;
+                case MainFormType.ManagerLaboratory:
+                    //DeleteLaboratoryWorker();
+                    break;
+                case MainFormType.ManagerReceptionist:
+                    //DeleteReceptionist();
+                    break;
+                default:
+                    break;
+            }
         }
 
         private void AddButton_Click(object sender, EventArgs e)
         {
             switch (_formType)
             {
-                case MainFormType.ManagerReceptionist:
+                case MainFormType.ManagerPatients:
                     AddPatient();
+                    break;
+                case MainFormType.ManagerDoctors:
+                    AddDoctor();
+                    break;
+                case MainFormType.ManagerLaboratory:
+                    AddLaboratoryWorker();
+                    break;
+                case MainFormType.ManagerReceptionist:
+                    AddReceptionist();
                     break;
                 default:
                     break;
-            }   
+            }
         }
 
         private void LoginLabel_Click(object sender, EventArgs e)
         {
 
         }
+        private void UpdateDoctor()
+        {
+            Doctor doctorToUpdate = _doctorService.GetDoctorByLicenceNumber(PESELTextBox.Text);
 
+            Specialization spec = _specialization.Find(x => x.Item2 == SpecializationComboBox.SelectedItem.ToString()).Item1;
+            if (spec == Specialization.None || PasswordTextBox.Text == "" || LoginTextBox.Text == "")
+            {
+                MessageBox.Show("Complete the missing data!", "Update New Doctor");
+            }
+            else
+            {
+                doctorToUpdate.Address.City = CityTextBox.Text;
+                doctorToUpdate.Address.Street = StreetTextBox.Text;
+                doctorToUpdate.Address.HomeNumber = NumberTextBox.Text;
+                doctorToUpdate.Address.ZipCode = ZIPCodeTextBox.Text;
+                doctorToUpdate.PhoneNumber = PhoneTextBox.Text;
+                doctorToUpdate.FirstName = UserNameTextBox.Text;
+                doctorToUpdate.LastName = UserSurnameTextBox.Text;
+                doctorToUpdate.Email = EMailTextBox.Text;
+                doctorToUpdate.Specialization = spec;
+
+                _doctorService.UpdateDoctor(doctorToUpdate, PasswordTextBox.Text);
+                MessageBox.Show("Doctor data has been succesfully updated.", "Update Doctor Data");
+                ClearData();
+            }
+        }
+
+        private void UpdateReceptionist()
+        {
+            Receptionist receptionistToUpdate = _receptionistService.GetReceptionistByName(UserNameTextBox.Text, UserSurnameTextBox.Text);
+
+            if ( PasswordTextBox.Text == "" || LoginTextBox.Text == "")
+            {
+                MessageBox.Show("Complete the missing data!", "Update New Receptionist");
+            }
+            else
+            {
+                receptionistToUpdate.Address.City = CityTextBox.Text;
+                receptionistToUpdate.Address.Street = StreetTextBox.Text;
+                receptionistToUpdate.Address.HomeNumber = NumberTextBox.Text;
+                receptionistToUpdate.Address.ZipCode = ZIPCodeTextBox.Text;
+                receptionistToUpdate.PhoneNumber = PhoneTextBox.Text;
+                receptionistToUpdate.FirstName = UserNameTextBox.Text;
+                receptionistToUpdate.LastName = UserSurnameTextBox.Text;
+                receptionistToUpdate.Email = EMailTextBox.Text;
+
+                _receptionistService.UpdateReceptionist(receptionistToUpdate, PasswordTextBox.Text);
+                MessageBox.Show("Receptionist data has been succesfully updated.", "Update Receptionist Data");
+                ClearData();
+            }
+        }
+
+        private void UpdateLaboratoryWorker()
+        {
+
+        }
         private void UpdatePatient()
         {
             Patient patientToUpdate = _patientService.GetPatientByPersonalIdentityNumber(PESELTextBox.Text);
@@ -313,11 +427,164 @@ namespace ClinicManagementSystem.Forms.MainForms
             {
                 _patientService.UpdatePatient(patientToUpdate);
                 MessageBox.Show("Patient data has been succesfully updated.", "Update Patient Data");
+                ClearData();
             }
             catch (DbUpdateException)
             {
                 MessageBox.Show("Update data error.", "Update Patient Data");
             }
+        }
+
+        private void AddDoctor()
+        {
+            Specialization spec = _specialization.Find(x => x.Item2 == SpecializationComboBox.SelectedItem.ToString()).Item1;
+            if(spec == Specialization.None || PasswordTextBox.Text == "" || LoginTextBox.Text == "")
+            {
+                MessageBox.Show("Complete the missing data!", "Add New Doctor");
+            }
+            else
+            {
+                Address newAddress = new Address
+                {
+                    City = CityTextBox.Text,
+                    Street = StreetTextBox.Text,
+                    HomeNumber = NumberTextBox.Text,
+                    ZipCode = ZIPCodeTextBox.Text
+                };
+                Doctor newDoctor = new Doctor
+                {
+                    LicenseNumber = PESELTextBox.Text,
+                    PhoneNumber = PhoneTextBox.Text,
+                    FirstName = UserNameTextBox.Text,
+                    LastName = UserSurnameTextBox.Text,
+                    Email = EMailTextBox.Text,
+                    Specialization = spec,
+                    Address = newAddress
+                };
+                try
+                {
+                    _doctorService.InsertDoctor(newDoctor, PasswordTextBox.Text);
+                    MessageBox.Show("New doctor has been succesfully added.", "Add New Doctor");
+                }
+                catch (DbUpdateException)
+                {
+                    MessageBox.Show("Insert error.", "Add New Doctor");
+                }
+                ClearData();
+            } 
+        }
+
+        private void AddReceptionist()
+        {
+            if (PasswordTextBox.Text == "" || LoginTextBox.Text == "")
+            {
+                MessageBox.Show("Complete the missing data!", "Add New Receptionist");
+            }
+            else
+            {
+                Address newAddress = new Address
+                {
+                    City = CityTextBox.Text,
+                    Street = StreetTextBox.Text,
+                    HomeNumber = NumberTextBox.Text,
+                    ZipCode = ZIPCodeTextBox.Text
+                };
+                Receptionist newReceptionist = new Receptionist
+                {
+                    PhoneNumber = PhoneTextBox.Text,
+                    FirstName = UserNameTextBox.Text,
+                    LastName = UserSurnameTextBox.Text,
+                    Email = EMailTextBox.Text,
+                    Address = newAddress
+                };
+                try
+                {
+                    _receptionistService.InsertReceptionist(newReceptionist, PasswordTextBox.Text);
+                    MessageBox.Show("New receptionist has been succesfully added.", "Add New Receptionist");
+                }
+                catch (DbUpdateException)
+                {
+                    MessageBox.Show("Insert error.", "Add New Receptionist");
+                }
+                ClearData();
+            }
+        }
+
+        private void AddLaboratoryWorker()
+        {
+            if (PasswordTextBox.Text == "" || LoginTextBox.Text == "" || (!LabManagerRadioButton.Checked && !LabTechicianRadioButton.Checked))
+            {
+                MessageBox.Show("Complete the missing data!", "Add New Doctor");
+            }
+            else
+            {
+                if (LabManagerRadioButton.Checked)
+                {
+                    AddLaboratoryManager();
+                }
+                else if (LabTechicianRadioButton.Checked)
+                {
+                    AddLaboratoryTechnician();
+                }
+            }
+        }
+
+        private void AddLaboratoryTechnician()
+        {
+            Address newAddress = new Address
+            {
+                City = CityTextBox.Text,
+                Street = StreetTextBox.Text,
+                HomeNumber = NumberTextBox.Text,
+                ZipCode = ZIPCodeTextBox.Text
+            };
+            LaboratoryTechnician newLaboratoryTechnician = new LaboratoryTechnician
+            {
+                PhoneNumber = PhoneTextBox.Text,
+                FirstName = UserNameTextBox.Text,
+                LastName = UserSurnameTextBox.Text,
+                Email = EMailTextBox.Text,
+                Address = newAddress
+            };
+            try
+            {
+                _technicianService.InsertLaboratoryTechnician(newLaboratoryTechnician, PasswordTextBox.Text);
+                MessageBox.Show("New laboratory technician has been succesfully added.", "Add New Laboratory Technician");
+            }
+            catch (DbUpdateException)
+            {
+                MessageBox.Show("Insert error.", "Add New Laboratory Technician");
+            }
+            ClearData();
+        }
+
+        private void AddLaboratoryManager()
+        {
+            Address newAddress = new Address
+            {
+                City = CityTextBox.Text,
+                Street = StreetTextBox.Text,
+                HomeNumber = NumberTextBox.Text,
+                ZipCode = ZIPCodeTextBox.Text
+            };
+            LaboratoryManager newLaboratoryManager = new LaboratoryManager
+            {
+                PhoneNumber = PhoneTextBox.Text,
+                FirstName = UserNameTextBox.Text,
+                LastName = UserSurnameTextBox.Text,
+                Email = EMailTextBox.Text,
+                Address = newAddress
+            };
+            try
+            {
+                _managerService.InsertLaboratoryManager(newLaboratoryManager, PasswordTextBox.Text);
+                MessageBox.Show("New laboratory manager has been succesfully added.", "Add New Laboratory Manager");
+            }
+            catch (DbUpdateException)
+            {
+                MessageBox.Show("Insert error.", "Add New Laboratory Manager");
+            }
+            ClearData();
         }
 
         private void AddPatient()

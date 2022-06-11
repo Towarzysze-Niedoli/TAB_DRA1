@@ -14,5 +14,6 @@ namespace ClinicManagementSystem.Services
         void DisableDoctorAccount(int doctorId);
         void EnableDoctorAccount(int doctorId);
         Doctor GetDoctorByName(string firstName, string lastName);
+        Doctor GetDoctorByLicenceNumber(string licenceNumber);
     }
 }

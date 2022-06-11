@@ -79,9 +79,10 @@ namespace ClinicManagementSystem.Forms.MainForms
             if(name.Length == 2)
             {
                 Patient patient = _patientService.GetPatientByName(name[0], name[1]);
-                _patientInfo.InitializeValues(patient.PersonalIdentityNumber, patient.PhoneNumber, patient.Address.City, patient.Address.ZipCode, patient.Address.Street, patient.Address.HomeNumber, patient.Email ,DateTime.Now);
+                _patientInfo.InitializeValues(patient.FirstName, patient.LastName, patient.PersonalIdentityNumber, patient.PhoneNumber, patient.Address.City, patient.Address.ZipCode, patient.Address.Street, patient.Address.HomeNumber, patient.Email ,DateTime.Now);
                 // TODO - last vist - change in model in patient or service method?
                 _patientInfo.Show();
+                FillPatientTextFields(patient.FirstName, patient.LastName);
             }
         }
 
@@ -95,6 +96,12 @@ namespace ClinicManagementSystem.Forms.MainForms
 
         }
 
+        private void FillPatientTextFields(string firstName, string lastName)
+        {
+            this.PatientNameTextBox.Text = firstName;
+            this.PatientSurnameTextBox.Text = lastName;
+        }
+
         private void FillDoctorTextFields(object source, ListElementClickedArgs args)
         {
             //@todo get info from model and put it into text fields
@@ -102,7 +109,9 @@ namespace ClinicManagementSystem.Forms.MainForms
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            //search doctor
+            int specIndex = this.SpecializationComboBox.SelectedIndex;
+            DateTime date = this.VisitDateTimePicker.Value;
         }
     }
 }

@@ -51,5 +51,10 @@ namespace ClinicManagementSystem.Services.impl
         {
             return context.Doctors.Include(d => d.Address).Where(d => d.FirstName.Equals(firstName) && d.LastName.Equals(lastName)).FirstOrDefault();
         }
+
+        public Doctor GetDoctorByLicenceNumber(string licenceNumber)
+        {
+            return context.Doctors.Include(d => d.Address).Where(d => d.LicenseNumber.Equals(licenceNumber)).FirstOrDefault();
+        }
     }
 }
