@@ -121,15 +121,9 @@
             this.LaboratoryTestsComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.LaboratoryTestsComboBox.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LaboratoryTestsComboBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(115)))), ((int)(((byte)(153)))));
-            this.LaboratoryTestsComboBox.Items.AddRange(new object[] {
-            "To Do",
-            "Done",
-            "Returned",
-            "Canceled",
-            "Approved"});
             this.LaboratoryTestsComboBox.Location = new System.Drawing.Point(63, 124);
             this.LaboratoryTestsComboBox.Name = "LaboratoryTestsComboBox";
-            this.LaboratoryTestsComboBox.Size = new System.Drawing.Size(189, 26);
+            this.LaboratoryTestsComboBox.Size = new System.Drawing.Size(200, 26);
             this.LaboratoryTestsComboBox.TabIndex = 6;
             this.LaboratoryTestsComboBox.SelectedIndexChanged += new System.EventHandler(this.LaboratoryTestsComboBox_SelectedIndexChanged);
             // 
@@ -138,7 +132,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(247)))), ((int)(((byte)(255)))));
-            this.ClientSize = new System.Drawing.Size(1605, 1076);
+            this.ClientSize = new System.Drawing.Size(1605, 1061);
             this.Controls.Add(this.LaboratoryTestsComboBox);
             this.Controls.Add(this.cancelBtn);
             this.Controls.Add(this.returnBtn);

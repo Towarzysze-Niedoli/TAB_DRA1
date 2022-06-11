@@ -10,6 +10,7 @@ using ClinicManagementSystem.Forms.EventArguments;
 using ClinicManagementSystem.Services;
 using ClinicManagementSystem.Forms.CustomElements;
 using ClinicManagementSystem.Entities.Models;
+using ClinicManagementSystem.Entities.Enums;
 using ClinicManagementSystem.Services.impl;
 
 namespace ClinicManagementSystem.Forms.MainForms
@@ -27,14 +28,13 @@ namespace ClinicManagementSystem.Forms.MainForms
         private IPatientService _patientService;
         private IDoctorService _doctorService;
         IEnumerable<Appointment> appointments;
+        private List<(AppointmentStatus?, string)> _appointmentStatus;
 
         public VisitsMainForm(UserLevel level, IAppointmentService appointmentService, IPatientService patientService, IDoctorService doctorService)
         {
             InitializeComponent();
-            SearchPatientTextBox.KeyDown += (sender, args) => { // search on enter click
-                if (args.KeyCode == Keys.Enter || args.KeyCode == Keys.Return)
-                    SearchPatientButton_Click(sender, args);
-            };
+            InitializeVisitStatusCombobox();
+            SetSearchOnEnterClick();
 
             _level = level;
             _service = appointmentService;
@@ -50,6 +50,31 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.VisitsListPanel.Controls.Add(_visitsListForm);
 
         }
+
+        private void SetSearchOnEnterClick()
+        {
+            SearchPatientTextBox.KeyDown += (sender, args) => {
+                if (args.KeyCode == Keys.Enter || args.KeyCode == Keys.Return)
+                    SearchPatientButton_Click(sender, args);
+            };
+        }
+
+        private void InitializeVisitStatusCombobox()
+        {
+            _appointmentStatus = new List<(AppointmentStatus?, string)>
+            {
+                (null, "<Select Appointment Status>"),
+                (AppointmentStatus.Accepted, "Accepted"),
+                (AppointmentStatus.Cancelled, "Cancelled"),
+                (AppointmentStatus.Pending, "Pending"),
+            };
+
+            _appointmentStatus.ForEach(((AppointmentStatus?, string) tuple) => {
+                VisitStatusComboBox.Items.Add(tuple.Item2);
+            });
+            VisitStatusComboBox.SelectedIndex = 0;
+        }
+
         private void DisplayAppointments(IEnumerable<Appointment> appointments)
         {
             var elements = new List<ListElement>();

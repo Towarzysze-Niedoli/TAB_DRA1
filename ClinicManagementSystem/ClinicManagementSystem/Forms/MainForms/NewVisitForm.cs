@@ -10,6 +10,7 @@ using ClinicManagementSystem.Forms.EventArguments;
 using ClinicManagementSystem.Services;
 using Microsoft.Extensions.DependencyInjection;
 using ClinicManagementSystem.Entities.Models;
+using ClinicManagementSystem.Entities.Enums;
 
 namespace ClinicManagementSystem.Forms.MainForms
 {
@@ -19,18 +20,44 @@ namespace ClinicManagementSystem.Forms.MainForms
         private PersonInfoForm _patientInfo;
         private IPatientService _patientService;
         private IAppointmentService _appointmentService;
+        private List<(Specialization?, string)> _specialization;
 
         public NewVisitForm(IServiceProvider serviceProvider)
         {
             InitializeComponent();
+            InitializeSpecializationCombobox();
+            SetSearchOnEnterClick();
+            InitializeList();
+            _patientService = serviceProvider.GetService<IPatientService>();
+            _appointmentService = serviceProvider.GetService<IAppointmentService>();
+        }
+
+        private void SetSearchOnEnterClick()
+        {
             SearchPatientTextBox.KeyDown += (sender, args) =>
             { // search on enter click
                 if (args.KeyCode == Keys.Enter || args.KeyCode == Keys.Return)
                     SearchPatientButton_Click(sender, args);
             };
-            InitializeList();
-            _patientService = serviceProvider.GetService<IPatientService>();
-            _appointmentService = serviceProvider.GetService<IAppointmentService>();
+        }
+        private void InitializeSpecializationCombobox()
+        {
+            _specialization = new List<(Specialization?, string)>
+            {
+                (null, "<Select Specialization>"),
+                (Specialization.Anesthesiologist, "Anesthesiologist"),
+                (Specialization.EmergencyPhysician, "Emergency Physician"),
+                (Specialization.Gynecologist, "Gynecologist"),
+                (Specialization.Internist, "Internist"),
+                (Specialization.Neurologist, "Neurologist"),
+                (Specialization.Pediatrician, "Pediatrician"),
+                (Specialization.Radiologist, "Radiologist")
+            };
+
+            _specialization.ForEach(((Specialization?, string) tuple) => {
+                SpecializationComboBox.Items.Add(tuple.Item2);
+            });
+            SpecializationComboBox.SelectedIndex = 0;
         }
 
         void InitializeList()

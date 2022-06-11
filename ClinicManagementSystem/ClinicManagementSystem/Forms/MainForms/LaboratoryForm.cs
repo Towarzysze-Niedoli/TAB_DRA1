@@ -29,36 +29,40 @@ namespace ClinicManagementSystem.Forms.MainForms
 
         public delegate void PassSelectedIndex(int index);
         public PassSelectedIndex PassIndex;
-
         private UserLevel _level;
-
-        private readonly List<(TestStatus?, string)> testStatus = new List<(TestStatus?, string)>
-        {
-            (null, ""),
-            (TestStatus.Pending, "To do"),
-            (TestStatus.WaitingToBeAccepted, "Done"),
-            (TestStatus.Returned, "Returned"),
-            (TestStatus.Cancelled, "Cancelled"),
-            (TestStatus.Accepted, "Approved")
-        };
+        private List<(TestStatus?, string)> _testStatus;
 
         public LaboratoryForm(UserLevel level)
         {
             InitializeComponent();
             InitializeTestList();
             InitializeTestResults();
+            InitializeLaboratoryTestsCombobox();
             _level = level;
-            SetAccessability();
-
-            testStatus.ForEach(((TestStatus?, string) tuple) => {
-                LaboratoryTestsComboBox.Items.Add(tuple.Item2);
-            });
-            LaboratoryTestsComboBox.SelectedIndex = 0;
+            SetAccessability();     
         }
 
         public LaboratoryForm(int tmp)
         {
 
+        }
+
+        private void InitializeLaboratoryTestsCombobox()
+        {
+            _testStatus = new List<(TestStatus?, string)>
+            {
+                (null, "<Select Test Status>"),
+                (TestStatus.Pending, "To do"),
+                (TestStatus.WaitingToBeAccepted, "Done"),
+                (TestStatus.Returned, "Returned"),
+                (TestStatus.Cancelled, "Cancelled"),
+                (TestStatus.Accepted, "Approved")
+            };
+
+            _testStatus.ForEach(((TestStatus?, string) tuple) => {
+                LaboratoryTestsComboBox.Items.Add(tuple.Item2);
+            });
+            LaboratoryTestsComboBox.SelectedIndex = 0;
         }
 
         void InitializeTestList()
@@ -91,7 +95,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             LaboratoryTestsList = TestsList.LaboratoryTestsList;
             if (LaboratoryTestsList != null)
             {
-                LaboratoryTestsList.Invoke(testStatus[index].Item1);
+                LaboratoryTestsList.Invoke(_testStatus[index].Item1);
             }
 
         }

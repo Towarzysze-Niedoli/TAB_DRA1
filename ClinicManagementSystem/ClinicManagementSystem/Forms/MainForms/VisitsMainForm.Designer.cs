@@ -217,10 +217,6 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.VisitStatusComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.VisitStatusComboBox.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.VisitStatusComboBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(62)))), ((int)(((byte)(138)))));
-            this.VisitStatusComboBox.Items.AddRange(new object[] {
-            "Pending",
-            "Canceled",
-            "Finished"});
             this.VisitStatusComboBox.Location = new System.Drawing.Point(15, 117);
             this.VisitStatusComboBox.Name = "VisitStatusComboBox";
             this.VisitStatusComboBox.Size = new System.Drawing.Size(301, 26);
