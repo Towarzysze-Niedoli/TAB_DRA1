@@ -18,9 +18,9 @@ namespace ClinicManagementSystem.Forms.MainForms
         private IDoctorService _doctorService;
         private IReceptionistService _receptionistService;
         private ILaboratoryTechnicianService _technicianService;
-        // todo lab manager
+        private ILaboratoryManagerService _managerService;
 
-        public ManagerForm(MainFormType formType, IPatientService patientService, IDoctorService doctorService, IReceptionistService receptionistService, ILaboratoryTechnicianService technicianService)
+        public ManagerForm(MainFormType formType, IPatientService patientService, IDoctorService doctorService, IReceptionistService receptionistService, ILaboratoryTechnicianService technicianService, ILaboratoryManagerService managerService)
         {
             
             this._formType = formType;
@@ -31,6 +31,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             _doctorService = doctorService;
             _receptionistService = receptionistService;
             _technicianService = technicianService;
+            _managerService = managerService;
         }
 
         private void SetSearchOnEnterClick()
@@ -262,6 +263,41 @@ namespace ClinicManagementSystem.Forms.MainForms
 
         private void UpdateButton_Click(object sender, EventArgs e)
         {
+            switch (_formType)
+            {
+                case MainFormType.ManagerReceptionist:
+                    UpdatePatient();
+                    break;
+                default:
+                    break;
+            }  
+            ClearData();
+        }
+
+        private void DeleteButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void AddButton_Click(object sender, EventArgs e)
+        {
+            switch (_formType)
+            {
+                case MainFormType.ManagerReceptionist:
+                    AddPatient();
+                    break;
+                default:
+                    break;
+            }   
+        }
+
+        private void LoginLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void UpdatePatient()
+        {
             Patient patientToUpdate = _patientService.GetPatientByPersonalIdentityNumber(PESELTextBox.Text);
 
             patientToUpdate.Address.City = CityTextBox.Text;
@@ -282,15 +318,9 @@ namespace ClinicManagementSystem.Forms.MainForms
             {
                 MessageBox.Show("Update data error.", "Update Patient Data");
             }
-            ClearData();
         }
 
-        private void DeleteButton_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void AddButton_Click(object sender, EventArgs e)
+        private void AddPatient()
         {
             Address newAddress = new Address
             {
@@ -319,10 +349,5 @@ namespace ClinicManagementSystem.Forms.MainForms
             }
             ClearData();
         }
-
-        private void LoginLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-    }
+    } 
 }
