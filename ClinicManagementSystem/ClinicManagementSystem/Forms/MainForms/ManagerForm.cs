@@ -26,7 +26,6 @@ namespace ClinicManagementSystem.Forms.MainForms
             this._formType = formType;
             InitializeComponent();
             SetSearchOnEnterClick();
-            SpecializationComboBox.SelectedIndex = 0;
             ShowCorrectElements();
             _patientService = patientService;
             _doctorService = doctorService;
@@ -164,7 +163,7 @@ namespace ClinicManagementSystem.Forms.MainForms
                         default:
                             break;
                     }
-                   
+                  
                 }
               }
         }
@@ -219,8 +218,7 @@ namespace ClinicManagementSystem.Forms.MainForms
                     NumberTextBox.Text = receptionist.Address.HomeNumber;
                 }               
                 
-            }
-            
+            }    
         }
         private void FindPatient(string[] name)
         {
@@ -264,6 +262,26 @@ namespace ClinicManagementSystem.Forms.MainForms
 
         private void UpdateButton_Click(object sender, EventArgs e)
         {
+            Patient patientToUpdate = _patientService.GetPatientByPersonalIdentityNumber(PESELTextBox.Text);
+
+            patientToUpdate.Address.City = CityTextBox.Text;
+            patientToUpdate.Address.Street = StreetTextBox.Text;
+            patientToUpdate.Address.HomeNumber = NumberTextBox.Text;
+            patientToUpdate.Address.ZipCode = ZIPCodeTextBox.Text;
+            patientToUpdate.PhoneNumber = PhoneTextBox.Text;
+            patientToUpdate.FirstName = UserNameTextBox.Text;
+            patientToUpdate.LastName = UserSurnameTextBox.Text;
+            patientToUpdate.Email = EMailTextBox.Text;
+
+            try
+            {
+                _patientService.UpdatePatient(patientToUpdate);
+                MessageBox.Show("Patient data has been succesfully updated.", "Update Patient Data");
+            }
+            catch (DbUpdateException)
+            {
+                MessageBox.Show("Update data error.", "Update Patient Data");
+            }
             ClearData();
         }
 
@@ -281,7 +299,6 @@ namespace ClinicManagementSystem.Forms.MainForms
                 HomeNumber = NumberTextBox.Text,
                 ZipCode = ZIPCodeTextBox.Text
             };
-
             Patient newPatient = new Patient
             {
                 PersonalIdentityNumber = PESELTextBox.Text,

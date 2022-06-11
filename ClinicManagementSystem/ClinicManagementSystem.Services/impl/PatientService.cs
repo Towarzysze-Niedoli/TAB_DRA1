@@ -23,7 +23,6 @@ namespace ClinicManagementSystem.Services.impl
             context.Patients.Remove(patient);
         }
 
-
         public IEnumerable<Patient> GetPatients()
         {
             return context.Patients;
@@ -47,7 +46,9 @@ namespace ClinicManagementSystem.Services.impl
 
         public void UpdatePatient(Patient patient)
         {
+            context.Patients.Attach(patient);
             context.Entry(patient).State = System.Data.Entity.EntityState.Modified;
+            Save();
         }
 
         public Patient GetPatientByPersonalIdentityNumber(string personalIdentityNumber)
