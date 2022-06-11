@@ -52,15 +52,12 @@ namespace ClinicManagementSystem.Services.impl
 
         public Patient GetPatientByPersonalIdentityNumber(string personalIdentityNumber)
         {
-            List<Patient> patients = context.Patients.Where(p => p.PersonalIdentityNumber.Equals(personalIdentityNumber)).ToList();
-            return patients.Count() != 0 ? patients.First() : null;
-
+            return context.Patients.Where(p => p.PersonalIdentityNumber.Equals(personalIdentityNumber)).FirstOrDefault();
         }
 
         public Patient GetPatientByName(string firstName, string lastName)
         {
-            List<Patient> patients = context.Patients.Include(p => p.Address).Where(p => p.FirstName.Equals(firstName) && p.LastName.Equals(lastName)).ToList();
-            return patients.Count() != 0 ? patients.First() : null;
+            return context.Patients.Include(p => p.Address).Where(p => p.FirstName.Equals(firstName) && p.LastName.Equals(lastName)).FirstOrDefault();
         }
 
         private bool disposed = false;

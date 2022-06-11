@@ -49,8 +49,7 @@ namespace ClinicManagementSystem.Services.impl
 
         public Doctor GetDoctorByName(string firstName, string lastName)
         {
-            List<Doctor> doctors = context.Doctors.Include(d => d.Address).Where(d => d.FirstName.Equals(firstName) && d.LastName.Equals(lastName)).ToList();
-            return doctors.Count() != 0 ? doctors.First() : null;
+            return context.Doctors.Include(d => d.Address).Where(d => d.FirstName.Equals(firstName) && d.LastName.Equals(lastName)).FirstOrDefault();
         }
     }
 }

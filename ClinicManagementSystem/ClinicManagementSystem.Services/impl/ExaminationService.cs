@@ -21,8 +21,6 @@ namespace ClinicManagementSystem.Services.impl
             context.Examinations.Remove(examination);
         }
 
-        
-
         public Examination GetExaminationByID(int examinationId)
         {
             return context.Examinations.Find(examinationId);
@@ -32,7 +30,6 @@ namespace ClinicManagementSystem.Services.impl
         {
             return context.Examinations;
         }
-
 
         public void InsertExamination(Examination examination)
         {

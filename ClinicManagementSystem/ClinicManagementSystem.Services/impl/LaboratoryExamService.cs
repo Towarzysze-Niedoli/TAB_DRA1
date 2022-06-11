@@ -22,8 +22,6 @@ namespace ClinicManagementSystem.Services.impl
             context.LaboratoryExams.Remove(laboratoryExam);
         }
 
-
-
         public LaboratoryExam GetLaboratoryExamByID(int laboratoryExamId)
         {
             return context.LaboratoryExams.Find(laboratoryExamId);

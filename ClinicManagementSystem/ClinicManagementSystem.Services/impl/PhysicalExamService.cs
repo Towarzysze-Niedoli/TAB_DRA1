@@ -22,8 +22,6 @@ namespace ClinicManagementSystem.Services.impl
             context.PhysicalExams.Remove(physicalExam);
         }
 
-
-
         public PhysicalExam GetPhysicalExamByID(int physicalExamId)
         {
             return context.PhysicalExams.Find(physicalExamId);
@@ -33,7 +31,6 @@ namespace ClinicManagementSystem.Services.impl
         {
             return context.PhysicalExams;
         }
-
 
         public void InsertPhysicalExam(PhysicalExam physicalExam)
         {

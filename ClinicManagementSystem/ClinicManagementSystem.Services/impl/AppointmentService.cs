@@ -30,7 +30,7 @@ namespace ClinicManagementSystem.Services.impl
 
         public IEnumerable<Appointment> GetAcceptedAppointmentsForPatient(Patient patient)
         {
-            return context.Appointments.ToList().Where(a => a.Patient == patient && a.AppointmentStatus == Entities.Enums.AppointmentStatus.Accepted).ToList();
+            return context.Appointments.Where(a => a.Patient == patient && a.AppointmentStatus == Entities.Enums.AppointmentStatus.Accepted).ToList();
         }
 
         public IEnumerable<Appointment> GetAppointmentsByCompletionDate(DateTime completionDate)
@@ -50,8 +50,7 @@ namespace ClinicManagementSystem.Services.impl
 
         public Appointment GetAppointmentForPatientByCompletionDate(Patient patient, DateTime completionDate)
         {
-            List<Appointment> appointments = context.Appointments.Where(a => a.Patient == patient).Where(a => a.CompletionDate == completionDate).ToList();
-            return appointments.Count() != 0 ? appointments.First() : null;
+            return context.Appointments.Where(a => a.Patient == patient).Where(a => a.CompletionDate == completionDate).FirstOrDefault();
         }
 
         public void InsertAppointment(Appointment appointment)
