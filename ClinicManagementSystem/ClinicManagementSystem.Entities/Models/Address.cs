@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace ClinicManagementSystem.Entities
+namespace ClinicManagementSystem.Entities.Models
 {
     public class Address
     {

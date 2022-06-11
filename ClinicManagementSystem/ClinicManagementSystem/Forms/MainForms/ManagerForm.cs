@@ -7,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using Microsoft.EntityFrameworkCore;
 
 namespace ClinicManagementSystem.Forms.MainForms
 {
@@ -24,11 +25,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             
             this._formType = formType;
             InitializeComponent();
-            SearchUserTextBox.KeyDown += (sender, args) =>
-            { // search on enter click
-                if (args.KeyCode == Keys.Enter || args.KeyCode == Keys.Return)
-                    SearchUserButton_Click(sender, args);
-            };
+            SetSearchOnEnterClick();
             SpecializationComboBox.SelectedIndex = 0;
             ShowCorrectElements();
             _patientService = patientService;
@@ -37,6 +34,14 @@ namespace ClinicManagementSystem.Forms.MainForms
             _technicianService = technicianService;
         }
 
+        private void SetSearchOnEnterClick()
+        {
+            SearchUserTextBox.KeyDown += (sender, args) =>
+            { // search on enter click
+                if (args.KeyCode == Keys.Enter || args.KeyCode == Keys.Return)
+                    SearchUserButton_Click(sender, args);
+            };
+        }
         private void HidePesel()
         {
             PESELTextBox.Hide();
@@ -269,7 +274,33 @@ namespace ClinicManagementSystem.Forms.MainForms
 
         private void AddButton_Click(object sender, EventArgs e)
         {
+            Address newAddress = new Address
+            {
+                City = CityTextBox.Text,
+                Street = StreetTextBox.Text,
+                HomeNumber = NumberTextBox.Text,
+                ZipCode = ZIPCodeTextBox.Text
+            };
 
+            Patient newPatient = new Patient
+            {
+                PersonalIdentityNumber = PESELTextBox.Text,
+                PhoneNumber = PhoneTextBox.Text,
+                FirstName = UserNameTextBox.Text,
+                LastName = UserSurnameTextBox.Text,
+                Email = EMailTextBox.Text,
+                Address = newAddress
+            };
+            try
+            {
+                _patientService.InsertPatient(newPatient);
+                MessageBox.Show("New patient has been succesfully added.", "Add New Patient");
+            }
+            catch (DbUpdateException)
+            {
+                MessageBox.Show("Insert error.", "Add New Patient");
+            }
+            ClearData();
         }
 
         private void LoginLabel_Click(object sender, EventArgs e)

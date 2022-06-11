@@ -37,6 +37,7 @@ namespace ClinicManagementSystem.Services.impl
         public void InsertPatient(Patient patient)
         {
             context.Patients.Add(patient);
+            Save();
         }
 
         public void Save()
