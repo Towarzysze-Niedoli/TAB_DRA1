@@ -42,13 +42,13 @@ namespace ClinicManagementSystem.Forms.MainForms
             _specialization = new List<(Specialization, string)>
             {
                 (Specialization.None, "<Select Specialization>"),
-                (Specialization.Anesthesiologist, "Anesthesiologist"),
-                (Specialization.EmergencyPhysician, "Emergency Physician"),
-                (Specialization.Gynecologist, "Gynecologist"),
                 (Specialization.Internist, "Internist"),
+                (Specialization.Radiologist, "Radiologist"),
                 (Specialization.Neurologist, "Neurologist"),
+                (Specialization.Gynecologist, "Gynecologist"),
+                (Specialization.Anesthesiologist, "Anesthesiologist"),
                 (Specialization.Pediatrician, "Pediatrician"),
-                (Specialization.Radiologist, "Radiologist")
+                (Specialization.EmergencyPhysician, "Emergency Physician")
             };
 
             _specialization.ForEach(((Specialization, string) tuple) => {

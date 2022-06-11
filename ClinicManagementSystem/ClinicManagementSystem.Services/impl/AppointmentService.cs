@@ -56,6 +56,7 @@ namespace ClinicManagementSystem.Services.impl
         public void InsertAppointment(Appointment appointment)
         {
             context.Appointments.Add(appointment);
+            Save();
         }
 
         public void Save()

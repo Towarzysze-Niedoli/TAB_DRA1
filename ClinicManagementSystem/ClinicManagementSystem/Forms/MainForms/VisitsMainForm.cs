@@ -48,7 +48,6 @@ namespace ClinicManagementSystem.Forms.MainForms
 
             _visitsListForm.ElementClicked += FillVisitTextFields;
             this.VisitsListPanel.Controls.Add(_visitsListForm);
-
         }
 
         private void SetSearchOnEnterClick()

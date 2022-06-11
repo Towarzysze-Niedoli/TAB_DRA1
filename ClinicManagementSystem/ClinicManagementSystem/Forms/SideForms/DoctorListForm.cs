@@ -8,6 +8,17 @@ namespace ClinicManagementSystem.Forms.SideForms
 {   
     class DoctorListForm : ListForm
     {
+        public override void PopulateList(List<ListElement> elements)
+        {
+            _elements = elements;
+            ListFlowPanel.Controls.Clear();
+            foreach (ListElement element in _elements)
+            {
+                element.ListElementClicked += OnElementClicked;
+                ListFlowPanel.Controls.Add(element);
+            }
+        }
+
         protected override void PopulateListExample()
         {
             _elements = new List<ListElement>

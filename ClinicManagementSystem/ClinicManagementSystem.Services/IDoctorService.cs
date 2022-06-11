@@ -15,5 +15,6 @@ namespace ClinicManagementSystem.Services
         void EnableDoctorAccount(int doctorId);
         Doctor GetDoctorByName(string firstName, string lastName);
         Doctor GetDoctorByLicenceNumber(string licenceNumber);
+        IEnumerable<Doctor> GetDoctorBySpecialization(int specialization);
     }
 }

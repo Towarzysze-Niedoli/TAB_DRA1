@@ -8,9 +8,11 @@ using System.Windows.Forms;
 using ClinicManagementSystem.Forms.SideForms;
 using ClinicManagementSystem.Forms.EventArguments;
 using ClinicManagementSystem.Services;
+using ClinicManagementSystem.Forms.CustomElements;
 using Microsoft.Extensions.DependencyInjection;
 using ClinicManagementSystem.Entities.Models;
 using ClinicManagementSystem.Entities.Enums;
+using Microsoft.EntityFrameworkCore;
 
 namespace ClinicManagementSystem.Forms.MainForms
 {
@@ -19,9 +21,12 @@ namespace ClinicManagementSystem.Forms.MainForms
         private ListForm _doctorsList;
         private PersonInfoForm _patientInfo;
         private IPatientService _patientService;
+        private IDoctorService _doctorService;
         private IAppointmentService _appointmentService;
-        private List<(Specialization?, string)> _specialization;
-
+        private List<(Specialization, string)> _specialization;
+        IEnumerable<Doctor> doctors;
+        private Doctor _chosenDoctor;
+        private Patient _chosenPatient;
         public NewVisitForm(IServiceProvider serviceProvider)
         {
             InitializeComponent();
@@ -30,6 +35,9 @@ namespace ClinicManagementSystem.Forms.MainForms
             InitializeList();
             _patientService = serviceProvider.GetService<IPatientService>();
             _appointmentService = serviceProvider.GetService<IAppointmentService>();
+            _doctorService = serviceProvider.GetService<IDoctorService>();
+            doctors = _doctorService.GetDoctors();
+            DisplayDoctors(doctors);
         }
 
         private void SetSearchOnEnterClick()
@@ -42,22 +50,40 @@ namespace ClinicManagementSystem.Forms.MainForms
         }
         private void InitializeSpecializationCombobox()
         {
-            _specialization = new List<(Specialization?, string)>
+            _specialization = new List<(Specialization, string)>
             {
-                (null, "<Select Specialization>"),
-                (Specialization.Anesthesiologist, "Anesthesiologist"),
-                (Specialization.EmergencyPhysician, "Emergency Physician"),
-                (Specialization.Gynecologist, "Gynecologist"),
+                (Specialization.None, "<Select Specialization>"),
                 (Specialization.Internist, "Internist"),
+                (Specialization.Radiologist, "Radiologist"),
                 (Specialization.Neurologist, "Neurologist"),
+                (Specialization.Gynecologist, "Gynecologist"),
+                (Specialization.Anesthesiologist, "Anesthesiologist"),
                 (Specialization.Pediatrician, "Pediatrician"),
-                (Specialization.Radiologist, "Radiologist")
+                (Specialization.EmergencyPhysician, "Emergency Physician")   
             };
 
-            _specialization.ForEach(((Specialization?, string) tuple) => {
+            _specialization.ForEach(((Specialization, string) tuple) => {
                 SpecializationComboBox.Items.Add(tuple.Item2);
             });
             SpecializationComboBox.SelectedIndex = 0;
+        }
+
+        private void DisplayDoctors(IEnumerable<Doctor> doctors)
+        {
+            var elements = new List<ListElement>();
+            int index = 0;
+
+            foreach(Doctor doctor in doctors)
+            {
+                string doctorName = doctor.FirstName != null ? doctor.FirstName + " " + doctor.LastName : " ";
+                var el = new DoctorListElement(index++,
+                doctorName,
+                ((Specialization)doctor.Specialization).ToString(),
+                "Thu - 15.03.2022 - 8:00"); //tymczasowe
+                elements.Add(el); 
+            }
+            _doctorsList.PopulateList(elements);
+            _doctorsList.Show();
         }
 
         void InitializeList()
@@ -83,12 +109,35 @@ namespace ClinicManagementSystem.Forms.MainForms
                 // TODO - last vist - change in model in patient or service method?
                 _patientInfo.Show();
                 FillPatientTextFields(patient.FirstName, patient.LastName);
+                _chosenPatient = patient;
             }
         }
 
         private void NewVisitButton_Click(object sender, EventArgs e)
         {
-
+            if(_chosenPatient != null || _chosenDoctor != null)
+            {
+                Appointment newAppointment = new Appointment
+                {
+                    Doctor = _chosenDoctor,
+                    Patient = _chosenPatient,
+                    RegistrationDate = DateTime.Now
+                };
+                try
+                {
+                    _appointmentService.InsertAppointment(newAppointment);
+                    MessageBox.Show("New visit has been succesfully added.", "Add New Visit");
+                }
+                catch (DbUpdateException)
+                {
+                    MessageBox.Show("Insert error.", "Add New Visit");
+                }
+                ClearData();
+            }
+            else
+            {
+                MessageBox.Show("Complete the missing data!", "Add New Visit");
+            }     
         }
 
         private void NewPatientButton_Click(object sender, EventArgs e)
@@ -104,14 +153,45 @@ namespace ClinicManagementSystem.Forms.MainForms
 
         private void FillDoctorTextFields(object source, ListElementClickedArgs args)
         {
-            //@todo get info from model and put it into text fields
+            int index = 0;
+            foreach(var doctor in doctors)
+            {
+                if(args.Index == index)
+                {
+                    DoctorNameTextBox.Text = doctor.FirstName;
+                    DoctorSurnameTextBox.Text = doctor.LastName;
+                    _chosenDoctor = doctor;
+                    //todo pobranie daty i czasu wizyty
+                    break;
+                }
+                else
+                {
+                    index++;
+                }
+            }   
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //search doctor
             int specIndex = this.SpecializationComboBox.SelectedIndex;
-            DateTime date = this.VisitDateTimePicker.Value;
+            if(specIndex == 0)
+            {
+                doctors = _doctorService.GetDoctors();
+                DisplayDoctors(doctors);
+            }
+            else
+            {
+                doctors = _doctorService.GetDoctorBySpecialization(specIndex);
+                DisplayDoctors(doctors);
+            }   
+        }
+
+        private void ClearData()
+        {
+            DoctorNameTextBox.Clear();
+            DoctorSurnameTextBox.Clear();
+            PatientNameTextBox.Clear();
+            PatientSurnameTextBox.Clear();
         }
     }
 }

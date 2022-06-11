@@ -56,5 +56,10 @@ namespace ClinicManagementSystem.Services.impl
         {
             return context.Doctors.Include(d => d.Address).Where(d => d.LicenseNumber.Equals(licenceNumber)).FirstOrDefault();
         }
+        
+        public IEnumerable<Doctor> GetDoctorBySpecialization(int specialization)
+        {
+            return context.Doctors.Where(d => (int)d.Specialization == specialization);
+        }
     }
 }
