@@ -96,7 +96,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.DoctorsListPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(119)))), ((int)(((byte)(182)))));
             this.DoctorsListPanel.Location = new System.Drawing.Point(875, 180);
             this.DoctorsListPanel.Name = "DoctorsListPanel";
-            this.DoctorsListPanel.Size = new System.Drawing.Size(550, 439);
+            this.DoctorsListPanel.Size = new System.Drawing.Size(688, 439);
             this.DoctorsListPanel.TabIndex = 3;
             // 
             // NewPatientButton

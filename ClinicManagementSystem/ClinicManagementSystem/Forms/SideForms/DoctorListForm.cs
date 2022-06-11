@@ -37,11 +37,11 @@ namespace ClinicManagementSystem.Forms.SideForms
             // ListFlowPanel
             // 
             this.ListFlowPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(119)))), ((int)(((byte)(182)))));
-            this.ListFlowPanel.Size = new System.Drawing.Size(2167, 1071);
+            this.ListFlowPanel.Size = new System.Drawing.Size(2164, 1034);
             // 
             // DoctorListForm
             // 
-            this.ClientSize = new System.Drawing.Size(2167, 1071);
+            this.ClientSize = new System.Drawing.Size(2164, 1034);
             this.Name = "DoctorListForm";
             this.ResumeLayout(false);
 

@@ -108,7 +108,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(247)))), ((int)(((byte)(255)))));
-            this.label8.Location = new System.Drawing.Point(350, 409);
+            this.label8.Location = new System.Drawing.Point(350, 339);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(85, 23);
             this.label8.TabIndex = 24;
@@ -130,7 +130,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(247)))), ((int)(((byte)(255)))));
-            this.label6.Location = new System.Drawing.Point(350, 338);
+            this.label6.Location = new System.Drawing.Point(350, 268);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(97, 23);
             this.label6.TabIndex = 22;
@@ -152,7 +152,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(247)))), ((int)(((byte)(255)))));
-            this.label4.Location = new System.Drawing.Point(350, 268);
+            this.label4.Location = new System.Drawing.Point(350, 198);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(110, 23);
             this.label4.TabIndex = 20;
@@ -174,7 +174,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(247)))), ((int)(((byte)(255)))));
-            this.label2.Location = new System.Drawing.Point(350, 202);
+            this.label2.Location = new System.Drawing.Point(350, 410);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(68, 23);
             this.label2.TabIndex = 18;
@@ -210,7 +210,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.NumberTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.NumberTextBox.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.NumberTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(119)))), ((int)(((byte)(182)))));
-            this.NumberTextBox.Location = new System.Drawing.Point(350, 434);
+            this.NumberTextBox.Location = new System.Drawing.Point(350, 364);
             this.NumberTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.NumberTextBox.Name = "NumberTextBox";
             this.NumberTextBox.PlaceholderText = "Number";
@@ -236,7 +236,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.ZIPCodeTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.ZIPCodeTextBox.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.ZIPCodeTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(119)))), ((int)(((byte)(182)))));
-            this.ZIPCodeTextBox.Location = new System.Drawing.Point(350, 363);
+            this.ZIPCodeTextBox.Location = new System.Drawing.Point(350, 293);
             this.ZIPCodeTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ZIPCodeTextBox.Name = "ZIPCodeTextBox";
             this.ZIPCodeTextBox.PlaceholderText = "ZIP Code";
@@ -262,7 +262,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.PhoneTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.PhoneTextBox.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.PhoneTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(119)))), ((int)(((byte)(182)))));
-            this.PhoneTextBox.Location = new System.Drawing.Point(350, 227);
+            this.PhoneTextBox.Location = new System.Drawing.Point(350, 435);
             this.PhoneTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PhoneTextBox.Name = "PhoneTextBox";
             this.PhoneTextBox.PlaceholderText = "Phone";
@@ -288,7 +288,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.UserSurnameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.UserSurnameTextBox.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.UserSurnameTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(119)))), ((int)(((byte)(182)))));
-            this.UserSurnameTextBox.Location = new System.Drawing.Point(350, 293);
+            this.UserSurnameTextBox.Location = new System.Drawing.Point(350, 223);
             this.UserSurnameTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.UserSurnameTextBox.Name = "UserSurnameTextBox";
             this.UserSurnameTextBox.PlaceholderText = "Last Name";
