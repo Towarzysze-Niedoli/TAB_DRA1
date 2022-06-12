@@ -13,5 +13,6 @@ namespace ClinicManagementSystem.Services
         void UpdateLaboratoryTechnician(LaboratoryTechnician laboratoryTechnician, string password = null);
         void DisableLaboratoryTechnicianAccount(int laboratoryTechnicianId);
         void EnableLaboratoryTechnicianAccount(int laboratoryTechnicianId);
+        LaboratoryTechnician GetLaboratoryTechnicianByName(string firstName, string lastName);
     }
 }

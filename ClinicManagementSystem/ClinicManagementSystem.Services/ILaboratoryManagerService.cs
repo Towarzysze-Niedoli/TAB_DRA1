@@ -13,5 +13,6 @@ namespace ClinicManagementSystem.Services
         void UpdateLaboratoryManager(LaboratoryManager laboratoryManager, string password = null);
         void DisableLaboratoryManagerAccount(int laboratoryManagerId);
         void EnableLaboratoryManagerAccount(int laboratoryManagerId);
+        LaboratoryManager GetLaboratoryManagerByName(string firstName, string lastName);
     }
 }

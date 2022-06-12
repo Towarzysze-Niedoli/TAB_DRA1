@@ -218,8 +218,23 @@ namespace ClinicManagementSystem.Forms.MainForms
         }
         private void FindLab(string[] name)
         {
-            // TODO - missing lab manager service
+            if (!LabManagerRadioButton.Checked && !LabTechicianRadioButton.Checked)
+            {
+                MessageBox.Show("Select the type of worker!", "Find Laboratory Worker");
+            }
+            else
+            {
+                if (LabManagerRadioButton.Checked)
+                {
+                    FindLaboratoryManager(name);
+                }
+                else if (LabTechicianRadioButton.Checked)
+                {
+                    FindLaboratoryTechnician(name);
+                }
+            }
         }
+
         private void FindReceptionist(string[] name)
         {
             Receptionist receptionist = _receptionistService.GetReceptionistByName(name[0], name[1]);
@@ -266,8 +281,55 @@ namespace ClinicManagementSystem.Forms.MainForms
                     ZIPCodeTextBox.Text = patient.Address.ZipCode;
                     NumberTextBox.Text = patient.Address.HomeNumber;
                 }
+            }           
+        }
+
+        private void FindLaboratoryManager(string[] name)
+        {
+            LaboratoryManager laboratoryManager = _managerService.GetLaboratoryManagerByName(name[0], name[1]);
+            if (laboratoryManager != null)
+            {
+                SearchUserTextBox.Clear();
+                UpdateButton.Show();
+                DeleteButton.Show();
+                PhoneTextBox.Text = laboratoryManager.PhoneNumber;
+                UserNameTextBox.Text = laboratoryManager.FirstName;
+                UserSurnameTextBox.Text = laboratoryManager.LastName;
+                EMailTextBox.Text = laboratoryManager.Email;
+                PasswordTextBox.Text = ""; // todo from auth services
+
+                if (laboratoryManager.Address != null)
+                {
+                    CityTextBox.Text = laboratoryManager.Address.City;
+                    StreetTextBox.Text = laboratoryManager.Address.Street;
+                    ZIPCodeTextBox.Text = laboratoryManager.Address.ZipCode;
+                    NumberTextBox.Text = laboratoryManager.Address.HomeNumber;
+                }
             }
-            
+        }
+
+        private void FindLaboratoryTechnician(string[] name)
+        {
+            LaboratoryTechnician laboratoryTechnician = _technicianService.GetLaboratoryTechnicianByName(name[0], name[1]);
+            if (laboratoryTechnician != null)
+            {
+                SearchUserTextBox.Clear();
+                UpdateButton.Show();
+                DeleteButton.Show();
+                PhoneTextBox.Text = laboratoryTechnician.PhoneNumber;
+                UserNameTextBox.Text = laboratoryTechnician.FirstName;
+                UserSurnameTextBox.Text = laboratoryTechnician.LastName;
+                EMailTextBox.Text = laboratoryTechnician.Email;
+                PasswordTextBox.Text = ""; // todo from auth services
+
+                if (laboratoryTechnician.Address != null)
+                {
+                    CityTextBox.Text = laboratoryTechnician.Address.City;
+                    StreetTextBox.Text = laboratoryTechnician.Address.Street;
+                    ZIPCodeTextBox.Text = laboratoryTechnician.Address.ZipCode;
+                    NumberTextBox.Text = laboratoryTechnician.Address.HomeNumber;
+                }
+            }
         }
 
         private void ClearData()
@@ -411,6 +473,7 @@ namespace ClinicManagementSystem.Forms.MainForms
         {
 
         }
+
         private void UpdatePatient()
         {
             Patient patientToUpdate = _patientService.GetPatientByPersonalIdentityNumber(PESELTextBox.Text);
@@ -515,7 +578,7 @@ namespace ClinicManagementSystem.Forms.MainForms
         {
             if (PasswordTextBox.Text == "" || LoginTextBox.Text == "" || (!LabManagerRadioButton.Checked && !LabTechicianRadioButton.Checked))
             {
-                MessageBox.Show("Complete the missing data!", "Add New Doctor");
+                MessageBox.Show("Complete the missing data!", "Add New Laboratory Worker");
             }
             else
             {

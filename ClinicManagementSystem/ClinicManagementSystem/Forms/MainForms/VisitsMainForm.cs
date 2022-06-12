@@ -18,7 +18,6 @@ namespace ClinicManagementSystem.Forms.MainForms
     public partial class VisitsMainForm : Form
     {
         public delegate void NextPageButtonClicked(object source, PageControllingButtonClickedArgs args);
-
         public event NextPageButtonClicked ButtonClicked;
 
         private ListForm _visitsListForm;

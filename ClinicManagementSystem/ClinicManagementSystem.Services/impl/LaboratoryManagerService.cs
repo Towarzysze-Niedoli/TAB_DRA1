@@ -1,9 +1,11 @@
 ﻿using ClinicManagementSystem.Auth.Services;
 using ClinicManagementSystem.Entities;
+using System.Data.Entity;
 using ClinicManagementSystem.Entities.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 
 namespace ClinicManagementSystem.Services.impl
 {
@@ -44,6 +46,11 @@ namespace ClinicManagementSystem.Services.impl
         public void EnableLaboratoryManagerAccount(int laboratoryManagerId)
         {
             authorizationService.EnablePersonAccount<LaboratoryTechnician>(laboratoryManagerId);
+        }
+
+        public LaboratoryManager GetLaboratoryManagerByName(string firstName, string lastName)
+        {
+            return context.LaboratoryManagers.Include(r => r.Address).Where(r => r.FirstName.Equals(firstName) && r.LastName.Equals(lastName)).FirstOrDefault();
         }
     }
 }

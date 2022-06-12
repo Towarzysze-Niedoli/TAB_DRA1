@@ -7,6 +7,9 @@ using System.Text;
 using System.Windows.Forms;
 using ClinicManagementSystem.Forms.SideForms;
 using ClinicManagementSystem.Forms.EventArguments;
+using static ClinicManagementSystem.Forms.MainForms.VisitsMainForm;
+using ClinicManagementSystem.Entities.Models;
+using ClinicManagementSystem.Services;
 
 namespace ClinicManagementSystem.Forms.MainForms
 {
@@ -16,7 +19,7 @@ namespace ClinicManagementSystem.Forms.MainForms
         public event ControlButtonClickedEventHandler ControlButtonClicked;
 
         private PerformVisitFormMode _mode;
-
+        private IPatientService _patientService;
         private DoctorListForm _previusVisitsListForm;
         private PersonInfoForm _patientInfoForm;
         private PerformVisitSideFormsSet _currentVisitSet;
@@ -24,13 +27,13 @@ namespace ClinicManagementSystem.Forms.MainForms
 
         private bool _patientInfoShown = false;
 
-        public PerformVisitForm()
+        public PerformVisitForm(IPatientService patientService)
         {
             InitializeComponent();
 
             _previusVisitsListForm = new DoctorListForm();
             _previusVisitsListForm.ElementClicked += FillSelectedVisitInformation;
-
+            _patientService = patientService;
             _patientInfoForm = new PersonInfoForm();
 
             _currentVisitSet = new PerformVisitSideFormsSet(new VisitTextsForm(), new PhysicalForm(), new OrderLabForm());

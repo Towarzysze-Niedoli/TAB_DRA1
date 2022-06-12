@@ -39,7 +39,6 @@ namespace ClinicManagementSystem.Forms.MainForms
 
         public MainWindow(IServiceProvider provider, UserLevel level)
         {
-            
             _provider = provider;
             _level = level;
             _activeMainForm = MainFormType.Main;
@@ -129,7 +128,7 @@ namespace ClinicManagementSystem.Forms.MainForms
         private void ShowPerformVisitForm()
         {
             UnloadMainForm();
-            _performVisitForm = new PerformVisitForm();
+            _performVisitForm = new PerformVisitForm(_provider.GetService<IPatientService>());
             _activeMainForm = MainFormType.PerformVisit;
             InitializeForm(_performVisitForm, FormType.MainForm);
         }
