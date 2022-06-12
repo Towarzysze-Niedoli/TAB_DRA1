@@ -62,7 +62,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             _testStatus.ForEach(((TestStatus?, string) tuple) => {
                 LaboratoryTestsComboBox.Items.Add(tuple.Item2);
             });
-            LaboratoryTestsComboBox.SelectedIndex = 0;
+            LaboratoryTestsComboBox.SelectedIndex = 1;
         }
 
         void InitializeTestList()
@@ -105,6 +105,10 @@ namespace ClinicManagementSystem.Forms.MainForms
             if(_level == UserLevel.Laborant)
             {
                 this.LabManagerComboBox.Enabled = false;
+                returnBtn.Hide();
+                cancelBtn.Hide();
+                approveBtn.Text = "Done";
+
             }
             else
             {

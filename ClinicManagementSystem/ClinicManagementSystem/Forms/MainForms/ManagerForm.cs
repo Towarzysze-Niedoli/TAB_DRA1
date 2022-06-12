@@ -92,6 +92,7 @@ namespace ClinicManagementSystem.Forms.MainForms
         private void HideLogin()
         {
             LoginLabel.Hide();
+            LoginTextBox.Hide();
             PasswordTextBox.Hide();
         }
 
