@@ -424,7 +424,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             Specialization spec = _specialization.Find(x => x.Item2 == SpecializationComboBox.SelectedItem.ToString()).Item1;
             if (spec == Specialization.None || PasswordTextBox.Text == "" || LoginTextBox.Text == "")
             {
-                MessageBox.Show("Complete the missing data!", "Update New Doctor");
+                MessageBox.Show("Complete the missing data!", "Update Doctor Data");
             }
             else
             {
@@ -450,7 +450,7 @@ namespace ClinicManagementSystem.Forms.MainForms
 
             if ( PasswordTextBox.Text == "" || LoginTextBox.Text == "")
             {
-                MessageBox.Show("Complete the missing data!", "Update New Receptionist");
+                MessageBox.Show("Complete the missing data!", "Update Receptionist Data");
             }
             else
             {
@@ -471,7 +471,71 @@ namespace ClinicManagementSystem.Forms.MainForms
 
         private void UpdateLaboratoryWorker()
         {
+            if (!LabManagerRadioButton.Checked && !LabTechicianRadioButton.Checked)
+            {
+                MessageBox.Show("Select the type of worker!", "Update Laboratory Worker");
+            }
+            else
+            {
+                if (LabManagerRadioButton.Checked)
+                {
+                    UpdateLaboratoryManager();
+                }
+                else if (LabTechicianRadioButton.Checked)
+                {
+                    UpdateLaboratoryTechnician();
+                }
+            }
+        }
 
+        private void UpdateLaboratoryManager()
+        {
+            LaboratoryManager managerToUpdate = _managerService.GetLaboratoryManagerByName(UserNameTextBox.Text, UserSurnameTextBox.Text);
+
+            if (PasswordTextBox.Text == "" || LoginTextBox.Text == "")
+            {
+                MessageBox.Show("Complete the missing data!", "Update Laboratory Manager");
+            }
+            else
+            {
+                managerToUpdate.Address.City = CityTextBox.Text;
+                managerToUpdate.Address.Street = StreetTextBox.Text;
+                managerToUpdate.Address.HomeNumber = NumberTextBox.Text;
+                managerToUpdate.Address.ZipCode = ZIPCodeTextBox.Text;
+                managerToUpdate.PhoneNumber = PhoneTextBox.Text;
+                managerToUpdate.FirstName = UserNameTextBox.Text;
+                managerToUpdate.LastName = UserSurnameTextBox.Text;
+                managerToUpdate.Email = EMailTextBox.Text;
+
+                _managerService.UpdateLaboratoryManager(managerToUpdate, PasswordTextBox.Text);
+                MessageBox.Show("Laboratory manager data has been succesfully updated.", "Update Laboratory Manager");
+                ClearData();
+            }
+        }
+
+        private void UpdateLaboratoryTechnician()
+        {
+            LaboratoryTechnician technicianToUpdate = _technicianService.GetLaboratoryTechnicianByName(UserNameTextBox.Text, UserSurnameTextBox.Text);
+
+            if (PasswordTextBox.Text == "" || LoginTextBox.Text == "")
+            {
+                MessageBox.Show("Complete the missing data!", "Update Laboratory Technician");
+            }
+            else
+            {
+                technicianToUpdate.Address.City = CityTextBox.Text;
+                technicianToUpdate.Address.Street = StreetTextBox.Text;
+                technicianToUpdate.Address.HomeNumber = NumberTextBox.Text;
+                technicianToUpdate.Address.ZipCode = ZIPCodeTextBox.Text;
+                technicianToUpdate.PhoneNumber = PhoneTextBox.Text;
+                technicianToUpdate.FirstName = UserNameTextBox.Text;
+                technicianToUpdate.LastName = UserSurnameTextBox.Text;
+                technicianToUpdate.Email = EMailTextBox.Text;
+
+                _technicianService.UpdateLaboratoryTechnician(technicianToUpdate, PasswordTextBox.Text);
+                MessageBox.Show("Laboratory manager data has been succesfully updated.", "Update Laboratory Manager");
+                ClearData();
+            }
         }
 
         private void UpdatePatient()
