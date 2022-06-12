@@ -542,105 +542,131 @@ namespace ClinicManagementSystem.Forms.MainForms
         {
             Patient patientToUpdate = _patientService.GetPatientByPersonalIdentityNumber(PESELTextBox.Text);
 
-            patientToUpdate.Address.City = CityTextBox.Text;
-            patientToUpdate.Address.Street = StreetTextBox.Text;
-            patientToUpdate.Address.HomeNumber = NumberTextBox.Text;
-            patientToUpdate.Address.ZipCode = ZIPCodeTextBox.Text;
-            patientToUpdate.PhoneNumber = PhoneTextBox.Text;
-            patientToUpdate.FirstName = UserNameTextBox.Text;
-            patientToUpdate.LastName = UserSurnameTextBox.Text;
-            patientToUpdate.Email = EMailTextBox.Text;
+            if(PESELTextBox.Text == "")
+            {
+                MessageBox.Show("Complete the missing data!", "Update Patient Data");
+            }
+            else
+            {
+                patientToUpdate.Address.City = CityTextBox.Text;
+                patientToUpdate.Address.Street = StreetTextBox.Text;
+                patientToUpdate.Address.HomeNumber = NumberTextBox.Text;
+                patientToUpdate.Address.ZipCode = ZIPCodeTextBox.Text;
+                patientToUpdate.PhoneNumber = PhoneTextBox.Text;
+                patientToUpdate.FirstName = UserNameTextBox.Text;
+                patientToUpdate.LastName = UserSurnameTextBox.Text;
+                patientToUpdate.Email = EMailTextBox.Text;
 
-            try
-            {
-                _patientService.UpdatePatient(patientToUpdate);
-                MessageBox.Show("Patient data has been succesfully updated.", "Update Patient Data");
-                ClearData();
+                try
+                {
+                    _patientService.UpdatePatient(patientToUpdate);
+                    MessageBox.Show("Patient data has been succesfully updated.", "Update Patient Data");
+                    ClearData();
+                }
+                catch (DbUpdateException)
+                {
+                    MessageBox.Show("Update data error.", "Update Patient Data");
+                }
             }
-            catch (DbUpdateException)
-            {
-                MessageBox.Show("Update data error.", "Update Patient Data");
-            }
+   
         }
 
         private void AddDoctor()
         {
-            Specialization spec = _specialization.Find(x => x.Item2 == SpecializationComboBox.SelectedItem.ToString()).Item1;
-            if(spec == Specialization.None || PasswordTextBox.Text == "" || LoginTextBox.Text == "")
+            Doctor existingDoctor = _doctorService.GetDoctorByLicenceNumber(PESELTextBox.Text);  //zmienic nazwe na licence number
+            if(existingDoctor == null)
             {
-                MessageBox.Show("Complete the missing data!", "Add New Doctor");
+                Specialization spec = _specialization.Find(x => x.Item2 == SpecializationComboBox.SelectedItem.ToString()).Item1;
+                if (spec == Specialization.None || PasswordTextBox.Text == "" || LoginTextBox.Text == "" || PESELTextBox.Text == "")
+                {
+                    MessageBox.Show("Complete the missing data!", "Add New Doctor");
+                }
+                else
+                {
+                    Address newAddress = new Address
+                    {
+                        City = CityTextBox.Text,
+                        Street = StreetTextBox.Text,
+                        HomeNumber = NumberTextBox.Text,
+                        ZipCode = ZIPCodeTextBox.Text
+                    };
+                    Doctor newDoctor = new Doctor
+                    {
+                        LicenseNumber = PESELTextBox.Text,
+                        PhoneNumber = PhoneTextBox.Text,
+                        FirstName = UserNameTextBox.Text,
+                        LastName = UserSurnameTextBox.Text,
+                        Email = EMailTextBox.Text,
+                        Specialization = spec,
+                        Address = newAddress
+                    };
+                    try
+                    {
+                        _doctorService.InsertDoctor(newDoctor, PasswordTextBox.Text);
+                        MessageBox.Show("New doctor has been succesfully added.", "Add New Doctor");
+                    }
+                    catch (DbUpdateException)
+                    {
+                        MessageBox.Show("Insert error.", "Add New Doctor");
+                    }
+                    ClearData();
+                }
             }
             else
             {
-                Address newAddress = new Address
-                {
-                    City = CityTextBox.Text,
-                    Street = StreetTextBox.Text,
-                    HomeNumber = NumberTextBox.Text,
-                    ZipCode = ZIPCodeTextBox.Text
-                };
-                Doctor newDoctor = new Doctor
-                {
-                    LicenseNumber = PESELTextBox.Text,
-                    PhoneNumber = PhoneTextBox.Text,
-                    FirstName = UserNameTextBox.Text,
-                    LastName = UserSurnameTextBox.Text,
-                    Email = EMailTextBox.Text,
-                    Specialization = spec,
-                    Address = newAddress
-                };
-                try
-                {
-                    _doctorService.InsertDoctor(newDoctor, PasswordTextBox.Text);
-                    MessageBox.Show("New doctor has been succesfully added.", "Add New Doctor");
-                }
-                catch (DbUpdateException)
-                {
-                    MessageBox.Show("Insert error.", "Add New Doctor");
-                }
-                ClearData();
-            } 
+                MessageBox.Show("Doctor already exists.", "Add New Doctor");
+            }
+           
         }
 
         private void AddReceptionist()
         {
-            if (PasswordTextBox.Text == "" || LoginTextBox.Text == "")
+            Receptionist existingReceptionist = _receptionistService.GetReceptionistByName(UserNameTextBox.Text, UserSurnameTextBox.Text);
+            
+            if (existingReceptionist == null)
             {
-                MessageBox.Show("Complete the missing data!", "Add New Receptionist");
+                if (PasswordTextBox.Text == "" || LoginTextBox.Text == "")
+                {
+                    MessageBox.Show("Complete the missing data!", "Add New Receptionist");
+                }
+                else
+                {
+                    Address newAddress = new Address
+                    {
+                        City = CityTextBox.Text,
+                        Street = StreetTextBox.Text,
+                        HomeNumber = NumberTextBox.Text,
+                        ZipCode = ZIPCodeTextBox.Text
+                    };
+                    Receptionist newReceptionist = new Receptionist
+                    {
+                        PhoneNumber = PhoneTextBox.Text,
+                        FirstName = UserNameTextBox.Text,
+                        LastName = UserSurnameTextBox.Text,
+                        Email = EMailTextBox.Text,
+                        Address = newAddress
+                    };
+                    try
+                    {
+                        _receptionistService.InsertReceptionist(newReceptionist, PasswordTextBox.Text);
+                        MessageBox.Show("New receptionist has been succesfully added.", "Add New Receptionist");
+                    }
+                    catch (DbUpdateException)
+                    {
+                        MessageBox.Show("Insert error.", "Add New Receptionist");
+                    }
+                    ClearData();
+                }
             }
             else
             {
-                Address newAddress = new Address
-                {
-                    City = CityTextBox.Text,
-                    Street = StreetTextBox.Text,
-                    HomeNumber = NumberTextBox.Text,
-                    ZipCode = ZIPCodeTextBox.Text
-                };
-                Receptionist newReceptionist = new Receptionist
-                {
-                    PhoneNumber = PhoneTextBox.Text,
-                    FirstName = UserNameTextBox.Text,
-                    LastName = UserSurnameTextBox.Text,
-                    Email = EMailTextBox.Text,
-                    Address = newAddress
-                };
-                try
-                {
-                    _receptionistService.InsertReceptionist(newReceptionist, PasswordTextBox.Text);
-                    MessageBox.Show("New receptionist has been succesfully added.", "Add New Receptionist");
-                }
-                catch (DbUpdateException)
-                {
-                    MessageBox.Show("Insert error.", "Add New Receptionist");
-                }
-                ClearData();
-            }
+                MessageBox.Show("Receptionists already exists.", "Add New Receptionist");
+            }        
         }
 
         private void AddLaboratoryWorker()
         {
-            if (PasswordTextBox.Text == "" || LoginTextBox.Text == "" || (!LabManagerRadioButton.Checked && !LabTechicianRadioButton.Checked))
+            if (PasswordTextBox.Text == "" || LoginTextBox.Text == "" || (!LabManagerRadioButton.Checked && !LabTechicianRadioButton.Checked) || CheckEmptyInputs())
             {
                 MessageBox.Show("Complete the missing data!", "Add New Laboratory Worker");
             }
@@ -659,90 +685,137 @@ namespace ClinicManagementSystem.Forms.MainForms
 
         private void AddLaboratoryTechnician()
         {
-            Address newAddress = new Address
+            LaboratoryTechnician existingTechnician = _technicianService.GetLaboratoryTechnicianByName(UserNameTextBox.Text, UserSurnameTextBox.Text);
+
+            if(existingTechnician == null)
             {
-                City = CityTextBox.Text,
-                Street = StreetTextBox.Text,
-                HomeNumber = NumberTextBox.Text,
-                ZipCode = ZIPCodeTextBox.Text
-            };
-            LaboratoryTechnician newLaboratoryTechnician = new LaboratoryTechnician
-            {
-                PhoneNumber = PhoneTextBox.Text,
-                FirstName = UserNameTextBox.Text,
-                LastName = UserSurnameTextBox.Text,
-                Email = EMailTextBox.Text,
-                Address = newAddress
-            };
-            try
-            {
-                _technicianService.InsertLaboratoryTechnician(newLaboratoryTechnician, PasswordTextBox.Text);
-                MessageBox.Show("New laboratory technician has been succesfully added.", "Add New Laboratory Technician");
+                Address newAddress = new Address
+                {
+                    City = CityTextBox.Text,
+                    Street = StreetTextBox.Text,
+                    HomeNumber = NumberTextBox.Text,
+                    ZipCode = ZIPCodeTextBox.Text
+                };
+                LaboratoryTechnician newLaboratoryTechnician = new LaboratoryTechnician
+                {
+                    PhoneNumber = PhoneTextBox.Text,
+                    FirstName = UserNameTextBox.Text,
+                    LastName = UserSurnameTextBox.Text,
+                    Email = EMailTextBox.Text,
+                    Address = newAddress
+                };
+                try
+                {
+                    _technicianService.InsertLaboratoryTechnician(newLaboratoryTechnician, PasswordTextBox.Text);
+                    MessageBox.Show("New laboratory technician has been succesfully added.", "Add New Laboratory Technician");
+                }
+                catch (DbUpdateException)
+                {
+                    MessageBox.Show("Insert error.", "Add New Laboratory Technician");
+                }
+                ClearData();
             }
-            catch (DbUpdateException)
+            else
             {
-                MessageBox.Show("Insert error.", "Add New Laboratory Technician");
+                MessageBox.Show("Laboratory Technician already exists.", "Add New Laboratory Technician");
             }
-            ClearData();
+            
         }
 
         private void AddLaboratoryManager()
         {
-            Address newAddress = new Address
+            LaboratoryManager existingManager = _managerService.GetLaboratoryManagerByName(UserNameTextBox.Text, UserSurnameTextBox.Text);
+              
+            if(existingManager == null)
             {
-                City = CityTextBox.Text,
-                Street = StreetTextBox.Text,
-                HomeNumber = NumberTextBox.Text,
-                ZipCode = ZIPCodeTextBox.Text
-            };
-            LaboratoryManager newLaboratoryManager = new LaboratoryManager
-            {
-                PhoneNumber = PhoneTextBox.Text,
-                FirstName = UserNameTextBox.Text,
-                LastName = UserSurnameTextBox.Text,
-                Email = EMailTextBox.Text,
-                Address = newAddress
-            };
-            try
-            {
-                _managerService.InsertLaboratoryManager(newLaboratoryManager, PasswordTextBox.Text);
-                MessageBox.Show("New laboratory manager has been succesfully added.", "Add New Laboratory Manager");
+                Address newAddress = new Address
+                {
+                    City = CityTextBox.Text,
+                    Street = StreetTextBox.Text,
+                    HomeNumber = NumberTextBox.Text,
+                    ZipCode = ZIPCodeTextBox.Text
+                };
+                LaboratoryManager newLaboratoryManager = new LaboratoryManager
+                {
+                    PhoneNumber = PhoneTextBox.Text,
+                    FirstName = UserNameTextBox.Text,
+                    LastName = UserSurnameTextBox.Text,
+                    Email = EMailTextBox.Text,
+                    Address = newAddress
+                };
+                try
+                {
+                    _managerService.InsertLaboratoryManager(newLaboratoryManager, PasswordTextBox.Text);
+                    MessageBox.Show("New laboratory manager has been succesfully added.", "Add New Laboratory Manager");
+                }
+                catch (DbUpdateException)
+                {
+                    MessageBox.Show("Insert error.", "Add New Laboratory Manager");
+                }
+                ClearData();
             }
-            catch (DbUpdateException)
+            else
             {
-                MessageBox.Show("Insert error.", "Add New Laboratory Manager");
-            }
-            ClearData();
+                MessageBox.Show("Laboratory Manager already exists.", "Add New Laboratory Manager");
+            }           
         }
 
         private void AddPatient()
         {
-            Address newAddress = new Address
+            Patient existingPatient = _patientService.GetPatientByPersonalIdentityNumber(PESELTextBox.Text);
+
+            if(existingPatient ==null)
             {
-                City = CityTextBox.Text,
-                Street = StreetTextBox.Text,
-                HomeNumber = NumberTextBox.Text,
-                ZipCode = ZIPCodeTextBox.Text
-            };
-            Patient newPatient = new Patient
-            {
-                PersonalIdentityNumber = PESELTextBox.Text,
-                PhoneNumber = PhoneTextBox.Text,
-                FirstName = UserNameTextBox.Text,
-                LastName = UserSurnameTextBox.Text,
-                Email = EMailTextBox.Text,
-                Address = newAddress
-            };
-            try
-            {
-                _patientService.InsertPatient(newPatient);
-                MessageBox.Show("New patient has been succesfully added.", "Add New Patient");
+                if (PESELTextBox.Text == "")
+                {
+                    Address newAddress = new Address
+                    {
+                        City = CityTextBox.Text,
+                        Street = StreetTextBox.Text,
+                        HomeNumber = NumberTextBox.Text,
+                        ZipCode = ZIPCodeTextBox.Text
+                    };
+                    Patient newPatient = new Patient
+                    {
+                        PersonalIdentityNumber = PESELTextBox.Text,
+                        PhoneNumber = PhoneTextBox.Text,
+                        FirstName = UserNameTextBox.Text,
+                        LastName = UserSurnameTextBox.Text,
+                        Email = EMailTextBox.Text,
+                        Address = newAddress
+                    };
+                    try
+                    {
+                        _patientService.InsertPatient(newPatient);
+                        MessageBox.Show("New patient has been succesfully added.", "Add New Patient");
+                    }
+                    catch (DbUpdateException)
+                    {
+                        MessageBox.Show("Insert error.", "Add New Patient");
+                    }
+                    ClearData();
+                }
+                else
+                {
+                    MessageBox.Show("Complete the missing data!", "Add New Patient");
+                }
             }
-            catch (DbUpdateException)
+            else
             {
-                MessageBox.Show("Insert error.", "Add New Patient");
+                MessageBox.Show("Patient already exists.", "Add New Patient");
+            }         
+        }
+        private bool CheckEmptyInputs()
+        {
+            if (CityTextBox.Text == "" || StreetTextBox.Text == "" || NumberTextBox.Text == "" || ZIPCodeTextBox.Text == ""  
+                || PhoneTextBox.Text == "" || EMailTextBox.Text == "" || UserNameTextBox.Text == "" || UserSurnameTextBox.Text == "")
+            {
+                return false;
             }
-            ClearData();
+            else
+            {
+                return true;
+            }  
         }
     } 
 }
