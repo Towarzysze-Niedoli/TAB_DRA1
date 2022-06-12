@@ -156,9 +156,9 @@ namespace ClinicManagementSystem.Forms.MainForms
             }
             else
             {
-                // TODO something
+                appointments = _service.GetAppointments();
+                DisplayAppointments(appointments);
             }
         }
-
     }
 }
