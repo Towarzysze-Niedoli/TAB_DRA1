@@ -58,7 +58,7 @@ namespace ClinicManagementSystem.Services.impl
 
         public Patient GetPatientByName(string firstName, string lastName)
         {
-            return context.Patients.Include(p => p.Address).Where(p => p.FirstName.Equals(firstName) && p.LastName.Equals(lastName)).FirstOrDefault();
+            return context.Patients.Include(p => p.Address).Where(p => p.FirstName.ToLower().Equals(firstName.ToLower()) && p.LastName.ToLower().Equals(lastName.ToLower())).FirstOrDefault();
         }
 
         private bool disposed = false;
