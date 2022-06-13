@@ -49,7 +49,7 @@ namespace ClinicManagementSystem.Services.impl
 
         public LaboratoryTechnician GetLaboratoryTechnicianByName(string firstName, string lastName)
         {
-            return context.LaboratoryTechnicians.Include(r => r.Address).Where(r => r.FirstName.Equals(firstName) && r.LastName.Equals(lastName)).FirstOrDefault();
+            return context.LaboratoryTechnicians.Include(r => r.Address).Where(r => r.FirstName.ToLower().Equals(firstName.ToLower()) && r.LastName.ToLower().Equals(lastName.ToLower())).FirstOrDefault();
         }
     }
 }

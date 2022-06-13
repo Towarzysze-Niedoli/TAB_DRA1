@@ -50,7 +50,7 @@ namespace ClinicManagementSystem.Services.impl
 
         public LaboratoryManager GetLaboratoryManagerByName(string firstName, string lastName)
         {
-            return context.LaboratoryManagers.Include(r => r.Address).Where(r => r.FirstName.Equals(firstName) && r.LastName.Equals(lastName)).FirstOrDefault();
+            return context.LaboratoryManagers.Include(r => r.Address).Where(r => r.FirstName.ToLower().Equals(firstName.ToLower()) && r.LastName.ToLower().Equals(lastName.ToLower())).FirstOrDefault();
         }
     }
 }

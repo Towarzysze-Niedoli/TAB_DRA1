@@ -50,7 +50,7 @@ namespace ClinicManagementSystem.Services.impl
 
         public Receptionist GetReceptionistByName(string firstName, string lastName)
         {
-            return context.Receptionists.Include(r => r.Address).Where(r => r.FirstName.Equals(firstName) && r.LastName.Equals(lastName)).FirstOrDefault();
+            return context.Receptionists.Include(r => r.Address).Where(r => r.FirstName.ToLower().Equals(firstName.ToLower()) && r.LastName.ToLower().Equals(lastName.ToLower())).FirstOrDefault();
         }
     }
 }

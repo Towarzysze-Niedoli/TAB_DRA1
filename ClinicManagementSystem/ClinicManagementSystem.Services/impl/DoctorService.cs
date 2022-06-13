@@ -49,7 +49,7 @@ namespace ClinicManagementSystem.Services.impl
 
         public Doctor GetDoctorByName(string firstName, string lastName)
         {
-            return context.Doctors.Include(d => d.Address).Where(d => d.FirstName.Equals(firstName) && d.LastName.Equals(lastName)).FirstOrDefault();
+            return context.Doctors.Include(d => d.Address).Where(d => d.FirstName.ToLower().Equals(firstName.ToLower()) && d.LastName.ToLower().Equals(lastName.ToLower())).FirstOrDefault();
         }
 
         public Doctor GetDoctorByLicenceNumber(string licenceNumber)
