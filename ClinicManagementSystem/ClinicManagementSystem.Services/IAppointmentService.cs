@@ -1,4 +1,5 @@
-﻿using ClinicManagementSystem.Entities.Models;
+﻿using ClinicManagementSystem.Entities.Enums;
+using ClinicManagementSystem.Entities.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -17,5 +18,8 @@ namespace ClinicManagementSystem.Services
         IEnumerable<Appointment> GetAppointmentsForDoctor(Doctor doctor);
         IEnumerable<Appointment> GetAcceptedAppointmentsForPatient(Patient patient);
         IEnumerable<Appointment> GetAppointmentsByCompletionDate(DateTime completionDate);
+        IEnumerable<Appointment> GetAppointmentsByStatus(AppointmentStatus status);
+        IEnumerable<Appointment> GetAppointmentsByPatientAndStatus(Patient patient, AppointmentStatus status);
+        IEnumerable<Appointment> GetAppointmentsForPatient(Patient patient);
     }
 }

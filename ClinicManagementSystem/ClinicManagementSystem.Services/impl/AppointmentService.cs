@@ -1,4 +1,5 @@
 ﻿using ClinicManagementSystem.Entities;
+using ClinicManagementSystem.Entities.Enums;
 using ClinicManagementSystem.Entities.Models;
 using System;
 using System.Collections.Generic;
@@ -33,6 +34,11 @@ namespace ClinicManagementSystem.Services.impl
             return context.Appointments.ToList().Where(a => a.Patient == patient && a.AppointmentStatus == Entities.Enums.AppointmentStatus.Accepted);
         }
 
+        public IEnumerable<Appointment> GetAppointmentsForPatient(Patient patient)
+        {
+            return context.Appointments.ToList().Where(a => a.Patient == patient).ToList();
+        }
+
         public IEnumerable<Appointment> GetAppointmentsByCompletionDate(DateTime completionDate)
         {
             return context.Appointments.Where(a => a.CompletionDate == completionDate);
@@ -51,6 +57,16 @@ namespace ClinicManagementSystem.Services.impl
         public Appointment GetAppointmentForPatientByCompletionDate(Patient patient, DateTime completionDate)
         {
             return context.Appointments.Where(a => a.Patient == patient).Where(a => a.CompletionDate == completionDate).FirstOrDefault();
+        }
+
+        public IEnumerable<Appointment> GetAppointmentsByStatus(AppointmentStatus status)
+        {
+            return context.Appointments.Where(a => a.AppointmentStatus == status).ToList();
+        }
+
+        public IEnumerable<Appointment> GetAppointmentsByPatientAndStatus(Patient patient, AppointmentStatus status)
+        {
+            return context.Appointments.ToList().Where(a => a.Patient == patient && a.AppointmentStatus == status);
         }
 
         public void InsertAppointment(Appointment appointment)

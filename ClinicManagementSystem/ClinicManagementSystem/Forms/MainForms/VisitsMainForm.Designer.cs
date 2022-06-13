@@ -221,6 +221,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.VisitStatusComboBox.Name = "VisitStatusComboBox";
             this.VisitStatusComboBox.Size = new System.Drawing.Size(301, 26);
             this.VisitStatusComboBox.TabIndex = 25;
+            this.VisitStatusComboBox.SelectedIndexChanged += new System.EventHandler(this.VisitStatusComboBox_SelectedIndexChanged);
             // 
             // VisitDatePicker
             // 

@@ -151,7 +151,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             if (name.Length > 1)
             {
                 Patient searchedPatient = _patientService.GetPatientByName(name[0], name[1]);
-                appointments = _service.GetAcceptedAppointmentsForPatient(searchedPatient);
+                appointments = _service.GetAppointmentsForPatient(searchedPatient);
                 DisplayAppointments(appointments);
             }
             else
@@ -159,6 +159,39 @@ namespace ClinicManagementSystem.Forms.MainForms
                 appointments = _service.GetAppointments();
                 DisplayAppointments(appointments);
             }
+        }
+
+        private void VisitStatusComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (_service == null)
+                return;
+            string[] name = SearchPatientTextBox.Text.Split(' ');
+            if (name.Length > 1) 
+            {              
+                
+                Patient searchedPatient = _patientService.GetPatientByName(name[0], name[1]);
+                if (VisitStatusComboBox.SelectedItem != null && VisitStatusComboBox.SelectedIndex != 0) // 0 is default when nothing is checked, idk how to check it better
+                {
+                    AppointmentStatus appointmentStatus = (AppointmentStatus)Enum.Parse(typeof(AppointmentStatus), VisitStatusComboBox.SelectedItem.ToString());
+                    appointments = _service.GetAppointmentsByPatientAndStatus(searchedPatient, appointmentStatus);
+                }
+                else
+                {
+                    appointments = _service.GetAppointmentsForPatient(searchedPatient);
+                }
+            }
+            else if(VisitStatusComboBox.SelectedItem != null && VisitStatusComboBox.SelectedIndex != 0)
+            {
+                AppointmentStatus appointmentStatus = (AppointmentStatus)Enum.Parse(typeof(AppointmentStatus), VisitStatusComboBox.SelectedItem.ToString());
+                appointments = _service.GetAppointmentsByStatus(appointmentStatus);
+            }
+            else
+            {
+                appointments = _service.GetAppointments();
+
+            }
+            DisplayAppointments(appointments);
+
         }
     }
 }
