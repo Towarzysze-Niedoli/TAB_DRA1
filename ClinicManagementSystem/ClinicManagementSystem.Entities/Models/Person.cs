@@ -10,18 +10,18 @@ namespace ClinicManagementSystem.Entities.Models
         [Key]
         public int Id { get; set; }
 
-        [Required]
-        [RegularExpression(@"^[a-zA-ZĄąĆćĘęŁłŃńÓóŚśŻżŹź'\- ]{1,50}$")] // up to 50 uppercase and lowercase characters
+        [Required(ErrorMessage = "First name is required")]
+        [RegularExpression(@"^[a-zA-ZĄąĆćĘęŁłŃńÓóŚśŻżŹź'\- ]{1,50}$", ErrorMessage = "First name cannot contain forbidden characters or be longer than 50 characters")] // up to 50 uppercase and lowercase characters
         public string FirstName { get; set; }
 
-        [Required]
-        [RegularExpression(@"^[a-zA-ZĄąĆćĘęŁłŃńÓóŚśŻżŹź'\- ]{1,50}$")] // up to 50 uppercase and lowercase characters
+        [Required(ErrorMessage = "Last name is required")]
+        [RegularExpression(@"^[a-zA-ZĄąĆćĘęŁłŃńÓóŚśŻżŹź'\- ]{1,50}$", ErrorMessage = "Last name cannot contain forbidden characters or be longer than 50 characters")] // up to 50 uppercase and lowercase characters
         public string LastName { get; set; }
 
-        [EmailAddress]
+        [EmailAddress(ErrorMessage = "Entered email address is not a valid email address")]
         public string Email { get; set; }
 
-        [Phone]
+        [Phone(ErrorMessage = "Entered phone number is not a valid phone number")]
         public string PhoneNumber { get; set; }
 
         public Address Address { get; set; }

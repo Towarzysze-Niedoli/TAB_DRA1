@@ -25,9 +25,9 @@ namespace ClinicManagementSystem.Entities.Models
 
         public Receptionist Receptionist { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Doctor is required for an appointment")]
         public Doctor Doctor { get; set; }
-
+        [Required(ErrorMessage = "Patient is required for an appointment")]
         public Patient Patient { get; set; }
 
         [InverseProperty("Appointment")] // explicit bidirectional mapping, default lazy loading

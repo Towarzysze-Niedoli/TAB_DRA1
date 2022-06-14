@@ -17,7 +17,7 @@ namespace ClinicManagementSystem.Entities.Models
 
         public string LaboratoryManagerComment { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Refferal date is required")]
         public DateTime ReferralDate { get; set; }
 
         /// <summary>
@@ -33,10 +33,10 @@ namespace ClinicManagementSystem.Entities.Models
         [Required]
         public TestStatus Status { get; set; } = TestStatus.Pending;
 
-        [Required]
+        [Required(ErrorMessage = "Appointment is required for laboratory exam")]
         public Appointment Appointment { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Examination is required for laboratory exam")]
         public Examination Examination { get; set; }
 
         public LaboratoryManager LaboratoryManager { get; set; }

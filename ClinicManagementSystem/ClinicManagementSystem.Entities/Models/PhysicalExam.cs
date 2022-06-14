@@ -12,10 +12,10 @@ namespace ClinicManagementSystem.Entities.Models
 
         public string Result { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Appointment is required for physical exam")]
         public Appointment Appointment { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Examination is required for physical exam")]
         public Examination Examination { get; set; }
     }
 }

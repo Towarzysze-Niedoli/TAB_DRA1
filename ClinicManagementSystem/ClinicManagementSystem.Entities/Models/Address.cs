@@ -10,17 +10,17 @@ namespace ClinicManagementSystem.Entities.Models
         [Key]
         public int Id { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "City is required")]
         public string City { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Street name is required")]
         public string Street { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Home number is required")]
         public string HomeNumber { get; set; }
 
-        [Required]
-        [RegularExpression(@"^[0-9]{2}-[0-9]{3}$")]
+        [Required(ErrorMessage = "Zip code is required")]
+        [RegularExpression(@"^[0-9]{2}-[0-9]{3}$", ErrorMessage = "Zip code is not in valid format: XX-XXX")]
         public string ZipCode { get; set; }
 
     }
