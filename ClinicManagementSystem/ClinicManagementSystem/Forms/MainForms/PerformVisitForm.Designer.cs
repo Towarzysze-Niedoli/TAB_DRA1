@@ -43,9 +43,9 @@ namespace ClinicManagementSystem.Forms.MainForms
             // VisitPartPanel
             // 
             this.VisitPartPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(119)))), ((int)(((byte)(182)))));
-            this.VisitPartPanel.Location = new System.Drawing.Point(749, 268);
+            this.VisitPartPanel.Location = new System.Drawing.Point(628, 267);
             this.VisitPartPanel.Name = "VisitPartPanel";
-            this.VisitPartPanel.Size = new System.Drawing.Size(833, 549);
+            this.VisitPartPanel.Size = new System.Drawing.Size(560, 561);
             this.VisitPartPanel.TabIndex = 3;
             // 
             // InterviewButton
@@ -57,9 +57,9 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.InterviewButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.InterviewButton.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.InterviewButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(247)))), ((int)(((byte)(255)))));
-            this.InterviewButton.Location = new System.Drawing.Point(749, 186);
+            this.InterviewButton.Location = new System.Drawing.Point(628, 185);
             this.InterviewButton.Name = "InterviewButton";
-            this.InterviewButton.Size = new System.Drawing.Size(154, 58);
+            this.InterviewButton.Size = new System.Drawing.Size(123, 58);
             this.InterviewButton.TabIndex = 14;
             this.InterviewButton.Text = "Interview";
             this.InterviewButton.UseVisualStyleBackColor = false;
@@ -74,9 +74,9 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.PhysicalButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.PhysicalButton.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.PhysicalButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(247)))), ((int)(((byte)(255)))));
-            this.PhysicalButton.Location = new System.Drawing.Point(975, 186);
+            this.PhysicalButton.Location = new System.Drawing.Point(776, 185);
             this.PhysicalButton.Name = "PhysicalButton";
-            this.PhysicalButton.Size = new System.Drawing.Size(154, 58);
+            this.PhysicalButton.Size = new System.Drawing.Size(123, 58);
             this.PhysicalButton.TabIndex = 15;
             this.PhysicalButton.Text = "Physical";
             this.PhysicalButton.UseVisualStyleBackColor = false;
@@ -91,9 +91,9 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.LabButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.LabButton.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LabButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(247)))), ((int)(((byte)(255)))));
-            this.LabButton.Location = new System.Drawing.Point(1202, 186);
+            this.LabButton.Location = new System.Drawing.Point(919, 185);
             this.LabButton.Name = "LabButton";
-            this.LabButton.Size = new System.Drawing.Size(154, 58);
+            this.LabButton.Size = new System.Drawing.Size(123, 58);
             this.LabButton.TabIndex = 16;
             this.LabButton.Text = "Laboratory";
             this.LabButton.UseVisualStyleBackColor = false;
@@ -108,9 +108,9 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.DiagnosisButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.DiagnosisButton.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.DiagnosisButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(247)))), ((int)(((byte)(255)))));
-            this.DiagnosisButton.Location = new System.Drawing.Point(1428, 186);
+            this.DiagnosisButton.Location = new System.Drawing.Point(1065, 185);
             this.DiagnosisButton.Name = "DiagnosisButton";
-            this.DiagnosisButton.Size = new System.Drawing.Size(154, 58);
+            this.DiagnosisButton.Size = new System.Drawing.Size(123, 58);
             this.DiagnosisButton.TabIndex = 17;
             this.DiagnosisButton.Text = "Diagnosis";
             this.DiagnosisButton.UseVisualStyleBackColor = false;
@@ -119,9 +119,9 @@ namespace ClinicManagementSystem.Forms.MainForms
             // PatientPanel
             // 
             this.PatientPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(119)))), ((int)(((byte)(182)))));
-            this.PatientPanel.Location = new System.Drawing.Point(15, 268);
+            this.PatientPanel.Location = new System.Drawing.Point(35, 267);
             this.PatientPanel.Name = "PatientPanel";
-            this.PatientPanel.Size = new System.Drawing.Size(688, 549);
+            this.PatientPanel.Size = new System.Drawing.Size(549, 561);
             this.PatientPanel.TabIndex = 18;
             // 
             // PreviousVisitsButton
@@ -133,9 +133,9 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.PreviousVisitsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.PreviousVisitsButton.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.PreviousVisitsButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(247)))), ((int)(((byte)(255)))));
-            this.PreviousVisitsButton.Location = new System.Drawing.Point(15, 186);
+            this.PreviousVisitsButton.Location = new System.Drawing.Point(35, 185);
             this.PreviousVisitsButton.Name = "PreviousVisitsButton";
-            this.PreviousVisitsButton.Size = new System.Drawing.Size(184, 58);
+            this.PreviousVisitsButton.Size = new System.Drawing.Size(145, 58);
             this.PreviousVisitsButton.TabIndex = 19;
             this.PreviousVisitsButton.Text = "Previous Visits";
             this.PreviousVisitsButton.UseVisualStyleBackColor = false;
@@ -150,9 +150,9 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.ConcludeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ConcludeButton.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.ConcludeButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(247)))), ((int)(((byte)(255)))));
-            this.ConcludeButton.Location = new System.Drawing.Point(1288, 849);
+            this.ConcludeButton.Location = new System.Drawing.Point(1005, 834);
             this.ConcludeButton.Name = "ConcludeButton";
-            this.ConcludeButton.Size = new System.Drawing.Size(294, 58);
+            this.ConcludeButton.Size = new System.Drawing.Size(183, 58);
             this.ConcludeButton.TabIndex = 20;
             this.ConcludeButton.Text = "Conclude Visit";
             this.ConcludeButton.UseVisualStyleBackColor = false;
@@ -167,9 +167,9 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.CancelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CancelButton.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.CancelButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(247)))), ((int)(((byte)(255)))));
-            this.CancelButton.Location = new System.Drawing.Point(749, 844);
+            this.CancelButton.Location = new System.Drawing.Point(628, 834);
             this.CancelButton.Name = "CancelButton";
-            this.CancelButton.Size = new System.Drawing.Size(294, 60);
+            this.CancelButton.Size = new System.Drawing.Size(183, 60);
             this.CancelButton.TabIndex = 21;
             this.CancelButton.Text = "Cancel Visit";
             this.CancelButton.UseVisualStyleBackColor = false;
@@ -179,7 +179,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(247)))), ((int)(((byte)(255)))));
-            this.ClientSize = new System.Drawing.Size(1605, 1076);
+            this.ClientSize = new System.Drawing.Size(1241, 948);
             this.Controls.Add(this.CancelButton);
             this.Controls.Add(this.ConcludeButton);
             this.Controls.Add(this.PreviousVisitsButton);

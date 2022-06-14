@@ -35,17 +35,17 @@ namespace ClinicManagementSystem.Forms.SideForms
             // TextBox
             // 
             this.TextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(62)))), ((int)(((byte)(138)))));
-            this.TextBox.Location = new System.Drawing.Point(15, 15);
+            this.TextBox.Location = new System.Drawing.Point(12, 12);
             this.TextBox.Multiline = true;
             this.TextBox.Name = "TextBox";
-            this.TextBox.Size = new System.Drawing.Size(803, 519);
+            this.TextBox.Size = new System.Drawing.Size(536, 537);
             this.TextBox.TabIndex = 0;
             // 
             // VisitTextsForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(119)))), ((int)(((byte)(182)))));
-            this.ClientSize = new System.Drawing.Size(833, 549);
+            this.ClientSize = new System.Drawing.Size(560, 561);
             this.Controls.Add(this.TextBox);
             this.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(247)))), ((int)(((byte)(255)))));

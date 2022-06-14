@@ -59,11 +59,11 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.SearchPatientTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.SearchPatientTextBox.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.SearchPatientTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(62)))), ((int)(((byte)(138)))));
-            this.SearchPatientTextBox.Location = new System.Drawing.Point(60, 125);
+            this.SearchPatientTextBox.Location = new System.Drawing.Point(29, 125);
             this.SearchPatientTextBox.MaxLength = 20;
             this.SearchPatientTextBox.Name = "SearchPatientTextBox";
             this.SearchPatientTextBox.PlaceholderText = "Search Patient";
-            this.SearchPatientTextBox.Size = new System.Drawing.Size(378, 27);
+            this.SearchPatientTextBox.Size = new System.Drawing.Size(313, 27);
             this.SearchPatientTextBox.TabIndex = 0;
             // 
             // SearchPatientButton
@@ -75,7 +75,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.SearchPatientButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SearchPatientButton.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.SearchPatientButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(247)))), ((int)(((byte)(255)))));
-            this.SearchPatientButton.Location = new System.Drawing.Point(633, 125);
+            this.SearchPatientButton.Location = new System.Drawing.Point(490, 125);
             this.SearchPatientButton.Name = "SearchPatientButton";
             this.SearchPatientButton.Size = new System.Drawing.Size(118, 40);
             this.SearchPatientButton.TabIndex = 1;
@@ -86,17 +86,17 @@ namespace ClinicManagementSystem.Forms.MainForms
             // PatientPanel
             // 
             this.PatientPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(119)))), ((int)(((byte)(182)))));
-            this.PatientPanel.Location = new System.Drawing.Point(60, 180);
+            this.PatientPanel.Location = new System.Drawing.Point(29, 180);
             this.PatientPanel.Name = "PatientPanel";
-            this.PatientPanel.Size = new System.Drawing.Size(688, 549);
+            this.PatientPanel.Size = new System.Drawing.Size(579, 673);
             this.PatientPanel.TabIndex = 2;
             // 
             // DoctorsListPanel
             // 
             this.DoctorsListPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(119)))), ((int)(((byte)(182)))));
-            this.DoctorsListPanel.Location = new System.Drawing.Point(875, 180);
+            this.DoctorsListPanel.Location = new System.Drawing.Point(639, 169);
             this.DoctorsListPanel.Name = "DoctorsListPanel";
-            this.DoctorsListPanel.Size = new System.Drawing.Size(688, 439);
+            this.DoctorsListPanel.Size = new System.Drawing.Size(552, 439);
             this.DoctorsListPanel.TabIndex = 3;
             // 
             // NewPatientButton
@@ -108,7 +108,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.NewPatientButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.NewPatientButton.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.NewPatientButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(247)))), ((int)(((byte)(255)))));
-            this.NewPatientButton.Location = new System.Drawing.Point(1409, 29);
+            this.NewPatientButton.Location = new System.Drawing.Point(1037, 12);
             this.NewPatientButton.Name = "NewPatientButton";
             this.NewPatientButton.Size = new System.Drawing.Size(154, 58);
             this.NewPatientButton.TabIndex = 13;
@@ -122,7 +122,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.SpecializationComboBox.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.SpecializationComboBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(62)))), ((int)(((byte)(138)))));
             this.SpecializationComboBox.FormattingEnabled = true;
-            this.SpecializationComboBox.Location = new System.Drawing.Point(875, 125);
+            this.SpecializationComboBox.Location = new System.Drawing.Point(639, 114);
             this.SpecializationComboBox.Name = "SpecializationComboBox";
             this.SpecializationComboBox.Size = new System.Drawing.Size(250, 26);
             this.SpecializationComboBox.TabIndex = 2;
@@ -132,9 +132,9 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.VisitDateTimePicker.CalendarFont = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.VisitDateTimePicker.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.VisitDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.VisitDateTimePicker.Location = new System.Drawing.Point(1158, 125);
+            this.VisitDateTimePicker.Location = new System.Drawing.Point(905, 114);
             this.VisitDateTimePicker.Name = "VisitDateTimePicker";
-            this.VisitDateTimePicker.Size = new System.Drawing.Size(250, 27);
+            this.VisitDateTimePicker.Size = new System.Drawing.Size(132, 27);
             this.VisitDateTimePicker.TabIndex = 3;
             // 
             // contextMenuStrip1
@@ -149,10 +149,10 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.PatientSurnameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.PatientSurnameTextBox.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.PatientSurnameTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(62)))), ((int)(((byte)(138)))));
-            this.PatientSurnameTextBox.Location = new System.Drawing.Point(1261, 756);
+            this.PatientSurnameTextBox.Location = new System.Drawing.Point(958, 672);
             this.PatientSurnameTextBox.Name = "PatientSurnameTextBox";
             this.PatientSurnameTextBox.ReadOnly = true;
-            this.PatientSurnameTextBox.Size = new System.Drawing.Size(301, 27);
+            this.PatientSurnameTextBox.Size = new System.Drawing.Size(233, 27);
             this.PatientSurnameTextBox.TabIndex = 6;
             // 
             // DoctorNameTextBox
@@ -161,10 +161,10 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.DoctorNameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.DoctorNameTextBox.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.DoctorNameTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(62)))), ((int)(((byte)(138)))));
-            this.DoctorNameTextBox.Location = new System.Drawing.Point(875, 832);
+            this.DoctorNameTextBox.Location = new System.Drawing.Point(639, 748);
             this.DoctorNameTextBox.Name = "DoctorNameTextBox";
             this.DoctorNameTextBox.ReadOnly = true;
-            this.DoctorNameTextBox.Size = new System.Drawing.Size(301, 27);
+            this.DoctorNameTextBox.Size = new System.Drawing.Size(233, 27);
             this.DoctorNameTextBox.TabIndex = 7;
             // 
             // DoctorSurnameTextBox
@@ -173,10 +173,10 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.DoctorSurnameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.DoctorSurnameTextBox.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.DoctorSurnameTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(62)))), ((int)(((byte)(138)))));
-            this.DoctorSurnameTextBox.Location = new System.Drawing.Point(1261, 832);
+            this.DoctorSurnameTextBox.Location = new System.Drawing.Point(958, 748);
             this.DoctorSurnameTextBox.Name = "DoctorSurnameTextBox";
             this.DoctorSurnameTextBox.ReadOnly = true;
-            this.DoctorSurnameTextBox.Size = new System.Drawing.Size(301, 27);
+            this.DoctorSurnameTextBox.Size = new System.Drawing.Size(233, 27);
             this.DoctorSurnameTextBox.TabIndex = 8;
             // 
             // VisitDateTextBox
@@ -185,10 +185,10 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.VisitDateTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.VisitDateTextBox.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.VisitDateTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(62)))), ((int)(((byte)(138)))));
-            this.VisitDateTextBox.Location = new System.Drawing.Point(875, 908);
+            this.VisitDateTextBox.Location = new System.Drawing.Point(639, 824);
             this.VisitDateTextBox.Name = "VisitDateTextBox";
             this.VisitDateTextBox.ReadOnly = true;
-            this.VisitDateTextBox.Size = new System.Drawing.Size(301, 27);
+            this.VisitDateTextBox.Size = new System.Drawing.Size(233, 27);
             this.VisitDateTextBox.TabIndex = 9;
             // 
             // VisitTimeTextBox
@@ -197,10 +197,10 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.VisitTimeTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.VisitTimeTextBox.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.VisitTimeTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(62)))), ((int)(((byte)(138)))));
-            this.VisitTimeTextBox.Location = new System.Drawing.Point(1261, 908);
+            this.VisitTimeTextBox.Location = new System.Drawing.Point(958, 824);
             this.VisitTimeTextBox.Name = "VisitTimeTextBox";
             this.VisitTimeTextBox.ReadOnly = true;
-            this.VisitTimeTextBox.Size = new System.Drawing.Size(301, 27);
+            this.VisitTimeTextBox.Size = new System.Drawing.Size(233, 27);
             this.VisitTimeTextBox.TabIndex = 11;
             // 
             // NewVisitButton
@@ -229,7 +229,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(247)))), ((int)(((byte)(255)))));
-            this.button1.Location = new System.Drawing.Point(1445, 125);
+            this.button1.Location = new System.Drawing.Point(1073, 114);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(118, 40);
             this.button1.TabIndex = 14;
@@ -243,17 +243,17 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.PatientNameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.PatientNameTextBox.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.PatientNameTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(62)))), ((int)(((byte)(138)))));
-            this.PatientNameTextBox.Location = new System.Drawing.Point(875, 756);
+            this.PatientNameTextBox.Location = new System.Drawing.Point(639, 672);
             this.PatientNameTextBox.Name = "PatientNameTextBox";
             this.PatientNameTextBox.ReadOnly = true;
-            this.PatientNameTextBox.Size = new System.Drawing.Size(301, 27);
+            this.PatientNameTextBox.Size = new System.Drawing.Size(233, 27);
             this.PatientNameTextBox.TabIndex = 15;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(1261, 735);
+            this.label2.Location = new System.Drawing.Point(958, 651);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(157, 18);
             this.label2.TabIndex = 30;
@@ -263,7 +263,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(875, 732);
+            this.label1.Location = new System.Drawing.Point(639, 648);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(133, 18);
             this.label1.TabIndex = 29;
@@ -273,7 +273,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(1261, 811);
+            this.label4.Location = new System.Drawing.Point(958, 727);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(151, 18);
             this.label4.TabIndex = 32;
@@ -283,7 +283,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(874, 811);
+            this.label3.Location = new System.Drawing.Point(638, 727);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(127, 18);
             this.label3.TabIndex = 31;
@@ -293,7 +293,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label6.Location = new System.Drawing.Point(1261, 887);
+            this.label6.Location = new System.Drawing.Point(958, 803);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(48, 18);
             this.label6.TabIndex = 34;
@@ -303,7 +303,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(874, 887);
+            this.label5.Location = new System.Drawing.Point(638, 803);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(47, 18);
             this.label5.TabIndex = 33;
@@ -314,7 +314,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(247)))), ((int)(((byte)(255)))));
-            this.ClientSize = new System.Drawing.Size(1605, 1061);
+            this.ClientSize = new System.Drawing.Size(1241, 948);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);

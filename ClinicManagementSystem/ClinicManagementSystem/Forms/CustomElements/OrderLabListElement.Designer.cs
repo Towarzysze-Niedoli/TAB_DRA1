@@ -72,7 +72,7 @@ namespace ClinicManagementSystem.Forms.CustomElements
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(119)))), ((int)(((byte)(182)))));
-            this.ClientSize = new System.Drawing.Size(803, 125);
+            this.ClientSize = new System.Drawing.Size(510, 125);
             this.Controls.Add(this.Checkbox);
             this.Controls.Add(this.UpperMainLabel);
             this.Controls.Add(this.pictureBox1);
