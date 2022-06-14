@@ -40,7 +40,7 @@ namespace ClinicManagementSystem.Forms.SideForms
             this.TestName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(247)))), ((int)(((byte)(255)))));
             this.TestName.Location = new System.Drawing.Point(12, 9);
             this.TestName.Name = "TestName";
-            this.TestName.Size = new System.Drawing.Size(449, 48);
+            this.TestName.Size = new System.Drawing.Size(327, 48);
             this.TestName.TabIndex = 3;
             this.TestName.Text = "Please select the test";
             // 
@@ -50,7 +50,7 @@ namespace ClinicManagementSystem.Forms.SideForms
             this.TestResults.Location = new System.Drawing.Point(10, 60);
             this.TestResults.Multiline = true;
             this.TestResults.Name = "TestResults";
-            this.TestResults.Size = new System.Drawing.Size(723, 315);
+            this.TestResults.Size = new System.Drawing.Size(497, 295);
             this.TestResults.TabIndex = 4;
             // 
             // LaboratoryTestResults
@@ -58,7 +58,7 @@ namespace ClinicManagementSystem.Forms.SideForms
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(119)))), ((int)(((byte)(182)))));
-            this.ClientSize = new System.Drawing.Size(745, 422);
+            this.ClientSize = new System.Drawing.Size(519, 382);
             this.Controls.Add(this.TestResults);
             this.Controls.Add(this.TestName);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;

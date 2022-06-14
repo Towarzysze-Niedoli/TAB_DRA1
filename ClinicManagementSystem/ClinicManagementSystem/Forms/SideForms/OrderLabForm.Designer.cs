@@ -65,14 +65,14 @@ namespace ClinicManagementSystem.Forms.SideForms
             // 
             this.ListPanel.Location = new System.Drawing.Point(12, 59);
             this.ListPanel.Name = "ListPanel";
-            this.ListPanel.Size = new System.Drawing.Size(642, 368);
+            this.ListPanel.Size = new System.Drawing.Size(525, 472);
             this.ListPanel.TabIndex = 25;
             // 
             // OrderLabForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(119)))), ((int)(((byte)(182)))));
-            this.ClientSize = new System.Drawing.Size(666, 439);
+            this.ClientSize = new System.Drawing.Size(560, 561);
             this.Controls.Add(this.ListPanel);
             this.Controls.Add(this.SearchButton);
             this.Controls.Add(this.SearchTextBox);

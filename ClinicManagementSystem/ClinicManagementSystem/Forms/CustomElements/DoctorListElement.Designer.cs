@@ -86,7 +86,7 @@ namespace ClinicManagementSystem.Forms.CustomElements
             this.BottomLabelTwo.AutoEllipsis = true;
             this.BottomLabelTwo.AutoSize = true;
             this.BottomLabelTwo.CausesValidation = false;
-            this.BottomLabelTwo.Location = new System.Drawing.Point(379, 71);
+            this.BottomLabelTwo.Location = new System.Drawing.Point(339, 71);
             this.BottomLabelTwo.Name = "BottomLabelTwo";
             this.BottomLabelTwo.Size = new System.Drawing.Size(183, 30);
             this.BottomLabelTwo.TabIndex = 3;
@@ -107,7 +107,7 @@ namespace ClinicManagementSystem.Forms.CustomElements
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(247)))), ((int)(((byte)(255)))));
             this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "DoctorListElement";
-            this.Size = new System.Drawing.Size(658, 113);
+            this.Size = new System.Drawing.Size(542, 113);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ListElement_MouseDown);
             this.MouseLeave += new System.EventHandler(this.ListElement_MouseLeave);
             this.MouseHover += new System.EventHandler(this.ListElement_MouseHover);

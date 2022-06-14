@@ -43,7 +43,7 @@
             this.LaboratoryTestsPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(119)))), ((int)(((byte)(182)))));
             this.LaboratoryTestsPanel.Location = new System.Drawing.Point(63, 182);
             this.LaboratoryTestsPanel.Name = "LaboratoryTestsPanel";
-            this.LaboratoryTestsPanel.Size = new System.Drawing.Size(625, 695);
+            this.LaboratoryTestsPanel.Size = new System.Drawing.Size(496, 695);
             this.LaboratoryTestsPanel.TabIndex = 2;
             // 
             // dateTimePicker1
@@ -51,7 +51,7 @@
             this.dateTimePicker1.CalendarFont = new System.Drawing.Font("Corbel", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.dateTimePicker1.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(438, 124);
+            this.dateTimePicker1.Location = new System.Drawing.Point(309, 124);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(250, 27);
             this.dateTimePicker1.TabIndex = 3;
@@ -59,19 +59,19 @@
             // DescriptionPanel
             // 
             this.DescriptionPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(119)))), ((int)(((byte)(182)))));
-            this.DescriptionPanel.Location = new System.Drawing.Point(818, 124);
+            this.DescriptionPanel.Location = new System.Drawing.Point(648, 124);
             this.DescriptionPanel.Name = "DescriptionPanel";
-            this.DescriptionPanel.Size = new System.Drawing.Size(745, 422);
+            this.DescriptionPanel.Size = new System.Drawing.Size(519, 377);
             this.DescriptionPanel.TabIndex = 4;
             // 
             // LabManagerComboBox
             // 
             this.LabManagerComboBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.LabManagerComboBox.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LabManagerComboBox.Location = new System.Drawing.Point(818, 553);
+            this.LabManagerComboBox.Location = new System.Drawing.Point(648, 541);
             this.LabManagerComboBox.Multiline = true;
             this.LabManagerComboBox.Name = "LabManagerComboBox";
-            this.LabManagerComboBox.Size = new System.Drawing.Size(745, 199);
+            this.LabManagerComboBox.Size = new System.Drawing.Size(519, 193);
             this.LabManagerComboBox.TabIndex = 5;
             // 
             // approveBtn
@@ -81,9 +81,9 @@
             this.approveBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.approveBtn.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.approveBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(247)))), ((int)(((byte)(255)))));
-            this.approveBtn.Location = new System.Drawing.Point(1374, 837);
+            this.approveBtn.Location = new System.Drawing.Point(1017, 837);
             this.approveBtn.Name = "approveBtn";
-            this.approveBtn.Size = new System.Drawing.Size(189, 40);
+            this.approveBtn.Size = new System.Drawing.Size(150, 40);
             this.approveBtn.TabIndex = 1;
             this.approveBtn.Text = "Approve";
             this.approveBtn.UseVisualStyleBackColor = false;
@@ -95,9 +95,9 @@
             this.cancelBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cancelBtn.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.cancelBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(247)))), ((int)(((byte)(255)))));
-            this.cancelBtn.Location = new System.Drawing.Point(818, 837);
+            this.cancelBtn.Location = new System.Drawing.Point(648, 837);
             this.cancelBtn.Name = "cancelBtn";
-            this.cancelBtn.Size = new System.Drawing.Size(189, 40);
+            this.cancelBtn.Size = new System.Drawing.Size(150, 40);
             this.cancelBtn.TabIndex = 1;
             this.cancelBtn.Text = "Cancel";
             this.cancelBtn.UseVisualStyleBackColor = false;
@@ -109,9 +109,9 @@
             this.returnBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.returnBtn.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.returnBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(247)))), ((int)(((byte)(255)))));
-            this.returnBtn.Location = new System.Drawing.Point(1099, 837);
+            this.returnBtn.Location = new System.Drawing.Point(830, 837);
             this.returnBtn.Name = "returnBtn";
-            this.returnBtn.Size = new System.Drawing.Size(189, 40);
+            this.returnBtn.Size = new System.Drawing.Size(150, 40);
             this.returnBtn.TabIndex = 1;
             this.returnBtn.Text = "Return";
             this.returnBtn.UseVisualStyleBackColor = false;
@@ -132,7 +132,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(247)))), ((int)(((byte)(255)))));
-            this.ClientSize = new System.Drawing.Size(1605, 1061);
+            this.ClientSize = new System.Drawing.Size(1241, 948);
             this.Controls.Add(this.LaboratoryTestsComboBox);
             this.Controls.Add(this.cancelBtn);
             this.Controls.Add(this.returnBtn);
