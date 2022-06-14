@@ -8,7 +8,6 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-using Microsoft.EntityFrameworkCore;
 
 namespace ClinicManagementSystem.Forms.MainForms
 {
@@ -563,7 +562,7 @@ namespace ClinicManagementSystem.Forms.MainForms
                     MessageBox.Show("Patient data has been succesfully updated.", "Update Patient Data");
                     ClearData();
                 }
-                catch (DbUpdateException)
+                catch (Exception) // TODO change
                 {
                     MessageBox.Show("Update data error.", "Update Patient Data");
                 }
@@ -605,7 +604,7 @@ namespace ClinicManagementSystem.Forms.MainForms
                         _doctorService.InsertDoctor(newDoctor, PasswordTextBox.Text);
                         MessageBox.Show("New doctor has been succesfully added.", "Add New Doctor");
                     }
-                    catch (DbUpdateException)
+                    catch (Exception) // TODO change
                     {
                         MessageBox.Show("Insert error.", "Add New Doctor");
                     }
@@ -651,7 +650,7 @@ namespace ClinicManagementSystem.Forms.MainForms
                         _receptionistService.InsertReceptionist(newReceptionist, PasswordTextBox.Text);
                         MessageBox.Show("New receptionist has been succesfully added.", "Add New Receptionist");
                     }
-                    catch (DbUpdateException)
+                    catch (Exception) // TODO change
                     {
                         MessageBox.Show("Insert error.", "Add New Receptionist");
                     }
@@ -709,7 +708,7 @@ namespace ClinicManagementSystem.Forms.MainForms
                     _technicianService.InsertLaboratoryTechnician(newLaboratoryTechnician, PasswordTextBox.Text);
                     MessageBox.Show("New laboratory technician has been succesfully added.", "Add New Laboratory Technician");
                 }
-                catch (DbUpdateException)
+                catch (Exception) // TODO change
                 {
                     MessageBox.Show("Insert error.", "Add New Laboratory Technician");
                 }
@@ -748,7 +747,7 @@ namespace ClinicManagementSystem.Forms.MainForms
                     _managerService.InsertLaboratoryManager(newLaboratoryManager, PasswordTextBox.Text);
                     MessageBox.Show("New laboratory manager has been succesfully added.", "Add New Laboratory Manager");
                 }
-                catch (DbUpdateException)
+                catch (Exception) // TODO change
                 {
                     MessageBox.Show("Insert error.", "Add New Laboratory Manager");
                 }
@@ -789,7 +788,7 @@ namespace ClinicManagementSystem.Forms.MainForms
                         _patientService.InsertPatient(newPatient);
                         MessageBox.Show("New patient has been succesfully added.", "Add New Patient");
                     }
-                    catch (DbUpdateException)
+                    catch (Exception) // TODO change
                     {
                         MessageBox.Show("Insert error.", "Add New Patient");
                     }

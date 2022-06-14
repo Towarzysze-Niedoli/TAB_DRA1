@@ -12,7 +12,6 @@ using ClinicManagementSystem.Forms.CustomElements;
 using Microsoft.Extensions.DependencyInjection;
 using ClinicManagementSystem.Entities.Models;
 using ClinicManagementSystem.Entities.Enums;
-using Microsoft.EntityFrameworkCore;
 
 namespace ClinicManagementSystem.Forms.MainForms
 {
@@ -128,7 +127,7 @@ namespace ClinicManagementSystem.Forms.MainForms
                     _appointmentService.InsertAppointment(newAppointment);
                     MessageBox.Show("New visit has been succesfully added.", "Add New Visit");
                 }
-                catch (DbUpdateException)
+                catch (Exception) // TODO change
                 {
                     MessageBox.Show("Insert error.", "Add New Visit");
                 }
