@@ -12,6 +12,7 @@ namespace ClinicManagementSystem.Services.impl
     public class AppointmentService : IAppointmentService, IDisposable
     {
         private ISystemContext context;
+        public Appointment CurrentAppointment { get; set; }
 
         public AppointmentService(ISystemContext context)
         {

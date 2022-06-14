@@ -27,6 +27,7 @@ namespace ClinicManagementSystem.Forms.MainForms
         private IPatientService _patientService;
         private IDoctorService _doctorService;
         IEnumerable<Appointment> appointments;
+        Appointment _currentAppointment;
         private List<(AppointmentStatus?, string)> _appointmentStatus;
 
         public VisitsMainForm(UserLevel level, IAppointmentService appointmentService, IPatientService patientService, IDoctorService doctorService)
@@ -119,6 +120,7 @@ namespace ClinicManagementSystem.Forms.MainForms
                     DoctorSurnameTextBox.Text = a.Doctor.LastName;
                     VisitDateTextBox.Text = a.RegistrationDate.Date.ToShortDateString();
                     VisitTimeTextBox.Text = a.RegistrationDate.TimeOfDay.Hours.ToString() + ":" + a.RegistrationDate.TimeOfDay.Minutes.ToString();
+                    _currentAppointment = a;
                     break;
                 }
                 else
@@ -130,7 +132,9 @@ namespace ClinicManagementSystem.Forms.MainForms
 
         private void PerformVisitButton_Click(object sender, EventArgs e)
         {
+            _service.CurrentAppointment = _currentAppointment;
             ButtonClicked.Invoke(this, new PageControllingButtonClickedArgs(MainFormType.PerformVisit, _level));
+
         }
 
         private void SetVisibility()
