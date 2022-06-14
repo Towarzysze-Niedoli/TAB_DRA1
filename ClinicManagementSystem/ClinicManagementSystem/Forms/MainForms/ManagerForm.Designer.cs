@@ -45,14 +45,14 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.ZIPCodeTextBox = new System.Windows.Forms.TextBox();
             this.CityTextBox = new System.Windows.Forms.TextBox();
             this.PhoneTextBox = new System.Windows.Forms.TextBox();
-            this.PESELTextBox = new System.Windows.Forms.TextBox();
+            this.PESELOrLicenseNumberTextBox = new System.Windows.Forms.TextBox();
             this.UserSurnameTextBox = new System.Windows.Forms.TextBox();
             this.UpperMainLabel = new System.Windows.Forms.Label();
             this.UserNameTextBox = new System.Windows.Forms.TextBox();
             this.AddButton = new System.Windows.Forms.Button();
             this.SearchUserTextBox = new System.Windows.Forms.TextBox();
             this.SearchUserButton = new System.Windows.Forms.Button();
-            this.LoginLabel = new System.Windows.Forms.Label();
+            this.PasswordLabel = new System.Windows.Forms.Label();
             this.PasswordTextBox = new System.Windows.Forms.TextBox();
             this.UpdateButton = new System.Windows.Forms.Button();
             this.DeleteButton = new System.Windows.Forms.Button();
@@ -60,7 +60,6 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.DoctoralLabel = new System.Windows.Forms.Label();
             this.LabTechicianRadioButton = new System.Windows.Forms.RadioButton();
             this.LabManagerRadioButton = new System.Windows.Forms.RadioButton();
-            this.LoginTextBox = new System.Windows.Forms.TextBox();
             this.PatientPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -82,7 +81,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.PatientPanel.Controls.Add(this.ZIPCodeTextBox);
             this.PatientPanel.Controls.Add(this.CityTextBox);
             this.PatientPanel.Controls.Add(this.PhoneTextBox);
-            this.PatientPanel.Controls.Add(this.PESELTextBox);
+            this.PatientPanel.Controls.Add(this.PESELOrLicenseNumberTextBox);
             this.PatientPanel.Controls.Add(this.UserSurnameTextBox);
             this.PatientPanel.Controls.Add(this.UpperMainLabel);
             this.PatientPanel.Controls.Add(this.UserNameTextBox);
@@ -271,16 +270,16 @@ namespace ClinicManagementSystem.Forms.MainForms
             // 
             // PESELTextBox
             // 
-            this.PESELTextBox.BackColor = System.Drawing.SystemColors.Window;
-            this.PESELTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.PESELTextBox.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.PESELTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(119)))), ((int)(((byte)(182)))));
-            this.PESELTextBox.Location = new System.Drawing.Point(41, 157);
-            this.PESELTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.PESELTextBox.Name = "PESELTextBox";
-            this.PESELTextBox.PlaceholderText = "PESEL";
-            this.PESELTextBox.Size = new System.Drawing.Size(224, 27);
-            this.PESELTextBox.TabIndex = 2;
+            this.PESELOrLicenseNumberTextBox.BackColor = System.Drawing.SystemColors.Window;
+            this.PESELOrLicenseNumberTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.PESELOrLicenseNumberTextBox.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.PESELOrLicenseNumberTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(119)))), ((int)(((byte)(182)))));
+            this.PESELOrLicenseNumberTextBox.Location = new System.Drawing.Point(41, 157);
+            this.PESELOrLicenseNumberTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.PESELOrLicenseNumberTextBox.Name = "PESELTextBox";
+            this.PESELOrLicenseNumberTextBox.PlaceholderText = "PESEL";
+            this.PESELOrLicenseNumberTextBox.Size = new System.Drawing.Size(224, 27);
+            this.PESELOrLicenseNumberTextBox.TabIndex = 2;
             // 
             // UserSurnameTextBox
             // 
@@ -366,17 +365,16 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.SearchUserButton.UseVisualStyleBackColor = false;
             this.SearchUserButton.Click += new System.EventHandler(this.SearchUserButton_Click);
             // 
-            // LoginLabel
+            // PasswordLabel
             // 
-            this.LoginLabel.AutoEllipsis = true;
-            this.LoginLabel.Font = new System.Drawing.Font("Verdana", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LoginLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(119)))), ((int)(((byte)(182)))));
-            this.LoginLabel.Location = new System.Drawing.Point(645, 168);
-            this.LoginLabel.Name = "LoginLabel";
-            this.LoginLabel.Size = new System.Drawing.Size(302, 31);
-            this.LoginLabel.TabIndex = 25;
-            this.LoginLabel.Text = "Login";
-            this.LoginLabel.Click += new System.EventHandler(this.LoginLabel_Click);
+            this.PasswordLabel.AutoEllipsis = true;
+            this.PasswordLabel.Font = new System.Drawing.Font("Verdana", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.PasswordLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(119)))), ((int)(((byte)(182)))));
+            this.PasswordLabel.Location = new System.Drawing.Point(645, 168);
+            this.PasswordLabel.Name = "PasswordLabel";
+            this.PasswordLabel.Size = new System.Drawing.Size(302, 40);
+            this.PasswordLabel.TabIndex = 25;
+            this.PasswordLabel.Text = "Password";
             // 
             // PasswordTextBox
             // 
@@ -384,10 +382,10 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.PasswordTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.PasswordTextBox.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.PasswordTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(119)))), ((int)(((byte)(182)))));
-            this.PasswordTextBox.Location = new System.Drawing.Point(645, 262);
+            this.PasswordTextBox.Location = new System.Drawing.Point(645, 210);
             this.PasswordTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PasswordTextBox.Name = "PasswordTextBox";
-            this.PasswordTextBox.PlaceholderText = "User\'s Password";
+            this.PasswordTextBox.PlaceholderText = "Change user\'s password";
             this.PasswordTextBox.Size = new System.Drawing.Size(282, 31);
             this.PasswordTextBox.TabIndex = 12;
             // 
@@ -476,26 +474,12 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.LabManagerRadioButton.Text = "Laboratory Manager";
             this.LabManagerRadioButton.UseVisualStyleBackColor = true;
             // 
-            // LoginTextBox
-            // 
-            this.LoginTextBox.BackColor = System.Drawing.SystemColors.Window;
-            this.LoginTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.LoginTextBox.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LoginTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(119)))), ((int)(((byte)(182)))));
-            this.LoginTextBox.Location = new System.Drawing.Point(645, 212);
-            this.LoginTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.LoginTextBox.Name = "LoginTextBox";
-            this.LoginTextBox.PlaceholderText = "User\'s Login";
-            this.LoginTextBox.Size = new System.Drawing.Size(282, 31);
-            this.LoginTextBox.TabIndex = 34;
-            // 
             // ManagerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(247)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(1241, 948);
-            this.Controls.Add(this.LoginTextBox);
             this.Controls.Add(this.LabManagerRadioButton);
             this.Controls.Add(this.LabTechicianRadioButton);
             this.Controls.Add(this.DoctoralLabel);
@@ -503,7 +487,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.Controls.Add(this.DeleteButton);
             this.Controls.Add(this.UpdateButton);
             this.Controls.Add(this.PasswordTextBox);
-            this.Controls.Add(this.LoginLabel);
+            this.Controls.Add(this.PasswordLabel);
             this.Controls.Add(this.SearchUserButton);
             this.Controls.Add(this.SearchUserTextBox);
             this.Controls.Add(this.AddButton);
@@ -532,10 +516,10 @@ namespace ClinicManagementSystem.Forms.MainForms
         private System.Windows.Forms.TextBox ZIPCodeTextBox;
         private System.Windows.Forms.TextBox CityTextBox;
         private System.Windows.Forms.TextBox PhoneTextBox;
-        private System.Windows.Forms.TextBox PESELTextBox;
+        private System.Windows.Forms.TextBox PESELOrLicenseNumberTextBox;
         private System.Windows.Forms.TextBox UserSurnameTextBox;
         private System.Windows.Forms.Label UpperMainLabel;
-        private System.Windows.Forms.Label LoginLabel;
+        private System.Windows.Forms.Label PasswordLabel;
         private System.Windows.Forms.TextBox PasswordTextBox;
         private System.Windows.Forms.Button UpdateButton;
         private System.Windows.Forms.Button DeleteButton;
@@ -552,6 +536,5 @@ namespace ClinicManagementSystem.Forms.MainForms
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label labelPesel;
-        private System.Windows.Forms.TextBox LoginTextBox;
     }
 }

@@ -53,7 +53,7 @@ namespace ClinicManagementSystem.Services.impl
 
         public Patient GetPatientByPersonalIdentityNumber(string personalIdentityNumber)
         {
-            return context.Patients.Where(p => p.PersonalIdentityNumber.Equals(personalIdentityNumber)).FirstOrDefault();
+            return string.IsNullOrWhiteSpace(personalIdentityNumber) ? null : context.Patients.Where(p => p.PersonalIdentityNumber.Equals(personalIdentityNumber)).FirstOrDefault();
         }
 
         public Patient GetPatientByName(string firstName, string lastName)

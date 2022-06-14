@@ -8,6 +8,9 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Data.Entity.Validation;
 
 namespace ClinicManagementSystem.Forms.MainForms
 {
@@ -65,7 +68,7 @@ namespace ClinicManagementSystem.Forms.MainForms
         }
         private void HidePesel()
         {
-            PESELTextBox.Hide();
+            PESELOrLicenseNumberTextBox.Hide();
             labelPesel.Hide();
         }
 
@@ -88,10 +91,9 @@ namespace ClinicManagementSystem.Forms.MainForms
         }
 
 
-        private void HideLogin()
+        private void HidePassword()
         {
-            LoginLabel.Hide();
-            LoginTextBox.Hide();
+            PasswordLabel.Hide();
             PasswordTextBox.Hide();
         }
 
@@ -106,7 +108,7 @@ namespace ClinicManagementSystem.Forms.MainForms
 
         private void Doctor()
         {
-            this.PESELTextBox.PlaceholderText = "Licence Number";
+            this.PESELOrLicenseNumberTextBox.PlaceholderText = "License Number";
             this.labelPesel.Text = "Licence Number";
             HideForDoctor();
             HideBtns();
@@ -123,7 +125,7 @@ namespace ClinicManagementSystem.Forms.MainForms
 
         private void Patient()
         {
-            HideLogin();
+            HidePassword();
             HideForDoctor();
             HideForLab();
             HideBtns();
@@ -133,7 +135,6 @@ namespace ClinicManagementSystem.Forms.MainForms
         private void SetUserCategories(string user)
         {
             SearchUserTextBox.PlaceholderText = "Search " + user + " for Update";
-            LoginTextBox.PlaceholderText = user + "'s Login";
             PasswordTextBox.PlaceholderText = user + "'s Password";
             AddButton.Text = "Add " + user;
             UpdateButton.Text = "Update " + user;
@@ -191,6 +192,8 @@ namespace ClinicManagementSystem.Forms.MainForms
               }
         }
 
+        
+
         private void FindDoctor(string[] name)
         {
             Doctor doctor = _doctorService.GetDoctorByName(name[0], name[1]);
@@ -199,12 +202,12 @@ namespace ClinicManagementSystem.Forms.MainForms
                 SearchUserTextBox.Clear();
                 UpdateButton.Show();
                 DeleteButton.Show();
-                PESELTextBox.Text = doctor.LicenseNumber; // TODO change label to license nr
+                PESELOrLicenseNumberTextBox.Text = doctor.LicenseNumber;
                 PhoneTextBox.Text = doctor.PhoneNumber;
                 UserNameTextBox.Text = doctor.FirstName;
                 UserSurnameTextBox.Text = doctor.LastName;
                 EMailTextBox.Text = doctor.Email;
-                PasswordTextBox.Text = ""; // todo from auth services
+                PasswordTextBox.Text = ""; // todo from auth services; PR: chyba nie chcecie pokazywac hasla uzytkownika... poza tym sa w postaci hasha i nie da sie ich odczytac
 
                 if (doctor.Address != null)
                 {
@@ -246,7 +249,7 @@ namespace ClinicManagementSystem.Forms.MainForms
                 UserNameTextBox.Text = receptionist.FirstName;
                 UserSurnameTextBox.Text = receptionist.LastName;
                 EMailTextBox.Text = receptionist.Email;
-                PasswordTextBox.Text = ""; // todo from auth service
+                PasswordTextBox.Text = ""; // todo from auth service; PR: chyba nie chcecie pokazywac hasla uzytkownika... poza tym sa w postaci hasha i nie da sie ich odczytac
 
                 if (receptionist.Address != null)
                 {
@@ -266,14 +269,14 @@ namespace ClinicManagementSystem.Forms.MainForms
                 SearchUserTextBox.Clear();
                 UpdateButton.Show();
                 DeleteButton.Show();
-                PESELTextBox.Text = patient.PersonalIdentityNumber;
+                PESELOrLicenseNumberTextBox.Text = patient.PersonalIdentityNumber;
                 PhoneTextBox.Text = patient.PhoneNumber;
                 UserNameTextBox.Text = patient.FirstName;
                 UserSurnameTextBox.Text = patient.LastName;
                 EMailTextBox.Text = patient.Email;
-                PasswordTextBox.Text = ""; // todo from auth services
+                PasswordTextBox.Text = ""; // todo from auth services; PR: chyba nie chcecie pokazywac hasla uzytkownika... poza tym sa w postaci hasha i nie da sie ich odczytac
 
-                if(patient.Address != null)
+                if (patient.Address != null)
                 {
                     CityTextBox.Text = patient.Address.City;
                     StreetTextBox.Text = patient.Address.Street;
@@ -295,7 +298,7 @@ namespace ClinicManagementSystem.Forms.MainForms
                 UserNameTextBox.Text = laboratoryManager.FirstName;
                 UserSurnameTextBox.Text = laboratoryManager.LastName;
                 EMailTextBox.Text = laboratoryManager.Email;
-                PasswordTextBox.Text = ""; // todo from auth services
+                PasswordTextBox.Text = ""; // todo from auth services; PR: chyba nie chcecie pokazywac hasla uzytkownika... poza tym sa w postaci hasha i nie da sie ich odczytac
 
                 if (laboratoryManager.Address != null)
                 {
@@ -319,7 +322,7 @@ namespace ClinicManagementSystem.Forms.MainForms
                 UserNameTextBox.Text = laboratoryTechnician.FirstName;
                 UserSurnameTextBox.Text = laboratoryTechnician.LastName;
                 EMailTextBox.Text = laboratoryTechnician.Email;
-                PasswordTextBox.Text = ""; // todo from auth services
+                PasswordTextBox.Text = ""; // todo from auth services; PR: chyba nie chcecie pokazywac hasla uzytkownika... poza tym sa w postaci hasha i nie da sie ich odczytac
 
                 if (laboratoryTechnician.Address != null)
                 {
@@ -333,7 +336,7 @@ namespace ClinicManagementSystem.Forms.MainForms
 
         private void ClearData()
         {
-            PESELTextBox.Clear();
+            PESELOrLicenseNumberTextBox.Clear();
             PhoneTextBox.Clear();
             UserNameTextBox.Clear();
             UserSurnameTextBox.Clear();
@@ -343,7 +346,6 @@ namespace ClinicManagementSystem.Forms.MainForms
             NumberTextBox.Clear();
             EMailTextBox.Clear();
             PasswordTextBox.Clear();
-            LoginTextBox.Clear();
             SpecializationComboBox.SelectedIndex = 0;
             LabManagerRadioButton.Checked = false;
             LabTechicianRadioButton.Checked = false;
@@ -391,39 +393,20 @@ namespace ClinicManagementSystem.Forms.MainForms
             }
         }
 
-        private void AddButton_Click(object sender, EventArgs e)
-        {
-            switch (_formType)
-            {
-                case MainFormType.ManagerPatients:
-                    AddPatient();
-                    break;
-                case MainFormType.ManagerDoctors:
-                    AddDoctor();
-                    break;
-                case MainFormType.ManagerLaboratory:
-                    AddLaboratoryWorker();
-                    break;
-                case MainFormType.ManagerReceptionist:
-                    AddReceptionist();
-                    break;
-                default:
-                    break;
-            }
-        }
+        
 
-        private void LoginLabel_Click(object sender, EventArgs e)
-        {
-
-        }
         private void UpdateDoctor()
         {
-            Doctor doctorToUpdate = _doctorService.GetDoctorByLicenceNumber(PESELTextBox.Text);
+            Doctor doctorToUpdate = _doctorService.GetDoctorByLicenceNumber(PESELOrLicenseNumberTextBox.Text);
 
             Specialization spec = _specialization.Find(x => x.Item2 == SpecializationComboBox.SelectedItem.ToString()).Item1;
-            if (spec == Specialization.None || PasswordTextBox.Text == "" || LoginTextBox.Text == "")
+            if (spec == Specialization.None) // || CheckRequiredInputs(CityTextBox, StreetTextBox))
             {
-                MessageBox.Show("Complete the missing data!", "Update Doctor Data");
+                MessageBox.Show("Choose specialization", "Update Doctor Data");
+            }
+            else if (string.IsNullOrWhiteSpace(EMailTextBox.Text) && string.IsNullOrWhiteSpace(PhoneTextBox.Text))
+            {
+                MessageBox.Show("Enter email adress or phone number", "Update Doctor Data");
             }
             else
             {
@@ -447,7 +430,7 @@ namespace ClinicManagementSystem.Forms.MainForms
         {
             Receptionist receptionistToUpdate = _receptionistService.GetReceptionistByName(UserNameTextBox.Text, UserSurnameTextBox.Text);
 
-            if ( PasswordTextBox.Text == "" || LoginTextBox.Text == "")
+            if ( PasswordTextBox.Text == "")
             {
                 MessageBox.Show("Complete the missing data!", "Update Receptionist Data");
             }
@@ -491,7 +474,7 @@ namespace ClinicManagementSystem.Forms.MainForms
         {
             LaboratoryManager managerToUpdate = _managerService.GetLaboratoryManagerByName(UserNameTextBox.Text, UserSurnameTextBox.Text);
 
-            if (PasswordTextBox.Text == "" || LoginTextBox.Text == "")
+            if (PasswordTextBox.Text == "")
             {
                 MessageBox.Show("Complete the missing data!", "Update Laboratory Manager");
             }
@@ -516,7 +499,7 @@ namespace ClinicManagementSystem.Forms.MainForms
         {
             LaboratoryTechnician technicianToUpdate = _technicianService.GetLaboratoryTechnicianByName(UserNameTextBox.Text, UserSurnameTextBox.Text);
 
-            if (PasswordTextBox.Text == "" || LoginTextBox.Text == "")
+            if (PasswordTextBox.Text == "")
             {
                 MessageBox.Show("Complete the missing data!", "Update Laboratory Technician");
             }
@@ -539,9 +522,9 @@ namespace ClinicManagementSystem.Forms.MainForms
 
         private void UpdatePatient()
         {
-            Patient patientToUpdate = _patientService.GetPatientByPersonalIdentityNumber(PESELTextBox.Text);
+            Patient patientToUpdate = _patientService.GetPatientByPersonalIdentityNumber(PESELOrLicenseNumberTextBox.Text);
 
-            if(PESELTextBox.Text == "")
+            if(PESELOrLicenseNumberTextBox.Text == "")
             {
                 MessageBox.Show("Complete the missing data!", "Update Patient Data");
             }
@@ -562,7 +545,7 @@ namespace ClinicManagementSystem.Forms.MainForms
                     MessageBox.Show("Patient data has been succesfully updated.", "Update Patient Data");
                     ClearData();
                 }
-                catch (Exception) // TODO change
+                catch (DbEntityValidationException) // TODO change
                 {
                     MessageBox.Show("Update data error.", "Update Patient Data");
                 }
@@ -570,240 +553,7 @@ namespace ClinicManagementSystem.Forms.MainForms
    
         }
 
-        private void AddDoctor()
-        {
-            Doctor existingDoctor = _doctorService.GetDoctorByLicenceNumber(PESELTextBox.Text);  //zmienic nazwe na licence number
-            if(existingDoctor == null)
-            {
-                Specialization spec = _specialization.Find(x => x.Item2 == SpecializationComboBox.SelectedItem.ToString()).Item1;
-                if (spec == Specialization.None || PasswordTextBox.Text == "" || LoginTextBox.Text == "" || PESELTextBox.Text == "")
-                {
-                    MessageBox.Show("Complete the missing data!", "Add New Doctor");
-                }
-                else
-                {
-                    Address newAddress = new Address
-                    {
-                        City = CityTextBox.Text,
-                        Street = StreetTextBox.Text,
-                        HomeNumber = NumberTextBox.Text,
-                        ZipCode = ZIPCodeTextBox.Text
-                    };
-                    Doctor newDoctor = new Doctor
-                    {
-                        LicenseNumber = PESELTextBox.Text,
-                        PhoneNumber = PhoneTextBox.Text,
-                        FirstName = UserNameTextBox.Text,
-                        LastName = UserSurnameTextBox.Text,
-                        Email = EMailTextBox.Text,
-                        Specialization = spec,
-                        Address = newAddress
-                    };
-                    try
-                    {
-                        _doctorService.InsertDoctor(newDoctor, PasswordTextBox.Text);
-                        MessageBox.Show("New doctor has been succesfully added.", "Add New Doctor");
-                    }
-                    catch (Exception) // TODO change
-                    {
-                        MessageBox.Show("Insert error.", "Add New Doctor");
-                    }
-                    ClearData();
-                }
-            }
-            else
-            {
-                MessageBox.Show("Doctor already exists.", "Add New Doctor");
-            }
-           
-        }
-
-        private void AddReceptionist()
-        {
-            Receptionist existingReceptionist = _receptionistService.GetReceptionistByName(UserNameTextBox.Text, UserSurnameTextBox.Text);
-            
-            if (existingReceptionist == null)
-            {
-                if (PasswordTextBox.Text == "" || LoginTextBox.Text == "")
-                {
-                    MessageBox.Show("Complete the missing data!", "Add New Receptionist");
-                }
-                else
-                {
-                    Address newAddress = new Address
-                    {
-                        City = CityTextBox.Text,
-                        Street = StreetTextBox.Text,
-                        HomeNumber = NumberTextBox.Text,
-                        ZipCode = ZIPCodeTextBox.Text
-                    };
-                    Receptionist newReceptionist = new Receptionist
-                    {
-                        PhoneNumber = PhoneTextBox.Text,
-                        FirstName = UserNameTextBox.Text,
-                        LastName = UserSurnameTextBox.Text,
-                        Email = EMailTextBox.Text,
-                        Address = newAddress
-                    };
-                    try
-                    {
-                        _receptionistService.InsertReceptionist(newReceptionist, PasswordTextBox.Text);
-                        MessageBox.Show("New receptionist has been succesfully added.", "Add New Receptionist");
-                    }
-                    catch (Exception) // TODO change
-                    {
-                        MessageBox.Show("Insert error.", "Add New Receptionist");
-                    }
-                    ClearData();
-                }
-            }
-            else
-            {
-                MessageBox.Show("Receptionists already exists.", "Add New Receptionist");
-            }        
-        }
-
-        private void AddLaboratoryWorker()
-        {
-            if (PasswordTextBox.Text == "" || LoginTextBox.Text == "" || (!LabManagerRadioButton.Checked && !LabTechicianRadioButton.Checked) || CheckEmptyInputs())
-            {
-                MessageBox.Show("Complete the missing data!", "Add New Laboratory Worker");
-            }
-            else
-            {
-                if (LabManagerRadioButton.Checked)
-                {
-                    AddLaboratoryManager();
-                }
-                else if (LabTechicianRadioButton.Checked)
-                {
-                    AddLaboratoryTechnician();
-                }
-            }
-        }
-
-        private void AddLaboratoryTechnician()
-        {
-            LaboratoryTechnician existingTechnician = _technicianService.GetLaboratoryTechnicianByName(UserNameTextBox.Text, UserSurnameTextBox.Text);
-
-            if(existingTechnician == null)
-            {
-                Address newAddress = new Address
-                {
-                    City = CityTextBox.Text,
-                    Street = StreetTextBox.Text,
-                    HomeNumber = NumberTextBox.Text,
-                    ZipCode = ZIPCodeTextBox.Text
-                };
-                LaboratoryTechnician newLaboratoryTechnician = new LaboratoryTechnician
-                {
-                    PhoneNumber = PhoneTextBox.Text,
-                    FirstName = UserNameTextBox.Text,
-                    LastName = UserSurnameTextBox.Text,
-                    Email = EMailTextBox.Text,
-                    Address = newAddress
-                };
-                try
-                {
-                    _technicianService.InsertLaboratoryTechnician(newLaboratoryTechnician, PasswordTextBox.Text);
-                    MessageBox.Show("New laboratory technician has been succesfully added.", "Add New Laboratory Technician");
-                }
-                catch (Exception) // TODO change
-                {
-                    MessageBox.Show("Insert error.", "Add New Laboratory Technician");
-                }
-                ClearData();
-            }
-            else
-            {
-                MessageBox.Show("Laboratory Technician already exists.", "Add New Laboratory Technician");
-            }
-            
-        }
-
-        private void AddLaboratoryManager()
-        {
-            LaboratoryManager existingManager = _managerService.GetLaboratoryManagerByName(UserNameTextBox.Text, UserSurnameTextBox.Text);
-              
-            if(existingManager == null)
-            {
-                Address newAddress = new Address
-                {
-                    City = CityTextBox.Text,
-                    Street = StreetTextBox.Text,
-                    HomeNumber = NumberTextBox.Text,
-                    ZipCode = ZIPCodeTextBox.Text
-                };
-                LaboratoryManager newLaboratoryManager = new LaboratoryManager
-                {
-                    PhoneNumber = PhoneTextBox.Text,
-                    FirstName = UserNameTextBox.Text,
-                    LastName = UserSurnameTextBox.Text,
-                    Email = EMailTextBox.Text,
-                    Address = newAddress
-                };
-                try
-                {
-                    _managerService.InsertLaboratoryManager(newLaboratoryManager, PasswordTextBox.Text);
-                    MessageBox.Show("New laboratory manager has been succesfully added.", "Add New Laboratory Manager");
-                }
-                catch (Exception) // TODO change
-                {
-                    MessageBox.Show("Insert error.", "Add New Laboratory Manager");
-                }
-                ClearData();
-            }
-            else
-            {
-                MessageBox.Show("Laboratory Manager already exists.", "Add New Laboratory Manager");
-            }           
-        }
-
-        private void AddPatient()
-        {
-            Patient existingPatient = _patientService.GetPatientByPersonalIdentityNumber(PESELTextBox.Text);
-
-            if(existingPatient ==null)
-            {
-                if (PESELTextBox.Text == "")
-                {
-                    Address newAddress = new Address
-                    {
-                        City = CityTextBox.Text,
-                        Street = StreetTextBox.Text,
-                        HomeNumber = NumberTextBox.Text,
-                        ZipCode = ZIPCodeTextBox.Text
-                    };
-                    Patient newPatient = new Patient
-                    {
-                        PersonalIdentityNumber = PESELTextBox.Text,
-                        PhoneNumber = PhoneTextBox.Text,
-                        FirstName = UserNameTextBox.Text,
-                        LastName = UserSurnameTextBox.Text,
-                        Email = EMailTextBox.Text,
-                        Address = newAddress
-                    };
-                    try
-                    {
-                        _patientService.InsertPatient(newPatient);
-                        MessageBox.Show("New patient has been succesfully added.", "Add New Patient");
-                    }
-                    catch (Exception) // TODO change
-                    {
-                        MessageBox.Show("Insert error.", "Add New Patient");
-                    }
-                    ClearData();
-                }
-                else
-                {
-                    MessageBox.Show("Complete the missing data!", "Add New Patient");
-                }
-            }
-            else
-            {
-                MessageBox.Show("Patient already exists.", "Add New Patient");
-            }         
-        }
+        
         private bool CheckEmptyInputs()
         {
             if (CityTextBox.Text == "" || StreetTextBox.Text == "" || NumberTextBox.Text == "" || ZIPCodeTextBox.Text == ""  
@@ -816,5 +566,25 @@ namespace ClinicManagementSystem.Forms.MainForms
                 return true;
             }  
         }
+
+        private ICollection<ValidationResult> ValidateAddress(out Address newAddress)
+        {
+            newAddress = string.IsNullOrWhiteSpace(CityTextBox.Text) ? null : new Address
+            {
+                City = CityTextBox.Text,
+                Street = StreetTextBox.Text,
+                HomeNumber = NumberTextBox.Text,
+                ZipCode = ZIPCodeTextBox.Text
+            };
+
+            ICollection<ValidationResult> validationResults = new List<ValidationResult>();
+            if (newAddress != null && !Validator.TryValidateObject(newAddress, new ValidationContext(newAddress), validationResults, true))
+            {
+                // obj not valid
+                return validationResults;
+            }
+            return null;
+        }
+
     } 
 }

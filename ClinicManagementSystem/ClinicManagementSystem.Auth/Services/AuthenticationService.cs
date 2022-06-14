@@ -56,7 +56,7 @@ namespace ClinicManagementSystem.Auth.Services
             if (email == null && phoneNumber == null)
                 throw new ArgumentNullException("email && phoneNumber");
 
-            if (dbContext.ApplicationUsers.Where(user => user.Email == email || user.PhoneNumber == phoneNumber).Any())
+            if (dbContext.ApplicationUsers.Where(user => (email != null && user.Email == email) || (phoneNumber != null && user.PhoneNumber == phoneNumber)).Any())
                 throw new InvalidLoginException("Email or phone number already exists!");
 
             return new ApplicationUser()
