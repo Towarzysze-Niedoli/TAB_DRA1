@@ -105,6 +105,8 @@ namespace ClinicManagementSystem.Forms.MainForms
             if(name.Length == 2)
             {
                 Patient patient = _patientService.GetPatientByName(name[0], name[1]);
+                if (patient == null)
+                    return;
                 _patientInfo.InitializeValues(patient.FirstName, patient.LastName, patient.PersonalIdentityNumber, patient.PhoneNumber, patient.Address.City, patient.Address.ZipCode, patient.Address.Street, patient.Address.HomeNumber, patient.Email ,DateTime.Now);
                 // TODO - last vist - change in model in patient or service method?
                 _patientInfo.Show();

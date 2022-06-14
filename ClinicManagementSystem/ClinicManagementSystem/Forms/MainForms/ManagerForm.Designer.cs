@@ -268,7 +268,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.PhoneTextBox.Size = new System.Drawing.Size(224, 27);
             this.PhoneTextBox.TabIndex = 3;
             // 
-            // PESELTextBox
+            // PESELOrLicenseNumberTextBox
             // 
             this.PESELOrLicenseNumberTextBox.BackColor = System.Drawing.SystemColors.Window;
             this.PESELOrLicenseNumberTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -276,7 +276,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.PESELOrLicenseNumberTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(119)))), ((int)(((byte)(182)))));
             this.PESELOrLicenseNumberTextBox.Location = new System.Drawing.Point(41, 157);
             this.PESELOrLicenseNumberTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.PESELOrLicenseNumberTextBox.Name = "PESELTextBox";
+            this.PESELOrLicenseNumberTextBox.Name = "PESELOrLicenseNumberTextBox";
             this.PESELOrLicenseNumberTextBox.PlaceholderText = "PESEL";
             this.PESELOrLicenseNumberTextBox.Size = new System.Drawing.Size(224, 27);
             this.PESELOrLicenseNumberTextBox.TabIndex = 2;
@@ -343,7 +343,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.SearchUserTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(119)))), ((int)(((byte)(182)))));
             this.SearchUserTextBox.Location = new System.Drawing.Point(45, 114);
             this.SearchUserTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.SearchUserTextBox.MaxLength = 20;
+            this.SearchUserTextBox.MaxLength = 64;
             this.SearchUserTextBox.Name = "SearchUserTextBox";
             this.SearchUserTextBox.PlaceholderText = "Search User for Update";
             this.SearchUserTextBox.Size = new System.Drawing.Size(319, 31);

@@ -47,7 +47,7 @@ namespace ClinicManagementSystem.Services.impl
         public void UpdatePatient(Patient patient)
         {
             context.Patients.Attach(patient);
-            context.Entry(patient).State = System.Data.Entity.EntityState.Modified;
+            context.Entry(patient).State = EntityState.Modified;
             Save();
         }
 
