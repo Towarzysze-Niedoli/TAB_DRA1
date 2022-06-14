@@ -49,10 +49,10 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.SideBottomPanel.Controls.Add(this.LogoutButton);
             this.SideBottomPanel.Controls.Add(this.CancelButton);
             this.SideBottomPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.SideBottomPanel.Location = new System.Drawing.Point(0, 908);
+            this.SideBottomPanel.Location = new System.Drawing.Point(0, 667);
             this.SideBottomPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.SideBottomPanel.Name = "SideBottomPanel";
-            this.SideBottomPanel.Size = new System.Drawing.Size(328, 168);
+            this.SideBottomPanel.Size = new System.Drawing.Size(328, 282);
             this.SideBottomPanel.TabIndex = 0;
             // 
             // LogoutButton
@@ -99,7 +99,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(328, 1076);
+            this.panel1.Size = new System.Drawing.Size(328, 949);
             this.panel1.TabIndex = 0;
             this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
             this.panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseMove);
@@ -111,7 +111,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.SideUpperPanel.Location = new System.Drawing.Point(0, 145);
             this.SideUpperPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.SideUpperPanel.Name = "SideUpperPanel";
-            this.SideUpperPanel.Size = new System.Drawing.Size(328, 772);
+            this.SideUpperPanel.Size = new System.Drawing.Size(328, 549);
             this.SideUpperPanel.TabIndex = 1;
             // 
             // MainPanel
@@ -121,7 +121,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.MainPanel.Location = new System.Drawing.Point(328, 0);
             this.MainPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MainPanel.Name = "MainPanel";
-            this.MainPanel.Size = new System.Drawing.Size(1605, 1076);
+            this.MainPanel.Size = new System.Drawing.Size(1241, 948);
             this.MainPanel.TabIndex = 1;
             // 
             // LogoText
@@ -129,7 +129,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.LogoText.AutoSize = true;
             this.LogoText.Font = new System.Drawing.Font("Verdana", 60.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.LogoText.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(62)))), ((int)(((byte)(138)))));
-            this.LogoText.Location = new System.Drawing.Point(411, 651);
+            this.LogoText.Location = new System.Drawing.Point(207, 651);
             this.LogoText.Name = "LogoText";
             this.LogoText.Size = new System.Drawing.Size(814, 98);
             this.LogoText.TabIndex = 1;
@@ -138,7 +138,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             // LogoBox
             // 
             this.LogoBox.Image = global::ClinicManagementSystem.Properties.Resources.medical__1_;
-            this.LogoBox.Location = new System.Drawing.Point(540, 169);
+            this.LogoBox.Location = new System.Drawing.Point(319, 169);
             this.LogoBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.LogoBox.Name = "LogoBox";
             this.LogoBox.Size = new System.Drawing.Size(560, 480);
@@ -151,7 +151,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(247)))), ((int)(((byte)(255)))));
-            this.ClientSize = new System.Drawing.Size(1943, 1076);
+            this.ClientSize = new System.Drawing.Size(1572, 949);
             this.Controls.Add(this.MainPanel);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;

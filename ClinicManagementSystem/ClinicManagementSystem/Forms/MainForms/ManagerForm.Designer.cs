@@ -89,7 +89,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.PatientPanel.Location = new System.Drawing.Point(45, 168);
             this.PatientPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PatientPanel.Name = "PatientPanel";
-            this.PatientPanel.Size = new System.Drawing.Size(651, 693);
+            this.PatientPanel.Size = new System.Drawing.Size(560, 674);
             this.PatientPanel.TabIndex = 3;
             // 
             // label9
@@ -108,7 +108,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(247)))), ((int)(((byte)(255)))));
-            this.label8.Location = new System.Drawing.Point(350, 339);
+            this.label8.Location = new System.Drawing.Point(292, 339);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(85, 23);
             this.label8.TabIndex = 24;
@@ -130,7 +130,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(247)))), ((int)(((byte)(255)))));
-            this.label6.Location = new System.Drawing.Point(350, 268);
+            this.label6.Location = new System.Drawing.Point(292, 268);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(97, 23);
             this.label6.TabIndex = 22;
@@ -152,7 +152,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(247)))), ((int)(((byte)(255)))));
-            this.label4.Location = new System.Drawing.Point(350, 198);
+            this.label4.Location = new System.Drawing.Point(292, 198);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(110, 23);
             this.label4.TabIndex = 20;
@@ -174,7 +174,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(247)))), ((int)(((byte)(255)))));
-            this.label2.Location = new System.Drawing.Point(350, 410);
+            this.label2.Location = new System.Drawing.Point(292, 410);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(68, 23);
             this.label2.TabIndex = 18;
@@ -210,7 +210,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.NumberTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.NumberTextBox.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.NumberTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(119)))), ((int)(((byte)(182)))));
-            this.NumberTextBox.Location = new System.Drawing.Point(350, 364);
+            this.NumberTextBox.Location = new System.Drawing.Point(292, 364);
             this.NumberTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.NumberTextBox.Name = "NumberTextBox";
             this.NumberTextBox.PlaceholderText = "Number";
@@ -236,7 +236,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.ZIPCodeTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.ZIPCodeTextBox.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.ZIPCodeTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(119)))), ((int)(((byte)(182)))));
-            this.ZIPCodeTextBox.Location = new System.Drawing.Point(350, 293);
+            this.ZIPCodeTextBox.Location = new System.Drawing.Point(292, 293);
             this.ZIPCodeTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ZIPCodeTextBox.Name = "ZIPCodeTextBox";
             this.ZIPCodeTextBox.PlaceholderText = "ZIP Code";
@@ -262,7 +262,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.PhoneTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.PhoneTextBox.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.PhoneTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(119)))), ((int)(((byte)(182)))));
-            this.PhoneTextBox.Location = new System.Drawing.Point(350, 435);
+            this.PhoneTextBox.Location = new System.Drawing.Point(292, 435);
             this.PhoneTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PhoneTextBox.Name = "PhoneTextBox";
             this.PhoneTextBox.PlaceholderText = "Phone";
@@ -288,7 +288,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.UserSurnameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.UserSurnameTextBox.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.UserSurnameTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(119)))), ((int)(((byte)(182)))));
-            this.UserSurnameTextBox.Location = new System.Drawing.Point(350, 223);
+            this.UserSurnameTextBox.Location = new System.Drawing.Point(292, 223);
             this.UserSurnameTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.UserSurnameTextBox.Name = "UserSurnameTextBox";
             this.UserSurnameTextBox.PlaceholderText = "Last Name";
@@ -328,10 +328,10 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.AddButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.AddButton.Font = new System.Drawing.Font("Corbel", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.AddButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(247)))), ((int)(((byte)(255)))));
-            this.AddButton.Location = new System.Drawing.Point(900, 666);
+            this.AddButton.Location = new System.Drawing.Point(636, 647);
             this.AddButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.AddButton.Name = "AddButton";
-            this.AddButton.Size = new System.Drawing.Size(602, 54);
+            this.AddButton.Size = new System.Drawing.Size(547, 54);
             this.AddButton.TabIndex = 13;
             this.AddButton.Text = "Add User";
             this.AddButton.UseVisualStyleBackColor = false;
@@ -347,7 +347,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.SearchUserTextBox.MaxLength = 20;
             this.SearchUserTextBox.Name = "SearchUserTextBox";
             this.SearchUserTextBox.PlaceholderText = "Search User for Update";
-            this.SearchUserTextBox.Size = new System.Drawing.Size(330, 31);
+            this.SearchUserTextBox.Size = new System.Drawing.Size(319, 31);
             this.SearchUserTextBox.TabIndex = 13;
             // 
             // SearchUserButton
@@ -357,7 +357,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.SearchUserButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SearchUserButton.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.SearchUserButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(247)))), ((int)(((byte)(255)))));
-            this.SearchUserButton.Location = new System.Drawing.Point(575, 114);
+            this.SearchUserButton.Location = new System.Drawing.Point(484, 114);
             this.SearchUserButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.SearchUserButton.Name = "SearchUserButton";
             this.SearchUserButton.Size = new System.Drawing.Size(121, 36);
@@ -371,7 +371,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.LoginLabel.AutoEllipsis = true;
             this.LoginLabel.Font = new System.Drawing.Font("Verdana", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LoginLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(119)))), ((int)(((byte)(182)))));
-            this.LoginLabel.Location = new System.Drawing.Point(900, 168);
+            this.LoginLabel.Location = new System.Drawing.Point(645, 168);
             this.LoginLabel.Name = "LoginLabel";
             this.LoginLabel.Size = new System.Drawing.Size(302, 31);
             this.LoginLabel.TabIndex = 25;
@@ -384,7 +384,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.PasswordTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.PasswordTextBox.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.PasswordTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(119)))), ((int)(((byte)(182)))));
-            this.PasswordTextBox.Location = new System.Drawing.Point(900, 287);
+            this.PasswordTextBox.Location = new System.Drawing.Point(645, 262);
             this.PasswordTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PasswordTextBox.Name = "PasswordTextBox";
             this.PasswordTextBox.PlaceholderText = "User\'s Password";
@@ -400,10 +400,10 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.UpdateButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.UpdateButton.Font = new System.Drawing.Font("Corbel", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.UpdateButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(247)))), ((int)(((byte)(255)))));
-            this.UpdateButton.Location = new System.Drawing.Point(900, 737);
+            this.UpdateButton.Location = new System.Drawing.Point(636, 718);
             this.UpdateButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.UpdateButton.Name = "UpdateButton";
-            this.UpdateButton.Size = new System.Drawing.Size(602, 54);
+            this.UpdateButton.Size = new System.Drawing.Size(547, 54);
             this.UpdateButton.TabIndex = 28;
             this.UpdateButton.Text = "Update User";
             this.UpdateButton.UseVisualStyleBackColor = false;
@@ -418,10 +418,10 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.DeleteButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.DeleteButton.Font = new System.Drawing.Font("Corbel", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.DeleteButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(247)))), ((int)(((byte)(255)))));
-            this.DeleteButton.Location = new System.Drawing.Point(900, 807);
+            this.DeleteButton.Location = new System.Drawing.Point(636, 788);
             this.DeleteButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.DeleteButton.Name = "DeleteButton";
-            this.DeleteButton.Size = new System.Drawing.Size(602, 54);
+            this.DeleteButton.Size = new System.Drawing.Size(547, 54);
             this.DeleteButton.TabIndex = 29;
             this.DeleteButton.Text = "Delete User";
             this.DeleteButton.UseVisualStyleBackColor = false;
@@ -430,13 +430,13 @@ namespace ClinicManagementSystem.Forms.MainForms
             // SpecializationComboBox
             // 
             this.SpecializationComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.SpecializationComboBox.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.SpecializationComboBox.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.SpecializationComboBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(119)))), ((int)(((byte)(182)))));
             this.SpecializationComboBox.FormattingEnabled = true;
-            this.SpecializationComboBox.Location = new System.Drawing.Point(1260, 401);
+            this.SpecializationComboBox.Location = new System.Drawing.Point(974, 387);
             this.SpecializationComboBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.SpecializationComboBox.Name = "SpecializationComboBox";
-            this.SpecializationComboBox.Size = new System.Drawing.Size(242, 31);
+            this.SpecializationComboBox.Size = new System.Drawing.Size(218, 26);
             this.SpecializationComboBox.TabIndex = 30;
             // 
             // DoctoralLabel
@@ -444,9 +444,9 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.DoctoralLabel.AutoEllipsis = true;
             this.DoctoralLabel.Font = new System.Drawing.Font("Verdana", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.DoctoralLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(119)))), ((int)(((byte)(182)))));
-            this.DoctoralLabel.Location = new System.Drawing.Point(900, 395);
+            this.DoctoralLabel.Location = new System.Drawing.Point(636, 381);
             this.DoctoralLabel.Name = "DoctoralLabel";
-            this.DoctoralLabel.Size = new System.Drawing.Size(342, 37);
+            this.DoctoralLabel.Size = new System.Drawing.Size(332, 37);
             this.DoctoralLabel.TabIndex = 31;
             this.DoctoralLabel.Text = "Doctoral Specialization:";
             // 
@@ -455,7 +455,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.LabTechicianRadioButton.AutoSize = true;
             this.LabTechicianRadioButton.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LabTechicianRadioButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(119)))), ((int)(((byte)(182)))));
-            this.LabTechicianRadioButton.Location = new System.Drawing.Point(900, 532);
+            this.LabTechicianRadioButton.Location = new System.Drawing.Point(645, 528);
             this.LabTechicianRadioButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.LabTechicianRadioButton.Name = "LabTechicianRadioButton";
             this.LabTechicianRadioButton.Size = new System.Drawing.Size(169, 27);
@@ -468,7 +468,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.LabManagerRadioButton.AutoSize = true;
             this.LabManagerRadioButton.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LabManagerRadioButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(119)))), ((int)(((byte)(182)))));
-            this.LabManagerRadioButton.Location = new System.Drawing.Point(1283, 532);
+            this.LabManagerRadioButton.Location = new System.Drawing.Point(973, 528);
             this.LabManagerRadioButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.LabManagerRadioButton.Name = "LabManagerRadioButton";
             this.LabManagerRadioButton.Size = new System.Drawing.Size(219, 27);
@@ -482,7 +482,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.LoginTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.LoginTextBox.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LoginTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(119)))), ((int)(((byte)(182)))));
-            this.LoginTextBox.Location = new System.Drawing.Point(900, 233);
+            this.LoginTextBox.Location = new System.Drawing.Point(645, 212);
             this.LoginTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.LoginTextBox.Name = "LoginTextBox";
             this.LoginTextBox.PlaceholderText = "User\'s Login";
@@ -494,7 +494,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(247)))), ((int)(((byte)(255)))));
-            this.ClientSize = new System.Drawing.Size(1605, 1076);
+            this.ClientSize = new System.Drawing.Size(1241, 948);
             this.Controls.Add(this.LoginTextBox);
             this.Controls.Add(this.LabManagerRadioButton);
             this.Controls.Add(this.LabTechicianRadioButton);
