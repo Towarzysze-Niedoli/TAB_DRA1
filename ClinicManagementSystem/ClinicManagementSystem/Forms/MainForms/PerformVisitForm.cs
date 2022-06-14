@@ -44,12 +44,13 @@ namespace ClinicManagementSystem.Forms.MainForms
             {
                 if(Appointment.Patient.Address != null)
                 {
-                    _patientInfoForm.InitializeValues(Appointment.Patient.FirstName, Appointment.Patient.LastName, Appointment.Patient.PersonalIdentityNumber, Appointment.Patient.PhoneNumber, Appointment.Patient.Address.City, Appointment.Patient.Address.ZipCode, Appointment.Patient.Address.Street, Appointment.Patient.Address.HomeNumber, Appointment.Patient.Email, DateTime.Now);
+                    
+                    _patientInfoForm.InitializeValues(Appointment.Patient.FirstName, Appointment.Patient.LastName, Appointment.Patient.PersonalIdentityNumber, Appointment.Patient.PhoneNumber, Appointment.Patient.Address.City, Appointment.Patient.Address.ZipCode, Appointment.Patient.Address.Street, Appointment.Patient.Address.HomeNumber, Appointment.Patient.Email, _appointmentService.GetLastAppointmentDateForPacient(Appointment.Patient));
 
                 }
                 else
                 {
-                    _patientInfoForm.InitializeValues(Appointment.Patient.FirstName, Appointment.Patient.LastName, Appointment.Patient.PersonalIdentityNumber, Appointment.Patient.PhoneNumber, "", "", "", "", Appointment.Patient.Email, DateTime.Now);
+                    _patientInfoForm.InitializeValues(Appointment.Patient.FirstName, Appointment.Patient.LastName, Appointment.Patient.PersonalIdentityNumber, Appointment.Patient.PhoneNumber, "", "", "", "", Appointment.Patient.Email, _appointmentService.GetLastAppointmentDateForPacient(Appointment.Patient));
 
                 }
             }

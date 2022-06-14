@@ -69,6 +69,13 @@ namespace ClinicManagementSystem.Services.impl
         {
             return context.Appointments.ToList().Where(a => a.Patient == patient && a.AppointmentStatus == status);
         }
+        public DateTime? GetLastAppointmentDateForPacient(Patient patient)
+        {
+            Appointment a = context.Appointments.ToList().Where(a => a.Patient == patient).OrderByDescending(a => a.CompletionDate).FirstOrDefault(); // todo completion date or other date here?
+            if (a != null)
+                return a.CompletionDate;
+            return null;
+        }
 
         public void InsertAppointment(Appointment appointment)
         {
@@ -105,6 +112,5 @@ namespace ClinicManagementSystem.Services.impl
             Dispose(true);
             GC.SuppressFinalize(this);
         }
-
     }
 }
