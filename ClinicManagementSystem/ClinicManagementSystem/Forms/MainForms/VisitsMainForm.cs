@@ -103,7 +103,7 @@ namespace ClinicManagementSystem.Forms.MainForms
 
         private void SearchPatientButton_Click(object sender, EventArgs e)
         {
-
+            
         }
 
         private void FillVisitTextFields(object sender, ListElementClickedArgs args)
@@ -163,6 +163,7 @@ namespace ClinicManagementSystem.Forms.MainForms
                 appointments = _service.GetAppointments();
                 DisplayAppointments(appointments);
             }
+            _visitsListForm.ResetIndex();
         }
 
         private void VisitStatusComboBox_SelectedIndexChanged(object sender, EventArgs e)
