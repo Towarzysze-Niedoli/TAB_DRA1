@@ -44,5 +44,10 @@ namespace ClinicManagementSystem.Forms.SideForms
         {
             _orderLabListForm.SetDisabled();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            _orderLabListForm.ResetIndex();
+        }
     }
 }

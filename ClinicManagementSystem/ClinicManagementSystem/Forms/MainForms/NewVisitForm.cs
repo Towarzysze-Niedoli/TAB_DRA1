@@ -100,7 +100,7 @@ namespace ClinicManagementSystem.Forms.MainForms
         }
 
         private void SearchPatientButton_Click(object sender, EventArgs e)
-        {
+        {         
             string[] name = SearchPatientTextBox.Text.Split(' ');
             if(name.Length == 2)
             {
@@ -185,7 +185,8 @@ namespace ClinicManagementSystem.Forms.MainForms
             {
                 doctors = _doctorService.GetDoctorBySpecialization(specIndex);
                 DisplayDoctors(doctors);
-            }   
+            }
+            _doctorsList.ResetIndex();
         }
 
         private void ClearData()
