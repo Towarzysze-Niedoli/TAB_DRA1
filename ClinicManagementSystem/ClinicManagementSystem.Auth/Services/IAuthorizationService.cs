@@ -7,6 +7,8 @@ namespace ClinicManagementSystem.Auth.Services
 {
     public interface IAuthorizationService
     {
+        T? GetCurrentlyLoggedPerson<T>() where T : PersonWithAccount;
+
         /// <summary>
         /// Checks if user is a person of given class.
         /// </summary>

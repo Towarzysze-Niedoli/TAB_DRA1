@@ -22,6 +22,11 @@ namespace ClinicManagementSystem.Auth.Services
             dbContext = systemContext;
         }
 
+        public T? GetCurrentlyLoggedPerson<T>() where T : PersonWithAccount
+        {
+            return currentlyLoggedPerson as T;
+        }
+
         public T? IsType<T>(ApplicationUser user, Func<PersonWithAccount, bool>? personPredicate = null) where T : PersonWithAccount
         {
             if (personPredicate == null)
