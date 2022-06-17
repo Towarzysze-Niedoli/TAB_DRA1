@@ -13,6 +13,7 @@ using Microsoft.Extensions.DependencyInjection;
 using ClinicManagementSystem.Entities.Models;
 using ClinicManagementSystem.Entities.Enums;
 using System.Data.Entity.Validation;
+using ClinicManagementSystem.Auth.Services;
 
 namespace ClinicManagementSystem.Forms.MainForms
 {
@@ -23,6 +24,7 @@ namespace ClinicManagementSystem.Forms.MainForms
         private IPatientService _patientService;
         private IDoctorService _doctorService;
         private IAppointmentService _appointmentService;
+        private IAuthorizationService _authorizationService;
         private List<(Specialization, string)> _specialization;
         IEnumerable<Doctor> doctors;
         private Doctor _chosenDoctor;
@@ -36,6 +38,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             _patientService = serviceProvider.GetService<IPatientService>();
             _appointmentService = serviceProvider.GetService<IAppointmentService>();
             _doctorService = serviceProvider.GetService<IDoctorService>();
+            _authorizationService = serviceProvider.GetService<IAuthorizationService>();
             doctors = _doctorService.GetDoctors();
             DisplayDoctors(doctors);
         }
@@ -123,7 +126,8 @@ namespace ClinicManagementSystem.Forms.MainForms
                 {
                     Doctor = _chosenDoctor,
                     Patient = _chosenPatient,
-                    RegistrationDate = DateTime.Now
+                    RegistrationDate = DateTime.Now,
+                    Receptionist = _authorizationService.GetCurrentlyLoggedPerson<Receptionist>()
                 };
                 try
                 {
