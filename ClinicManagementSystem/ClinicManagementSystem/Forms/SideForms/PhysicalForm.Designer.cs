@@ -32,9 +32,9 @@ namespace ClinicManagementSystem.Forms.SideForms
             this.TemperatureTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.PreasureTextBox = new System.Windows.Forms.TextBox();
+            this.PressureTextBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.SugerLevelTextBox = new System.Windows.Forms.TextBox();
+            this.SugarLevelTextBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // TemperatureTextBox
@@ -45,7 +45,6 @@ namespace ClinicManagementSystem.Forms.SideForms
             this.TemperatureTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(62)))), ((int)(((byte)(138)))));
             this.TemperatureTextBox.Location = new System.Drawing.Point(116, 133);
             this.TemperatureTextBox.Name = "TemperatureTextBox";
-            this.TemperatureTextBox.ReadOnly = true;
             this.TemperatureTextBox.Size = new System.Drawing.Size(301, 27);
             this.TemperatureTextBox.TabIndex = 6;
             // 
@@ -55,9 +54,9 @@ namespace ClinicManagementSystem.Forms.SideForms
             this.label1.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label1.Location = new System.Drawing.Point(116, 112);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(141, 18);
+            this.label1.Size = new System.Drawing.Size(150, 18);
             this.label1.TabIndex = 7;
-            this.label1.Text = "Temperature [C]";
+            this.label1.Text = "Temperature [°C]";
             // 
             // label2
             // 
@@ -65,21 +64,20 @@ namespace ClinicManagementSystem.Forms.SideForms
             this.label2.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label2.Location = new System.Drawing.Point(116, 235);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(193, 18);
+            this.label2.Size = new System.Drawing.Size(202, 18);
             this.label2.TabIndex = 9;
-            this.label2.Text = "Blood Presure [mmHg]";
+            this.label2.Text = "Blood Pressure [mmHg]";
             // 
-            // PreasureTextBox
+            // PressureTextBox
             // 
-            this.PreasureTextBox.BackColor = System.Drawing.SystemColors.Window;
-            this.PreasureTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.PreasureTextBox.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.PreasureTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(62)))), ((int)(((byte)(138)))));
-            this.PreasureTextBox.Location = new System.Drawing.Point(116, 256);
-            this.PreasureTextBox.Name = "PreasureTextBox";
-            this.PreasureTextBox.ReadOnly = true;
-            this.PreasureTextBox.Size = new System.Drawing.Size(301, 27);
-            this.PreasureTextBox.TabIndex = 8;
+            this.PressureTextBox.BackColor = System.Drawing.SystemColors.Window;
+            this.PressureTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.PressureTextBox.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.PressureTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(62)))), ((int)(((byte)(138)))));
+            this.PressureTextBox.Location = new System.Drawing.Point(116, 256);
+            this.PressureTextBox.Name = "PressureTextBox";
+            this.PressureTextBox.Size = new System.Drawing.Size(301, 27);
+            this.PressureTextBox.TabIndex = 8;
             // 
             // label3
             // 
@@ -89,19 +87,18 @@ namespace ClinicManagementSystem.Forms.SideForms
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(226, 18);
             this.label3.TabIndex = 11;
-            this.label3.Text = "Blood Suger Level [mg/dL]";
+            this.label3.Text = "Blood Sugar Level [mg/dL]";
             // 
-            // SugerLevelTextBox
+            // SugarLevelTextBox
             // 
-            this.SugerLevelTextBox.BackColor = System.Drawing.SystemColors.Window;
-            this.SugerLevelTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.SugerLevelTextBox.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.SugerLevelTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(62)))), ((int)(((byte)(138)))));
-            this.SugerLevelTextBox.Location = new System.Drawing.Point(116, 383);
-            this.SugerLevelTextBox.Name = "SugerLevelTextBox";
-            this.SugerLevelTextBox.ReadOnly = true;
-            this.SugerLevelTextBox.Size = new System.Drawing.Size(301, 27);
-            this.SugerLevelTextBox.TabIndex = 10;
+            this.SugarLevelTextBox.BackColor = System.Drawing.SystemColors.Window;
+            this.SugarLevelTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.SugarLevelTextBox.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.SugarLevelTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(62)))), ((int)(((byte)(138)))));
+            this.SugarLevelTextBox.Location = new System.Drawing.Point(116, 383);
+            this.SugarLevelTextBox.Name = "SugarLevelTextBox";
+            this.SugarLevelTextBox.Size = new System.Drawing.Size(301, 27);
+            this.SugarLevelTextBox.TabIndex = 10;
             // 
             // PhysicalForm
             // 
@@ -109,9 +106,9 @@ namespace ClinicManagementSystem.Forms.SideForms
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(119)))), ((int)(((byte)(182)))));
             this.ClientSize = new System.Drawing.Size(560, 551);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.SugerLevelTextBox);
+            this.Controls.Add(this.SugarLevelTextBox);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.PreasureTextBox);
+            this.Controls.Add(this.PressureTextBox);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.TemperatureTextBox);
             this.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -129,8 +126,8 @@ namespace ClinicManagementSystem.Forms.SideForms
         private System.Windows.Forms.TextBox TemperatureTextBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox PreasureTextBox;
+        private System.Windows.Forms.TextBox PressureTextBox;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox SugerLevelTextBox;
+        private System.Windows.Forms.TextBox SugarLevelTextBox;
     }
 }

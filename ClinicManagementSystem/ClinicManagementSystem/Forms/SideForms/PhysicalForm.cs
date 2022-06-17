@@ -10,6 +10,10 @@ namespace ClinicManagementSystem.Forms.SideForms
 {
     public partial class PhysicalForm : Form
     {
+        public string BloodPressureText { get => PressureTextBox.Text; }
+        public string SugarLevelText { get => SugarLevelTextBox.Text; }
+        public string TemperatureText { get => TemperatureTextBox.Text; }
+
         public PhysicalForm()
         {
             InitializeComponent();
@@ -25,8 +29,8 @@ namespace ClinicManagementSystem.Forms.SideForms
 
         public void SetDisabled()
         {
-            this.PreasureTextBox.Enabled = false;
-            this.SugerLevelTextBox.Enabled = false;
+            this.PressureTextBox.Enabled = false;
+            this.SugarLevelTextBox.Enabled = false;
             this.TemperatureTextBox.Enabled = false;
         }
     }

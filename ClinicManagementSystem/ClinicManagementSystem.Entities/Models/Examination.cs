@@ -15,6 +15,7 @@ namespace ClinicManagementSystem.Entities.Models
         [Required(ErrorMessage = "Examination type is required")]
         public ExaminationType ExamType { get; set; }
 
-        public string ExaminationName;
+        [Required(ErrorMessage = "Examination name is required")]
+        public string ExaminationName { get; set; }
     }
 }

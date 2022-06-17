@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,10 +7,11 @@ using System.Text;
 using System.Windows.Forms;
 using ClinicManagementSystem.Forms.SideForms;
 using ClinicManagementSystem.Forms.EventArguments;
-using static ClinicManagementSystem.Forms.MainForms.VisitsMainForm;
 using ClinicManagementSystem.Entities.Models;
 using ClinicManagementSystem.Services;
 using Microsoft.Extensions.DependencyInjection;
+using ClinicManagementSystem.Forms.CustomElements;
+using System.Linq;
 
 namespace ClinicManagementSystem.Forms.MainForms
 {
@@ -22,44 +23,50 @@ namespace ClinicManagementSystem.Forms.MainForms
         private PerformVisitFormMode _mode;
         private IPatientService _patientService;
         private IAppointmentService _appointmentService;
-        private DoctorListForm _previusVisitsListForm;
+        private DoctorListForm _previousVisitsListForm;
         private PersonInfoForm _patientInfoForm;
         private PerformVisitSideFormsSet _currentVisitSet;
-        private PerformVisitSideFormsSet _previusVisitSet;
+        private PerformVisitSideFormsSet _previousVisitSet;
 
         private bool _patientInfoShown = false;
-        public Appointment Appointment { get; set; }
+        private Appointment _appointment { get; set; }
 
         public PerformVisitForm(IServiceProvider provider)
         {
-            InitializeComponent();
-
-            _previusVisitsListForm = new DoctorListForm();
-            _previusVisitsListForm.ElementClicked += FillSelectedVisitInformation;
             _patientService = provider.GetService<IPatientService>();
             _appointmentService = provider.GetService<IAppointmentService>();
+
+            InitializeComponent();
+
             _patientInfoForm = new PersonInfoForm();
-            Appointment = _appointmentService.CurrentAppointment;
-            if(Appointment != null  && Appointment.Patient != null)
+            _appointment = _appointmentService.CurrentAppointment;
+            if(_appointment != null  && _appointment.Patient != null)
             {
-                if(Appointment.Patient.Address != null)
-                {
-                    
-                    _patientInfoForm.InitializeValues(Appointment.Patient.FirstName, Appointment.Patient.LastName, Appointment.Patient.PersonalIdentityNumber, Appointment.Patient.PhoneNumber, Appointment.Patient.Address.City, Appointment.Patient.Address.ZipCode, Appointment.Patient.Address.Street, Appointment.Patient.Address.HomeNumber, Appointment.Patient.Email, _appointmentService.GetLastAppointmentDateForPacient(Appointment.Patient));
-
-                }
-                else
-                {
-                    _patientInfoForm.InitializeValues(Appointment.Patient.FirstName, Appointment.Patient.LastName, Appointment.Patient.PersonalIdentityNumber, Appointment.Patient.PhoneNumber, "", "", "", "", Appointment.Patient.Email, _appointmentService.GetLastAppointmentDateForPacient(Appointment.Patient));
-
-                }
+                _patientInfoForm.InitializeValues(_appointment.Patient, _appointmentService.GetLastAppointmentDateForPatient(_appointment.Patient));
             }
+
+            IEnumerable<Appointment> appointments = _appointmentService.GetAppointmentsForPatient(_appointment.Patient);
+            int length = appointments.Count();
+            IList<DoctorListElement> listElements = new List<DoctorListElement>(length);
+            int index = 0;
+            foreach (Appointment appointment in appointments)
+            {
+                listElements.Add(new DoctorListElement(
+                    index++,
+                    appointment.Doctor.FirstName + " " + appointment.Doctor.LastName,
+                    appointment.Doctor.Specialization.ToString(),
+                    appointment.RegistrationDate.ToString()
+                ));
+            }
+
+            _previousVisitsListForm = new DoctorListForm();
+            _previousVisitsListForm.ElementClicked += FillSelectedVisitInformation;
 
             _currentVisitSet = new PerformVisitSideFormsSet(new VisitTextsForm(), new PhysicalForm(), new OrderLabForm());
             SubscribeToCurrentVisitForms();
 
-            _previusVisitSet = new PerformVisitSideFormsSet(new VisitTextsForm(), new PhysicalForm(), new OrderLabForm());
-            _previusVisitSet.SetDisabled();
+            _previousVisitSet = new PerformVisitSideFormsSet(new VisitTextsForm(), new PhysicalForm(), new OrderLabForm());
+            _previousVisitSet.SetDisabled();
 
             _mode = PerformVisitFormMode.Interview;
             LoadLeftSideForm();
@@ -118,7 +125,61 @@ namespace ClinicManagementSystem.Forms.MainForms
 
         private void ConcludeButton_Click(object sender, EventArgs e)
         {
+            _appointment.CompletionDate = DateTime.Now;
+            _appointment.AppointmentStatus = Entities.Enums.AppointmentStatus.Accepted;
+            _appointment.Description = _currentVisitSet.VisitTextsForm.InterviewText;
+            _appointment.Diagnosis = _currentVisitSet.VisitTextsForm.DiagnosisText;
 
+            // lab exams:
+            IList<OrderLabListElement> labListElements = _currentVisitSet.OrderLabForm.GetSelectedLabListElements();
+            List<LaboratoryExam> laboratoryExams = labListElements.Select(e => new LaboratoryExam()
+            {
+                Appointment = _appointment,
+                ReferralDate = DateTime.Now,
+                Examination = new Examination() // TODO brac z elementu (OrderLabListElement)
+                {
+                    Code = "Z" + (new Random()).Next(10, 50).ToString() + "." + (new Random()).Next(0, 9).ToString(),
+                    ExamType = Entities.Enums.ExaminationType.Laboratory,
+                    ExaminationName = "Todo :c"
+                }
+            }).ToList();
+            /* PR: nie wiem, czy:
+             * 1. EF tworzy pusta liste czy nie,
+             * 2. czy jest opcja, ze na tej liscie juz cos jest (nie powinno teoretycznie),
+             * ale robie w ten sposob zeby sie nigdy nie wywrocilo ani zeby nie odlaczylo / usunelo jakis danych
+             */
+            if (_appointment.LaboratoryExams == null)
+                _appointment.LaboratoryExams = laboratoryExams;
+            else
+                _appointment.LaboratoryExams.AddRange(laboratoryExams);
+
+            // physical exams:
+            IDictionary<Examination, string> physicalExamsTexts = new Dictionary<Examination, string>()
+            {
+                { new Examination() { Code = "Z26.3", ExamType = Entities.Enums.ExaminationType.Physical, ExaminationName = "temperaturka" }, _currentVisitSet.PhysicalForm.TemperatureText },
+                { new Examination() { Code = "Z26.4", ExamType = Entities.Enums.ExaminationType.Physical, ExaminationName = "ciśnienie" }, _currentVisitSet.PhysicalForm.BloodPressureText },
+                { new Examination() { Code = "Z26.5", ExamType = Entities.Enums.ExaminationType.Physical, ExaminationName = "cukier" }, _currentVisitSet.PhysicalForm.SugarLevelText }
+            };
+            List<PhysicalExam> physicalExams = new List<PhysicalExam>(physicalExamsTexts.Count);
+            foreach (KeyValuePair<Examination, string> kvp in physicalExamsTexts)
+            {
+                if (!string.IsNullOrWhiteSpace(kvp.Value))
+                    physicalExams.Add(new PhysicalExam()
+                    {
+                        Appointment = _appointment,
+                        Examination = kvp.Key,
+                        Result = kvp.Value.Trim()
+                    });
+            }
+
+            // PR: jak wyzej
+            if (_appointment.PhysicalExams == null)
+                _appointment.PhysicalExams = physicalExams;
+            else
+                _appointment.PhysicalExams.AddRange(physicalExams);
+
+            // save:
+            _appointmentService.UpdateAppointment(_appointment);
         }
 
         private void PreviousVisitsButton_Click(object sender, EventArgs e)
@@ -147,8 +208,8 @@ namespace ClinicManagementSystem.Forms.MainForms
             }
             else
             {
-                this.VisitPartPanel.Controls.Add(_previusVisitSet.VisitTextsForm);
-                _previusVisitSet.VisitTextsForm.Show();
+                this.VisitPartPanel.Controls.Add(_previousVisitSet.VisitTextsForm);
+                _previousVisitSet.VisitTextsForm.Show();
             }
         }
 
@@ -161,8 +222,8 @@ namespace ClinicManagementSystem.Forms.MainForms
             }
             else
             {
-                this.VisitPartPanel.Controls.Remove(_previusVisitSet.VisitTextsForm);
-                _previusVisitSet.VisitTextsForm.Hide();
+                this.VisitPartPanel.Controls.Remove(_previousVisitSet.VisitTextsForm);
+                _previousVisitSet.VisitTextsForm.Hide();
             }
         }
 
@@ -175,8 +236,8 @@ namespace ClinicManagementSystem.Forms.MainForms
             }
             else
             {
-                this.VisitPartPanel.Controls.Add(_previusVisitSet.OrderLabForm);
-                _previusVisitSet.OrderLabForm.Show();
+                this.VisitPartPanel.Controls.Add(_previousVisitSet.OrderLabForm);
+                _previousVisitSet.OrderLabForm.Show();
             }
         }
 
@@ -189,8 +250,8 @@ namespace ClinicManagementSystem.Forms.MainForms
             }
             else
             {
-                this.VisitPartPanel.Controls.Remove(_previusVisitSet.OrderLabForm);
-                _previusVisitSet.OrderLabForm.Hide();
+                this.VisitPartPanel.Controls.Remove(_previousVisitSet.OrderLabForm);
+                _previousVisitSet.OrderLabForm.Hide();
             }
         }
 
@@ -203,8 +264,8 @@ namespace ClinicManagementSystem.Forms.MainForms
             }
             else
             {
-                this.VisitPartPanel.Controls.Add(_previusVisitSet.PhysicalForm);
-                _previusVisitSet.PhysicalForm.Show();
+                this.VisitPartPanel.Controls.Add(_previousVisitSet.PhysicalForm);
+                _previousVisitSet.PhysicalForm.Show();
             }
         }
 
@@ -217,8 +278,8 @@ namespace ClinicManagementSystem.Forms.MainForms
             }
             else
             {
-                this.VisitPartPanel.Controls.Remove(_previusVisitSet.PhysicalForm);
-                _previusVisitSet.PhysicalForm.Hide();
+                this.VisitPartPanel.Controls.Remove(_previousVisitSet.PhysicalForm);
+                _previousVisitSet.PhysicalForm.Hide();
             }
         }
 
@@ -239,10 +300,10 @@ namespace ClinicManagementSystem.Forms.MainForms
 
         private void UnloadPreviousVisitsForm()
         {
-            if (_previusVisitsListForm != null)
+            if (_previousVisitsListForm != null)
             {
-                PatientPanel.Controls.Remove(_previusVisitsListForm);
-                _previusVisitsListForm.Hide();
+                PatientPanel.Controls.Remove(_previousVisitsListForm);
+                _previousVisitsListForm.Hide();
             }
         }
 
@@ -258,18 +319,18 @@ namespace ClinicManagementSystem.Forms.MainForms
 
         private void SubscribeToPreviousVisitForms()
         {
-            ControlButtonClicked += _previusVisitSet.VisitTextsForm.OnControlButtonClicked;
+            ControlButtonClicked += _previousVisitSet.VisitTextsForm.OnControlButtonClicked;
         }
 
         private void UnsubscribeToPreviousVisitForms()
         {
-            ControlButtonClicked -= _previusVisitSet.VisitTextsForm.OnControlButtonClicked;
+            ControlButtonClicked -= _previousVisitSet.VisitTextsForm.OnControlButtonClicked;
         }
 
         private void LoadVisitsListForm()
         {
-            PatientPanel.Controls.Add(_previusVisitsListForm);
-            _previusVisitsListForm.Show();
+            PatientPanel.Controls.Add(_previousVisitsListForm);
+            _previousVisitsListForm.Show();
         }
 
         private void LoadLeftSideForm()

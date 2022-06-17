@@ -45,7 +45,12 @@ namespace ClinicManagementSystem.Forms.SideForms
             _orderLabListForm.SetDisabled();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        public IList<OrderLabListElement> GetSelectedLabListElements()
+        {
+            return _orderLabListForm.GetSelectedLabListElements();
+        }
+
+        private void LabSearchButton_Click(object sender, EventArgs e)
         {
             _orderLabListForm.ResetIndex();
         }

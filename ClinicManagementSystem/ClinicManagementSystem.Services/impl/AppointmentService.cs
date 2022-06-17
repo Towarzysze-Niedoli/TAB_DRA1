@@ -36,7 +36,7 @@ namespace ClinicManagementSystem.Services.impl
 
         public IEnumerable<Appointment> GetAppointmentsForPatient(Patient patient)
         {
-            return context.Appointments.ToList().Where(a => a.Patient == patient).ToList();
+            return context.Appointments.ToList().Where(a => a.Patient == patient);
         }
 
         public IEnumerable<Appointment> GetAppointmentsByCompletionDate(DateTime completionDate)
@@ -68,7 +68,7 @@ namespace ClinicManagementSystem.Services.impl
         {
             return context.Appointments.ToList().Where(a => a.Patient == patient && a.AppointmentStatus == status);
         }
-        public DateTime? GetLastAppointmentDateForPacient(Patient patient)
+        public DateTime? GetLastAppointmentDateForPatient(Patient patient)
         {
             Appointment a = context.Appointments.ToList().Where(a => a.Patient == patient).OrderByDescending(a => a.CompletionDate).FirstOrDefault(); // todo completion date or other date here?
             if (a != null)
@@ -85,6 +85,7 @@ namespace ClinicManagementSystem.Services.impl
         public void UpdateAppointment(Appointment appointment)
         {
             context.Entry(appointment).State = EntityState.Modified;
+            Save();
         }
     }
 }

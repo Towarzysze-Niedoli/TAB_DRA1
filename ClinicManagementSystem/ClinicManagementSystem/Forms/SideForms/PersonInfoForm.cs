@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using System.Globalization;
+using ClinicManagementSystem.Entities.Models;
 
 namespace ClinicManagementSystem.Forms.SideForms
 {
@@ -19,17 +20,33 @@ namespace ClinicManagementSystem.Forms.SideForms
             this.TopLevel = false;
         }
 
-        public void InitializeValues(string name, string surname, string pesel, string phoneNumber, string city, string zipCode,
-            string streetName, string houseNumber, string mail, DateTime? lastVisit)
+        public void InitializeValues(Patient patient, DateTime? lastVisit)
         {
-            this.NameSurnameLabel.Text = name + " " + surname;
-            this.peselLabel.Text = pesel;
-            this.PhoneLabel.Text = phoneNumber;
-            this.CityLabel.Text = city;
-            this.ZIPCodeLabel.Text = zipCode;
-            this.StreetLabel.Text = streetName;
-            this.NumberLabel.Text = houseNumber;
-            this.MailLabel.Text = mail;
+            if (patient == null)
+                throw new ArgumentNullException(nameof(patient));
+
+            this.NameSurnameLabel.Text = patient.FirstName + " " + patient.LastName;
+            this.peselLabel.Text = patient.PersonalIdentityNumber;
+            this.PhoneLabel.Text = patient.PhoneNumber;
+            this.MailLabel.Text = patient.Email;
+
+            Address address = patient.Address;
+            if (address == null)
+            {
+                this.CityLabel.Text = "";
+                this.ZIPCodeLabel.Text = "";
+                this.StreetLabel.Text = "";
+                this.NumberLabel.Text = "";
+            }
+            else
+            {
+                this.CityLabel.Text = address.City;
+                this.ZIPCodeLabel.Text = address.ZipCode;
+                this.StreetLabel.Text = address.Street;
+                this.NumberLabel.Text = address.HomeNumber;
+            }
+            
+            
             if(lastVisit != null)
                 this.LastVisitLabel.Text = ((DateTime)lastVisit).ToString("d", CultureInfo.GetCultureInfo("de-DE"));
             else

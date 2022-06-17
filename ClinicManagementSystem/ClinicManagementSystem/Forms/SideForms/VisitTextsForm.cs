@@ -15,7 +15,22 @@ namespace ClinicManagementSystem.Forms.SideForms
 
         private string _interviewText;
         private string _diagnosisText;
-        
+
+        public string InterviewText {
+            get {
+                SaveCurrentTextField();
+                return _interviewText;
+            }
+        }
+        public string DiagnosisText
+        {
+            get
+            {
+                SaveCurrentTextField();
+                return _diagnosisText;
+            }
+        }
+
         public VisitTextsForm()
         {
             InitializeComponent();

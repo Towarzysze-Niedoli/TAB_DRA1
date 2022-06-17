@@ -30,6 +30,7 @@ namespace ClinicManagementSystem.Entities.Models
         [Required(ErrorMessage = "Patient is required for an appointment")]
         public Patient Patient { get; set; }
 
+        // PR: IList tutaj i nizej? moze sie okazac ze tak lepiej i latwiej bedzie
         [InverseProperty("Appointment")] // explicit bidirectional mapping, default lazy loading
         public List<LaboratoryExam> LaboratoryExams { get; set; }
 

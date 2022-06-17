@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using ClinicManagementSystem.Forms.CustomElements;
@@ -35,6 +36,11 @@ namespace ClinicManagementSystem.Forms.SideForms
             {
                 element.SetDisabled();
             }
+        }
+
+        public IList<OrderLabListElement> GetSelectedLabListElements()
+        {
+            return _elements.Select(e => e as OrderLabListElement).Where(e => e.IsEnabled).ToList();
         }
     }
 }

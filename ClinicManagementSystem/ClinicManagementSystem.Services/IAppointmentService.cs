@@ -21,6 +21,6 @@ namespace ClinicManagementSystem.Services
         IEnumerable<Appointment> GetAppointmentsByStatus(AppointmentStatus status);
         IEnumerable<Appointment> GetAppointmentsByPatientAndStatus(Patient patient, AppointmentStatus status);
         IEnumerable<Appointment> GetAppointmentsForPatient(Patient patient);
-        DateTime? GetLastAppointmentDateForPacient(Patient patient);
+        DateTime? GetLastAppointmentDateForPatient(Patient patient);
     }
 }

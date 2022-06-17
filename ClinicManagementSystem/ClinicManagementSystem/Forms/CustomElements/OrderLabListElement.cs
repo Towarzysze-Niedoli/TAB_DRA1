@@ -10,17 +10,17 @@ namespace ClinicManagementSystem.Forms.CustomElements
 {
     public partial class OrderLabListElement : ListElement
     {
-        private bool _isEnabled;
+        public bool IsEnabled { get; private set; }
         public OrderLabListElement(int index, string name) : base(index)
         {
             InitializeComponent();
             this.UpperMainLabel.Text = name;
-            _isEnabled = true;
+            IsEnabled = true;
         }
 
         protected override void ListElement_MouseDown(object sender, MouseEventArgs e)
         {
-            if (_isEnabled)
+            if (IsEnabled)
             {
                 SetNoHoverColor();
                 if (Checkbox.Checked)
@@ -37,7 +37,7 @@ namespace ClinicManagementSystem.Forms.CustomElements
 
         public void SetDisabled()
         {
-            _isEnabled = false;
+            IsEnabled = false;
         }
     }
 }
