@@ -171,7 +171,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.NewVisitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.NewVisitButton.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.NewVisitButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(247)))), ((int)(((byte)(255)))));
-            this.NewVisitButton.Location = new System.Drawing.Point(937, 2);
+            this.NewVisitButton.Location = new System.Drawing.Point(928, 12);
             this.NewVisitButton.Name = "NewVisitButton";
             this.NewVisitButton.Size = new System.Drawing.Size(301, 60);
             this.NewVisitButton.TabIndex = 22;
