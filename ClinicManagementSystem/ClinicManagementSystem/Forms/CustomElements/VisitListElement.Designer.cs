@@ -36,16 +36,6 @@ namespace ClinicManagementSystem.Forms.CustomElements
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // PatientNameLabel
-            // 
-            this.PatientNameLabel.AutoSize = true;
-            this.PatientNameLabel.Font = new System.Drawing.Font("Verdana", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.PatientNameLabel.Location = new System.Drawing.Point(142, 4);
-            this.PatientNameLabel.Name = "PatientNameLabel";
-            this.PatientNameLabel.Size = new System.Drawing.Size(449, 46);
-            this.PatientNameLabel.TabIndex = 0;
-            this.PatientNameLabel.Text = "PatientNameAndSurname";
-            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::ClinicManagementSystem.Properties.Resources.calendar_white;
@@ -58,35 +48,37 @@ namespace ClinicManagementSystem.Forms.CustomElements
             // 
             // PatientNameLabel
             // 
-            this.DoctorNameLabel.AutoSize = true;
-            this.DoctorNameLabel.Font = new System.Drawing.Font("Verdana", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.DoctorNameLabel.Location = new System.Drawing.Point(141, 63);
-            this.DoctorNameLabel.Name = "DoctorNameLabel";
-            this.DoctorNameLabel.Size = new System.Drawing.Size(443, 46);
-            this.DoctorNameLabel.TabIndex = 2;
-            this.DoctorNameLabel.Text = "DoctorNameAndSurname";
+            this.PatientNameLabel.AutoSize = true;
+            this.PatientNameLabel.Enabled = false;
+            this.PatientNameLabel.Font = new System.Drawing.Font("Verdana", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.PatientNameLabel.Location = new System.Drawing.Point(125, 4);
+            this.PatientNameLabel.Name = "PatientNameLabel";
+            this.PatientNameLabel.Size = new System.Drawing.Size(464, 29);
+            this.PatientNameLabel.TabIndex = 0;
+            this.PatientNameLabel.Text = "PatientNameAndSurname             ";
             // 
             // DateLabel
             // 
             this.DateLabel.AutoEllipsis = true;
             this.DateLabel.AutoSize = true;
+            this.DateLabel.Enabled = false;
             this.DateLabel.Font = new System.Drawing.Font("Verdana", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.DateLabel.Location = new System.Drawing.Point(500, 60);
+            this.DateLabel.Location = new System.Drawing.Point(125, 77);
             this.DateLabel.Name = "DateLabel";
-            this.DateLabel.Size = new System.Drawing.Size(356, 45);
+            this.DateLabel.Size = new System.Drawing.Size(387, 28);
             this.DateLabel.TabIndex = 3;
-            this.DateLabel.Text = "Thu - 15.03.2022 - 8:00      ";
+            this.DateLabel.Text = "Thu - 15.03.2022 - 8:00           \r\n";
             // 
             // DoctorNameLabel
             // 
             this.DoctorNameLabel.AutoSize = true;
             this.DoctorNameLabel.Enabled = false;
             this.DoctorNameLabel.Font = new System.Drawing.Font("Corbel", 17F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.DoctorNameLabel.Location = new System.Drawing.Point(93, 48);
+            this.DoctorNameLabel.Location = new System.Drawing.Point(125, 41);
             this.DoctorNameLabel.Name = "DoctorNameLabel";
-            this.DoctorNameLabel.Size = new System.Drawing.Size(274, 28);
+            this.DoctorNameLabel.Size = new System.Drawing.Size(339, 28);
             this.DoctorNameLabel.TabIndex = 2;
-            this.DoctorNameLabel.Text = "DoctorNameAndSurname";
+            this.DoctorNameLabel.Text = "DoctorNameAndSurname             ";
             // 
             // VisitListElement
             // 
@@ -99,7 +91,7 @@ namespace ClinicManagementSystem.Forms.CustomElements
             this.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(247)))), ((int)(((byte)(255)))));
             this.Name = "VisitListElement";
-            this.Size = new System.Drawing.Size(900, 113);
+            this.Size = new System.Drawing.Size(630, 113);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
