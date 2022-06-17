@@ -8,11 +8,9 @@ using System.Text;
 
 namespace ClinicManagementSystem.Services.impl
 {
-    public class PatientService : IPatientService, IDisposable
+    public class PatientService : BaseService, IPatientService
     {
-        private ISystemContext context;
-
-        public PatientService(ISystemContext context)
+        public PatientService(ISystemContext context) : base(context)
         {
             this.context = context;
         }
@@ -39,11 +37,6 @@ namespace ClinicManagementSystem.Services.impl
             Save();
         }
 
-        public void Save()
-        {
-            context.SaveChanges();
-        }
-
         public void UpdatePatient(Patient patient)
         {
             context.Patients.Attach(patient);
@@ -60,27 +53,6 @@ namespace ClinicManagementSystem.Services.impl
         {
             return context.Patients.Include(p => p.Address).Where(p => p.FirstName.ToLower().Equals(firstName.ToLower()) && p.LastName.ToLower().Equals(lastName.ToLower())).FirstOrDefault();
         }
-
-        private bool disposed = false;
-
-        protected virtual void Dispose(bool disposing)
-        {
-            if (!this.disposed)
-            {
-                if (disposing)
-                {
-                    context.Dispose();
-                }
-            }
-            this.disposed = true;
-        }
-
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
-
         
     }
 }

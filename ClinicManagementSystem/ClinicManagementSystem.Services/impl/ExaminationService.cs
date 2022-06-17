@@ -6,13 +6,11 @@ using System.Text;
 
 namespace ClinicManagementSystem.Services.impl
 {
-    public class ExaminationService: IExaminationService, IDisposable
+    public class ExaminationService: BaseService, IExaminationService
     {
-        private ISystemContext context;
-
-        public ExaminationService(ISystemContext context)
+        public ExaminationService(ISystemContext context) : base(context)
         {
-            this.context = context;
+            
         }
 
         public void DeleteExamination(int examinationId)
@@ -36,34 +34,10 @@ namespace ClinicManagementSystem.Services.impl
             context.Examinations.Add(examination);
         }
 
-        public void Save()
-        {
-            context.SaveChanges();
-        }
-
         public void UpdateExamination(Examination examination)
         {
             context.Entry(examination).State = System.Data.Entity.EntityState.Modified;
         }
 
-        private bool disposed = false;
-
-        protected virtual void Dispose(bool disposing)
-        {
-            if (!this.disposed)
-            {
-                if (disposing)
-                {
-                    context.Dispose();
-                }
-            }
-            this.disposed = true;
-        }
-
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
-}
+    }
 }

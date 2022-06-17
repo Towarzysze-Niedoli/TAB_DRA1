@@ -5,14 +5,13 @@ using System.Text;
 
 namespace ClinicManagementSystem.Services
 {
-    internal interface ILaboratoryExamService: IDisposable
+    internal interface ILaboratoryExamService: IBaseService
     {
         IEnumerable<LaboratoryExam> GetLaboratoryExams();
         LaboratoryExam GetLaboratoryExamByID(int laboratoryExamId);
         void InsertLaboratoryExam(LaboratoryExam laboratoryExam);
         void DeleteLaboratoryExam(int laboratoryExamId);
         void UpdateLaboratoryExam(LaboratoryExam laboratoryExam);
-        void Save();
     }
 }
 

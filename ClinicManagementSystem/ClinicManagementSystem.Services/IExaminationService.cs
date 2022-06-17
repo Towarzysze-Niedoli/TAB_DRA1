@@ -5,13 +5,12 @@ using System.Text;
 
 namespace ClinicManagementSystem.Services
 {
-    internal interface IExaminationService: IDisposable
+    internal interface IExaminationService: IBaseService
     {
         IEnumerable<Examination> GetExaminations();
         Examination GetExaminationByID(int examinationId);
         void InsertExamination(Examination examination);
         void DeleteExamination(int examinationId);
         void UpdateExamination(Examination examination);
-        void Save();
     }
 }

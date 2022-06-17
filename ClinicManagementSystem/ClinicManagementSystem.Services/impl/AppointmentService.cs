@@ -9,13 +9,11 @@ using System.Text;
 
 namespace ClinicManagementSystem.Services.impl
 {
-    public class AppointmentService : IAppointmentService, IDisposable
+    public class AppointmentService : BaseService, IAppointmentService
     {
-        private ISystemContext context;
-
-        public AppointmentService(ISystemContext context)
+        public AppointmentService(ISystemContext context) : base(context)
         {
-            this.context = context;
+            
         }
 
         public void DeleteAppointment(int appointmentId)
@@ -75,34 +73,9 @@ namespace ClinicManagementSystem.Services.impl
             Save();
         }
 
-        public void Save()
-        {
-            context.SaveChanges();
-        }
-
         public void UpdateAppointment(Appointment appointment)
         {
-            context.Entry(appointment).State = System.Data.Entity.EntityState.Modified;
-        }
-
-        private bool disposed = false;
-
-        protected virtual void Dispose(bool disposing)
-        {
-            if (!this.disposed)
-            {
-                if (disposing)
-                {
-                    context.Dispose();
-                }
-            }
-            this.disposed = true;
-        }
-
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
+            context.Entry(appointment).State = EntityState.Modified;
         }
 
     }

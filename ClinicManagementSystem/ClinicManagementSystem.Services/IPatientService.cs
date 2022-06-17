@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ClinicManagementSystem.Services
 {
-    public interface IPatientService
+    public interface IPatientService: IBaseService
     {
         IEnumerable<Patient> GetPatients();
         Patient GetPatientByID(int patientId);
@@ -14,6 +14,5 @@ namespace ClinicManagementSystem.Services
         void InsertPatient(Patient patient);
         void DeletePatient(int patientId);
         void UpdatePatient(Patient patient);
-        void Save();
     }
 }

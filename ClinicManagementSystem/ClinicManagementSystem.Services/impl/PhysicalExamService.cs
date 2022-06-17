@@ -6,14 +6,12 @@ using System.Text;
 
 namespace ClinicManagementSystem.Services.impl
 {
-    public class PhysicalExamService: IPhysicalExamService, IDisposable
+    public class PhysicalExamService: BaseService, IPhysicalExamService
     {
 
-        private ISystemContext context;
-
-        public PhysicalExamService(ISystemContext context)
+        public PhysicalExamService(ISystemContext context) : base(context)
         {
-            this.context = context;
+            
         }
 
         public void DeletePhysicalExam(int physicalExamId)
@@ -37,34 +35,9 @@ namespace ClinicManagementSystem.Services.impl
             context.PhysicalExams.Add(physicalExam);
         }
 
-        public void Save()
-        {
-            context.SaveChanges();
-        }
-
         public void UpdatePhysicalExam(PhysicalExam physicalExam)
         {
             context.Entry(physicalExam).State = System.Data.Entity.EntityState.Modified;
-        }
-
-        private bool disposed = false;
-
-        protected virtual void Dispose(bool disposing)
-        {
-            if (!this.disposed)
-            {
-                if (disposing)
-                {
-                    context.Dispose();
-                }
-            }
-            this.disposed = true;
-        }
-
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
         }
 
     }

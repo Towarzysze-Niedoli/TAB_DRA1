@@ -5,13 +5,12 @@ using System.Text;
 
 namespace ClinicManagementSystem.Services
 {
-    internal interface IPhysicalExamService: IDisposable
+    internal interface IPhysicalExamService: IBaseService
     {
         IEnumerable<PhysicalExam> GetPhysicalExams();
         PhysicalExam GetPhysicalExamByID(int physicalExamId);
         void InsertPhysicalExam(PhysicalExam physicalExam);
         void DeletePhysicalExam(int physicalExamId);
         void UpdatePhysicalExam(PhysicalExam physicalExam);
-        void Save();
     }
 }

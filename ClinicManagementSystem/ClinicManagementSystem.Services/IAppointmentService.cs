@@ -6,7 +6,7 @@ using System.Text;
 
 namespace ClinicManagementSystem.Services
 {
-    public interface IAppointmentService: IDisposable
+    public interface IAppointmentService: IBaseService
     {
         IEnumerable<Appointment> GetAppointments();
         Appointment GetAppointmentByID(int appointmentId);
@@ -14,7 +14,6 @@ namespace ClinicManagementSystem.Services
         void InsertAppointment(Appointment appointment);
         void DeleteAppointment(int appointmentId);
         void UpdateAppointment(Appointment appointment);
-        void Save();
         IEnumerable<Appointment> GetAppointmentsForDoctor(Doctor doctor);
         IEnumerable<Appointment> GetAcceptedAppointmentsForPatient(Patient patient);
         IEnumerable<Appointment> GetAppointmentsByCompletionDate(DateTime completionDate);
