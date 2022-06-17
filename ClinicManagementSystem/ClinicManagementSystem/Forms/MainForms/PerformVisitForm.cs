@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -64,6 +64,9 @@ namespace ClinicManagementSystem.Forms.MainForms
             _mode = PerformVisitFormMode.Interview;
             LoadLeftSideForm();
             LoadRightSideForm();
+
+            // PR: patch issue #16: Interview/diagnosis text box bug
+            OnControlButtonClicked(_mode);
         }
 
         private void InterviewButton_Click(object sender, EventArgs e)
