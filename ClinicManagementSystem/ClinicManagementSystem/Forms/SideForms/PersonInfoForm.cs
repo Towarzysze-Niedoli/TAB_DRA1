@@ -20,7 +20,7 @@ namespace ClinicManagementSystem.Forms.SideForms
         }
 
         public void InitializeValues(string name, string surname, string pesel, string phoneNumber, string city, string zipCode,
-            string streetName, string houseNumber, string mail, DateTime lastVisit)
+            string streetName, string houseNumber, string mail, DateTime? lastVisit)
         {
             this.NameSurnameLabel.Text = name + " " + surname;
             this.peselLabel.Text = pesel;
@@ -30,7 +30,10 @@ namespace ClinicManagementSystem.Forms.SideForms
             this.StreetLabel.Text = streetName;
             this.NumberLabel.Text = houseNumber;
             this.MailLabel.Text = mail;
-            this.LastVisitLabel.Text = lastVisit.ToString("d", CultureInfo.GetCultureInfo("de-DE"));
+            if(lastVisit != null)
+                this.LastVisitLabel.Text = ((DateTime)lastVisit).ToString("d", CultureInfo.GetCultureInfo("de-DE"));
+            else
+                this.LastVisitLabel.Text = String.Empty;
         }
     }
 }

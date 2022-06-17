@@ -100,15 +100,15 @@ namespace ClinicManagementSystem.Forms.MainForms
         }
 
         private void SearchPatientButton_Click(object sender, EventArgs e)
-        {
+        {         
             string[] name = SearchPatientTextBox.Text.Split(' ');
             if(name.Length == 2)
             {
                 Patient patient = _patientService.GetPatientByName(name[0], name[1]);
                 if (patient == null)
                     return;
-                _patientInfo.InitializeValues(patient.FirstName, patient.LastName, patient.PersonalIdentityNumber, patient.PhoneNumber, patient.Address.City, patient.Address.ZipCode, patient.Address.Street, patient.Address.HomeNumber, patient.Email ,DateTime.Now);
-                // TODO - last vist - change in model in patient or service method?
+                _patientInfo.InitializeValues(patient.FirstName, patient.LastName, patient.PersonalIdentityNumber, patient.PhoneNumber, patient.Address.City, patient.Address.ZipCode, patient.Address.Street, patient.Address.HomeNumber, patient.Email, _appointmentService.GetLastAppointmentDateForPacient(patient));
+                
                 _patientInfo.Show();
                 FillPatientTextFields(patient.FirstName, patient.LastName);
                 _chosenPatient = patient;
@@ -185,7 +185,8 @@ namespace ClinicManagementSystem.Forms.MainForms
             {
                 doctors = _doctorService.GetDoctorBySpecialization(specIndex);
                 DisplayDoctors(doctors);
-            }   
+            }
+            _doctorsList.ResetIndex();
         }
 
         private void ClearData()

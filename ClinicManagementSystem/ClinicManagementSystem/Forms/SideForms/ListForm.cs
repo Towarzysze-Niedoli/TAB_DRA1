@@ -31,6 +31,11 @@ namespace ClinicManagementSystem.Forms.SideForms
             PopulateListExample();
         }
 
+        public void ResetIndex()
+        {
+            _currentIndex = -1;
+        }
+
         public virtual void PopulateList(List<ListElement> elements) { }
 
         protected virtual void PopulateListExample() { }

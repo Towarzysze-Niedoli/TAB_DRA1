@@ -11,6 +11,8 @@ namespace ClinicManagementSystem.Services.impl
 {
     public class AppointmentService : BaseService, IAppointmentService
     {
+        public Appointment CurrentAppointment { get; set; }
+
         public AppointmentService(ISystemContext context) : base(context)
         {
             
@@ -66,6 +68,13 @@ namespace ClinicManagementSystem.Services.impl
         {
             return context.Appointments.ToList().Where(a => a.Patient == patient && a.AppointmentStatus == status);
         }
+        public DateTime? GetLastAppointmentDateForPacient(Patient patient)
+        {
+            Appointment a = context.Appointments.ToList().Where(a => a.Patient == patient).OrderByDescending(a => a.CompletionDate).FirstOrDefault(); // todo completion date or other date here?
+            if (a != null)
+                return a.CompletionDate;
+            return null;
+        }
 
         public void InsertAppointment(Appointment appointment)
         {
@@ -77,6 +86,5 @@ namespace ClinicManagementSystem.Services.impl
         {
             context.Entry(appointment).State = EntityState.Modified;
         }
-
     }
 }

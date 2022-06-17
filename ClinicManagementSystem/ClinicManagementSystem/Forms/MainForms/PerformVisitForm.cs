@@ -10,6 +10,7 @@ using ClinicManagementSystem.Forms.EventArguments;
 using static ClinicManagementSystem.Forms.MainForms.VisitsMainForm;
 using ClinicManagementSystem.Entities.Models;
 using ClinicManagementSystem.Services;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace ClinicManagementSystem.Forms.MainForms
 {
@@ -20,21 +21,39 @@ namespace ClinicManagementSystem.Forms.MainForms
 
         private PerformVisitFormMode _mode;
         private IPatientService _patientService;
+        private IAppointmentService _appointmentService;
         private DoctorListForm _previusVisitsListForm;
         private PersonInfoForm _patientInfoForm;
         private PerformVisitSideFormsSet _currentVisitSet;
         private PerformVisitSideFormsSet _previusVisitSet;
 
         private bool _patientInfoShown = false;
+        public Appointment Appointment { get; set; }
 
-        public PerformVisitForm(IPatientService patientService)
+        public PerformVisitForm(IServiceProvider provider)
         {
             InitializeComponent();
 
             _previusVisitsListForm = new DoctorListForm();
             _previusVisitsListForm.ElementClicked += FillSelectedVisitInformation;
-            _patientService = patientService;
+            _patientService = provider.GetService<IPatientService>();
+            _appointmentService = provider.GetService<IAppointmentService>();
             _patientInfoForm = new PersonInfoForm();
+            Appointment = _appointmentService.CurrentAppointment;
+            if(Appointment != null  && Appointment.Patient != null)
+            {
+                if(Appointment.Patient.Address != null)
+                {
+                    
+                    _patientInfoForm.InitializeValues(Appointment.Patient.FirstName, Appointment.Patient.LastName, Appointment.Patient.PersonalIdentityNumber, Appointment.Patient.PhoneNumber, Appointment.Patient.Address.City, Appointment.Patient.Address.ZipCode, Appointment.Patient.Address.Street, Appointment.Patient.Address.HomeNumber, Appointment.Patient.Email, _appointmentService.GetLastAppointmentDateForPacient(Appointment.Patient));
+
+                }
+                else
+                {
+                    _patientInfoForm.InitializeValues(Appointment.Patient.FirstName, Appointment.Patient.LastName, Appointment.Patient.PersonalIdentityNumber, Appointment.Patient.PhoneNumber, "", "", "", "", Appointment.Patient.Email, _appointmentService.GetLastAppointmentDateForPacient(Appointment.Patient));
+
+                }
+            }
 
             _currentVisitSet = new PerformVisitSideFormsSet(new VisitTextsForm(), new PhysicalForm(), new OrderLabForm());
             SubscribeToCurrentVisitForms();

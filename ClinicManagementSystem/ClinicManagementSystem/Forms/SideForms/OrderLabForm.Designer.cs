@@ -32,6 +32,7 @@ namespace ClinicManagementSystem.Forms.SideForms
             this.SearchTextBox = new System.Windows.Forms.TextBox();
             this.SearchButton = new System.Windows.Forms.Button();
             this.ListPanel = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // SearchTextBox
@@ -42,7 +43,7 @@ namespace ClinicManagementSystem.Forms.SideForms
             this.SearchTextBox.Location = new System.Drawing.Point(12, 21);
             this.SearchTextBox.MaxLength = 20;
             this.SearchTextBox.Name = "SearchTextBox";
-            this.SearchTextBox.Size = new System.Drawing.Size(506, 27);
+            this.SearchTextBox.Size = new System.Drawing.Size(415, 27);
             this.SearchTextBox.TabIndex = 2;
             // 
             // SearchButton
@@ -68,11 +69,29 @@ namespace ClinicManagementSystem.Forms.SideForms
             this.ListPanel.Size = new System.Drawing.Size(525, 472);
             this.ListPanel.TabIndex = 25;
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(62)))), ((int)(((byte)(138)))));
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(4)))), ((int)(((byte)(94)))));
+            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(62)))), ((int)(((byte)(138)))));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(247)))), ((int)(((byte)(255)))));
+            this.button1.Location = new System.Drawing.Point(433, 21);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(104, 27);
+            this.button1.TabIndex = 26;
+            this.button1.Text = "Search";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // OrderLabForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(119)))), ((int)(((byte)(182)))));
             this.ClientSize = new System.Drawing.Size(560, 561);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.ListPanel);
             this.Controls.Add(this.SearchButton);
             this.Controls.Add(this.SearchTextBox);
@@ -88,5 +107,6 @@ namespace ClinicManagementSystem.Forms.SideForms
         private System.Windows.Forms.TextBox SearchTextBox;
         private System.Windows.Forms.Button SearchButton;
         private System.Windows.Forms.Panel ListPanel;
+        private System.Windows.Forms.Button button1;
     }
 }
