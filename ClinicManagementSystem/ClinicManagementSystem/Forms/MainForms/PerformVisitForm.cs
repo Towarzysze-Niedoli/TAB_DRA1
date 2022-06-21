@@ -155,6 +155,9 @@ namespace ClinicManagementSystem.Forms.MainForms
         {
             _appointment.CompletionDate = DateTime.Now;
             _appointment.AppointmentStatus = AppointmentStatus.Cancelled;
+            _appointmentService.UpdateAppointment(_appointment);
+
+            //todo: return to main visit form?
         }
 
         private void ConcludeButton_Click(object sender, EventArgs e)
