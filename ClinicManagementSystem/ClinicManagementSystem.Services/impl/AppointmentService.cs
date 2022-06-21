@@ -94,6 +94,11 @@ namespace ClinicManagementSystem.Services.impl
             return GetAppointments().Where(a => a.AppointmentStatus == status && a.Doctor == doctor);
         }
 
+        public IEnumerable<Appointment> GetAppointmentsByScheduledDate(DateTime date)
+        {
+            return context.Appointments.ToList().Where(a => a.ScheduledDate.Date.Equals(date));
+        }
+
         public IEnumerable<Appointment> GetAppointments(AppointmentStatus? status, Doctor doctor, Patient patient)
         {
             // PR: takie skladanie where pozornie wyglada na malo wydajne, ale dla EF/LINQ wydaje sie nie miec znaczenia, a mamy jedna krotka funkcje na wszystko

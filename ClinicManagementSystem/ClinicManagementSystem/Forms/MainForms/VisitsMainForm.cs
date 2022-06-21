@@ -246,6 +246,9 @@ namespace ClinicManagementSystem.Forms.MainForms
                 _appointments = _service.GetAppointments();
 
             }
+
+            // todo polaczenie z filtrowaniem po dacie
+
             Deselect();
             DisplayAppointments(_appointments);
         }
@@ -254,6 +257,14 @@ namespace ClinicManagementSystem.Forms.MainForms
         {
             ClearVisitTextFields();
             //throw new NotImplementedException(); // PR: ma odznaczac aktualnie zaznaczona wizyte
+        }
+
+        private void VisitDatePicker_ValueChanged(object sender, EventArgs e)
+        {
+            DateTime pickedDate = VisitDatePicker.Value.Date;
+            DisplayAppointments(_service.GetAppointmentsByScheduledDate(pickedDate));
+
+            // todo polaczenie z innymi filtrami
         }
     }
 }

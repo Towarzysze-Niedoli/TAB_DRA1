@@ -233,6 +233,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.VisitDatePicker.Name = "VisitDatePicker";
             this.VisitDatePicker.Size = new System.Drawing.Size(250, 27);
             this.VisitDatePicker.TabIndex = 26;
+            this.VisitDatePicker.ValueChanged += new System.EventHandler(this.VisitDatePicker_ValueChanged);
             // 
             // label1
             // 
