@@ -19,7 +19,11 @@ namespace ClinicManagementSystem.Entities.Models
         [Required]
         public AppointmentStatus AppointmentStatus { get; set; } = AppointmentStatus.Pending;
 
+        [Required]
         public DateTime RegistrationDate { get; set; }
+
+        [Required]
+        public DateTime ScheduledDate { get; set; }
 
         public DateTime? CompletionDate { get; set; }
 

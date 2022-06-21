@@ -199,6 +199,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             // PerformVisitButton
             // 
             this.PerformVisitButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(62)))), ((int)(((byte)(138)))));
+            this.PerformVisitButton.Enabled = false;
             this.PerformVisitButton.FlatAppearance.BorderSize = 0;
             this.PerformVisitButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(4)))), ((int)(((byte)(94)))));
             this.PerformVisitButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(62)))), ((int)(((byte)(138)))));

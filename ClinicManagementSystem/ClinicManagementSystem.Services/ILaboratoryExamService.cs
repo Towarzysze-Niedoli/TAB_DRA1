@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ClinicManagementSystem.Services
 {
-    internal interface ILaboratoryExamService: IBaseService
+    public interface ILaboratoryExamService: IBaseService
     {
         IEnumerable<LaboratoryExam> GetLaboratoryExams();
         LaboratoryExam GetLaboratoryExamByID(int laboratoryExamId);

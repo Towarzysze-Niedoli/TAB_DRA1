@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ClinicManagementSystem.Services
 {
-    internal interface IPhysicalExamService: IBaseService
+    public interface IPhysicalExamService: IBaseService
     {
         IEnumerable<PhysicalExam> GetPhysicalExams();
         PhysicalExam GetPhysicalExamByID(int physicalExamId);

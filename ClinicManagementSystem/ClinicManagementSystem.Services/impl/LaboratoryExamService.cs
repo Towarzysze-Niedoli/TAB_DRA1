@@ -18,6 +18,7 @@ namespace ClinicManagementSystem.Services.impl
         {
             LaboratoryExam laboratoryExam = context.LaboratoryExams.Find(laboratoryExamId);
             context.LaboratoryExams.Remove(laboratoryExam);
+            Save();
         }
 
         public LaboratoryExam GetLaboratoryExamByID(int laboratoryExamId)
@@ -34,11 +35,13 @@ namespace ClinicManagementSystem.Services.impl
         public void InsertLaboratoryExam(LaboratoryExam laboratoryExam)
         {
             context.LaboratoryExams.Add(laboratoryExam);
+            Save();
         }
 
         public void UpdateLaboratoryExam(LaboratoryExam laboratoryExam)
         {
             context.Entry(laboratoryExam).State = System.Data.Entity.EntityState.Modified;
+            Save();
         }
 
     }

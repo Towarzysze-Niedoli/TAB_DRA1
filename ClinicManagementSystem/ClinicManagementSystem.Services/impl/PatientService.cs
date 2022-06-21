@@ -49,9 +49,14 @@ namespace ClinicManagementSystem.Services.impl
             return string.IsNullOrWhiteSpace(personalIdentityNumber) ? null : context.Patients.Where(p => p.PersonalIdentityNumber.Equals(personalIdentityNumber)).FirstOrDefault();
         }
 
+        public IEnumerable<Patient> GetPatientsByName(string firstName, string lastName)
+        {
+            return context.Patients.Include(p => p.Address).Where(p => p.FirstName.ToLower().Equals(firstName.ToLower()) && p.LastName.ToLower().Equals(lastName.ToLower()));
+        }
+
         public Patient GetPatientByName(string firstName, string lastName)
         {
-            return context.Patients.Include(p => p.Address).Where(p => p.FirstName.ToLower().Equals(firstName.ToLower()) && p.LastName.ToLower().Equals(lastName.ToLower())).FirstOrDefault();
+            return GetPatientsByName(firstName, lastName).FirstOrDefault();
         }
         
     }

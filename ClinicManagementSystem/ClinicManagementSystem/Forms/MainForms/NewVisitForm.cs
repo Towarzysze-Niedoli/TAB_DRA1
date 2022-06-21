@@ -79,10 +79,12 @@ namespace ClinicManagementSystem.Forms.MainForms
             foreach(Doctor doctor in doctors)
             {
                 string doctorName = doctor.FirstName != null ? doctor.FirstName + " " + doctor.LastName : " ";
-                var el = new DoctorListElement(index++,
-                doctorName,
-                ((Specialization)doctor.Specialization).ToString(),
-                "Thu - 15.03.2022 - 8:00"); //tymczasowe
+                var el = new DoctorListElement(
+                    index++,
+                    doctorName,
+                    doctor.Specialization.ToString(),
+                    ""
+                );
                 elements.Add(el); 
             }
             _doctorsList.PopulateList(elements);

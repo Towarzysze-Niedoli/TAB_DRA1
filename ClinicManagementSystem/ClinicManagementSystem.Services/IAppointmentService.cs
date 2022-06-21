@@ -15,10 +15,19 @@ namespace ClinicManagementSystem.Services
         void InsertAppointment(Appointment appointment);
         void DeleteAppointment(int appointmentId);
         void UpdateAppointment(Appointment appointment);
-        IEnumerable<Appointment> GetAppointmentsForDoctor(Doctor doctor);
-        IEnumerable<Appointment> GetAcceptedAppointmentsForPatient(Patient patient);
+
+        /// <summary>
+        /// Returns appointments with given parameters. If you don't want to filter by some parameters, leave them null.
+        /// </summary>
+        /// <param name="status"></param>
+        /// <param name="doctor"></param>
+        /// <param name="patient"></param>
+        /// <returns></returns>
+        IEnumerable<Appointment> GetAppointments(AppointmentStatus? status, Doctor doctor = null, Patient patient = null);
+
         IEnumerable<Appointment> GetAppointmentsByCompletionDate(DateTime completionDate);
         IEnumerable<Appointment> GetAppointmentsByStatus(AppointmentStatus status);
+        IEnumerable<Appointment> GetAppointmentsByStatusAndDoctor(AppointmentStatus status, Doctor doctor);
         IEnumerable<Appointment> GetAppointmentsByPatientAndStatus(Patient patient, AppointmentStatus status);
         IEnumerable<Appointment> GetAppointmentsForPatient(Patient patient);
         DateTime? GetLastAppointmentDateForPatient(Patient patient);

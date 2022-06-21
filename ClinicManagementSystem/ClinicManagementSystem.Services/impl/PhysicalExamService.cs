@@ -18,6 +18,7 @@ namespace ClinicManagementSystem.Services.impl
         {
             PhysicalExam physicalExam = context.PhysicalExams.Find(physicalExamId);
             context.PhysicalExams.Remove(physicalExam);
+            Save();
         }
 
         public PhysicalExam GetPhysicalExamByID(int physicalExamId)
@@ -33,11 +34,13 @@ namespace ClinicManagementSystem.Services.impl
         public void InsertPhysicalExam(PhysicalExam physicalExam)
         {
             context.PhysicalExams.Add(physicalExam);
+            Save();
         }
 
         public void UpdatePhysicalExam(PhysicalExam physicalExam)
         {
             context.Entry(physicalExam).State = System.Data.Entity.EntityState.Modified;
+            Save();
         }
 
     }

@@ -23,7 +23,9 @@ namespace ClinicManagementSystem.Entities
 
         public SystemContext() : base("CMS")
         {
-
+#if DEBUG
+            this.Database.Log += s => System.Diagnostics.Debug.Write(s);
+#endif
         }
 
         //protected override void OnModelCreating(DbModelBuilder modelBuilder)

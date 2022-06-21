@@ -12,6 +12,8 @@ using ClinicManagementSystem.Forms.CustomElements;
 using ClinicManagementSystem.Entities.Models;
 using ClinicManagementSystem.Entities.Enums;
 using ClinicManagementSystem.Services.impl;
+using System.Linq;
+using ClinicManagementSystem.Auth.Services;
 
 namespace ClinicManagementSystem.Forms.MainForms
 {
@@ -25,12 +27,15 @@ namespace ClinicManagementSystem.Forms.MainForms
         private UserLevel _level;
         private IAppointmentService _service;
         private IPatientService _patientService;
-        private IDoctorService _doctorService;
-        IEnumerable<Appointment> appointments;
+        private IAuthorizationService _authorizationService;
+        //private IDoctorService _doctorService;
+        private IEnumerable<Appointment> _appointments;
+
+        private Doctor _loggedDoctor;
         Appointment _currentAppointment;
         private List<(AppointmentStatus?, string)> _appointmentStatus;
 
-        public VisitsMainForm(UserLevel level, IAppointmentService appointmentService, IPatientService patientService, IDoctorService doctorService)
+        public VisitsMainForm(UserLevel level, IAppointmentService appointmentService, IPatientService patientService, IAuthorizationService authorizationService)
         {
             InitializeComponent();
             InitializeVisitStatusCombobox();
@@ -39,14 +44,16 @@ namespace ClinicManagementSystem.Forms.MainForms
             _level = level;
             _service = appointmentService;
             _patientService = patientService;
-            _doctorService = doctorService;
+            _authorizationService = authorizationService;
+            _loggedDoctor = authorizationService.GetCurrentlyLoggedPerson<Doctor>();
+            //_doctorService = doctorService;
             SetVisibility();
             _visitsListForm = new VisitsListForm();
 
-            appointments = _service.GetAppointments();
-            DisplayAppointments(appointments);
+            _appointments = _service.GetAppointmentsByStatusAndDoctor(AppointmentStatus.Pending, _loggedDoctor);
+            DisplayAppointments(_appointments);
 
-            _visitsListForm.ElementClicked += FillVisitTextFields;
+            _visitsListForm.ElementClicked += OnVisitsListFormElementClicked;
             this.VisitsListPanel.Controls.Add(_visitsListForm);
         }
 
@@ -62,16 +69,16 @@ namespace ClinicManagementSystem.Forms.MainForms
         {
             _appointmentStatus = new List<(AppointmentStatus?, string)>
             {
-                (null, "<Select Appointment Status>"),
-                (AppointmentStatus.Accepted, "Accepted"),
-                (AppointmentStatus.Cancelled, "Cancelled"),
+                (null, "All"),
                 (AppointmentStatus.Pending, "Pending"),
+                (AppointmentStatus.Accepted, "Accepted"),
+                (AppointmentStatus.Cancelled, "Cancelled")
             };
 
             _appointmentStatus.ForEach(((AppointmentStatus?, string) tuple) => {
                 VisitStatusComboBox.Items.Add(tuple.Item2);
             });
-            VisitStatusComboBox.SelectedIndex = 0;
+            VisitStatusComboBox.SelectedIndex = 1; // PR: domyslnie lekarz widzi wizyty, ktore ma przeprowadzic
         }
 
         private void DisplayAppointments(IEnumerable<Appointment> appointments)
@@ -84,7 +91,7 @@ namespace ClinicManagementSystem.Forms.MainForms
                 var el = new VisitListElement(index++,
                     patientName,
                     $"{appointment.Doctor.FirstName} {appointment.Doctor.LastName}",
-                    $"{appointment.RegistrationDate.Date.ToShortDateString()} {appointment.RegistrationDate.TimeOfDay.Hours.ToString() + ":" + appointment.RegistrationDate.TimeOfDay.Minutes.ToString()}");
+                    appointment.ScheduledDate.ToString("g"));
                 elements.Add(el);
             }
             _visitsListForm.PopulateList(elements);
@@ -106,32 +113,66 @@ namespace ClinicManagementSystem.Forms.MainForms
             
         }
 
+
+        private void OnVisitsListFormElementClicked(object sender, ListElementClickedArgs args)
+        {
+            PerformVisitButton.Enabled = true;
+            FillVisitTextFields(sender, args);
+        }
+
+
         private void FillVisitTextFields(object sender, ListElementClickedArgs args)
         {
             int index = 0;
-            foreach(var a in appointments)
-            {
-                if(args.Index == index)
-                {
+            _currentAppointment = _appointments.First(a => args.Index == index++);
+            if (_currentAppointment == null)
+                throw new InvalidOperationException();
 
-                    PatientNameTextBox.Text = a.Patient.FirstName;
-                    PatientSurnameTextBox.Text = a.Patient.LastName;
-                    DoctorNameTextBox.Text = a.Doctor.FirstName;
-                    DoctorSurnameTextBox.Text = a.Doctor.LastName;
-                    VisitDateTextBox.Text = a.RegistrationDate.Date.ToShortDateString();
-                    VisitTimeTextBox.Text = a.RegistrationDate.TimeOfDay.Hours.ToString() + ":" + a.RegistrationDate.TimeOfDay.Minutes.ToString();
-                    _currentAppointment = a;
-                    break;
-                }
-                else
-                {
-                    index++;
-                }
+            PatientNameTextBox.Text = _currentAppointment.Patient.FirstName;
+            PatientSurnameTextBox.Text = _currentAppointment.Patient.LastName;
+            DoctorNameTextBox.Text = _currentAppointment.Doctor.FirstName;
+            DoctorSurnameTextBox.Text = _currentAppointment.Doctor.LastName;
+            VisitDateTextBox.Text = _currentAppointment.ScheduledDate.Date.ToShortDateString();
+            VisitTimeTextBox.Text = _currentAppointment.ScheduledDate.ToString("t");
+
+            //foreach(var a in appointments)
+            //{
+            //    if(args.Index == index)
+            //    {
+            //        PatientNameTextBox.Text = a.Patient.FirstName;
+            //        PatientSurnameTextBox.Text = a.Patient.LastName;
+            //        DoctorNameTextBox.Text = a.Doctor.FirstName;
+            //        DoctorSurnameTextBox.Text = a.Doctor.LastName;
+            //        VisitDateTextBox.Text = a.ScheduledDate.Date.ToShortDateString();
+            //        VisitTimeTextBox.Text = a.ScheduledDate.ToString("t");
+            //        _currentAppointment = a;
+            //        break;
+            //    }
+            //    else
+            //    {
+            //        index++;
+            //    }
+            //}
+        }
+
+        private void ClearVisitTextFields()
+        {
+            TextBox[] textBoxes = new TextBox[] { PatientNameTextBox, PatientSurnameTextBox, DoctorNameTextBox, DoctorSurnameTextBox, VisitDateTextBox, VisitTimeTextBox };
+            foreach (TextBox textBox in textBoxes)
+            {
+                textBox.Clear();
             }
+            _currentAppointment = null;
         }
 
         private void PerformVisitButton_Click(object sender, EventArgs e)
         {
+            if (_currentAppointment == null)
+            {
+                MessageBox.Show("Select an appointment", "Error");
+                return;
+            }
+
             _service.CurrentAppointment = _currentAppointment;
             ButtonClicked.Invoke(this, new PageControllingButtonClickedArgs(MainFormType.PerformVisit, _level));
 
@@ -154,15 +195,25 @@ namespace ClinicManagementSystem.Forms.MainForms
             string [] name = SearchPatientTextBox.Text.Split(' ');
             if (name.Length > 1)
             {
-                Patient searchedPatient = _patientService.GetPatientByName(name[0], name[1]);
-                appointments = _service.GetAppointmentsForPatient(searchedPatient);
-                DisplayAppointments(appointments);
+                IEnumerable<Patient> searchedPatients = _patientService.GetPatientsByName(name[0], name[1]); // PR: przygotowuje pod sytuacje, gdzie dwoch pacjentow ma te same imie i nazwisko albo zmieimy wyszukiwanie na bardziej elastyczne
+                if (searchedPatients.Count() == 0)
+                {
+                    MessageBox.Show("No patient found, showing for all patients", "Warning");
+                    _appointments = _service.GetAppointments(_appointmentStatus[VisitStatusComboBox.SelectedIndex].Item1, _loggedDoctor);
+                }
+                else
+                {
+                    _appointments = searchedPatients
+                        .Select(p => _service.GetAppointments(_appointmentStatus[VisitStatusComboBox.SelectedIndex].Item1, _loggedDoctor))
+                        .Aggregate((total, next) => total.Concat(next));
+                }
             }
             else
-            {
-                appointments = _service.GetAppointments();
-                DisplayAppointments(appointments);
-            }
+                _appointments = _service.GetAppointments(_appointmentStatus[VisitStatusComboBox.SelectedIndex].Item1, _loggedDoctor);
+
+                
+            DisplayAppointments(_appointments.ToList());
+            
             _visitsListForm.ResetIndex();
         }
 
@@ -178,25 +229,31 @@ namespace ClinicManagementSystem.Forms.MainForms
                 if (VisitStatusComboBox.SelectedItem != null && VisitStatusComboBox.SelectedIndex != 0) // 0 is default when nothing is checked, idk how to check it better
                 {
                     AppointmentStatus appointmentStatus = (AppointmentStatus)Enum.Parse(typeof(AppointmentStatus), VisitStatusComboBox.SelectedItem.ToString());
-                    appointments = _service.GetAppointmentsByPatientAndStatus(searchedPatient, appointmentStatus);
+                    _appointments = _service.GetAppointmentsByPatientAndStatus(searchedPatient, appointmentStatus);
                 }
                 else
                 {
-                    appointments = _service.GetAppointmentsForPatient(searchedPatient);
+                    _appointments = _service.GetAppointmentsForPatient(searchedPatient);
                 }
             }
             else if(VisitStatusComboBox.SelectedItem != null && VisitStatusComboBox.SelectedIndex != 0)
             {
                 AppointmentStatus appointmentStatus = (AppointmentStatus)Enum.Parse(typeof(AppointmentStatus), VisitStatusComboBox.SelectedItem.ToString());
-                appointments = _service.GetAppointmentsByStatus(appointmentStatus);
+                _appointments = _service.GetAppointmentsByStatus(appointmentStatus);
             }
             else
             {
-                appointments = _service.GetAppointments();
+                _appointments = _service.GetAppointments();
 
             }
-            DisplayAppointments(appointments);
+            Deselect();
+            DisplayAppointments(_appointments);
+        }
 
+        private void Deselect()
+        {
+            ClearVisitTextFields();
+            //throw new NotImplementedException(); // PR: ma odznaczac aktualnie zaznaczona wizyte
         }
     }
 }

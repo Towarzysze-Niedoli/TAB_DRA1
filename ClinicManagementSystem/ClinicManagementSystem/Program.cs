@@ -37,16 +37,23 @@ namespace ClinicManagementSystem
         private static void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<ISystemContext, SystemContext>()
+                    // authentication, authorization:
                     .AddSingleton<IPasswordHasher, PasswordHasher>()
                     .AddScoped<IAuthenticationService, AuthenticationService>()
                     .AddScoped<IAuthorizationService, AuthorizationService>()
-                    .AddScoped<IAppointmentService, AppointmentService>()
+                    // people, users:
                     .AddScoped<IDoctorService, DoctorService>()
                     .AddScoped<ILaboratoryTechnicianService, LaboratoryTechnicianService>()
                     .AddScoped<ILaboratoryManagerService, LaboratoryManagerService>()
                     .AddScoped<IPatientService, PatientService>()
-                    .AddScoped<IReceptionistService, ReceptionistService>();
-                    
+                    .AddScoped<IReceptionistService, ReceptionistService>()
+                    // appointments:
+                    .AddScoped<IAppointmentService, AppointmentService>()
+                    // examinations:
+                    .AddScoped<IExaminationService, ExaminationService>()
+                    .AddScoped<ILaboratoryExamService, LaboratoryExamService>()
+                    .AddScoped<IPhysicalExamService, PhysicalExamService>();
+
             //.AddLogging(configure => configure.AddConsole())
         }
     }

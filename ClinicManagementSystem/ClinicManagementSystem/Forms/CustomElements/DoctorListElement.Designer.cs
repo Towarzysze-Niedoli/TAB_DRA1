@@ -30,9 +30,9 @@ namespace ClinicManagementSystem.Forms.CustomElements
         private void InitializeComponent()
         {
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.UpperMainLabel = new DisabledLabel();
-            this.BottomLabelOne = new DisabledLabel();
-            this.BottomLabelTwo = new DisabledLabel();
+            this.UpperMainLabel = new ClinicManagementSystem.Forms.CustomElements.DisabledLabel();
+            this.BottomLabelOne = new ClinicManagementSystem.Forms.CustomElements.DisabledLabel();
+            this.BottomLabelTwo = new ClinicManagementSystem.Forms.CustomElements.DisabledLabel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -60,7 +60,7 @@ namespace ClinicManagementSystem.Forms.CustomElements
             this.UpperMainLabel.Font = new System.Drawing.Font("Verdana", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.UpperMainLabel.Location = new System.Drawing.Point(120, 5);
             this.UpperMainLabel.Name = "UpperMainLabel";
-            this.UpperMainLabel.Size = new System.Drawing.Size(264, 46);
+            this.UpperMainLabel.Size = new System.Drawing.Size(189, 29);
             this.UpperMainLabel.TabIndex = 1;
             this.UpperMainLabel.Text = "UpperMainText";
             this.UpperMainLabel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ListElement_MouseDown);
@@ -72,9 +72,10 @@ namespace ClinicManagementSystem.Forms.CustomElements
             this.BottomLabelOne.AutoEllipsis = true;
             this.BottomLabelOne.AutoSize = true;
             this.BottomLabelOne.CausesValidation = false;
-            this.BottomLabelOne.Location = new System.Drawing.Point(120, 71);
+            this.BottomLabelOne.Enabled = false;
+            this.BottomLabelOne.Location = new System.Drawing.Point(120, 49);
             this.BottomLabelOne.Name = "BottomLabelOne";
-            this.BottomLabelOne.Size = new System.Drawing.Size(184, 30);
+            this.BottomLabelOne.Size = new System.Drawing.Size(135, 18);
             this.BottomLabelOne.TabIndex = 2;
             this.BottomLabelOne.Text = "BottomTextOne";
             this.BottomLabelOne.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ListElement_MouseDown);
@@ -86,14 +87,12 @@ namespace ClinicManagementSystem.Forms.CustomElements
             this.BottomLabelTwo.AutoEllipsis = true;
             this.BottomLabelTwo.AutoSize = true;
             this.BottomLabelTwo.CausesValidation = false;
-            this.BottomLabelTwo.Location = new System.Drawing.Point(339, 71);
+            this.BottomLabelTwo.Enabled = false;
+            this.BottomLabelTwo.Location = new System.Drawing.Point(120, 82);
             this.BottomLabelTwo.Name = "BottomLabelTwo";
-            this.BottomLabelTwo.Size = new System.Drawing.Size(183, 30);
+            this.BottomLabelTwo.Size = new System.Drawing.Size(133, 18);
             this.BottomLabelTwo.TabIndex = 3;
             this.BottomLabelTwo.Text = "BottomTextTwo";
-            this.BottomLabelTwo.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ListElement_MouseDown);
-            this.BottomLabelTwo.MouseLeave += new System.EventHandler(this.ListElement_MouseLeave);
-            this.BottomLabelTwo.MouseHover += new System.EventHandler(this.ListElement_MouseHover);
             // 
             // DoctorListElement
             // 
@@ -120,8 +119,8 @@ namespace ClinicManagementSystem.Forms.CustomElements
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label UpperMainLabel;
-        private System.Windows.Forms.Label BottomLabelOne;
-        private System.Windows.Forms.Label BottomLabelTwo;
+        private DisabledLabel UpperMainLabel;
+        private DisabledLabel BottomLabelOne;
+        private DisabledLabel BottomLabelTwo;
     }
 }

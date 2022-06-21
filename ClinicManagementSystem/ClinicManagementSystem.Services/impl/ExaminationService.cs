@@ -1,7 +1,9 @@
 ﻿using ClinicManagementSystem.Entities;
+using ClinicManagementSystem.Entities.Enums;
 using ClinicManagementSystem.Entities.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace ClinicManagementSystem.Services.impl
@@ -17,6 +19,7 @@ namespace ClinicManagementSystem.Services.impl
         {
             Examination examination = context.Examinations.Find(examinationId);
             context.Examinations.Remove(examination);
+            Save();
         }
 
         public Examination GetExaminationByID(int examinationId)
@@ -29,14 +32,21 @@ namespace ClinicManagementSystem.Services.impl
             return context.Examinations;
         }
 
+        public IEnumerable<Examination> GetExaminationsByType(ExaminationType examinationType)
+        {
+            return context.Examinations.Where(e => e.ExamType == examinationType);
+        }
+
         public void InsertExamination(Examination examination)
         {
             context.Examinations.Add(examination);
+            Save();
         }
 
         public void UpdateExamination(Examination examination)
         {
             context.Entry(examination).State = System.Data.Entity.EntityState.Modified;
+            Save();
         }
 
     }

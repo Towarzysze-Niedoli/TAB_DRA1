@@ -12,6 +12,10 @@ namespace ClinicManagementSystem.Forms.CustomElements
         public delegate void ElementClickedEventHandler(object source, ListElementClickedArgs args);
         public event ElementClickedEventHandler ListElementClicked;
 
+        protected readonly MouseEventHandler MouseDownHandler;
+        protected readonly EventHandler MouseLeaveHandler;
+        protected readonly EventHandler MouseHoverHandler;
+
         protected Color _inactiveColor = Color.FromArgb(0, 119, 182);
         protected Color _activeColor = Color.FromArgb(3, 4, 94);
         protected Color _hoverColor = Color.FromArgb(2, 62, 138);
@@ -28,20 +32,17 @@ namespace ClinicManagementSystem.Forms.CustomElements
 
         public ListElement(int index)
         {
+            MouseDownHandler = new MouseEventHandler(ListElement_MouseDown);
+            MouseLeaveHandler = new EventHandler(ListElement_MouseLeave);
+            MouseHoverHandler = new EventHandler(ListElement_MouseHover);
+
             InitializeComponent();
             _index = index;
         }
 
         public void SetNoHoverColor()
         {
-            if (_status)
-            {
-                this.BackColor = _activeColor;
-            }
-            else
-            {
-                this.BackColor = _inactiveColor;
-            }
+            BackColor = _status ? _activeColor : _inactiveColor;
         }
 
         public void ChangeStatus()
@@ -51,7 +52,7 @@ namespace ClinicManagementSystem.Forms.CustomElements
 
         protected void ListElement_MouseHover(object sender, EventArgs e)
         {
-            this.BackColor = _hoverColor;
+            BackColor = _hoverColor;
         }
 
         protected void ListElement_MouseLeave(object sender, EventArgs e)
@@ -68,18 +69,20 @@ namespace ClinicManagementSystem.Forms.CustomElements
 
         private void InitializeComponent()
         {
-            this.SuspendLayout();
+            SuspendLayout();
             // 
             // ListElement
             // 
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(119)))), ((int)(((byte)(182)))));
-            this.Name = "ListElement";
-            this.Size = new System.Drawing.Size(188, 188);
-            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ListElement_MouseDown);
-            this.MouseLeave += new System.EventHandler(this.ListElement_MouseLeave);
-            this.MouseHover += new System.EventHandler(this.ListElement_MouseHover);
-            this.ResumeLayout(false);
+            BackColor = _inactiveColor;
+            Name = "ListElement";
+            Size = new Size(188, 188);
+            MouseDown += MouseDownHandler;
+            MouseLeave += MouseLeaveHandler;
+            MouseHover += MouseHoverHandler;
+            ResumeLayout(false);
 
         }
+
+        
     }
 }

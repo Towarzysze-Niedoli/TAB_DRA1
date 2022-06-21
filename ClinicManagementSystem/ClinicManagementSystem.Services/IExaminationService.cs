@@ -1,13 +1,15 @@
-﻿using ClinicManagementSystem.Entities.Models;
+﻿using ClinicManagementSystem.Entities.Enums;
+using ClinicManagementSystem.Entities.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace ClinicManagementSystem.Services
 {
-    internal interface IExaminationService: IBaseService
+    public interface IExaminationService: IBaseService
     {
         IEnumerable<Examination> GetExaminations();
+        IEnumerable<Examination> GetExaminationsByType(ExaminationType examinationType);
         Examination GetExaminationByID(int examinationId);
         void InsertExamination(Examination examination);
         void DeleteExamination(int examinationId);

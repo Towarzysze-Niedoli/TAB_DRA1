@@ -12,6 +12,8 @@ using ClinicManagementSystem.Services;
 using Microsoft.Extensions.DependencyInjection;
 using ClinicManagementSystem.Forms.CustomElements;
 using System.Linq;
+using ClinicManagementSystem.Entities.Enums;
+using System.ComponentModel.DataAnnotations;
 
 namespace ClinicManagementSystem.Forms.MainForms
 {
@@ -23,18 +25,21 @@ namespace ClinicManagementSystem.Forms.MainForms
         private PerformVisitFormMode _mode;
         private IPatientService _patientService;
         private IAppointmentService _appointmentService;
+        private IExaminationService _examinationService;
         private DoctorListForm _previousVisitsListForm;
         private PersonInfoForm _patientInfoForm;
         private PerformVisitSideFormsSet _currentVisitSet;
         private PerformVisitSideFormsSet _previousVisitSet;
 
         private bool _patientInfoShown = false;
-        private Appointment _appointment { get; set; }
+        private Appointment _appointment;
+        private IEnumerable<Examination> _examinations;
 
         public PerformVisitForm(IServiceProvider provider)
         {
             _patientService = provider.GetService<IPatientService>();
             _appointmentService = provider.GetService<IAppointmentService>();
+            _examinationService = provider.GetService<IExaminationService>();
 
             InitializeComponent();
 
@@ -62,10 +67,12 @@ namespace ClinicManagementSystem.Forms.MainForms
             _previousVisitsListForm = new DoctorListForm();
             _previousVisitsListForm.ElementClicked += FillSelectedVisitInformation;
 
-            _currentVisitSet = new PerformVisitSideFormsSet(new VisitTextsForm(), new PhysicalForm(), new OrderLabForm());
+            _examinations = _examinationService.GetExaminationsByType(ExaminationType.Laboratory);
+
+            _currentVisitSet = new PerformVisitSideFormsSet(new VisitTextsForm(), new PhysicalForm(), new OrderLabForm(_examinations, _addExamination));
             SubscribeToCurrentVisitForms();
 
-            _previousVisitSet = new PerformVisitSideFormsSet(new VisitTextsForm(), new PhysicalForm(), new OrderLabForm());
+            _previousVisitSet = new PerformVisitSideFormsSet(new VisitTextsForm(), new PhysicalForm(), new OrderLabForm(_examinations, null)); // PR: null zeby wylaczyc mozliwosc dodawania badan w trzybie przegladania poprzednich
             _previousVisitSet.SetDisabled();
 
             _mode = PerformVisitFormMode.Interview;
@@ -74,6 +81,32 @@ namespace ClinicManagementSystem.Forms.MainForms
 
             // PR: patch issue #16: Interview/diagnosis text box bug
             OnControlButtonClicked(_mode);
+        }
+
+        private void _addExamination(string code, string examinationName, ExaminationType examinationType)
+        {
+            Examination examination = new Examination()
+            {
+                Code = code,
+                ExaminationName = examinationName,
+                ExamType = examinationType
+            };
+
+            ICollection<ValidationResult> validationResults = new List<ValidationResult>();
+            if (!Validator.TryValidateObject(examination, new ValidationContext(examination), validationResults, true))
+            {
+                // obj not valid
+                MessageBox.Show(string.Join('\n', validationResults.Select(r => r.ErrorMessage)), "Validation error");
+                return;
+            }
+
+            _examinationService.InsertExamination(examination);
+            _examinations = _examinations.Append(examination);
+
+            _currentVisitSet.OrderLabForm.PopulateList(_examinations);
+            _previousVisitSet.OrderLabForm.PopulateList(_examinations);
+
+            _currentVisitSet.OrderLabForm.ClearTextBoxes();
         }
 
         private void InterviewButton_Click(object sender, EventArgs e)
@@ -120,13 +153,14 @@ namespace ClinicManagementSystem.Forms.MainForms
 
         private void CancelButton_Click(object sender, EventArgs e)
         {
-
+            _appointment.CompletionDate = DateTime.Now;
+            _appointment.AppointmentStatus = AppointmentStatus.Cancelled;
         }
 
         private void ConcludeButton_Click(object sender, EventArgs e)
         {
             _appointment.CompletionDate = DateTime.Now;
-            _appointment.AppointmentStatus = Entities.Enums.AppointmentStatus.Accepted;
+            _appointment.AppointmentStatus = AppointmentStatus.Accepted;
             _appointment.Description = _currentVisitSet.VisitTextsForm.InterviewText;
             _appointment.Diagnosis = _currentVisitSet.VisitTextsForm.DiagnosisText;
 
@@ -136,12 +170,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             {
                 Appointment = _appointment,
                 ReferralDate = DateTime.Now,
-                Examination = new Examination() // TODO brac z elementu (OrderLabListElement)
-                {
-                    Code = "Z" + (new Random()).Next(10, 50).ToString() + "." + (new Random()).Next(0, 9).ToString(),
-                    ExamType = Entities.Enums.ExaminationType.Laboratory,
-                    ExaminationName = "Todo :c"
-                }
+                Examination = e.Examination
             }).ToList();
             /* PR: nie wiem, czy:
              * 1. EF tworzy pusta liste czy nie,
@@ -153,12 +182,13 @@ namespace ClinicManagementSystem.Forms.MainForms
             else
                 _appointment.LaboratoryExams.AddRange(laboratoryExams);
 
+
             // physical exams:
             IDictionary<Examination, string> physicalExamsTexts = new Dictionary<Examination, string>()
             {
-                { new Examination() { Code = "Z26.3", ExamType = Entities.Enums.ExaminationType.Physical, ExaminationName = "temperaturka" }, _currentVisitSet.PhysicalForm.TemperatureText },
-                { new Examination() { Code = "Z26.4", ExamType = Entities.Enums.ExaminationType.Physical, ExaminationName = "ciśnienie" }, _currentVisitSet.PhysicalForm.BloodPressureText },
-                { new Examination() { Code = "Z26.5", ExamType = Entities.Enums.ExaminationType.Physical, ExaminationName = "cukier" }, _currentVisitSet.PhysicalForm.SugarLevelText }
+                { Examination.TemperatureExamination, _currentVisitSet.PhysicalForm.TemperatureText },
+                { Examination.BloodPressureExamination, _currentVisitSet.PhysicalForm.BloodPressureText },
+                { Examination.SugarLevelExamination, _currentVisitSet.PhysicalForm.SugarLevelText }
             };
             List<PhysicalExam> physicalExams = new List<PhysicalExam>(physicalExamsTexts.Count);
             foreach (KeyValuePair<Examination, string> kvp in physicalExamsTexts)
