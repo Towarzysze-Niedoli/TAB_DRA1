@@ -27,6 +27,11 @@ namespace ClinicManagementSystem.Services.impl
             return context.Examinations.Find(examinationId);
         }
 
+        public Examination GetExaminationByCode(string examinationCode)
+        {
+            return context.Examinations.Where(e => e.Code == examinationCode).FirstOrDefault();
+        }
+
         public IEnumerable<Examination> GetExaminations()
         {
             return context.Examinations;

@@ -10,6 +10,7 @@ namespace ClinicManagementSystem.Services
     {
         IEnumerable<Examination> GetExaminations();
         IEnumerable<Examination> GetExaminationsByType(ExaminationType examinationType);
+        Examination GetExaminationByCode(string examinationCode);
         Examination GetExaminationByID(int examinationId);
         void InsertExamination(Examination examination);
         void DeleteExamination(int examinationId);

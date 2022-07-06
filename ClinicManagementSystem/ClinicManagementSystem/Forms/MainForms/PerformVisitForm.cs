@@ -14,6 +14,7 @@ using ClinicManagementSystem.Forms.CustomElements;
 using System.Linq;
 using ClinicManagementSystem.Entities.Enums;
 using System.ComponentModel.DataAnnotations;
+using System.Data.Entity.Validation;
 
 namespace ClinicManagementSystem.Forms.MainForms
 {
@@ -100,8 +101,24 @@ namespace ClinicManagementSystem.Forms.MainForms
                 return;
             }
 
-            _examinationService.InsertExamination(examination);
-            _examinations = _examinations.Append(examination);
+            if(_examinationService.GetExaminationByCode(code) == null)
+            {
+                try
+                {
+                    _examinationService.InsertExamination(examination);
+                    MessageBox.Show("Examination has been successfully added.", "Add New Examination");
+                }
+                catch (DbEntityValidationException) // TODO change
+                {
+                    MessageBox.Show("Insert error.", "Add New Examination");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Examination already exists.", "Add New Examination");
+            }
+           
+            //_examinations = _examinations.Append(examination);
 
             _currentVisitSet.OrderLabForm.PopulateList(_examinations);
             _previousVisitSet.OrderLabForm.PopulateList(_examinations);
@@ -189,9 +206,9 @@ namespace ClinicManagementSystem.Forms.MainForms
             // physical exams:
             IDictionary<Examination, string> physicalExamsTexts = new Dictionary<Examination, string>()
             {
-                { Examination.TemperatureExamination, _currentVisitSet.PhysicalForm.TemperatureText },
+       /*         { Examination.TemperatureExamination, _currentVisitSet.PhysicalForm.TemperatureText },
                 { Examination.BloodPressureExamination, _currentVisitSet.PhysicalForm.BloodPressureText },
-                { Examination.SugarLevelExamination, _currentVisitSet.PhysicalForm.SugarLevelText }
+                { Examination.SugarLevelExamination, _currentVisitSet.PhysicalForm.SugarLevelText }*/
             };
             List<PhysicalExam> physicalExams = new List<PhysicalExam>(physicalExamsTexts.Count);
             foreach (KeyValuePair<Examination, string> kvp in physicalExamsTexts)
@@ -212,7 +229,15 @@ namespace ClinicManagementSystem.Forms.MainForms
                 _appointment.PhysicalExams.AddRange(physicalExams);
 
             // save:
-            _appointmentService.UpdateAppointment(_appointment);
+            try
+            {
+                _appointmentService.UpdateAppointment(_appointment);
+                MessageBox.Show("Visit has been updated.", "Update Visit");
+            }
+            catch (DbEntityValidationException) // TODO change
+            {
+                MessageBox.Show("Update error.", "Update Visit");
+            }
         }
 
         private void PreviousVisitsButton_Click(object sender, EventArgs e)
