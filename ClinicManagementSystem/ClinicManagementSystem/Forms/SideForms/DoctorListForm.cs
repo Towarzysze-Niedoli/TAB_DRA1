@@ -10,6 +10,7 @@ namespace ClinicManagementSystem.Forms.SideForms
     {
         public override void PopulateList(List<ListElement> elements)
         {
+            ResetIndex();
             _elements = elements;
             ListFlowPanel.Controls.Clear();
             foreach (ListElement element in _elements)
