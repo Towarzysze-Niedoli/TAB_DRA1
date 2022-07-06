@@ -96,7 +96,6 @@ namespace ClinicManagementSystem.Forms.MainForms
             if (LaboratoryTestsList != null)
             {
                 LaboratoryTestsList.Invoke(_testStatus[index].Item1);
-                TestsList.ResetIndex();
             }
 
         }

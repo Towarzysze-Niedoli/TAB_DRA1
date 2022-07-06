@@ -18,6 +18,7 @@ namespace ClinicManagementSystem.Forms.SideForms
 
         public void PopulateList(IEnumerable<Examination> examinations)
         {
+            ResetIndex();
             int index = 0;
             _elements = new List<ListElement>(examinations.Select(e => new OrderLabListElement(index++, e)));
 

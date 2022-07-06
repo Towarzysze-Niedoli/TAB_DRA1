@@ -70,7 +70,7 @@ namespace ClinicManagementSystem.Forms.SideForms
 
         private void LabSearchButton_Click(object sender, EventArgs e)
         {
-            _orderLabListForm.ResetIndex();
+
         }
 
         private void AddButton_Click(object sender, EventArgs e)

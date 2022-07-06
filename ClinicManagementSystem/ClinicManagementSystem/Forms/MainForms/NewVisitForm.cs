@@ -126,7 +126,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             if(_chosenPatient != null || _chosenDoctor != null)
             {
                 // TODO tu sprawdzanie np. regexem czy sa stringi poprawne
-                int[] date = VisitDateTextBox.Text.Split(new char[] { '.', '-' }).Select(s => int.Parse(s)).ToArray();
+                int[] date = VisitDateTimePicker.Text.Split(new char[] { '.', '-' }).Select(s => int.Parse(s)).ToArray();
                 int[] time = VisitTimeTextBox.Text.Split(new char[] { ':', '.', '-' }).Select(s => int.Parse(s)).ToArray();
                 
                 DateTime scheduledDate = new DateTime(date[2], date[1], date[0], time[0], time[1], 0);
@@ -200,7 +200,6 @@ namespace ClinicManagementSystem.Forms.MainForms
                 doctors = _doctorService.GetDoctorBySpecialization(specIndex);
                 DisplayDoctors(doctors);
             }
-            _doctorsList.ResetIndex();
         }
 
         private void ClearData()

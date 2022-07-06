@@ -6,7 +6,9 @@ namespace ClinicManagementSystem.Forms.SideForms
 {
     class VisitsListForm : ListForm
     {
-        public override void PopulateList(List<ListElement> elements) {
+        public override void PopulateList(List<ListElement> elements) 
+        {
+            ResetIndex();
             _elements = elements;
             ListFlowPanel.Controls.Clear();
             foreach (ListElement element in _elements)
