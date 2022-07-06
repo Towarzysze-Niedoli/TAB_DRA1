@@ -214,7 +214,6 @@ namespace ClinicManagementSystem.Forms.MainForms
                 
             DisplayAppointments(_appointments.ToList());
             
-            _visitsListForm.ResetIndex();
         }
 
         private void VisitStatusComboBox_SelectedIndexChanged(object sender, EventArgs e)

@@ -16,6 +16,7 @@ namespace ClinicManagementSystem.Forms.SideForms
     {
         protected override void PopulateListExample()
         {
+            ResetIndex();
             _elements = new List<ListElement>
             {
                 new LaboratoryTestListElement(0, "Complete Blood Count", "Fri - 25.03.2022 - 7:00"),

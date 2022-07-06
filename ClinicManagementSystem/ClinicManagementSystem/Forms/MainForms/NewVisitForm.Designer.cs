@@ -41,7 +41,6 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.PatientSurnameTextBox = new System.Windows.Forms.TextBox();
             this.DoctorNameTextBox = new System.Windows.Forms.TextBox();
             this.DoctorSurnameTextBox = new System.Windows.Forms.TextBox();
-            this.VisitDateTextBox = new System.Windows.Forms.TextBox();
             this.VisitTimeTextBox = new System.Windows.Forms.TextBox();
             this.NewVisitButton = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
@@ -132,9 +131,9 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.VisitDateTimePicker.CalendarFont = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.VisitDateTimePicker.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.VisitDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.VisitDateTimePicker.Location = new System.Drawing.Point(905, 100);
+            this.VisitDateTimePicker.Location = new System.Drawing.Point(29, 892);
             this.VisitDateTimePicker.Name = "VisitDateTimePicker";
-            this.VisitDateTimePicker.Size = new System.Drawing.Size(132, 27);
+            this.VisitDateTimePicker.Size = new System.Drawing.Size(266, 27);
             this.VisitDateTimePicker.TabIndex = 3;
             // 
             // contextMenuStrip1
@@ -179,18 +178,6 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.DoctorSurnameTextBox.Size = new System.Drawing.Size(266, 27);
             this.DoctorSurnameTextBox.TabIndex = 8;
             // 
-            // VisitDateTextBox
-            // 
-            this.VisitDateTextBox.BackColor = System.Drawing.SystemColors.Window;
-            this.VisitDateTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.VisitDateTextBox.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.VisitDateTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(62)))), ((int)(((byte)(138)))));
-            this.VisitDateTextBox.Location = new System.Drawing.Point(29, 892);
-            this.VisitDateTextBox.Name = "VisitDateTextBox";
-            this.VisitDateTextBox.ReadOnly = true;
-            this.VisitDateTextBox.Size = new System.Drawing.Size(266, 27);
-            this.VisitDateTextBox.TabIndex = 9;
-            // 
             // VisitTimeTextBox
             // 
             this.VisitTimeTextBox.BackColor = System.Drawing.SystemColors.Window;
@@ -199,7 +186,6 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.VisitTimeTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(62)))), ((int)(((byte)(138)))));
             this.VisitTimeTextBox.Location = new System.Drawing.Point(342, 892);
             this.VisitTimeTextBox.Name = "VisitTimeTextBox";
-            this.VisitTimeTextBox.ReadOnly = true;
             this.VisitTimeTextBox.Size = new System.Drawing.Size(266, 27);
             this.VisitTimeTextBox.TabIndex = 11;
             // 
@@ -315,6 +301,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(247)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(1241, 948);
+            this.Controls.Add(this.VisitDateTimePicker);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -325,11 +312,9 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.Controls.Add(this.button1);
             this.Controls.Add(this.NewVisitButton);
             this.Controls.Add(this.VisitTimeTextBox);
-            this.Controls.Add(this.VisitDateTextBox);
             this.Controls.Add(this.DoctorSurnameTextBox);
             this.Controls.Add(this.DoctorNameTextBox);
             this.Controls.Add(this.PatientSurnameTextBox);
-            this.Controls.Add(this.VisitDateTimePicker);
             this.Controls.Add(this.SpecializationComboBox);
             this.Controls.Add(this.NewPatientButton);
             this.Controls.Add(this.DoctorsListPanel);
@@ -359,7 +344,6 @@ namespace ClinicManagementSystem.Forms.MainForms
         private System.Windows.Forms.TextBox PatientSurnameTextBox;
         private System.Windows.Forms.TextBox DoctorNameTextBox;
         private System.Windows.Forms.TextBox DoctorSurnameTextBox;
-        private System.Windows.Forms.TextBox VisitDateTextBox;
         private System.Windows.Forms.TextBox VisitTimeTextBox;
         private System.Windows.Forms.Button NewVisitButton;
         private System.Windows.Forms.Button button1;
