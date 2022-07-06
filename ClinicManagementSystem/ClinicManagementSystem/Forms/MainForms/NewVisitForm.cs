@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Text;
+using System.Linq;
 using System.Windows.Forms;
 using ClinicManagementSystem.Forms.SideForms;
 using ClinicManagementSystem.Forms.EventArguments;
@@ -124,11 +125,18 @@ namespace ClinicManagementSystem.Forms.MainForms
         {
             if(_chosenPatient != null || _chosenDoctor != null)
             {
+                // TODO tu sprawdzanie np. regexem czy sa stringi poprawne
+                int[] date = VisitDateTextBox.Text.Split(new char[] { '.', '-' }).Select(s => int.Parse(s)).ToArray();
+                int[] time = VisitTimeTextBox.Text.Split(new char[] { ':', '.', '-' }).Select(s => int.Parse(s)).ToArray();
+                
+                DateTime scheduledDate = new DateTime(date[2], date[1], date[0], time[0], time[1], 0);
+
                 Appointment newAppointment = new Appointment
                 {
                     Doctor = _chosenDoctor,
                     Patient = _chosenPatient,
                     RegistrationDate = DateTime.Now,
+                    ScheduledDate = scheduledDate,
                     Receptionist = _authorizationService.GetCurrentlyLoggedPerson<Receptionist>()
                 };
                 try
