@@ -51,6 +51,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.ConciderDateCheckBox = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // VisitsListPanel
@@ -295,12 +296,25 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.label6.TabIndex = 32;
             this.label6.Text = "Time";
             // 
+            // ConciderDateCheckBox
+            // 
+            this.ConciderDateCheckBox.AutoSize = true;
+            this.ConciderDateCheckBox.Checked = true;
+            this.ConciderDateCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.ConciderDateCheckBox.Location = new System.Drawing.Point(533, 101);
+            this.ConciderDateCheckBox.Name = "ConciderDateCheckBox";
+            this.ConciderDateCheckBox.Size = new System.Drawing.Size(126, 21);
+            this.ConciderDateCheckBox.TabIndex = 33;
+            this.ConciderDateCheckBox.Text = "Concider Date";
+            this.ConciderDateCheckBox.UseVisualStyleBackColor = true;
+            // 
             // VisitsMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(247)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(1241, 948);
+            this.Controls.Add(this.ConciderDateCheckBox);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -352,5 +366,6 @@ namespace ClinicManagementSystem.Forms.MainForms
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.CheckBox ConciderDateCheckBox;
     }
 }
