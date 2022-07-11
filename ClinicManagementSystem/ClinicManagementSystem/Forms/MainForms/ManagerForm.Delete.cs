@@ -31,7 +31,23 @@ namespace ClinicManagementSystem.Forms.MainForms
 
         private void DeletePatient()
         {
-
+            if (ValidatePatient(out Patient patientToUDelete, out string[] errors, true))
+            {
+                try
+                {
+                    _patientService.DeletePatient(patientToUDelete.Id);
+                    MessageBox.Show("Patient has been deleted.", "Delete Patient");
+                    ClearData();
+                }
+                catch (Exception e) // TODO change ?
+                {
+                    MessageBox.Show("Deletion error: " + e.Message, "Delete Patient");
+                }               
+            }
+            else
+            {
+                MessageBox.Show(errors[0], errors[1]);
+            }
         }
 
         private void DisableDoctorAccount()
