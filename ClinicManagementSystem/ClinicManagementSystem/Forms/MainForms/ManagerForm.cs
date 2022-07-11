@@ -22,11 +22,11 @@ namespace ClinicManagementSystem.Forms.MainForms
         private IReceptionistService _receptionistService;
         private ILaboratoryTechnicianService _technicianService;
         private ILaboratoryManagerService _managerService;
+        private IApplicationUserService _applicationUserService;
         private List<(Specialization, string)> _specialization;
 
-        public ManagerForm(MainFormType formType, IPatientService patientService, IDoctorService doctorService, IReceptionistService receptionistService, ILaboratoryTechnicianService technicianService, ILaboratoryManagerService managerService)
-        {
-            
+        public ManagerForm(MainFormType formType, IPatientService patientService, IDoctorService doctorService, IReceptionistService receptionistService, ILaboratoryTechnicianService technicianService, ILaboratoryManagerService managerService, IApplicationUserService applicationUserService)
+        {          
             this._formType = formType;
             InitializeComponent();
             InitializeSpecializationCombobox();
@@ -37,6 +37,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             _receptionistService = receptionistService;
             _technicianService = technicianService;
             _managerService = managerService;
+            _applicationUserService = applicationUserService;
         }
 
         private void InitializeSpecializationCombobox()
@@ -192,8 +193,6 @@ namespace ClinicManagementSystem.Forms.MainForms
               }
         }
 
-        
-
         private void FindDoctor(string[] name)
         {
             Doctor doctor = _doctorService.GetDoctorByName(name[0], name[1]);
@@ -208,6 +207,7 @@ namespace ClinicManagementSystem.Forms.MainForms
                 UserSurnameTextBox.Text = doctor.LastName;
                 EMailTextBox.Text = doctor.Email;
                 PasswordTextBox.Text = ""; // todo from auth services; PR: chyba nie chcecie pokazywac hasla uzytkownika... poza tym sa w postaci hasha i nie da sie ich odczytac
+                SpecializationComboBox.SelectedIndex = (int)doctor.Specialization;
 
                 if (doctor.Address != null)
                 {
@@ -349,33 +349,6 @@ namespace ClinicManagementSystem.Forms.MainForms
             SpecializationComboBox.SelectedIndex = 0;
             LabManagerRadioButton.Checked = false;
             LabTechicianRadioButton.Checked = false;
-        }
-
-        
-
-        private void DeleteButton_Click(object sender, EventArgs e)
-        {
-            switch (_formType)
-            {
-                case MainFormType.ManagerPatients:
-                    //DeletePatient();
-                    break;
-                case MainFormType.ManagerDoctors:
-                    //DeleteDoctor();
-                    break;
-                case MainFormType.ManagerLaboratory:
-                    //DeleteLaboratoryWorker();
-                    break;
-                case MainFormType.ManagerReceptionist:
-                    //DeleteReceptionist();
-                    break;
-                default:
-                    break;
-            }
-        }
-
-        
-        
-
+        }       
     } 
 }

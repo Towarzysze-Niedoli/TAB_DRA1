@@ -92,8 +92,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             else
             {
                 MessageBox.Show("Select the type of worker!", "Update Laboratory Worker");
-            }
-            
+            }           
         }
 
         private void UpdateLaboratoryManager(Address newAddress, string password, string email, string phone)

@@ -52,7 +52,8 @@ namespace ClinicManagementSystem
                     // examinations:
                     .AddScoped<IExaminationService, ExaminationService>()
                     .AddScoped<ILaboratoryExamService, LaboratoryExamService>()
-                    .AddScoped<IPhysicalExamService, PhysicalExamService>();
+                    .AddScoped<IPhysicalExamService, PhysicalExamService>()
+                    .AddScoped<IApplicationUserService, ApplicationUserService>();
 
             //.AddLogging(configure => configure.AddConsole())
         }

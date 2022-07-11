@@ -155,7 +155,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             UnloadMainForm();
             _managerForm = new ManagerForm(MainFormType.ManagerDoctors, _provider.GetService<IPatientService>(),
                 _provider.GetService<IDoctorService>(), _provider.GetService<IReceptionistService>(), _provider.GetService<ILaboratoryTechnicianService>(),
-                _provider.GetService<ILaboratoryManagerService>());
+                _provider.GetService<ILaboratoryManagerService>(),  _provider.GetService<IApplicationUserService>());
             _activeMainForm = MainFormType.ManagerDoctors;
             InitializeForm(_managerForm, FormType.MainForm);
         }
@@ -165,7 +165,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             UnloadMainForm();
             _managerForm = new ManagerForm(MainFormType.ManagerPatients, _provider.GetService<IPatientService>(),
                 _provider.GetService<IDoctorService>(), _provider.GetService<IReceptionistService>(), _provider.GetService<ILaboratoryTechnicianService>(),
-                _provider.GetService<ILaboratoryManagerService>());
+                _provider.GetService<ILaboratoryManagerService>(), _provider.GetService<IApplicationUserService>());
             _activeMainForm = MainFormType.ManagerPatients;
             InitializeForm(_managerForm, FormType.MainForm);
         }
@@ -175,7 +175,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             UnloadMainForm();
             _managerForm = new ManagerForm(MainFormType.ManagerLaboratory, _provider.GetService<IPatientService>(),
                 _provider.GetService<IDoctorService>(), _provider.GetService<IReceptionistService>(), _provider.GetService<ILaboratoryTechnicianService>(),
-                _provider.GetService<ILaboratoryManagerService>());
+                _provider.GetService<ILaboratoryManagerService>(), _provider.GetService<IApplicationUserService>());
             _activeMainForm = MainFormType.ManagerLaboratory;
             InitializeForm(_managerForm, FormType.MainForm);
         }
@@ -185,7 +185,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             UnloadMainForm();
             _managerForm = new ManagerForm(MainFormType.ManagerReceptionist, _provider.GetService<IPatientService>(),
                 _provider.GetService<IDoctorService>(), _provider.GetService<IReceptionistService>(), _provider.GetService<ILaboratoryTechnicianService>(),
-                _provider.GetService<ILaboratoryManagerService>());
+                _provider.GetService<ILaboratoryManagerService>(), _provider.GetService<IApplicationUserService>());
             _activeMainForm = MainFormType.ManagerReceptionist;
             InitializeForm(_managerForm, FormType.MainForm);
         }

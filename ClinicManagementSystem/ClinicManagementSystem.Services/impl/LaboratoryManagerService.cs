@@ -40,12 +40,12 @@ namespace ClinicManagementSystem.Services.impl
 
         public void DisableLaboratoryManagerAccount(int laboratoryManagerId)
         {
-            authorizationService.DisablePersonAccount<LaboratoryTechnician>(laboratoryManagerId);
+            authorizationService.DisablePersonAccount<LaboratoryManager>(laboratoryManagerId);
         }
 
         public void EnableLaboratoryManagerAccount(int laboratoryManagerId)
         {
-            authorizationService.EnablePersonAccount<LaboratoryTechnician>(laboratoryManagerId);
+            authorizationService.EnablePersonAccount<LaboratoryManager>(laboratoryManagerId);
         }
 
         public LaboratoryManager GetLaboratoryManagerByName(string firstName, string lastName)
