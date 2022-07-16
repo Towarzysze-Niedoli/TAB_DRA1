@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -39,7 +39,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             InitializeTestResults();
             InitializeLaboratoryTestsCombobox();
             _level = level;
-            SetAccessability();     
+            SetAccessibility();     
         }
 
         public LaboratoryForm(int tmp)
@@ -100,7 +100,7 @@ namespace ClinicManagementSystem.Forms.MainForms
 
         }
 
-        private void SetAccessability()
+        private void SetAccessibility()
         {
             if(_level == UserLevel.Laborant)
             {
