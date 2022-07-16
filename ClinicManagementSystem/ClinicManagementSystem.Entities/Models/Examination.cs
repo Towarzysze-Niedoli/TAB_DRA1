@@ -24,6 +24,11 @@ namespace ClinicManagementSystem.Entities.Models
         [Required(ErrorMessage = "Examination name is required")]
         public string ExaminationName { get; set; }
 
+        /// <summary>
+        /// "[Code] ExaminationName"
+        /// </summary>
+        public string FormattedName => $"[{this.Code}] {this.ExaminationName}";
+
 
 /*        public static Examination TemperatureExamination = new Examination()
         {
