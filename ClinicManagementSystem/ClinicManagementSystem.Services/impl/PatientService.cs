@@ -19,6 +19,7 @@ namespace ClinicManagementSystem.Services.impl
         {
             Patient patient = context.Patients.Find(patientId);
             context.Patients.Remove(patient);
+            Save();
         }
 
         public IEnumerable<Patient> GetPatients()
