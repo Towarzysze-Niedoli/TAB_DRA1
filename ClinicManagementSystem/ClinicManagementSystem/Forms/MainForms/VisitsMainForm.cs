@@ -22,14 +22,14 @@ namespace ClinicManagementSystem.Forms.MainForms
         public delegate void NextPageButtonClicked(object source, PageControllingButtonClickedArgs args);
         public event NextPageButtonClicked ButtonClicked;
 
-        private ListForm _visitsListForm;
+        private VisitsListForm _visitsListForm;
 
         private UserLevel _level;
         private IAppointmentService _service;
         private IPatientService _patientService;
         private IAuthorizationService _authorizationService;
         //private IDoctorService _doctorService;
-        private IEnumerable<Appointment> _appointments;
+        private IList<Appointment> _appointments;
 
         private Doctor _loggedDoctor;
         Appointment _currentAppointment;
@@ -45,12 +45,12 @@ namespace ClinicManagementSystem.Forms.MainForms
             _service = appointmentService;
             _patientService = patientService;
             _authorizationService = authorizationService;
-            _loggedDoctor = authorizationService.GetCurrentlyLoggedPerson<Doctor>();
+            _loggedDoctor = authorizationService.GetCurrentlyLoggedPerson<Doctor>(); // jesli nie jestesmy doktorem, tylko np. recepcjonistka, to dostaniemy null
             //_doctorService = doctorService;
             SetVisibility();
             _visitsListForm = new VisitsListForm();
 
-            _appointments = _service.GetAppointmentsByStatusAndDoctor(AppointmentStatus.Pending, _loggedDoctor);
+            _appointments = _service.GetAppointments(AppointmentStatus.Pending, _loggedDoctor);
             DisplayAppointments(_appointments);
 
             _visitsListForm.ElementClicked += OnVisitsListFormElementClicked;
@@ -81,20 +81,9 @@ namespace ClinicManagementSystem.Forms.MainForms
             VisitStatusComboBox.SelectedIndex = 1; // PR: domyslnie lekarz widzi wizyty, ktore ma przeprowadzic
         }
 
-        private void DisplayAppointments(IEnumerable<Appointment> appointments)
+        private void DisplayAppointments(IList<Appointment> appointments)
         {
-            var elements = new List<ListElement>();
-            int index = 0;
-            foreach (Appointment appointment in appointments)
-            {
-                string patientName = appointment.Patient != null ? appointment.Patient.FirstName + ' ' + appointment.Patient.LastName : "";
-                var el = new VisitListElement(index++,
-                    patientName,
-                    $"{appointment.Doctor.FirstName} {appointment.Doctor.LastName}",
-                    appointment.ScheduledDate.ToString("g"));
-                elements.Add(el);
-            }
-            _visitsListForm.PopulateList(elements);
+            _visitsListForm.PopulateList(appointments);
             _visitsListForm.Show();
 
         }
@@ -110,7 +99,32 @@ namespace ClinicManagementSystem.Forms.MainForms
 
         private void SearchPatientButton_Click(object sender, EventArgs e)
         {
-            
+            string[] name = SearchPatientTextBox.Text.Split(' ');
+            if (name.Length > 1)
+            {
+                IEnumerable<Patient> searchedPatients = _patientService.GetPatientsByName(name[0], name[1]); // PR: przygotowuje pod sytuacje, gdzie dwoch pacjentow ma te same imie i nazwisko albo zmieimy wyszukiwanie na bardziej elastyczne
+                if (searchedPatients.Count() == 0)
+                {
+                    MessageBox.Show("No patient found, showing for all patients", "Warning");
+                    _appointments = _service.GetAppointments(_appointmentStatus[VisitStatusComboBox.SelectedIndex].Item1, _loggedDoctor);
+                }
+                else
+                {
+                    _appointments = searchedPatients
+                        .Select(p => _service.GetAppointmentsAsEnumerable(_appointmentStatus[VisitStatusComboBox.SelectedIndex].Item1, _loggedDoctor, p))
+                        .Aggregate((total, next) => total.Concat(next))
+                        .ToList();
+
+                    //_appointments = searchedPatients
+                    //    .Select(p => _service.GetAppointments(_appointmentStatus[VisitStatusComboBox.SelectedIndex].Item1, _loggedDoctor).ToList())
+                    //    .Aggregate((total, next) => { total.AddRange(next); return total; });
+                }
+            }
+            else
+                _appointments = _service.GetAppointments(_appointmentStatus[VisitStatusComboBox.SelectedIndex].Item1, _loggedDoctor);
+
+
+            DisplayAppointments(_appointments);
         }
 
 
@@ -134,25 +148,6 @@ namespace ClinicManagementSystem.Forms.MainForms
             DoctorSurnameTextBox.Text = _currentAppointment.Doctor.LastName;
             VisitDateTextBox.Text = _currentAppointment.ScheduledDate.Date.ToShortDateString();
             VisitTimeTextBox.Text = _currentAppointment.ScheduledDate.ToString("t");
-
-            //foreach(var a in appointments)
-            //{
-            //    if(args.Index == index)
-            //    {
-            //        PatientNameTextBox.Text = a.Patient.FirstName;
-            //        PatientSurnameTextBox.Text = a.Patient.LastName;
-            //        DoctorNameTextBox.Text = a.Doctor.FirstName;
-            //        DoctorSurnameTextBox.Text = a.Doctor.LastName;
-            //        VisitDateTextBox.Text = a.ScheduledDate.Date.ToShortDateString();
-            //        VisitTimeTextBox.Text = a.ScheduledDate.ToString("t");
-            //        _currentAppointment = a;
-            //        break;
-            //    }
-            //    else
-            //    {
-            //        index++;
-            //    }
-            //}
         }
 
         private void ClearVisitTextFields()
@@ -190,61 +185,21 @@ namespace ClinicManagementSystem.Forms.MainForms
             }
         }
 
-        private void SearchPatientButton_Click_1(object sender, EventArgs e)
-        {
-            string [] name = SearchPatientTextBox.Text.Split(' ');
-            if (name.Length > 1)
-            {
-                IEnumerable<Patient> searchedPatients = _patientService.GetPatientsByName(name[0], name[1]); // PR: przygotowuje pod sytuacje, gdzie dwoch pacjentow ma te same imie i nazwisko albo zmieimy wyszukiwanie na bardziej elastyczne
-                if (searchedPatients.Count() == 0)
-                {
-                    MessageBox.Show("No patient found, showing for all patients", "Warning");
-                    _appointments = _service.GetAppointments(_appointmentStatus[VisitStatusComboBox.SelectedIndex].Item1, _loggedDoctor);
-                }
-                else
-                {
-                    _appointments = searchedPatients
-                        .Select(p => _service.GetAppointments(_appointmentStatus[VisitStatusComboBox.SelectedIndex].Item1, _loggedDoctor))
-                        .Aggregate((total, next) => total.Concat(next));
-                }
-            }
-            else
-                _appointments = _service.GetAppointments(_appointmentStatus[VisitStatusComboBox.SelectedIndex].Item1, _loggedDoctor);
-
-                
-            DisplayAppointments(_appointments.ToList());
-            
-        }
-
         private void VisitStatusComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (_service == null)
                 return;
             string[] name = SearchPatientTextBox.Text.Split(' ');
-            if (name.Length > 1) 
-            {              
-                
-                Patient searchedPatient = _patientService.GetPatientByName(name[0], name[1]);
-                if (VisitStatusComboBox.SelectedItem != null && VisitStatusComboBox.SelectedIndex != 0) // 0 is default when nothing is checked, idk how to check it better
-                {
-                    AppointmentStatus appointmentStatus = (AppointmentStatus)Enum.Parse(typeof(AppointmentStatus), VisitStatusComboBox.SelectedItem.ToString());
-                    _appointments = _service.GetAppointmentsByPatientAndStatus(searchedPatient, appointmentStatus);
-                }
-                else
-                {
-                    _appointments = _service.GetAppointmentsForPatient(searchedPatient);
-                }
-            }
-            else if(VisitStatusComboBox.SelectedItem != null && VisitStatusComboBox.SelectedIndex != 0)
-            {
-                AppointmentStatus appointmentStatus = (AppointmentStatus)Enum.Parse(typeof(AppointmentStatus), VisitStatusComboBox.SelectedItem.ToString());
-                _appointments = _service.GetAppointmentsByStatus(appointmentStatus);
-            }
-            else
-            {
-                _appointments = _service.GetAppointments();
 
-            }
+            Patient searchedPatient = name.Length > 1
+                ? _patientService.GetPatientByName(name[0], name[1])
+                : null;
+ 
+            AppointmentStatus? appointmentStatus = VisitStatusComboBox.SelectedIndex != -1
+                ? _appointmentStatus[VisitStatusComboBox.SelectedIndex].Item1
+                : null;
+
+            _appointments = _service.GetAppointments(appointmentStatus, _loggedDoctor, searchedPatient);
 
             // todo polaczenie z filtrowaniem po dacie
 

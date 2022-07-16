@@ -195,7 +195,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.SearchPatientButton.TabIndex = 23;
             this.SearchPatientButton.Text = "Search";
             this.SearchPatientButton.UseVisualStyleBackColor = false;
-            this.SearchPatientButton.Click += new System.EventHandler(this.SearchPatientButton_Click_1);
+            this.SearchPatientButton.Click += new System.EventHandler(this.SearchPatientButton_Click);
             // 
             // PerformVisitButton
             // 

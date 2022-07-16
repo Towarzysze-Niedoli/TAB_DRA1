@@ -18,6 +18,11 @@ namespace ClinicManagementSystem.Services.impl
             
         }
 
+        private IEnumerable<Appointment> _getAppointments()
+        {
+            return context.Appointments.Include(a => a.Patient).Include(a => a.Doctor);
+        }
+
         public void DeleteAppointment(int appointmentId)
         {
             Appointment appointment = context.Appointments.Find(appointmentId);
@@ -25,29 +30,14 @@ namespace ClinicManagementSystem.Services.impl
             Save();
         }
 
-        public IEnumerable<Appointment> GetAppointmentsForDoctor(Doctor doctor)
+        public IList<Appointment> GetAppointmentsByCompletionDate(DateTime completionDate)
         {
-            return GetAppointments().Where(a => a.Doctor == doctor);
+            return _getAppointments().Where(a => a.CompletionDate == completionDate).ToList();
         }
 
-        public IEnumerable<Appointment> GetAcceptedAppointmentsForPatient(Patient patient)
+        public IList<Appointment> GetAppointments()
         {
-            return GetAppointments().ToList().Where(a => a.Patient == patient && a.AppointmentStatus == Entities.Enums.AppointmentStatus.Accepted);
-        }
-
-        public IEnumerable<Appointment> GetAppointmentsForPatient(Patient patient)
-        {
-            return GetAppointments().ToList().Where(a => a.Patient == patient);
-        }
-
-        public IEnumerable<Appointment> GetAppointmentsByCompletionDate(DateTime completionDate)
-        {
-            return GetAppointments().Where(a => a.CompletionDate == completionDate);
-        }
-
-        public IEnumerable<Appointment> GetAppointments()
-        {
-            return context.Appointments.Include(a => a.Patient).Include(a => a.Doctor);
+            return context.Appointments.Include(a => a.Patient).Include(a => a.Doctor).ToList();
         }
 
         public Appointment GetAppointmentByID(int appointmentId)
@@ -57,21 +47,12 @@ namespace ClinicManagementSystem.Services.impl
 
         public Appointment GetAppointmentForPatientByCompletionDate(Patient patient, DateTime completionDate)
         {
-            return GetAppointments().Where(a => a.Patient == patient).Where(a => a.CompletionDate == completionDate).FirstOrDefault();
+            return _getAppointments().Where(a => a.Patient == patient).Where(a => a.CompletionDate == completionDate).FirstOrDefault();
         }
 
-        public IEnumerable<Appointment> GetAppointmentsByStatus(AppointmentStatus status)
-        {
-            return GetAppointments().Where(a => a.AppointmentStatus == status).ToList();
-        }
-
-        public IEnumerable<Appointment> GetAppointmentsByPatientAndStatus(Patient patient, AppointmentStatus status)
-        {
-            return GetAppointments().ToList().Where(a => a.Patient == patient && a.AppointmentStatus == status);
-        }
         public DateTime? GetLastAppointmentDateForPatient(Patient patient)
         {
-            Appointment a = GetAppointments().ToList().Where(a => a.Patient == patient).OrderByDescending(a => a.ScheduledDate).FirstOrDefault();
+            Appointment a = _getAppointments().Where(a => a.Patient == patient).OrderByDescending(a => a.ScheduledDate).FirstOrDefault();
             if (a != null)
                 return a.CompletionDate;
             return null;
@@ -89,20 +70,15 @@ namespace ClinicManagementSystem.Services.impl
             Save();
         }
 
-        public IEnumerable<Appointment> GetAppointmentsByStatusAndDoctor(AppointmentStatus status, Doctor doctor)
+        public IList<Appointment> GetAppointmentsByScheduledDate(DateTime date)
         {
-            return GetAppointments().Where(a => a.AppointmentStatus == status && a.Doctor == doctor);
+            return context.Appointments.Where(a => a.ScheduledDate.Date.Equals(date)).ToList();
         }
 
-        public IEnumerable<Appointment> GetAppointmentsByScheduledDate(DateTime date)
-        {
-            return context.Appointments.ToList().Where(a => a.ScheduledDate.Date.Equals(date));
-        }
-
-        public IEnumerable<Appointment> GetAppointments(AppointmentStatus? status, Doctor doctor, Patient patient)
+        public IEnumerable<Appointment> GetAppointmentsAsEnumerable(AppointmentStatus? status, Doctor doctor, Patient patient)
         {
             // PR: takie skladanie where pozornie wyglada na malo wydajne, ale dla EF/LINQ wydaje sie nie miec znaczenia, a mamy jedna krotka funkcje na wszystko
-            IEnumerable<Appointment> appointments = GetAppointments();
+            IEnumerable<Appointment> appointments = context.Appointments.Include(a => a.Patient).Include(a => a.Doctor);
 
             if (status != null)
                 appointments = appointments.Where(a => a.AppointmentStatus == status);
@@ -112,6 +88,11 @@ namespace ClinicManagementSystem.Services.impl
                 appointments = appointments.Where(a => a.Patient == patient);
 
             return appointments;
+        }
+
+        public IList<Appointment> GetAppointments(AppointmentStatus? status, Doctor doctor, Patient patient)
+        {
+            return GetAppointmentsAsEnumerable(status, doctor, patient).ToList();
         }
     }
 }
