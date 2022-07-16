@@ -20,14 +20,14 @@ namespace ClinicManagementSystem.Forms.MainForms
 {
     public partial class NewVisitForm : Form
     {
-        private ListForm _doctorsList;
+        private DoctorListForm _doctorsList;
         private PersonInfoForm _patientInfo;
         private IPatientService _patientService;
         private IDoctorService _doctorService;
         private IAppointmentService _appointmentService;
         private IAuthorizationService _authorizationService;
         private List<(Specialization, string)> _specialization;
-        IEnumerable<Doctor> doctors;
+        IList<Doctor> doctors;
         private Doctor _chosenDoctor;
         private Patient _chosenPatient;
         public NewVisitForm(IServiceProvider serviceProvider)
@@ -40,7 +40,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             _appointmentService = serviceProvider.GetService<IAppointmentService>();
             _doctorService = serviceProvider.GetService<IDoctorService>();
             _authorizationService = serviceProvider.GetService<IAuthorizationService>();
-            doctors = _doctorService.GetDoctors();
+            doctors = _doctorService.GetDoctors().ToList();
             DisplayDoctors(doctors);
         }
 
@@ -72,23 +72,9 @@ namespace ClinicManagementSystem.Forms.MainForms
             SpecializationComboBox.SelectedIndex = 0;
         }
 
-        private void DisplayDoctors(IEnumerable<Doctor> doctors)
+        private void DisplayDoctors(IList<Doctor> doctors)
         {
-            var elements = new List<ListElement>();
-            int index = 0;
-
-            foreach(Doctor doctor in doctors)
-            {
-                string doctorName = doctor.FirstName != null ? doctor.FirstName + " " + doctor.LastName : " ";
-                var el = new DoctorListElement(
-                    index++,
-                    doctorName,
-                    doctor.Specialization.ToString(),
-                    ""
-                );
-                elements.Add(el); 
-            }
-            _doctorsList.PopulateList(elements);
+            _doctorsList.PopulateList(doctors);
             _doctorsList.Show();
         }
 
@@ -125,11 +111,11 @@ namespace ClinicManagementSystem.Forms.MainForms
         {
             if(_chosenPatient != null || _chosenDoctor != null)
             {
-                // TODO tu sprawdzanie np. regexem czy sa stringi poprawne
-                int[] date = VisitDateTimePicker.Text.Split(new char[] { '.', '-' }).Select(s => int.Parse(s)).ToArray();
+                DateTime date = VisitDateTimePicker.Value;
+                // TODO tu sprawdzanie np. regexem czy string jest poprawny
                 int[] time = VisitTimeTextBox.Text.Split(new char[] { ':', '.', '-' }).Select(s => int.Parse(s)).ToArray();
                 
-                DateTime scheduledDate = new DateTime(date[2], date[1], date[0], time[0], time[1], 0);
+                DateTime scheduledDate = new DateTime(date.Year, date.Month, date.Day, time[0], time[1], 0);
 
                 Appointment newAppointment = new Appointment
                 {
@@ -148,6 +134,7 @@ namespace ClinicManagementSystem.Forms.MainForms
                 {
                     MessageBox.Show("Insert error.", "Add New Visit");
                 }
+                _doctorsList.Deselect();
                 ClearData();
             }
             else
@@ -187,19 +174,18 @@ namespace ClinicManagementSystem.Forms.MainForms
             }   
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void SearchDoctorButton_Click(object sender, EventArgs e)
         {
             int specIndex = this.SpecializationComboBox.SelectedIndex;
             if(specIndex == 0)
             {
-                doctors = _doctorService.GetDoctors();
-                DisplayDoctors(doctors);
+                doctors = _doctorService.GetDoctors().ToList();
             }
             else
             {
-                doctors = _doctorService.GetDoctorBySpecialization(specIndex);
-                DisplayDoctors(doctors);
+                doctors = _doctorService.GetDoctorBySpecialization(specIndex).ToList();
             }
+            DisplayDoctors(doctors);
         }
 
         private void ClearData()
