@@ -8,10 +8,9 @@ namespace ClinicManagementSystem.Services
 {
     public interface IExaminationService: IBaseService
     {
-        IEnumerable<Examination> GetExaminations();
+        IList<Examination> GetExaminations();
         IEnumerable<Examination> GetExaminationsByType(ExaminationType examinationType);
         Examination GetExaminationByCode(string examinationCode);
-        Examination GetExaminationByID(int examinationId);
         void InsertExamination(Examination examination);
         void DeleteExamination(int examinationId);
         void UpdateExamination(Examination examination);

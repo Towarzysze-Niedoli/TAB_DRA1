@@ -22,19 +22,15 @@ namespace ClinicManagementSystem.Services.impl
             Save();
         }
 
-        public Examination GetExaminationByID(int examinationId)
-        {
-            return context.Examinations.Find(examinationId);
-        }
-
         public Examination GetExaminationByCode(string examinationCode)
         {
-            return context.Examinations.Where(e => e.Code == examinationCode).FirstOrDefault();
+            return context.Examinations.Find(examinationCode); // PR: kod jest kluczem
+            //return context.Examinations.Where(e => e.Code == examinationCode).FirstOrDefault();
         }
 
-        public IEnumerable<Examination> GetExaminations()
+        public IList<Examination> GetExaminations()
         {
-            return context.Examinations;
+            return context.Examinations.ToList();
         }
 
         public IEnumerable<Examination> GetExaminationsByType(ExaminationType examinationType)
