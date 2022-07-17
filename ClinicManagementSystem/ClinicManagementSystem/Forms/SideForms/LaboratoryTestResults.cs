@@ -13,21 +13,14 @@ namespace ClinicManagementSystem.Forms.SideForms
 {
     public partial class LaboratoryTestResults : Form
     {
-        private LaboratoryForm _labForm;
         public LaboratoryTestResults()
         {
             InitializeComponent();
-            InitializeTestList();
             Dock = DockStyle.Fill;
             this.TopMost = true;
             this.TopLevel = false;
         }
 
-        void InitializeTestList()
-        {
-            _labForm = new LaboratoryForm(1);
-            //_labForm.TestClicked += WriteLaboratoryResults;
-        }
 
         protected void WriteLaboratoryResults(object source, LaboratoryListElementClickedArgs args)
         {

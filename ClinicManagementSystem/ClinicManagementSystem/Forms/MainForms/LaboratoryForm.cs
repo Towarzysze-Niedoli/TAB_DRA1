@@ -42,11 +42,6 @@ namespace ClinicManagementSystem.Forms.MainForms
             SetAccessability();     
         }
 
-        public LaboratoryForm(int tmp)
-        {
-
-        }
-
         private void InitializeLaboratoryTestsCombobox()
         {
             _testStatus = new List<(TestStatus?, string)>
