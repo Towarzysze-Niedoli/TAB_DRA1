@@ -1,21 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using ClinicManagementSystem.Entities.Models;
 using ClinicManagementSystem.Forms.CustomElements;
 
 namespace ClinicManagementSystem.Forms.SideForms
 {
     class VisitsListForm : ListForm
     {
-        public override void PopulateList(List<ListElement> elements) 
+        public void PopulateList(IList<Appointment> appointments)
         {
-            ResetIndex();
-            _elements = elements;
-            ListFlowPanel.Controls.Clear();
-            foreach (ListElement element in _elements)
-            {
-                element.ListElementClicked += OnElementClicked;
-                ListFlowPanel.Controls.Add(element);
-            }
+            List<ListElement> elements = appointments
+                .Select((app, index) => new VisitListElement(index, app.Patient.FullName, app.Doctor.FullName, app.ScheduledDate.ToString("g")))
+                .ToList<ListElement>();
+            base.PopulateList(elements);
         }
 
         protected override void PopulateListExample()

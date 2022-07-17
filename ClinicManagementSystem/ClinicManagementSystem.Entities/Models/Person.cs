@@ -25,5 +25,7 @@ namespace ClinicManagementSystem.Entities.Models
         public string PhoneNumber { get; set; }
 
         public Address Address { get; set; }
+
+        public string FullName => $"{this.FirstName} {this.LastName}";
     }
 }

@@ -51,7 +51,7 @@ namespace ClinicManagementSystem.Forms.MainForms
                 _patientInfoForm.InitializeValues(_appointment.Patient, _appointmentService.GetLastAppointmentDateForPatient(_appointment.Patient));
             }
 
-            IEnumerable<Appointment> appointments = _appointmentService.GetAppointmentsForPatient(_appointment.Patient);
+            IList<Appointment> appointments = _appointmentService.GetAppointments(null, null, _appointment.Patient);
             int length = appointments.Count();
             IList<DoctorListElement> listElements = new List<DoctorListElement>(length);
             int index = 0;

@@ -15,13 +15,11 @@ namespace ClinicManagementSystem.Forms.CustomElements
         public string TestName { get; set; }
         public string Date { get; set; }
 
-        public LaboratoryTestListElement(int index, string upperText, string lowerText): base(index)
+        public LaboratoryTestListElement(int index, string testName, string date): base(index)
         {
             InitializeComponent();
-            this.UpperMainLabel.Text = upperText;
-            this.BottomLabelOne.Text = lowerText;
-            TestName = upperText;
-            Date = lowerText;           
+            UpperMainLabel.Text = TestName = testName;
+            BottomLabelOne.Text = Date = date;          
         }
 
         protected override void ListElement_MouseDown(object sender, MouseEventArgs e)

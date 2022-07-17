@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using ClinicManagementSystem.Entities.Models;
 using ClinicManagementSystem.Forms.CustomElements;
 using ClinicManagementSystem.Forms.EventArguments;
 
@@ -8,16 +10,10 @@ namespace ClinicManagementSystem.Forms.SideForms
 {   
     class DoctorListForm : ListForm
     {
-        public override void PopulateList(List<ListElement> elements)
+        public void PopulateList(IList<Doctor> doctors)
         {
-            ResetIndex();
-            _elements = elements;
-            ListFlowPanel.Controls.Clear();
-            foreach (ListElement element in _elements)
-            {
-                element.ListElementClicked += OnElementClicked;
-                ListFlowPanel.Controls.Add(element);
-            }
+            List<ListElement> elements = doctors.Select((doc, index) => new DoctorListElement(index, doc.FullName, doc.Specialization.ToString(), "")).ToList<ListElement>();
+            base.PopulateList(elements);
         }
 
         protected override void PopulateListExample()

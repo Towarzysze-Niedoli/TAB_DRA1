@@ -29,9 +29,8 @@ namespace ClinicManagementSystem.Forms.CustomElements
 
             Examination = examination;
 
-            UpperMainTextBox.Text = $"[{examination.Code}] {examination.ExaminationName}"; // PR: zamienilem label na textbox udajacy label, bo wtedy dziala word wrap :> kocham winformsy
+            UpperMainTextBox.Text = examination.FormattedName; // PR: zamienilem label na textbox udajacy label, bo wtedy dziala word wrap :> kocham winformsy
             UpperMainTextBox.SelectionChanged += UpperMainTextBox_SelectionChanged;
-
             IsEnabled = true;
         }
 

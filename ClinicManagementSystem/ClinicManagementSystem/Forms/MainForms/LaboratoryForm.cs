@@ -11,6 +11,8 @@ using ClinicManagementSystem.Entities.Enums;
 using ClinicManagementSystem.Forms.CustomElements;
 using ClinicManagementSystem.Forms.EventArguments;
 using ClinicManagementSystem.Forms.SideForms;
+using ClinicManagementSystem.Services;
+using ClinicManagementSystem.Entities.Models;
 
 namespace ClinicManagementSystem.Forms.MainForms
 {
@@ -31,15 +33,17 @@ namespace ClinicManagementSystem.Forms.MainForms
         public PassSelectedIndex PassIndex;
         private UserLevel _level;
         private List<(TestStatus?, string)> _testStatus;
+        private ILaboratoryExamService _labExamService;
 
-        public LaboratoryForm(UserLevel level)
+        public LaboratoryForm(UserLevel level, ILaboratoryExamService laboratoryExamService)
         {
+            _labExamService = laboratoryExamService;
             InitializeComponent();
             InitializeTestList();
             InitializeTestResults();
             InitializeLaboratoryTestsCombobox();
             _level = level;
-            SetAccessability();     
+            SetAccessibility();     
         }
 
         private void InitializeLaboratoryTestsCombobox()
@@ -57,7 +61,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             _testStatus.ForEach(((TestStatus?, string) tuple) => {
                 LaboratoryTestsComboBox.Items.Add(tuple.Item2);
             });
-            LaboratoryTestsComboBox.SelectedIndex = 1;
+            LaboratoryTestsComboBox.SelectedIndex = 1; // domyslnie wyswietlaja sie "to do"
         }
 
         void InitializeTestList()
@@ -87,6 +91,11 @@ namespace ClinicManagementSystem.Forms.MainForms
         private void LaboratoryTestsComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             int index = LaboratoryTestsComboBox.SelectedIndex;
+            TestStatus? status = _testStatus[index].Item1;
+
+            IList<LaboratoryExam> labExams = _labExamService.GetLaboratoryExamsByStatus(status);
+            TestsList.PopulateList(labExams);
+
             LaboratoryTestsList = TestsList.LaboratoryTestsList;
             if (LaboratoryTestsList != null)
             {
@@ -95,7 +104,7 @@ namespace ClinicManagementSystem.Forms.MainForms
 
         }
 
-        private void SetAccessability()
+        private void SetAccessibility()
         {
             if(_level == UserLevel.Laborant)
             {

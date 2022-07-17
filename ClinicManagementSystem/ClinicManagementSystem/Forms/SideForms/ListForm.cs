@@ -31,7 +31,29 @@ namespace ClinicManagementSystem.Forms.SideForms
             PopulateListExample();
         }
 
-        public virtual void PopulateList(List<ListElement> elements) { }
+        /// <summary>
+        /// Clears existing elements and sets the provided ones
+        /// </summary>
+        /// <param name="elements"></param>
+        public void PopulateList(List<ListElement> elements)
+        {
+            ResetIndex();
+            _elements = elements;
+            ListFlowPanel.Controls.Clear();
+            foreach (ListElement element in _elements)
+            {
+                element.ListElementClicked += OnElementClicked;
+                ListFlowPanel.Controls.Add(element);
+            }
+        }
+
+        public void Deselect()
+        {
+            if (_currentIndex >= 0)
+                ChangeElementColoring();
+            
+            _currentIndex = -1;
+        }
 
         protected virtual void PopulateListExample() { }
 

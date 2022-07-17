@@ -43,7 +43,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.DoctorSurnameTextBox = new System.Windows.Forms.TextBox();
             this.VisitTimeTextBox = new System.Windows.Forms.TextBox();
             this.NewVisitButton = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.SearchDoctorButton = new System.Windows.Forms.Button();
             this.PatientNameTextBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -206,22 +206,22 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.NewVisitButton.UseVisualStyleBackColor = false;
             this.NewVisitButton.Click += new System.EventHandler(this.NewVisitButton_Click);
             // 
-            // button1
+            // SearchDoctorButton
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(62)))), ((int)(((byte)(138)))));
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(4)))), ((int)(((byte)(94)))));
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(62)))), ((int)(((byte)(138)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(247)))), ((int)(((byte)(255)))));
-            this.button1.Location = new System.Drawing.Point(1073, 95);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(118, 40);
-            this.button1.TabIndex = 14;
-            this.button1.Text = "Search";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.SearchDoctorButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(62)))), ((int)(((byte)(138)))));
+            this.SearchDoctorButton.FlatAppearance.BorderSize = 0;
+            this.SearchDoctorButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(4)))), ((int)(((byte)(94)))));
+            this.SearchDoctorButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(62)))), ((int)(((byte)(138)))));
+            this.SearchDoctorButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SearchDoctorButton.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.SearchDoctorButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(247)))), ((int)(((byte)(255)))));
+            this.SearchDoctorButton.Location = new System.Drawing.Point(1073, 95);
+            this.SearchDoctorButton.Name = "SearchDoctorButton";
+            this.SearchDoctorButton.Size = new System.Drawing.Size(118, 40);
+            this.SearchDoctorButton.TabIndex = 14;
+            this.SearchDoctorButton.Text = "Search";
+            this.SearchDoctorButton.UseVisualStyleBackColor = false;
+            this.SearchDoctorButton.Click += new System.EventHandler(this.SearchDoctorButton_Click);
             // 
             // PatientNameTextBox
             // 
@@ -309,7 +309,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.PatientNameTextBox);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.SearchDoctorButton);
             this.Controls.Add(this.NewVisitButton);
             this.Controls.Add(this.VisitTimeTextBox);
             this.Controls.Add(this.DoctorSurnameTextBox);
@@ -346,7 +346,7 @@ namespace ClinicManagementSystem.Forms.MainForms
         private System.Windows.Forms.TextBox DoctorSurnameTextBox;
         private System.Windows.Forms.TextBox VisitTimeTextBox;
         private System.Windows.Forms.Button NewVisitButton;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button SearchDoctorButton;
         private System.Windows.Forms.TextBox PatientNameTextBox;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
