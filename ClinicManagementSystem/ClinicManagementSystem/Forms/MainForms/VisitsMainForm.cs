@@ -104,6 +104,8 @@ namespace ClinicManagementSystem.Forms.MainForms
 
         void FilterAndDisplay()
         {
+            if (_service == null)
+                return;
             string[] name = SearchPatientTextBox.Text.Split(' ');
             DateTime? date = null;
             if (ConciderDateCheckBox.Checked)
