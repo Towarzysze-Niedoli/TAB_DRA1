@@ -50,7 +50,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             SetVisibility();
             _visitsListForm = new VisitsListForm();
 
-            _appointments = _service.GetAppointments(AppointmentStatus.Pending, _loggedDoctor);
+            _appointments = _service.GetAppointments(AppointmentStatus.Pending, null, _loggedDoctor);
             DisplayAppointments(_appointments);
 
             _visitsListForm.ElementClicked += OnVisitsListFormElementClicked;
@@ -99,19 +99,27 @@ namespace ClinicManagementSystem.Forms.MainForms
 
         private void SearchPatientButton_Click(object sender, EventArgs e)
         {
+            FilterAndDisplay();
+        }
+
+        void FilterAndDisplay()
+        {
             string[] name = SearchPatientTextBox.Text.Split(' ');
+            DateTime? date = null;
+            if (ConciderDateCheckBox.Checked)
+                date = VisitDatePicker.Value.Date;
             if (name.Length > 1)
             {
                 IEnumerable<Patient> searchedPatients = _patientService.GetPatientsByName(name[0], name[1]); // PR: przygotowuje pod sytuacje, gdzie dwoch pacjentow ma te same imie i nazwisko albo zmieimy wyszukiwanie na bardziej elastyczne
                 if (searchedPatients.Count() == 0)
                 {
                     MessageBox.Show("No patient found, showing for all patients", "Warning");
-                    _appointments = _service.GetAppointments(_appointmentStatus[VisitStatusComboBox.SelectedIndex].Item1, _loggedDoctor);
+                    _appointments = _service.GetAppointments(_appointmentStatus[VisitStatusComboBox.SelectedIndex].Item1, date, _loggedDoctor);
                 }
                 else
                 {
                     _appointments = searchedPatients
-                        .Select(p => _service.GetAppointmentsAsEnumerable(_appointmentStatus[VisitStatusComboBox.SelectedIndex].Item1, _loggedDoctor, p))
+                        .Select(p => _service.GetAppointmentsAsEnumerable(_appointmentStatus[VisitStatusComboBox.SelectedIndex].Item1, date, _loggedDoctor, p))
                         .Aggregate((total, next) => total.Concat(next))
                         .ToList();
 
@@ -121,12 +129,11 @@ namespace ClinicManagementSystem.Forms.MainForms
                 }
             }
             else
-                _appointments = _service.GetAppointments(_appointmentStatus[VisitStatusComboBox.SelectedIndex].Item1, _loggedDoctor);
+                _appointments = _service.GetAppointments(_appointmentStatus[VisitStatusComboBox.SelectedIndex].Item1, date, _loggedDoctor);
 
 
             DisplayAppointments(_appointments);
         }
-
 
         private void OnVisitsListFormElementClicked(object sender, ListElementClickedArgs args)
         {
@@ -187,24 +194,8 @@ namespace ClinicManagementSystem.Forms.MainForms
 
         private void VisitStatusComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (_service == null)
-                return;
-            string[] name = SearchPatientTextBox.Text.Split(' ');
-
-            Patient searchedPatient = name.Length > 1
-                ? _patientService.GetPatientByName(name[0], name[1])
-                : null;
- 
-            AppointmentStatus? appointmentStatus = VisitStatusComboBox.SelectedIndex != -1
-                ? _appointmentStatus[VisitStatusComboBox.SelectedIndex].Item1
-                : null;
-
-            _appointments = _service.GetAppointments(appointmentStatus, _loggedDoctor, searchedPatient);
-
-            // todo polaczenie z filtrowaniem po dacie
-
+            FilterAndDisplay();
             Deselect();
-            DisplayAppointments(_appointments);
         }
 
         private void Deselect()
@@ -215,10 +206,12 @@ namespace ClinicManagementSystem.Forms.MainForms
 
         private void VisitDatePicker_ValueChanged(object sender, EventArgs e)
         {
-            DateTime pickedDate = VisitDatePicker.Value.Date;
-            DisplayAppointments(_service.GetAppointmentsByScheduledDate(pickedDate));
+            FilterAndDisplay();
+        }
 
-            // todo polaczenie z innymi filtrami
+        private void ConciderDateCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            FilterAndDisplay();
         }
     }
 }

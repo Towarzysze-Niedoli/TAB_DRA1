@@ -299,14 +299,13 @@ namespace ClinicManagementSystem.Forms.MainForms
             // ConciderDateCheckBox
             // 
             this.ConciderDateCheckBox.AutoSize = true;
-            this.ConciderDateCheckBox.Checked = true;
-            this.ConciderDateCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.ConciderDateCheckBox.Location = new System.Drawing.Point(533, 101);
             this.ConciderDateCheckBox.Name = "ConciderDateCheckBox";
             this.ConciderDateCheckBox.Size = new System.Drawing.Size(126, 21);
             this.ConciderDateCheckBox.TabIndex = 33;
             this.ConciderDateCheckBox.Text = "Concider Date";
             this.ConciderDateCheckBox.UseVisualStyleBackColor = true;
+            this.ConciderDateCheckBox.CheckedChanged += new System.EventHandler(this.ConciderDateCheckBox_CheckedChanged);
             // 
             // VisitsMainForm
             // 

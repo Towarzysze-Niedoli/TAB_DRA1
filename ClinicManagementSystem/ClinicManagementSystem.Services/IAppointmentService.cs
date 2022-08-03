@@ -23,7 +23,7 @@ namespace ClinicManagementSystem.Services
         /// <param name="doctor"></param>
         /// <param name="patient"></param>
         /// <returns></returns>
-        IList<Appointment> GetAppointments(AppointmentStatus? status, Doctor doctor = null, Patient patient = null);
+        IList<Appointment> GetAppointments(AppointmentStatus? status, DateTime? date, Doctor doctor = null, Patient patient = null);
 
         /// <summary>
         /// Returns appointments with given parameters. If you don't want to filter by some parameters, leave them null.
@@ -32,7 +32,7 @@ namespace ClinicManagementSystem.Services
         /// <param name="doctor"></param>
         /// <param name="patient"></param>
         /// <returns></returns>
-        IEnumerable<Appointment> GetAppointmentsAsEnumerable(AppointmentStatus? status, Doctor doctor = null, Patient patient = null);
+        IEnumerable<Appointment> GetAppointmentsAsEnumerable(AppointmentStatus? status, DateTime? date, Doctor doctor = null, Patient patient = null);
 
         IList<Appointment> GetAppointmentsByCompletionDate(DateTime completionDate);
         DateTime? GetLastAppointmentDateForPatient(Patient patient);
