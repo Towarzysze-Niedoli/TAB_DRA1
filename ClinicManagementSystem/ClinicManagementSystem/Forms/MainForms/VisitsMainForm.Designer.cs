@@ -51,7 +51,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.ConciderDateCheckBox = new System.Windows.Forms.CheckBox();
+            this.ConsiderDateCheckBox = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // VisitsListPanel
@@ -296,16 +296,16 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.label6.TabIndex = 32;
             this.label6.Text = "Time";
             // 
-            // ConciderDateCheckBox
+            // ConsiderDateCheckBox
             // 
-            this.ConciderDateCheckBox.AutoSize = true;
-            this.ConciderDateCheckBox.Location = new System.Drawing.Point(533, 101);
-            this.ConciderDateCheckBox.Name = "ConciderDateCheckBox";
-            this.ConciderDateCheckBox.Size = new System.Drawing.Size(126, 21);
-            this.ConciderDateCheckBox.TabIndex = 33;
-            this.ConciderDateCheckBox.Text = "Concider Date";
-            this.ConciderDateCheckBox.UseVisualStyleBackColor = true;
-            this.ConciderDateCheckBox.CheckedChanged += new System.EventHandler(this.ConciderDateCheckBox_CheckedChanged);
+            this.ConsiderDateCheckBox.AutoSize = true;
+            this.ConsiderDateCheckBox.Location = new System.Drawing.Point(533, 101);
+            this.ConsiderDateCheckBox.Name = "ConsiderDateCheckBox";
+            this.ConsiderDateCheckBox.Size = new System.Drawing.Size(127, 21);
+            this.ConsiderDateCheckBox.TabIndex = 33;
+            this.ConsiderDateCheckBox.Text = "Consider Date";
+            this.ConsiderDateCheckBox.UseVisualStyleBackColor = true;
+            this.ConsiderDateCheckBox.CheckedChanged += new System.EventHandler(this.ConsiderDateCheckBox_CheckedChanged);
             // 
             // VisitsMainForm
             // 
@@ -313,7 +313,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(247)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(1241, 948);
-            this.Controls.Add(this.ConciderDateCheckBox);
+            this.Controls.Add(this.ConsiderDateCheckBox);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -365,6 +365,6 @@ namespace ClinicManagementSystem.Forms.MainForms
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.CheckBox ConciderDateCheckBox;
+        private System.Windows.Forms.CheckBox ConsiderDateCheckBox;
     }
 }

@@ -108,7 +108,7 @@ namespace ClinicManagementSystem.Forms.MainForms
                 return;
             string[] name = SearchPatientTextBox.Text.Split(' ');
             DateTime? date = null;
-            if (ConciderDateCheckBox.Checked)
+            if (ConsiderDateCheckBox.Checked)
                 date = VisitDatePicker.Value.Date;
             if (name.Length > 1)
             {
@@ -211,7 +211,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             FilterAndDisplay();
         }
 
-        private void ConciderDateCheckBox_CheckedChanged(object sender, EventArgs e)
+        private void ConsiderDateCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             FilterAndDisplay();
         }
