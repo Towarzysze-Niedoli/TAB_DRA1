@@ -71,7 +71,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             {
                 (null, "All"),
                 (AppointmentStatus.Pending, "Pending"),
-                (AppointmentStatus.Accepted, "Accepted"),
+                (AppointmentStatus.Accepted, "Concluded"),
                 (AppointmentStatus.Cancelled, "Cancelled")
             };
 
@@ -94,7 +94,7 @@ namespace ClinicManagementSystem.Forms.MainForms
 
         private void CancelVisitButton_Click(object sender, EventArgs e)
         {
-            
+            // TODO
         }
 
         private void SearchPatientButton_Click(object sender, EventArgs e)
@@ -139,7 +139,7 @@ namespace ClinicManagementSystem.Forms.MainForms
 
         private void OnVisitsListFormElementClicked(object sender, ListElementClickedArgs args)
         {
-            PerformVisitButton.Enabled = true;
+            PerformVisitButton.Enabled = CancelVisitButton.Enabled = _appointments[args.Index].AppointmentStatus == AppointmentStatus.Pending; // PR: cannot perform or cancel concluded or cancelled visits
             FillVisitTextFields(sender, args);
         }
 

@@ -137,6 +137,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             // CancelVisitButton
             // 
             this.CancelVisitButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(95)))), ((int)(((byte)(85)))));
+            this.CancelVisitButton.Enabled = false;
             this.CancelVisitButton.FlatAppearance.BorderSize = 0;
             this.CancelVisitButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(57)))), ((int)(((byte)(70)))));
             this.CancelVisitButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(65)))), ((int)(((byte)(68)))));
@@ -204,6 +205,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.PerformVisitButton.FlatAppearance.BorderSize = 0;
             this.PerformVisitButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(4)))), ((int)(((byte)(94)))));
             this.PerformVisitButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(62)))), ((int)(((byte)(138)))));
+            this.PerformVisitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.PerformVisitButton.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.PerformVisitButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(247)))), ((int)(((byte)(255)))));
             this.PerformVisitButton.Location = new System.Drawing.Point(689, 743);
