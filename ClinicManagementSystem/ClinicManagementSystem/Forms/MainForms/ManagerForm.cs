@@ -190,13 +190,17 @@ namespace ClinicManagementSystem.Forms.MainForms
                     }
                   
                 }
-              }
+                else
+                {
+                    MessageBox.Show("Enter first and last name", "Incorrect input");
+                }
+            }
         }
 
         private void FindDoctor(string[] name)
         {
             Doctor doctor = _doctorService.GetDoctorByName(name[0], name[1]);
-            if(doctor != null)
+            if (doctor != null)
             {
                 SearchUserTextBox.Clear();
                 UpdateButton.Show();
@@ -216,7 +220,9 @@ namespace ClinicManagementSystem.Forms.MainForms
                     ZIPCodeTextBox.Text = doctor.Address.ZipCode;
                     NumberTextBox.Text = doctor.Address.HomeNumber;
                 }
-            }       
+            }
+            else
+                MessageBox.Show("Doctor not found", "Not found");
         }
         private void FindLab(string[] name)
         {
@@ -259,12 +265,14 @@ namespace ClinicManagementSystem.Forms.MainForms
                     NumberTextBox.Text = receptionist.Address.HomeNumber;
                 }               
                 
-            }    
+            }
+            else
+                MessageBox.Show("Receptionist not found", "Not found");
         }
         private void FindPatient(string[] name)
         {
             Patient patient = _patientService.GetPatientByName(name[0], name[1]);
-            if(patient != null)
+            if (patient != null)
             {
                 SearchUserTextBox.Clear();
                 UpdateButton.Show();
@@ -283,7 +291,9 @@ namespace ClinicManagementSystem.Forms.MainForms
                     ZIPCodeTextBox.Text = patient.Address.ZipCode;
                     NumberTextBox.Text = patient.Address.HomeNumber;
                 }
-            }           
+            }
+            else
+                MessageBox.Show("Patient not found", "Not found");
         }
 
         private void FindLaboratoryManager(string[] name)
@@ -308,6 +318,8 @@ namespace ClinicManagementSystem.Forms.MainForms
                     NumberTextBox.Text = laboratoryManager.Address.HomeNumber;
                 }
             }
+            else
+                MessageBox.Show("Laboratory Manager not found", "Not found");
         }
 
         private void FindLaboratoryTechnician(string[] name)
@@ -332,6 +344,8 @@ namespace ClinicManagementSystem.Forms.MainForms
                     NumberTextBox.Text = laboratoryTechnician.Address.HomeNumber;
                 }
             }
+            else
+                MessageBox.Show("Laboratory Technician not found", "Not found");
         }
 
         private void ClearData()

@@ -93,17 +93,25 @@ namespace ClinicManagementSystem.Forms.MainForms
 
         private void SearchPatientButton_Click(object sender, EventArgs e)
         {         
+            // TODO poprawic wyszukiwanie - lista pacjentow, po peseli, numerze telefonu, etc...
             string[] name = SearchPatientTextBox.Text.Split(' ');
             if(name.Length == 2)
             {
                 Patient patient = _patientService.GetPatientByName(name[0], name[1]);
                 if (patient == null)
+                {
+                    MessageBox.Show("Patient not found", "Not found");
                     return;
+                }
                 _patientInfo.InitializeValues(patient, _appointmentService.GetLastAppointmentDateForPatient(patient));
                 
                 _patientInfo.Show();
                 FillPatientTextFields(patient.FirstName, patient.LastName);
                 _chosenPatient = patient;
+            }
+            else 
+            {
+                MessageBox.Show("Enter first and last name", "Incorrect input");
             }
         }
 
@@ -145,7 +153,7 @@ namespace ClinicManagementSystem.Forms.MainForms
 
         private void NewPatientButton_Click(object sender, EventArgs e)
         {
-
+            // TODO
         }
 
         private void FillPatientTextFields(string firstName, string lastName)
@@ -164,7 +172,7 @@ namespace ClinicManagementSystem.Forms.MainForms
                     DoctorNameTextBox.Text = doctor.FirstName;
                     DoctorSurnameTextBox.Text = doctor.LastName;
                     _chosenDoctor = doctor;
-                    //todo pobranie daty i czasu wizyty
+                    //todo pobranie daty i czasu wizyty - PR: chyba byla zmieniona koncepcja i to nie jest potrzebne, czekam na potwierdzenie albo zaprzeczenie
                     break;
                 }
                 else

@@ -70,7 +70,7 @@ namespace ClinicManagementSystem.Forms.SideForms
 
         private void LabSearchButton_Click(object sender, EventArgs e)
         {
-
+            // TODO
         }
 
         private void AddButton_Click(object sender, EventArgs e)
