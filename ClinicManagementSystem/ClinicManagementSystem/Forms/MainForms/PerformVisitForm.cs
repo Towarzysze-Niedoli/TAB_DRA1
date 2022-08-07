@@ -207,9 +207,9 @@ namespace ClinicManagementSystem.Forms.MainForms
             // physical exams:
             IDictionary<Examination, string> physicalExamsTexts = new Dictionary<Examination, string>()
             {
-       /*         { Examination.TemperatureExamination, _currentVisitSet.PhysicalForm.TemperatureText },
+                { Examination.TemperatureExamination, _currentVisitSet.PhysicalForm.TemperatureText },
                 { Examination.BloodPressureExamination, _currentVisitSet.PhysicalForm.BloodPressureText },
-                { Examination.SugarLevelExamination, _currentVisitSet.PhysicalForm.SugarLevelText }*/
+                { Examination.SugarLevelExamination, _currentVisitSet.PhysicalForm.SugarLevelText }
             };
             List<PhysicalExam> physicalExams = new List<PhysicalExam>(physicalExamsTexts.Count);
             foreach (KeyValuePair<Examination, string> kvp in physicalExamsTexts)
@@ -218,9 +218,10 @@ namespace ClinicManagementSystem.Forms.MainForms
                     physicalExams.Add(new PhysicalExam()
                     {
                         Appointment = _appointment,
-                        Examination = kvp.Key,
+                        Examination = _examinationService.GetExaminationByCode(kvp.Key.Code) ?? kvp.Key, // PR: wez z bazy jesli istnieje, dodaj do bazy jesli nie
                         Result = kvp.Value.Trim()
                     });
+                    
             }
 
             // PR: jak wyzej

@@ -30,7 +30,7 @@ namespace ClinicManagementSystem.Entities.Models
         public string FormattedName => $"[{this.Code}] {this.ExaminationName}";
 
 
-/*        public static Examination TemperatureExamination = new Examination()
+        public static Examination TemperatureExamination = new Examination()
         {
             Code = "4A0ZXKZ",
             ExamType = ExaminationType.Physical,
@@ -49,6 +49,6 @@ namespace ClinicManagementSystem.Entities.Models
             Code = "Z13.1",
             ExamType = ExaminationType.Physical,
             ExaminationName = "Encounter for screening for diabetes mellitus"
-        };*/
+        };
     }
 }
