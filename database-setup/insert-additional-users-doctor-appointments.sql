@@ -20,7 +20,7 @@ VALUES(5, N'Adam', N'Kowalski', N'92110458723', N'akowalski@aei.polsl.pl', NULL,
 
 INSERT INTO CMS.dbo.ApplicationUsers
 (Id, Email, PhoneNumber, Password, IsDisabled)
-VALUES(6, N'ebrzoza@system.com', NULL, N'10000$QfZnVo3yZc98COLKdO7BezAZP66Fs1new7r+lUgev2buhPfQ', 0); /* password1 */
+VALUES(6, N'ebrzoza@system.com', NULL, N'10000$QfZnVo3yZc98COLKdO7BezAZP66Fs1new7r+lUgev2buhPfQ', 0); -- password1
 
 INSERT INTO CMS.dbo.Doctors
 (Id, FirstName, LastName, Email, PhoneNumber, Address_Id, LicenseNumber, Specialization)
@@ -28,7 +28,7 @@ VALUES(2, N'Ewa', N'Brzoza', N'ebrzoza@system.com', NULL, NULL, N'2627846', 1);
 
 INSERT INTO CMS.dbo.Appointments
 (Id, Description, Diagnosis, AppointmentStatus, RegistrationDate, CompletionDate, Doctor_Id, Patient_Id, Receptionist_Id, ScheduledDate)
-VALUES(1, N'Pacjent skarży się na ból głowy i złe samopoczucie', N'Zwykłe przezibienie. Dostał L4, powinien odpoczywać przez najbliżyszy tydzień', 1, '2022-08-07 12:08:18.463', '2022-08-07 12:12:24.513', 1, 3, 1, '2022-08-13 08:00:00.000');
+VALUES(1, N'Pacjent skarży się na ból głowy i złe samopoczucie', N'Zwykłe przeziębienie. Dostał L4, powinien odpoczywać przez najbliżyszy tydzień', 1, '2022-08-07 12:08:18.463', '2022-08-07 12:12:24.513', 1, 3, 1, '2022-08-13 08:00:00.000');
 INSERT INTO CMS.dbo.Appointments
 (Id, Description, Diagnosis, AppointmentStatus, RegistrationDate, CompletionDate, Doctor_Id, Patient_Id, Receptionist_Id, ScheduledDate)
 VALUES(2, NULL, NULL, 0, '2022-08-07 12:08:50.263', NULL, 2, 2, 1, '2022-08-13 08:15:00.000');
