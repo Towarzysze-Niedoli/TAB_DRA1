@@ -177,8 +177,7 @@ namespace ClinicManagementSystem.Forms.MainForms
                 return;
             }
 
-            _service.CurrentAppointment = _currentAppointment;
-            ButtonClicked.Invoke(this, new PageControllingButtonClickedArgs(MainFormType.PerformVisit, _level));
+            ButtonClicked.Invoke(this, new PageControllingButtonClickedArgs(MainFormType.PerformVisit, _level, _currentAppointment));
 
         }
 

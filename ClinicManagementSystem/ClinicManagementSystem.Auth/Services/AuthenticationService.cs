@@ -175,6 +175,8 @@ namespace ClinicManagementSystem.Auth.Services
         {
             try
             {
+                if (!dbContext.DbConnectionInitialization.IsCompleted) // PR: zabezpieczenie przed sytuacja, gdzie polaczenie jeszcze nie zostalo nawiazane
+                    dbContext.DbConnectionInitialization.Wait();
                 return dbContext.ApplicationUsers.Single(userPredicate);
             }
             catch (InvalidOperationException ex)

@@ -13,6 +13,8 @@ using ClinicManagementSystem.Forms.EventArguments;
 using Microsoft.Extensions.DependencyInjection;
 using ClinicManagementSystem.Services;
 using ClinicManagementSystem.Auth.Services;
+using ClinicManagementSystem.Entities;
+using ClinicManagementSystem.Entities.Models;
 
 namespace ClinicManagementSystem.Forms.MainForms
 {
@@ -46,7 +48,9 @@ namespace ClinicManagementSystem.Forms.MainForms
             ShowLoginForm();
             this.LogoutButton.Hide();
             // dummy query to initialize connection
-            new Task(() => _ = _provider.GetService<Entities.ISystemContext>().Set<Entities.Models.ApplicationUser>().FirstOrDefault()).Start();
+            ISystemContext systemContext = _provider.GetService<ISystemContext>();
+            systemContext.DbConnectionInitialization = new Task(() => _ = systemContext.Set<Entities.Models.ApplicationUser>().FirstOrDefault());
+            systemContext.DbConnectionInitialization.Start();
         }
 
 
@@ -125,10 +129,10 @@ namespace ClinicManagementSystem.Forms.MainForms
             InitializeForm(_visitsMainForm, FormType.MainForm);
         }
 
-        private void ShowPerformVisitForm()
+        private void ShowPerformVisitForm(Appointment currentAppointment)
         {
             UnloadMainForm();
-            _performVisitForm = new PerformVisitForm(_provider);
+            _performVisitForm = new PerformVisitForm(_provider, currentAppointment);
             _activeMainForm = MainFormType.PerformVisit;
             InitializeForm(_performVisitForm, FormType.MainForm);
         }
@@ -228,7 +232,14 @@ namespace ClinicManagementSystem.Forms.MainForms
                         if (args.WindowType == MainFormType.VisitMainForm)
                             ShowVisitMainForm();
                         else if (args.WindowType == MainFormType.PerformVisit)
-                            ShowPerformVisitForm();
+                        {
+                            if (args.AdditionalParams.Length == 0)
+                                throw new ArgumentException("Insufficient parameters");
+                            Appointment currentAppointment = args.AdditionalParams[0] as Appointment;
+                            if (currentAppointment is null)
+                                throw new ArgumentException("Argument is not a type of " + typeof(Appointment).ToString());
+                            ShowPerformVisitForm(currentAppointment);
+                        }
                         break;
                     }
 

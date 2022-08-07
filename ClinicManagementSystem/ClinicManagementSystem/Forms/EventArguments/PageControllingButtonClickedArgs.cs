@@ -11,10 +11,13 @@ namespace ClinicManagementSystem.Forms.EventArguments
 
         public UserLevel UserLevel { set; get; }
 
-        public PageControllingButtonClickedArgs(MainFormType windowType, UserLevel userLevel)
+        public object[] AdditionalParams { get; set; }
+
+        public PageControllingButtonClickedArgs(MainFormType windowType, UserLevel userLevel, params object[] additionalParams)
         {
             WindowType = windowType;
             UserLevel = userLevel;
+            AdditionalParams = additionalParams;
         }
     }
 }

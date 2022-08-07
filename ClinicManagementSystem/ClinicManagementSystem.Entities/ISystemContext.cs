@@ -25,9 +25,11 @@ namespace ClinicManagementSystem.Entities
         DbSet<Admin> SystemAdministrators { get; set; }
         DbSet<ApplicationUser> ApplicationUsers { get; set; }
 
-        public Database Database { get; }
-        public DbChangeTracker ChangeTracker { get; }
-        public DbContextConfiguration Configuration { get; }
+        Database Database { get; }
+        DbChangeTracker ChangeTracker { get; }
+        DbContextConfiguration Configuration { get; }
+
+        Task DbConnectionInitialization { get; set; }
 
         DbSet<TEntity> Set<TEntity>() where TEntity : class;
         int SaveChanges();

@@ -11,7 +11,6 @@ namespace ClinicManagementSystem.Services.impl
 {
     public class AppointmentService : BaseService, IAppointmentService
     {
-        public Appointment CurrentAppointment { get; set; }
 
         public AppointmentService(ISystemContext context) : base(context)
         {

@@ -8,7 +8,6 @@ namespace ClinicManagementSystem.Services
 {
     public interface IAppointmentService: IBaseService
     {
-        Appointment CurrentAppointment { get; set; }
         IList<Appointment> GetAppointments();
         Appointment GetAppointmentByID(int appointmentId);
         Appointment GetAppointmentForPatientByCompletionDate(Patient patient, DateTime completionDate); // assuming there is only one appointment per day for a given patient 

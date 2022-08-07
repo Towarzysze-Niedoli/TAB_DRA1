@@ -36,7 +36,7 @@ namespace ClinicManagementSystem.Forms.MainForms
         private Appointment _appointment;
         private IEnumerable<Examination> _examinations;
 
-        public PerformVisitForm(IServiceProvider provider)
+        public PerformVisitForm(IServiceProvider provider, Appointment currentAppointment)
         {
             _patientService = provider.GetService<IPatientService>();
             _appointmentService = provider.GetService<IAppointmentService>();
@@ -45,25 +45,26 @@ namespace ClinicManagementSystem.Forms.MainForms
             InitializeComponent();
 
             _patientInfoForm = new PersonInfoForm();
-            _appointment = _appointmentService.CurrentAppointment;
+            _appointment = currentAppointment;
             if(_appointment != null  && _appointment.Patient != null)
             {
                 _patientInfoForm.InitializeValues(_appointment.Patient, _appointmentService.GetLastAppointmentDateForPatient(_appointment.Patient));
             }
 
-            IList<Appointment> appointments = _appointmentService.GetAppointments(null, null, null, _appointment.Patient);
-            int length = appointments.Count();
-            IList<DoctorListElement> listElements = new List<DoctorListElement>(length);
-            int index = 0;
-            foreach (Appointment appointment in appointments)
-            {
-                listElements.Add(new DoctorListElement(
-                    index++,
-                    appointment.Doctor.FirstName + " " + appointment.Doctor.LastName,
-                    appointment.Doctor.Specialization.ToString(),
-                    appointment.RegistrationDate.ToString()
-                ));
-            }
+            // PR: nie wiem czemu mialo sluzyc to ponizej
+            //IList<Appointment> appointments = _appointmentService.GetAppointments(null, null, null, _appointment.Patient);
+            //int length = appointments.Count();
+            //IList<DoctorListElement> listElements = new List<DoctorListElement>(length);
+            //int index = 0;
+            //foreach (Appointment appointment in appointments)
+            //{
+            //    listElements.Add(new DoctorListElement(
+            //        index++,
+            //        appointment.Doctor.FirstName + " " + appointment.Doctor.LastName,
+            //        appointment.Doctor.Specialization.ToString(),
+            //        appointment.RegistrationDate.ToString()
+            //    ));
+            //}
 
             _previousVisitsListForm = new DoctorListForm();
             _previousVisitsListForm.ElementClicked += FillSelectedVisitInformation;

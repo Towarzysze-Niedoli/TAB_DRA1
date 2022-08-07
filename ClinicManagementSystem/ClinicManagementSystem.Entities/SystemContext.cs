@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace ClinicManagementSystem.Entities
 {
@@ -20,6 +21,8 @@ namespace ClinicManagementSystem.Entities
         public DbSet<LaboratoryManager> LaboratoryManagers { get; set; }
         public DbSet<Admin> SystemAdministrators { get; set; }
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }
+
+        public Task DbConnectionInitialization { get; set; }
 
         public SystemContext() : base("CMS")
         {
