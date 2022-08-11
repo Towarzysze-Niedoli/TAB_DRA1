@@ -98,6 +98,9 @@ namespace ClinicManagementSystem.Forms.MainForms
             {
                 _currentAppointment.AppointmentStatus = AppointmentStatus.Cancelled;
                 _service.UpdateAppointment(_currentAppointment);
+                MessageBox.Show("Appointment cancelled", "Information");
+                FilterAndDisplay();
+
             }
         }
 
