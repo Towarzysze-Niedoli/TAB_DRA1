@@ -94,7 +94,11 @@ namespace ClinicManagementSystem.Forms.MainForms
 
         private void CancelVisitButton_Click(object sender, EventArgs e)
         {
-            // TODO
+            if (_currentAppointment != null)
+            {
+                _currentAppointment.AppointmentStatus = AppointmentStatus.Cancelled;
+                _service.UpdateAppointment(_currentAppointment);
+            }
         }
 
         private void SearchPatientButton_Click(object sender, EventArgs e)
