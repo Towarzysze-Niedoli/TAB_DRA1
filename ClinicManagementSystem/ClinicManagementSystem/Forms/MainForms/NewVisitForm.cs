@@ -172,7 +172,6 @@ namespace ClinicManagementSystem.Forms.MainForms
                     DoctorNameTextBox.Text = doctor.FirstName;
                     DoctorSurnameTextBox.Text = doctor.LastName;
                     _chosenDoctor = doctor;
-                    //todo pobranie daty i czasu wizyty - PR: chyba byla zmieniona koncepcja i to nie jest potrzebne, czekam na potwierdzenie albo zaprzeczenie
                     break;
                 }
                 else
