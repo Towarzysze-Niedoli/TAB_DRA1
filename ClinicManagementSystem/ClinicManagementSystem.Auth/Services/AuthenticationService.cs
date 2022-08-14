@@ -15,11 +15,13 @@ namespace ClinicManagementSystem.Auth.Services
         private readonly IPasswordHasher passwordHasher;
         private readonly ISystemContext dbContext;
         private ApplicationUser? currentUser;
+        private int databaseConnectionTimeout;
 
-        public AuthenticationService(IPasswordHasher _passwordHasher, ISystemContext systemContext)
+        public AuthenticationService(IPasswordHasher _passwordHasher, ISystemContext systemContext, int _databaseConnectionTimeout)
         {
             passwordHasher = _passwordHasher;
             dbContext = systemContext;
+            databaseConnectionTimeout = _databaseConnectionTimeout;
         }
 
         public ApplicationUser Authenticate(string emailOrPhone, string password)
@@ -176,7 +178,11 @@ namespace ClinicManagementSystem.Auth.Services
             try
             {
                 if (!dbContext.DbConnectionInitialization.IsCompleted) // PR: zabezpieczenie przed sytuacja, gdzie polaczenie jeszcze nie zostalo nawiazane
-                    dbContext.DbConnectionInitialization.Wait();
+                {
+                    bool x = dbContext.DbConnectionInitialization.Wait(databaseConnectionTimeout); // todo timeout -> appsettings
+                    if (!x)
+                        throw new NoDatabaseConnectionException("No connection to the database");
+                }
                 return dbContext.ApplicationUsers.Single(userPredicate);
             }
             catch (InvalidOperationException ex)

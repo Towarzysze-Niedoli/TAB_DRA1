@@ -12,17 +12,26 @@ using ClinicManagementSystem.Auth.Services;
 using ClinicManagementSystem.Auth;
 using System.Data.Entity;
 using ClinicManagementSystem.Services;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Configuration.Json;
 
 namespace ClinicManagementSystem
 {
     static class Program
     {
+        private static IConfigurationRoot _configuration;
+
         /// <summary>
         ///  The main entry point for the application.
         /// </summary>
         [STAThread]
         static void Main()
         {
+            _configuration = new ConfigurationBuilder()
+                .AddJsonFile("appsettings.json", false, true)
+                .Build();
+            SystemDBConfiguration.ConnectionString = _configuration["database:connectionString"];
+
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
@@ -31,7 +40,7 @@ namespace ClinicManagementSystem
             ConfigureServices(services);
             var provider = services.BuildServiceProvider();
 
-            Application.Run(new MainWindow(provider, Forms.UserLevel.Undetermined));
+            Application.Run(new MainWindow(provider, Forms.UserLevel.Undetermined, _configuration));
         }
 
         private static void ConfigureServices(IServiceCollection services)
@@ -39,7 +48,7 @@ namespace ClinicManagementSystem
             services.AddScoped<ISystemContext, SystemContext>()
                     // authentication, authorization:
                     .AddSingleton<IPasswordHasher, PasswordHasher>()
-                    .AddScoped<IAuthenticationService, AuthenticationService>()
+                    .AddScoped<IAuthenticationService, AuthenticationService>(sp => new AuthenticationService(sp.GetRequiredService<IPasswordHasher>(), sp.GetRequiredService<ISystemContext>(), int.Parse(_configuration["database:connectionTimeout"])))
                     .AddScoped<IAuthorizationService, AuthorizationService>()
                     // people, users:
                     .AddScoped<IDoctorService, DoctorService>()

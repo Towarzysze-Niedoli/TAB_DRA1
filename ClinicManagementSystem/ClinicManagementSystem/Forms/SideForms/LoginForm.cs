@@ -21,12 +21,14 @@ namespace ClinicManagementSystem.Forms.SideForms
         private IServiceProvider _provider;
         private IAuthenticationService _authenticationService;
         private IAuthorizationService _authorizationService;
+        private Action _closeApplication;
 
-        public LoginForm(IServiceProvider provider)
+        public LoginForm(IServiceProvider provider, Action closeApplicationFunction)
         {
             _provider = provider;
             _authenticationService = _provider.GetService<IAuthenticationService>();
             _authorizationService = _provider.GetService<IAuthorizationService>();
+            _closeApplication = closeApplicationFunction;
 
             InitializeComponent();
             AcceptButton = loginButton;
@@ -37,21 +39,32 @@ namespace ClinicManagementSystem.Forms.SideForms
             ApplicationUser user;
             try
             {
-                user = _authenticationService.Authenticate(loginTextBox.Text, passwordTextBox.Text);
+                LoginStatusLabel.Text = "Logging in...";
+                user = _authenticationService.Authenticate(loginTextBox.Text.Trim(), passwordTextBox.Text.Trim());
+                LoginStatusLabel.Text = "";
             }
             catch (ArgumentException)
             {
                 MessageBox.Show("Please enter your email or phone number", "Invalid login", MessageBoxButtons.OK);
+                LoginStatusLabel.Text = "";
                 return;
             }
             catch (InvalidLoginException)
             {
                 MessageBox.Show("User with provided login not found", "Invalid login", MessageBoxButtons.OK);
+                LoginStatusLabel.Text = "";
                 return;
             }
             catch (InvalidPasswordException)
             {
                 MessageBox.Show("Provided password is not correct. If you have forgotten your password, please contact system administrator", "Invalid password", MessageBoxButtons.OK);
+                LoginStatusLabel.Text = "";
+                return;
+            }
+            catch (NoDatabaseConnectionException ex)
+            {
+                MessageBox.Show(ex.Message + "\nThe application will close now", "Database connection error", MessageBoxButtons.OK);
+                _closeApplication();
                 return;
             }
 

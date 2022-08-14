@@ -15,6 +15,7 @@ using ClinicManagementSystem.Services;
 using ClinicManagementSystem.Auth.Services;
 using ClinicManagementSystem.Entities;
 using ClinicManagementSystem.Entities.Models;
+using Microsoft.Extensions.Configuration;
 
 namespace ClinicManagementSystem.Forms.MainForms
 {
@@ -36,20 +37,22 @@ namespace ClinicManagementSystem.Forms.MainForms
 
         private IServiceProvider _provider;
         private UserLevel _level;
+        private IConfigurationRoot _configuration;
 
         private MainFormType _activeMainForm;
 
-        public MainWindow(IServiceProvider provider, UserLevel level)
+        public MainWindow(IServiceProvider provider, UserLevel level, IConfigurationRoot configuration)
         {
             _provider = provider;
             _level = level;
+            _configuration = configuration;
             _activeMainForm = MainFormType.Main;
             InitializeComponent();
             ShowLoginForm();
             this.LogoutButton.Hide();
             // dummy query to initialize connection
             ISystemContext systemContext = _provider.GetService<ISystemContext>();
-            systemContext.DbConnectionInitialization = new Task(() => _ = systemContext.Set<Entities.Models.ApplicationUser>().FirstOrDefault());
+            systemContext.DbConnectionInitialization = new Task(() => _ = systemContext.Set<ApplicationUser>().FirstOrDefault());
             systemContext.DbConnectionInitialization.Start();
         }
 
@@ -81,7 +84,7 @@ namespace ClinicManagementSystem.Forms.MainForms
 
         private void ShowLoginForm()
         {
-            _loginForm = new LoginForm(_provider);
+            _loginForm = new LoginForm(_provider, this.Close);
             _loginForm.ButtonClicked += LoginButtonClicked;
             InitializeForm(_loginForm, FormType.SideForm);
         }

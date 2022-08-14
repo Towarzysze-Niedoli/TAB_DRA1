@@ -34,6 +34,7 @@ namespace ClinicManagementSystem.Forms.SideForms
             this.loginLabel = new System.Windows.Forms.Label();
             this.loginButton = new System.Windows.Forms.Button();
             this.loginTextBox = new System.Windows.Forms.TextBox();
+            this.LoginStatusLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // passwordLabel
@@ -101,12 +102,23 @@ namespace ClinicManagementSystem.Forms.SideForms
             this.loginTextBox.Size = new System.Drawing.Size(256, 31);
             this.loginTextBox.TabIndex = 0;
             // 
+            // LoginStatusLabel
+            // 
+            this.LoginStatusLabel.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.LoginStatusLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(247)))), ((int)(((byte)(255)))));
+            this.LoginStatusLabel.Location = new System.Drawing.Point(33, 344);
+            this.LoginStatusLabel.Name = "LoginStatusLabel";
+            this.LoginStatusLabel.Size = new System.Drawing.Size(256, 23);
+            this.LoginStatusLabel.TabIndex = 10;
+            this.LoginStatusLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(119)))), ((int)(((byte)(182)))));
             this.ClientSize = new System.Drawing.Size(328, 772);
+            this.Controls.Add(this.LoginStatusLabel);
             this.Controls.Add(this.passwordLabel);
             this.Controls.Add(this.passwordTextBox);
             this.Controls.Add(this.loginLabel);
@@ -128,5 +140,6 @@ namespace ClinicManagementSystem.Forms.SideForms
         private System.Windows.Forms.Label loginLabel;
         private System.Windows.Forms.Button loginButton;
         private System.Windows.Forms.TextBox loginTextBox;
+        private System.Windows.Forms.Label LoginStatusLabel;
     }
 }
