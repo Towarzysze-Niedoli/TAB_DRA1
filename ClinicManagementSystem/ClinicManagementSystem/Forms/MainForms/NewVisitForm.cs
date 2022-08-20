@@ -15,6 +15,7 @@ using ClinicManagementSystem.Entities.Models;
 using ClinicManagementSystem.Entities.Enums;
 using System.Data.Entity.Validation;
 using ClinicManagementSystem.Auth.Services;
+using System.Text.RegularExpressions;
 
 namespace ClinicManagementSystem.Forms.MainForms
 {
@@ -119,8 +120,14 @@ namespace ClinicManagementSystem.Forms.MainForms
         {
             if(_chosenPatient != null || _chosenDoctor != null)
             {
+                if (!IsTimeValid(VisitTimeTextBox.Text))
+                {
+                    MessageBox.Show("Invalid visit time!", "Add New Visit");
+                    return;
+                }
+                    
                 DateTime date = VisitDateTimePicker.Value;
-                // TODO tu sprawdzanie np. regexem czy string jest poprawny
+
                 int[] time = VisitTimeTextBox.Text.Split(new char[] { ':', '.', '-' }).Select(s => int.Parse(s)).ToArray();
                 
                 DateTime scheduledDate = new DateTime(date.Year, date.Month, date.Day, time[0], time[1], 0);
@@ -208,6 +215,10 @@ namespace ClinicManagementSystem.Forms.MainForms
             DoctorSurnameTextBox.Clear();
             PatientNameTextBox.Clear();
             PatientSurnameTextBox.Clear();
+            VisitTimeTextBox.Clear();
         }
+
+        private bool IsTimeValid(string time)
+        => new Regex(@"^(?:0?[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$").IsMatch(time);
     }
 }
