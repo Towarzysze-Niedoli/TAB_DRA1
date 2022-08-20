@@ -125,25 +125,32 @@ namespace ClinicManagementSystem.Forms.MainForms
                 
                 DateTime scheduledDate = new DateTime(date.Year, date.Month, date.Day, time[0], time[1], 0);
 
-                Appointment newAppointment = new Appointment
+                if(_appointmentService.IsDoctorAvailable(scheduledDate, _chosenDoctor))
                 {
-                    Doctor = _chosenDoctor,
-                    Patient = _chosenPatient,
-                    RegistrationDate = DateTime.Now,
-                    ScheduledDate = scheduledDate,
-                    Receptionist = _authorizationService.GetCurrentlyLoggedPerson<Receptionist>()
-                };
-                try
-                {
-                    _appointmentService.InsertAppointment(newAppointment);
-                    MessageBox.Show("New visit has been succesfully added.", "Add New Visit");
+                    Appointment newAppointment = new Appointment
+                    {
+                        Doctor = _chosenDoctor,
+                        Patient = _chosenPatient,
+                        RegistrationDate = DateTime.Now,
+                        ScheduledDate = scheduledDate,
+                        Receptionist = _authorizationService.GetCurrentlyLoggedPerson<Receptionist>()
+                    };
+                    try
+                    {
+                        _appointmentService.InsertAppointment(newAppointment);
+                        MessageBox.Show("New visit has been succesfully added.", "Add New Visit");
+                    }
+                    catch (DbEntityValidationException) // TODO change
+                    {
+                        MessageBox.Show("Insert error.", "Add New Visit");
+                    }
+                    _doctorsList.Deselect();
+                    ClearData();
                 }
-                catch (DbEntityValidationException) // TODO change
+                else
                 {
-                    MessageBox.Show("Insert error.", "Add New Visit");
-                }
-                _doctorsList.Deselect();
-                ClearData();
+                    MessageBox.Show("The doctor is not available on the chosen date!", "Add New Visit");
+                }                
             }
             else
             {

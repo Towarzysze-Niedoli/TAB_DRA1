@@ -36,5 +36,7 @@ namespace ClinicManagementSystem.Services
         IList<Appointment> GetAppointmentsByCompletionDate(DateTime completionDate);
         DateTime? GetLastAppointmentDateForPatient(Patient patient);
         IList<Appointment> GetAppointmentsByScheduledDate(DateTime date);
+
+        bool IsDoctorAvailable(DateTime date, Doctor doctor);
     }
 }

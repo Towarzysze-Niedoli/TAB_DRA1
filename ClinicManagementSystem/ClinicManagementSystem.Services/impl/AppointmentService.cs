@@ -95,5 +95,11 @@ namespace ClinicManagementSystem.Services.impl
         {
             return GetAppointmentsAsEnumerable(status, date, doctor, patient).ToList();
         }
+
+        public bool IsDoctorAvailable(DateTime date, Doctor doctor)
+        {
+            return !_getAppointments().Where(a => a.ScheduledDate == date)
+                                      .Any(a => a.Doctor == doctor);
+        }
     }
 }
