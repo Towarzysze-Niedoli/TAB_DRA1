@@ -136,6 +136,7 @@ namespace ClinicManagementSystem.Forms.MainForms
         {
             UnloadMainForm();
             _performVisitForm = new PerformVisitForm(_provider, currentAppointment);
+            _performVisitForm.ClosingButtonClicked += LoadMainForm;
             _activeMainForm = MainFormType.PerformVisit;
             InitializeForm(_performVisitForm, FormType.MainForm);
         }
@@ -292,6 +293,7 @@ namespace ClinicManagementSystem.Forms.MainForms
                 case MainFormType.PerformVisit:
                     this.MainPanel.Controls.Remove(_performVisitForm);
                     _performVisitForm.Hide();
+                    _performVisitForm.ClosingButtonClicked -= LoadMainForm;
                     break;
                 case MainFormType.VisitMainForm:
                     this.MainPanel.Controls.Remove(_visitsMainForm);
