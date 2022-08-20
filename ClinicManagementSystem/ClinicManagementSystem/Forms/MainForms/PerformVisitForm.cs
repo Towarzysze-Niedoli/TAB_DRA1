@@ -23,6 +23,9 @@ namespace ClinicManagementSystem.Forms.MainForms
         public delegate void ControlButtonClickedEventHandler(object source, VisitsButtonClickedArgs args);
         public event ControlButtonClickedEventHandler ControlButtonClicked;
 
+        public delegate void ClosingButtonClickedEventHandler(object source, PageControllingButtonClickedArgs args);
+        public event ClosingButtonClickedEventHandler ClosingButtonClicked;
+
         private PerformVisitFormMode _mode;
         private IPatientService _patientService;
         private IAppointmentService _appointmentService;
@@ -175,7 +178,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             _appointment.AppointmentStatus = AppointmentStatus.Cancelled;
             _appointmentService.UpdateAppointment(_appointment);
 
-            //todo: return to main visit form?
+            OnClosingButtonClicked();
         }
 
         private void ConcludeButton_Click(object sender, EventArgs e)
@@ -235,6 +238,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             {
                 _appointmentService.UpdateAppointment(_appointment);
                 MessageBox.Show("Visit has been updated.", "Update Visit");
+                OnClosingButtonClicked();
             }
             catch (DbEntityValidationException) // TODO change
             {
@@ -449,6 +453,14 @@ namespace ClinicManagementSystem.Forms.MainForms
                 default:
                     UnloadOrderLabForm();
                     break;
+            }
+        }
+
+        private void OnClosingButtonClicked()
+        {
+            if (ClosingButtonClicked != null)
+            {
+                ClosingButtonClicked.Invoke(this, new PageControllingButtonClickedArgs(MainFormType.VisitMainForm, UserLevel.Doctor, null));
             }
         }
     }
