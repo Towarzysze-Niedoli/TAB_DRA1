@@ -21,7 +21,6 @@ namespace ClinicManagementSystem.Forms.MainForms
 {
     public partial class MainWindow : Form
     {
-
         private int move;
         private int moveX;
         private int moveY;
@@ -153,6 +152,7 @@ namespace ClinicManagementSystem.Forms.MainForms
         {
             UnloadMainForm();
             _newVisitForm = new NewVisitForm(_provider);
+            _newVisitForm.NewPatientButtonClicked += LoadMainForm;
             _activeMainForm = MainFormType.NewVisit;
             InitializeForm(_newVisitForm, FormType.MainForm);
         }
@@ -288,6 +288,7 @@ namespace ClinicManagementSystem.Forms.MainForms
                     break;
                 case MainFormType.NewVisit:
                     this.MainPanel.Controls.Remove(_newVisitForm);
+                    _newVisitForm.NewPatientButtonClicked += LoadMainForm;
                     _newVisitForm.Hide();
                     break;
                 case MainFormType.PerformVisit:

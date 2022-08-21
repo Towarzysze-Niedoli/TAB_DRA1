@@ -21,6 +21,9 @@ namespace ClinicManagementSystem.Forms.MainForms
 {
     public partial class NewVisitForm : Form
     {
+        public delegate void NewPatientClickedEventHandler(object source, PageControllingButtonClickedArgs args);
+        public event NewPatientClickedEventHandler NewPatientButtonClicked;
+
         private DoctorListForm _doctorsList;
         private PersonInfoForm _patientInfo;
         private IPatientService _patientService;
@@ -167,7 +170,7 @@ namespace ClinicManagementSystem.Forms.MainForms
 
         private void NewPatientButton_Click(object sender, EventArgs e)
         {
-            // TODO
+            OnNewPatientButtonClicked();
         }
 
         private void FillPatientTextFields(string firstName, string lastName)
@@ -220,5 +223,13 @@ namespace ClinicManagementSystem.Forms.MainForms
 
         private bool IsTimeValid(string time)
         => new Regex(@"^(?:0?[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$").IsMatch(time);
+
+        private void OnNewPatientButtonClicked()
+        {
+            if (NewPatientButtonClicked != null)
+            {
+                NewPatientButtonClicked.Invoke(this, new PageControllingButtonClickedArgs(MainFormType.ManagerPatients, UserLevel.Receptionist, null));
+            }
+        }
     }
 }
