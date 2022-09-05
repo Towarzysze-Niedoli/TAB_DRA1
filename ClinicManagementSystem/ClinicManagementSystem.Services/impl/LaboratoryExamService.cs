@@ -3,6 +3,8 @@ using ClinicManagementSystem.Entities.Enums;
 using ClinicManagementSystem.Entities.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Text;
 
@@ -18,7 +20,7 @@ namespace ClinicManagementSystem.Services.impl
 
         public void DeleteLaboratoryExam(int laboratoryExamId)
         {
-            LaboratoryExam laboratoryExam = context.LaboratoryExams.Find(laboratoryExamId);
+            LaboratoryExam laboratoryExam = GetLaboratoryExamByID(laboratoryExamId);
             context.LaboratoryExams.Remove(laboratoryExam);
             Save();
         }
@@ -30,14 +32,14 @@ namespace ClinicManagementSystem.Services.impl
 
         public IEnumerable<LaboratoryExam> GetLaboratoryExams()
         {
-            return context.LaboratoryExams;
+            return GetLE();
         }
 
         public IList<LaboratoryExam> GetLaboratoryExamsByStatus(TestStatus? testStatus)
         {
             return testStatus is null
-                ? context.LaboratoryExams.ToList()
-                : context.LaboratoryExams.Where(e => e.Status == testStatus).ToList();
+                ? GetLE().ToList()
+                : GetLE().Where(e => e.Status == testStatus).ToList();
         }
 
         public void InsertLaboratoryExam(LaboratoryExam laboratoryExam)
@@ -52,5 +54,10 @@ namespace ClinicManagementSystem.Services.impl
             Save();
         }
 
+
+        private IEnumerable<LaboratoryExam> GetLE()
+        {
+            return context.LaboratoryExams.Include("Examination").Include("Appointment").Include("LaboratoryTechnician").Include("LaboratoryManager");
+        }
     }
 }

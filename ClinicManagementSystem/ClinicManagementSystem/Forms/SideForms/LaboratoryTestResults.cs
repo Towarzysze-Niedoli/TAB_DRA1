@@ -13,6 +13,9 @@ namespace ClinicManagementSystem.Forms.SideForms
 {
     public partial class LaboratoryTestResults : Form
     {
+        public string TestTitle { get => TestName.Text; set => TestName.Text = value; }
+        public string Result { get => TestResults.Text; set => TestResults.Text = value; }
+
         public LaboratoryTestResults()
         {
             InitializeComponent();
@@ -21,8 +24,9 @@ namespace ClinicManagementSystem.Forms.SideForms
             this.TopLevel = false;
         }
 
+        public void ClearResult() => TestResults.Clear();
 
-        protected void WriteLaboratoryResults(object source, LaboratoryListElementClickedArgs args)
+        protected void SetLaboratoryResults(object source, LaboratoryListElementClickedArgs args)
         {
             TestName.Text = args.TestName;
             TestResults.Text = args.Results;

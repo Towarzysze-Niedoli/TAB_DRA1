@@ -34,15 +34,19 @@ namespace ClinicManagementSystem.Forms.MainForms
         private UserLevel _level;
         private List<(TestStatus?, string)> _testStatus;
         private ILaboratoryExamService _labExamService;
+        private IList<LaboratoryExam> _labExams;
+        private LaboratoryExam _selectedExam;
+        private PersonWithAccount _loggedPerson;
 
-        public LaboratoryForm(UserLevel level, ILaboratoryExamService laboratoryExamService)
+        public LaboratoryForm(UserLevel level, ILaboratoryExamService laboratoryExamService, PersonWithAccount loggedPerson)
         {
             _labExamService = laboratoryExamService;
+            _loggedPerson = loggedPerson;
+            _level = level;
             InitializeComponent();
             InitializeTestList();
             InitializeTestResults();
             InitializeLaboratoryTestsCombobox();
-            _level = level;
             SetAccessibility();     
         }
 
@@ -50,7 +54,7 @@ namespace ClinicManagementSystem.Forms.MainForms
         {
             _testStatus = new List<(TestStatus?, string)>
             {
-                (null, "<Select Test Status>"),
+                (null, "All"),
                 (TestStatus.Pending, "To do"),
                 (TestStatus.WaitingToBeAccepted, "Done"),
                 (TestStatus.Returned, "Returned"),
@@ -61,7 +65,11 @@ namespace ClinicManagementSystem.Forms.MainForms
             _testStatus.ForEach(((TestStatus?, string) tuple) => {
                 LaboratoryTestsComboBox.Items.Add(tuple.Item2);
             });
-            LaboratoryTestsComboBox.SelectedIndex = 1; // domyslnie wyswietlaja sie "to do"
+            LaboratoryTestsComboBox.SelectedIndex = _level switch // domyslnie wyswietlaja sie "to do" albo "done" aka czekajace na zaakceptowanie
+            {
+                UserLevel.Laborant => 1,
+                UserLevel.HeadOfLab => 2
+            };
         }
 
         void InitializeTestList()
@@ -81,10 +89,15 @@ namespace ClinicManagementSystem.Forms.MainForms
 
         protected void OnTestElementClicked(object source, ListElementClickedArgs args)
         {
-            if (TestClicked != null)
-            {
-                TestClicked.Invoke(this, args);
-            }
+            // PR: co autor mial na mysli?...
+            //if (TestClicked != null)
+            //{
+            //    TestClicked.Invoke(this, args);
+            //}
+            _selectedExam = _labExams[args.Index];
+            TestsResults.TestTitle = _selectedExam.Examination.FormattedName;
+            TestsResults.Result = _selectedExam.Result ?? "";
+            LabManagerTextBox.Text = _selectedExam.LaboratoryManagerComment ?? "";
         }
 
 
@@ -93,8 +106,8 @@ namespace ClinicManagementSystem.Forms.MainForms
             int index = LaboratoryTestsComboBox.SelectedIndex;
             TestStatus? status = _testStatus[index].Item1;
 
-            IList<LaboratoryExam> labExams = _labExamService.GetLaboratoryExamsByStatus(status);
-            TestsList.PopulateList(labExams);
+            _labExams = _labExamService.GetLaboratoryExamsByStatus(status);
+            TestsList.PopulateList(_labExams);
 
             LaboratoryTestsList = TestsList.LaboratoryTestsList;
             if (LaboratoryTestsList != null)
@@ -108,9 +121,8 @@ namespace ClinicManagementSystem.Forms.MainForms
         {
             if(_level == UserLevel.Laborant)
             {
-                this.LabManagerComboBox.Enabled = false;
+                this.LabManagerTextBox.Enabled = false;
                 returnBtn.Hide();
-                cancelBtn.Hide();
                 approveBtn.Text = "Done";
 
             }
@@ -118,6 +130,83 @@ namespace ClinicManagementSystem.Forms.MainForms
             {
                 TestsResults.SetDisabled();
             }
+        }
+
+        private void UpdateAndRefresh()
+        {
+            _labExamService.UpdateLaboratoryExam(_selectedExam);
+            LaboratoryTestsComboBox_SelectedIndexChanged(null, null);
+            TestsResults.TestTitle = "Please select the test";
+            TestsResults.ClearResult();
+            LabManagerTextBox.Clear();
+        }
+
+        private void approveBtn_Click(object sender, EventArgs e)
+        {
+            if (_selectedExam is null)
+            {
+                MessageBox.Show("No examination selected", "Error");
+                return;
+            }
+
+            if (_level == UserLevel.Laborant)
+            {
+                _selectedExam.RealisationDate = DateTime.Now;
+                _selectedExam.LaboratoryTechnician = _loggedPerson as LaboratoryTechnician;
+                _selectedExam.Result = TestsResults.Result;
+                _selectedExam.Status = TestStatus.WaitingToBeAccepted;
+            }
+            else
+            {
+                _selectedExam.CompletionDate = DateTime.Now;
+                _selectedExam.LaboratoryManager = _loggedPerson as LaboratoryManager;
+                _selectedExam.LaboratoryManagerComment = LabManagerTextBox.Text;
+                _selectedExam.Status = TestStatus.Accepted;
+            }
+            UpdateAndRefresh();
+        }
+
+        private void returnBtn_Click(object sender, EventArgs e)
+        {
+            if (_selectedExam is null)
+            {
+                MessageBox.Show("No examination selected", "Error");
+                return;
+            }
+
+            if (_level == UserLevel.Laborant)
+            {
+                throw new InvalidOperationException("_level == UserLevel.Laborant");
+            }
+            else
+            {
+                _selectedExam.LaboratoryManager = _loggedPerson as LaboratoryManager;
+                _selectedExam.LaboratoryManagerComment = LabManagerTextBox.Text;
+                _selectedExam.Status = TestStatus.Returned;
+            }
+            UpdateAndRefresh();
+        }
+
+        private void cancelBtn_Click(object sender, EventArgs e)
+        {
+            if (_selectedExam is null)
+            {
+                MessageBox.Show("No examination selected", "Error");
+                return;
+            }
+
+            if (_level == UserLevel.Laborant)
+            {
+                _selectedExam.LaboratoryTechnician = _loggedPerson as LaboratoryTechnician;
+                _selectedExam.Result = TestsResults.Result;
+            }
+            else
+            {
+                _selectedExam.LaboratoryManager = _loggedPerson as LaboratoryManager;
+                _selectedExam.LaboratoryManagerComment = LabManagerTextBox.Text;
+            }
+            _selectedExam.Status = TestStatus.Cancelled;
+            UpdateAndRefresh();
         }
     }
 }

@@ -31,7 +31,7 @@
             this.LaboratoryTestsPanel = new System.Windows.Forms.Panel();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.DescriptionPanel = new System.Windows.Forms.Panel();
-            this.LabManagerComboBox = new System.Windows.Forms.TextBox();
+            this.LabManagerTextBox = new System.Windows.Forms.TextBox();
             this.approveBtn = new System.Windows.Forms.Button();
             this.cancelBtn = new System.Windows.Forms.Button();
             this.returnBtn = new System.Windows.Forms.Button();
@@ -64,15 +64,15 @@
             this.DescriptionPanel.Size = new System.Drawing.Size(519, 377);
             this.DescriptionPanel.TabIndex = 4;
             // 
-            // LabManagerComboBox
+            // LabManagerTextBox
             // 
-            this.LabManagerComboBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.LabManagerComboBox.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LabManagerComboBox.Location = new System.Drawing.Point(648, 541);
-            this.LabManagerComboBox.Multiline = true;
-            this.LabManagerComboBox.Name = "LabManagerComboBox";
-            this.LabManagerComboBox.Size = new System.Drawing.Size(519, 193);
-            this.LabManagerComboBox.TabIndex = 5;
+            this.LabManagerTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.LabManagerTextBox.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.LabManagerTextBox.Location = new System.Drawing.Point(648, 541);
+            this.LabManagerTextBox.Multiline = true;
+            this.LabManagerTextBox.Name = "LabManagerTextBox";
+            this.LabManagerTextBox.Size = new System.Drawing.Size(519, 193);
+            this.LabManagerTextBox.TabIndex = 5;
             // 
             // approveBtn
             // 
@@ -87,6 +87,7 @@
             this.approveBtn.TabIndex = 1;
             this.approveBtn.Text = "Approve";
             this.approveBtn.UseVisualStyleBackColor = false;
+            this.approveBtn.Click += new System.EventHandler(this.approveBtn_Click);
             // 
             // cancelBtn
             // 
@@ -101,6 +102,7 @@
             this.cancelBtn.TabIndex = 1;
             this.cancelBtn.Text = "Cancel";
             this.cancelBtn.UseVisualStyleBackColor = false;
+            this.cancelBtn.Click += new System.EventHandler(this.cancelBtn_Click);
             // 
             // returnBtn
             // 
@@ -115,6 +117,7 @@
             this.returnBtn.TabIndex = 1;
             this.returnBtn.Text = "Return";
             this.returnBtn.UseVisualStyleBackColor = false;
+            this.returnBtn.Click += new System.EventHandler(this.returnBtn_Click);
             // 
             // LaboratoryTestsComboBox
             // 
@@ -137,7 +140,7 @@
             this.Controls.Add(this.cancelBtn);
             this.Controls.Add(this.returnBtn);
             this.Controls.Add(this.approveBtn);
-            this.Controls.Add(this.LabManagerComboBox);
+            this.Controls.Add(this.LabManagerTextBox);
             this.Controls.Add(this.DescriptionPanel);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.LaboratoryTestsPanel);
@@ -156,7 +159,7 @@
         private System.Windows.Forms.Panel LaboratoryTestsPanel;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Panel DescriptionPanel;
-        private System.Windows.Forms.TextBox LabManagerComboBox;
+        private System.Windows.Forms.TextBox LabManagerTextBox;
         private System.Windows.Forms.Button approveBtn;
         private System.Windows.Forms.Button cancelBtn;
         private System.Windows.Forms.Button returnBtn;
