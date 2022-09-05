@@ -13,7 +13,7 @@ namespace ClinicManagementSystem.Auth.Test
     public class AuthenticationServiceTests
     {
         private static readonly SystemContext dbContext = new SystemContext();
-        readonly IAuthenticationService authenticationService = new AuthenticationService(new PasswordHasher(), dbContext);
+        readonly IAuthenticationService authenticationService = new AuthenticationService(new PasswordHasher(), dbContext, 10000);
 
         const int n = 5;
         readonly static string[] emails = new string[n] { "email@email.com", "second@different.pl", "another@some.com.pl", null, null };

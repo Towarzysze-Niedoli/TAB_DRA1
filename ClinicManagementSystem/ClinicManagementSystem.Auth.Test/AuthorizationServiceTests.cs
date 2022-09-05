@@ -13,7 +13,7 @@ namespace ClinicManagementSystem.Auth.Test
     public class AuthorizationServiceTests
     {
         private static readonly ISystemContext dbContext = new SystemContext();
-        private static readonly IAuthenticationService authenticationService = new AuthenticationService(new PasswordHasher(), dbContext);
+        private static readonly IAuthenticationService authenticationService = new AuthenticationService(new PasswordHasher(), dbContext, 10000);
         static readonly IAuthorizationService authorizationService = new AuthorizationService(authenticationService, dbContext);
 
         const int n = 5;

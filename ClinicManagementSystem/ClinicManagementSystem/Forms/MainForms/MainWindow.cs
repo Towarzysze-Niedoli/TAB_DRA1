@@ -30,6 +30,8 @@ namespace ClinicManagementSystem.Forms.MainForms
         private VisitsMainForm _visitsMainForm;
         private NewVisitForm _newVisitForm;
         private PerformVisitForm _performVisitForm;
+        private Form _previousForm;
+        private MainFormType? _previousFormType;
 
         private LoginForm _loginForm;
         private SideMenu _sideMenuForm;
@@ -157,7 +159,6 @@ namespace ClinicManagementSystem.Forms.MainForms
             InitializeForm(_newVisitForm, FormType.MainForm);
         }
 
-
         private void ShowManagerDoctorForm()
         {
             UnloadMainForm();
@@ -168,12 +169,16 @@ namespace ClinicManagementSystem.Forms.MainForms
             InitializeForm(_managerForm, FormType.MainForm);
         }
 
-        private void ShowManagerPatientForm()
+        private void ShowManagerPatientForm(Form previousForm = null, MainFormType? previousFormType = null)
         {
+            _previousForm = previousForm;
+            _previousFormType = previousFormType;
             UnloadMainForm();
             _managerForm = new ManagerForm(MainFormType.ManagerPatients, _provider.GetService<IPatientService>(),
                 _provider.GetService<IDoctorService>(), _provider.GetService<IReceptionistService>(), _provider.GetService<ILaboratoryTechnicianService>(),
                 _provider.GetService<ILaboratoryManagerService>(), _provider.GetService<IApplicationUserService>());
+            _managerForm.GoBackButtonClicked += GoBackButtonClicked;
+            _managerForm.SetGoBackButtonAvailability(previousForm != null);
             _activeMainForm = MainFormType.ManagerPatients;
             InitializeForm(_managerForm, FormType.MainForm);
         }
@@ -219,23 +224,30 @@ namespace ClinicManagementSystem.Forms.MainForms
             switch (args.UserLevel)
             {
                 case UserLevel.Manager:
+                {
+                    switch (args.WindowType)
                     {
-                        if (args.WindowType == MainFormType.ManagerLaboratory)
+                        case MainFormType.ManagerLaboratory:
                             ShowManagerLabForm();
-                        else if (args.WindowType == MainFormType.ManagerDoctors)
+                            break;
+                        case MainFormType.ManagerDoctors:
                             ShowManagerDoctorForm();
-                        else if (args.WindowType == MainFormType.ManagerReceptionist)
+                            break;
+                        case MainFormType.ManagerReceptionist:
                             ShowReceptionistForm();
-                        else
+                            break;
+                        default:
                             ShowManagerPatientForm();
-                        break;
+                            break;
                     }
+                    break;
+                }
 
                 case UserLevel.Doctor:
+                {
+                    switch (args.WindowType)
                     {
-                        if (args.WindowType == MainFormType.VisitMainForm)
-                            ShowVisitMainForm();
-                        else if (args.WindowType == MainFormType.PerformVisit)
+                        case MainFormType.PerformVisit:
                         {
                             if (args.AdditionalParams.Length == 0)
                                 throw new ArgumentException("Insufficient parameters");
@@ -243,28 +255,48 @@ namespace ClinicManagementSystem.Forms.MainForms
                             if (currentAppointment is null)
                                 throw new ArgumentException("Argument is not a type of " + typeof(Appointment).ToString());
                             ShowPerformVisitForm(currentAppointment);
+                            break;
                         }
-                        break;
+                        case MainFormType.VisitMainForm:
+                            ShowVisitMainForm();
+                            break;
+                        default:
+                            break;
                     }
+                    break;
+                }
 
                 case UserLevel.Laborant:
                 case UserLevel.HeadOfLab:
-                    {
-                        if (args.WindowType == MainFormType.Laboratory)
-                            ShowLaboratoryForm();
-                        break;
-                    }
+                {
+                    if (args.WindowType == MainFormType.Laboratory)
+                        ShowLaboratoryForm();
+                    break;
+                }
 
                 case UserLevel.Receptionist:
+                {
+                    switch (args.WindowType)
                     {
-                        if (args.WindowType == MainFormType.VisitMainForm)
-                            ShowVisitMainForm();
-                        else if (args.WindowType == MainFormType.ManagerPatients)
-                            ShowManagerPatientForm();
-                        else if (args.WindowType == MainFormType.NewVisit)
+                        case MainFormType.ManagerPatients:
+                        {
+                            if (args.AdditionalParams != null && args.AdditionalParams.Length >= 2)
+                                ShowManagerPatientForm(args.AdditionalParams[0] as Form, (MainFormType)Enum.ToObject(typeof(MainFormType), args.AdditionalParams[1]));
+                            else
+                                ShowManagerPatientForm();
+                            break;
+                        }
+                        case MainFormType.NewVisit:
                             ShowNewVisitForm();
-                        break;
-                    }
+                            break;
+                        case MainFormType.VisitMainForm:
+                            ShowVisitMainForm();
+                            break;
+                        default:
+                            break;
+                    }                        
+                    break;
+                }
 
                 case UserLevel.Undetermined:
                 default:
@@ -288,7 +320,7 @@ namespace ClinicManagementSystem.Forms.MainForms
                     break;
                 case MainFormType.NewVisit:
                     this.MainPanel.Controls.Remove(_newVisitForm);
-                    _newVisitForm.NewPatientButtonClicked += LoadMainForm;
+                    _newVisitForm.NewPatientButtonClicked -= LoadMainForm;
                     _newVisitForm.Hide();
                     break;
                 case MainFormType.PerformVisit:
@@ -304,6 +336,24 @@ namespace ClinicManagementSystem.Forms.MainForms
                 default:
                     break;
             }
+        }
+
+
+        private void GoBackButtonClicked()
+        {
+            if (_previousFormType == null || _previousForm == null)
+                throw new InvalidOperationException("_previousFormType == null || _previousForm == null");
+
+            UnloadMainForm();
+
+            _newVisitForm = _previousFormType switch
+            {
+                MainFormType.NewVisit => _previousForm as NewVisitForm ?? throw new InvalidOperationException("_previousForm is not a NewVisitForm"),
+                _ => throw new NotImplementedException(),
+            };
+            _newVisitForm.NewPatientButtonClicked += LoadMainForm;
+            _activeMainForm = (MainFormType)_previousFormType;
+            InitializeForm(_previousForm, FormType.MainForm);
         }
 
         private void panel1_MouseDown(object sender, MouseEventArgs e)

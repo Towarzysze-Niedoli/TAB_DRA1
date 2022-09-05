@@ -60,6 +60,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.DoctoralLabel = new System.Windows.Forms.Label();
             this.LabTechicianRadioButton = new System.Windows.Forms.RadioButton();
             this.LabManagerRadioButton = new System.Windows.Forms.RadioButton();
+            this.GoBackButton = new System.Windows.Forms.Button();
             this.PatientPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -474,12 +475,29 @@ namespace ClinicManagementSystem.Forms.MainForms
             this.LabManagerRadioButton.Text = "Laboratory Manager";
             this.LabManagerRadioButton.UseVisualStyleBackColor = true;
             // 
+            // GoBackButton
+            // 
+            this.GoBackButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(62)))), ((int)(((byte)(138)))));
+            this.GoBackButton.FlatAppearance.BorderSize = 0;
+            this.GoBackButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.GoBackButton.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.GoBackButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(247)))), ((int)(((byte)(255)))));
+            this.GoBackButton.Location = new System.Drawing.Point(1071, 114);
+            this.GoBackButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.GoBackButton.Name = "GoBackButton";
+            this.GoBackButton.Size = new System.Drawing.Size(121, 36);
+            this.GoBackButton.TabIndex = 34;
+            this.GoBackButton.Text = "Back";
+            this.GoBackButton.UseVisualStyleBackColor = false;
+            this.GoBackButton.Click += new System.EventHandler(this.GoBackButton_Click);
+            // 
             // ManagerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(247)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(1241, 948);
+            this.Controls.Add(this.GoBackButton);
             this.Controls.Add(this.LabManagerRadioButton);
             this.Controls.Add(this.LabTechicianRadioButton);
             this.Controls.Add(this.DoctoralLabel);
@@ -536,5 +554,6 @@ namespace ClinicManagementSystem.Forms.MainForms
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label labelPesel;
+        private System.Windows.Forms.Button GoBackButton;
     }
 }

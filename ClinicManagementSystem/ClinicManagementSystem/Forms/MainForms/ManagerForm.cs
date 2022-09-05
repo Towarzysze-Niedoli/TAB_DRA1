@@ -16,6 +16,9 @@ namespace ClinicManagementSystem.Forms.MainForms
 {
     public partial class ManagerForm : Form
     {
+        public delegate void GoBackButtonClickedEventHandler();
+        public event GoBackButtonClickedEventHandler GoBackButtonClicked;
+
         private MainFormType _formType;
         private IPatientService _patientService;
         private IDoctorService _doctorService;
@@ -161,6 +164,7 @@ namespace ClinicManagementSystem.Forms.MainForms
                 default:
                     break;
             }
+
         }
 
         private void SearchUserButton_Click(object sender, EventArgs e)
@@ -363,6 +367,19 @@ namespace ClinicManagementSystem.Forms.MainForms
             SpecializationComboBox.SelectedIndex = 0;
             LabManagerRadioButton.Checked = false;
             LabTechicianRadioButton.Checked = false;
-        }       
+        }
+
+        public void SetGoBackButtonAvailability(bool enabled)
+        {
+            if (enabled)
+                GoBackButton.Show();
+            else
+                GoBackButton.Hide();
+        }
+
+        private void GoBackButton_Click(object sender, EventArgs e)
+        {
+            GoBackButtonClicked();
+        }
     } 
 }

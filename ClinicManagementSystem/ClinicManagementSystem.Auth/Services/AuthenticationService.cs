@@ -179,7 +179,7 @@ namespace ClinicManagementSystem.Auth.Services
             {
                 if (!dbContext.DbConnectionInitialization.IsCompleted) // PR: zabezpieczenie przed sytuacja, gdzie polaczenie jeszcze nie zostalo nawiazane
                 {
-                    bool x = dbContext.DbConnectionInitialization.Wait(databaseConnectionTimeout); // todo timeout -> appsettings
+                    bool x = dbContext.DbConnectionInitialization.Wait(databaseConnectionTimeout);
                     if (!x)
                         throw new NoDatabaseConnectionException("No connection to the database");
                 }

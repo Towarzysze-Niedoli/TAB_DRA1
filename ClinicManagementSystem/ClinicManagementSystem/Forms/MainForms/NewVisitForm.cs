@@ -228,7 +228,7 @@ namespace ClinicManagementSystem.Forms.MainForms
         {
             if (NewPatientButtonClicked != null)
             {
-                NewPatientButtonClicked.Invoke(this, new PageControllingButtonClickedArgs(MainFormType.ManagerPatients, UserLevel.Receptionist, null));
+                NewPatientButtonClicked.Invoke(this, new PageControllingButtonClickedArgs(MainFormType.ManagerPatients, UserLevel.Receptionist, this, MainFormType.NewVisit));
             }
         }
     }
