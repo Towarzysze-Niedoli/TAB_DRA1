@@ -30,7 +30,7 @@ namespace ClinicManagementSystem.Forms.MainForms
         private IPatientService _patientService;
         private IAppointmentService _appointmentService;
         private IExaminationService _examinationService;
-        private DoctorListForm _previousVisitsListForm;
+        private VisitsListForm _previousVisitsListForm;
         private PersonInfoForm _patientInfoForm;
         private PerformVisitSideFormsSet _currentVisitSet;
         private PerformVisitSideFormsSet _previousVisitSet;
@@ -38,6 +38,7 @@ namespace ClinicManagementSystem.Forms.MainForms
         private bool _patientInfoShown = false;
         private Appointment _appointment;
         private IEnumerable<Examination> _examinations;
+        private IList<Appointment> _previousAppointments;
 
         public PerformVisitForm(IServiceProvider provider, Appointment currentAppointment)
         {
@@ -54,22 +55,12 @@ namespace ClinicManagementSystem.Forms.MainForms
                 _patientInfoForm.InitializeValues(_appointment.Patient, _appointmentService.GetLastAppointmentDateForPatient(_appointment.Patient));
             }
 
-            // PR: nie wiem czemu mialo sluzyc to ponizej
-            //IList<Appointment> appointments = _appointmentService.GetAppointments(null, null, null, _appointment.Patient);
-            //int length = appointments.Count();
-            //IList<DoctorListElement> listElements = new List<DoctorListElement>(length);
-            //int index = 0;
-            //foreach (Appointment appointment in appointments)
-            //{
-            //    listElements.Add(new DoctorListElement(
-            //        index++,
-            //        appointment.Doctor.FirstName + " " + appointment.Doctor.LastName,
-            //        appointment.Doctor.Specialization.ToString(),
-            //        appointment.RegistrationDate.ToString()
-            //    ));
-            //}
-
-            _previousVisitsListForm = new DoctorListForm();
+            _previousAppointments = _appointmentService
+                .GetAppointments(null, null, null, _appointment.Patient)
+                .Where(app => app.Id != currentAppointment.Id && DateTime.Compare(app.ScheduledDate, currentAppointment.ScheduledDate) <= 0) // bez aktualnej wizyty, do dnia dzisiejszego
+                .ToList();
+            _previousVisitsListForm = new VisitsListForm();
+            _previousVisitsListForm.PopulateList(_previousAppointments);
             _previousVisitsListForm.ElementClicked += FillSelectedVisitInformation;
 
             _examinations = _examinationService.GetExaminationsByType(ExaminationType.Laboratory);
@@ -125,7 +116,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             //_examinations = _examinations.Append(examination);
 
             _currentVisitSet.OrderLabForm.PopulateList(_examinations);
-            _previousVisitSet.OrderLabForm.PopulateList(_examinations);
+            //_previousVisitSet.OrderLabForm.PopulateList(_examinations);
 
             _currentVisitSet.OrderLabForm.ClearTextBoxes();
         }
@@ -419,7 +410,34 @@ namespace ClinicManagementSystem.Forms.MainForms
 
         private void FillSelectedVisitInformation(object sender, ListElementClickedArgs args)
         {
-            
+            UnloadRightSideForm();
+
+            Appointment selectedAppointment = _previousAppointments[args.Index];
+
+            _previousVisitSet.VisitTextsForm.FillTextFields(selectedAppointment.Description, selectedAppointment.Diagnosis);
+            if (selectedAppointment.LaboratoryExams != null)
+                _previousVisitSet.OrderLabForm.PopulateList(selectedAppointment.LaboratoryExams.Select(le => le.Examination));
+            else
+                _previousVisitSet.OrderLabForm.PopulateList(Enumerable.Empty<Examination>());
+            _previousVisitSet.OrderLabForm.SetDisabled();
+
+            if (selectedAppointment.PhysicalExams != null)
+            {
+                PhysicalExam bloodPressureExam = selectedAppointment.PhysicalExams.FirstOrDefault(pe => pe.Examination.Code == Examination.BloodPressureExamination.Code),
+                        sugarLevelExam = selectedAppointment.PhysicalExams.FirstOrDefault(pe => pe.Examination.Code == Examination.SugarLevelExamination.Code),
+                        temperatureExam = selectedAppointment.PhysicalExams.FirstOrDefault(pe => pe.Examination.Code == Examination.TemperatureExamination.Code);
+                _previousVisitSet.PhysicalForm.FillFields(
+                    bloodPressureExam != null ? bloodPressureExam.Result : "",
+                    sugarLevelExam != null ? sugarLevelExam.Result : "",
+                    temperatureExam != null ? temperatureExam.Result : ""
+                );
+            }
+            else
+            {
+                _previousVisitSet.PhysicalForm.FillFields("", "", "");
+            }
+
+            LoadRightSideForm();
         }
 
         private void LoadRightSideForm()

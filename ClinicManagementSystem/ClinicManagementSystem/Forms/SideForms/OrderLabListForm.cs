@@ -15,6 +15,15 @@ namespace ClinicManagementSystem.Forms.SideForms
 {
     public partial class OrderLabListForm : ListForm
     {
+        public void SetVisibility(List<bool> visibility)
+        {
+            ListFlowPanel.Controls.Clear();
+            for (int i = 0; i < _elements.Count; i++)
+            {
+                if (visibility[i])
+                    ListFlowPanel.Controls.Add(_elements[i]);
+            }
+        }
 
         public void PopulateList(IEnumerable<Examination> examinations)
         {
@@ -48,7 +57,7 @@ namespace ClinicManagementSystem.Forms.SideForms
 
         public IList<OrderLabListElement> GetSelectedLabListElements()
         {
-            return _elements.Select(e => e as OrderLabListElement).Where(e => e.IsEnabled).ToList();
+            return _elements.Select(e => e as OrderLabListElement).Where(e => e.IsSelected).ToList();
         }
     }
 }

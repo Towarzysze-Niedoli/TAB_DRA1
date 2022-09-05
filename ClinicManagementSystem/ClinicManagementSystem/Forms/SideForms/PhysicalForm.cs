@@ -20,6 +20,13 @@ namespace ClinicManagementSystem.Forms.SideForms
             SetDocking();
         }
 
+        public void FillFields(string bloodPressureText, string sugarLevelText, string temperatureText)
+        {
+            PressureTextBox.Text = bloodPressureText;
+            SugarLevelTextBox.Text = sugarLevelText;
+            TemperatureTextBox.Text = temperatureText;
+        }
+
         private void SetDocking()
         {
             Dock = DockStyle.Fill;

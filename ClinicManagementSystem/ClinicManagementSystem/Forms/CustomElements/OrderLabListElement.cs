@@ -13,6 +13,7 @@ namespace ClinicManagementSystem.Forms.CustomElements
     public partial class OrderLabListElement : ListElement
     {
         public bool IsEnabled { get; private set; }
+        public bool IsSelected { get => _status; }
 
         public Examination Examination { get; private set; }
 

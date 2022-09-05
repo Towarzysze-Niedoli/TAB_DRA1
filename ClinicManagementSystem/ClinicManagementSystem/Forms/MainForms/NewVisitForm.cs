@@ -125,7 +125,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             {
                 if (!IsTimeValid(VisitTimeTextBox.Text))
                 {
-                    MessageBox.Show("Invalid visit time!", "Add New Visit");
+                    MessageBox.Show("Invalid visit time!\nPlease enter time in format HH:MM, for example: " + DateTime.Now.ToString("HH:mm"), "Add New Visit");
                     return;
                 }
                     
@@ -222,7 +222,7 @@ namespace ClinicManagementSystem.Forms.MainForms
         }
 
         private bool IsTimeValid(string time)
-        => new Regex(@"^(?:0?[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$").IsMatch(time);
+        => new Regex(@"^(?:0?[0-9]|1[0-9]|2[0-3])[:.-][0-5][0-9]$").IsMatch(time);
 
         private void OnNewPatientButtonClicked()
         {

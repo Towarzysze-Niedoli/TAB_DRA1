@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using ClinicManagementSystem.Entities.Enums;
@@ -15,6 +16,7 @@ namespace ClinicManagementSystem.Forms.SideForms
     public partial class OrderLabForm : Form
     {
         private OrderLabListForm _orderLabListForm;
+        private IEnumerable<Examination> _examinations;
 
         public delegate void AddExaminationFunction(string code, string examinationName, ExaminationType examinationType);
         private AddExaminationFunction _addExamination;
@@ -38,6 +40,7 @@ namespace ClinicManagementSystem.Forms.SideForms
                 _addExamination = addExamination;
             }
 
+            _examinations = examinations;
             _orderLabListForm = new OrderLabListForm();
             _orderLabListForm.PopulateList(examinations);
             _orderLabListForm.ElementClicked += ListElementClicked;
@@ -70,7 +73,22 @@ namespace ClinicManagementSystem.Forms.SideForms
 
         private void LabSearchButton_Click(object sender, EventArgs e)
         {
-            // TODO
+            string text = this.SearchTextBox.Text.ToLower();
+            if (string.IsNullOrWhiteSpace(text))
+            {
+                this._orderLabListForm.SetVisibility(Enumerable.Repeat(true, _examinations.Count()).ToList());
+            }
+            else
+            {
+                this._orderLabListForm.SetVisibility(
+                    _examinations.Select(e =>
+                        e.Code.ToLower().Contains(text)
+                        || text.Contains(e.Code.ToLower())
+                        || e.ExaminationName.ToLower().Contains(text)
+                        || text.Contains(e.ExaminationName.ToLower())
+                    ).ToList()
+                );
+            }
         }
 
         private void AddButton_Click(object sender, EventArgs e)

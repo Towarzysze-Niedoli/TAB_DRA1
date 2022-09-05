@@ -37,13 +37,10 @@ namespace ClinicManagementSystem.Forms.SideForms
             SetDocking();
         }
 
-        public VisitTextsForm(string interviewText, string diagnosisText)
+        public void FillTextFields(string interviewText, string diagnosisText)
         {
-            InitializeComponent();
             _interviewText = interviewText;
             _diagnosisText = diagnosisText;
-
-            SetDocking();
             ChangeTextFieldText();
         }
 
