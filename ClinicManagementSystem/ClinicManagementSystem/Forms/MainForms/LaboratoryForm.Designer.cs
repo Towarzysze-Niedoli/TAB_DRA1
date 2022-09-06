@@ -36,6 +36,12 @@
             this.cancelBtn = new System.Windows.Forms.Button();
             this.returnBtn = new System.Windows.Forms.Button();
             this.LaboratoryTestsComboBox = new System.Windows.Forms.ComboBox();
+            this.PLabel = new System.Windows.Forms.Label();
+            this.DLabel = new System.Windows.Forms.Label();
+            this.RDLabel = new System.Windows.Forms.Label();
+            this.PatientLabel = new System.Windows.Forms.Label();
+            this.DoctorLabel = new System.Windows.Forms.Label();
+            this.DateLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // LaboratoryTestsPanel
@@ -68,7 +74,7 @@
             // 
             this.LabManagerTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.LabManagerTextBox.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LabManagerTextBox.Location = new System.Drawing.Point(648, 541);
+            this.LabManagerTextBox.Location = new System.Drawing.Point(648, 618);
             this.LabManagerTextBox.Multiline = true;
             this.LabManagerTextBox.Name = "LabManagerTextBox";
             this.LabManagerTextBox.Size = new System.Drawing.Size(519, 193);
@@ -130,12 +136,72 @@
             this.LaboratoryTestsComboBox.TabIndex = 6;
             this.LaboratoryTestsComboBox.SelectedIndexChanged += new System.EventHandler(this.LaboratoryTestsComboBox_SelectedIndexChanged);
             // 
+            // PLabel
+            // 
+            this.PLabel.AutoSize = true;
+            this.PLabel.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.PLabel.Location = new System.Drawing.Point(648, 517);
+            this.PLabel.Name = "PLabel";
+            this.PLabel.Size = new System.Drawing.Size(74, 18);
+            this.PLabel.TabIndex = 31;
+            this.PLabel.Text = "Patient:";
+            // 
+            // DLabel
+            // 
+            this.DLabel.AutoSize = true;
+            this.DLabel.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.DLabel.Location = new System.Drawing.Point(648, 551);
+            this.DLabel.Name = "DLabel";
+            this.DLabel.Size = new System.Drawing.Size(68, 18);
+            this.DLabel.TabIndex = 32;
+            this.DLabel.Text = "Doctor:";
+            // 
+            // RDLabel
+            // 
+            this.RDLabel.AutoSize = true;
+            this.RDLabel.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.RDLabel.Location = new System.Drawing.Point(648, 584);
+            this.RDLabel.Name = "RDLabel";
+            this.RDLabel.Size = new System.Drawing.Size(122, 18);
+            this.RDLabel.TabIndex = 33;
+            this.RDLabel.Text = "Referral date:";
+            // 
+            // PatientLabel
+            // 
+            this.PatientLabel.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.PatientLabel.Location = new System.Drawing.Point(728, 517);
+            this.PatientLabel.Name = "PatientLabel";
+            this.PatientLabel.Size = new System.Drawing.Size(439, 18);
+            this.PatientLabel.TabIndex = 34;
+            // 
+            // DoctorLabel
+            // 
+            this.DoctorLabel.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.DoctorLabel.Location = new System.Drawing.Point(722, 551);
+            this.DoctorLabel.Name = "DoctorLabel";
+            this.DoctorLabel.Size = new System.Drawing.Size(445, 18);
+            this.DoctorLabel.TabIndex = 35;
+            // 
+            // DateLabel
+            // 
+            this.DateLabel.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.DateLabel.Location = new System.Drawing.Point(776, 584);
+            this.DateLabel.Name = "DateLabel";
+            this.DateLabel.Size = new System.Drawing.Size(391, 18);
+            this.DateLabel.TabIndex = 36;
+            // 
             // LaboratoryForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(247)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(1241, 948);
+            this.Controls.Add(this.DateLabel);
+            this.Controls.Add(this.DoctorLabel);
+            this.Controls.Add(this.PatientLabel);
+            this.Controls.Add(this.RDLabel);
+            this.Controls.Add(this.DLabel);
+            this.Controls.Add(this.PLabel);
             this.Controls.Add(this.LaboratoryTestsComboBox);
             this.Controls.Add(this.cancelBtn);
             this.Controls.Add(this.returnBtn);
@@ -164,5 +230,11 @@
         private System.Windows.Forms.Button cancelBtn;
         private System.Windows.Forms.Button returnBtn;
         public System.Windows.Forms.ComboBox LaboratoryTestsComboBox;
+        private System.Windows.Forms.Label PLabel;
+        private System.Windows.Forms.Label DLabel;
+        private System.Windows.Forms.Label RDLabel;
+        private System.Windows.Forms.Label PatientLabel;
+        private System.Windows.Forms.Label DoctorLabel;
+        private System.Windows.Forms.Label DateLabel;
     }
 }

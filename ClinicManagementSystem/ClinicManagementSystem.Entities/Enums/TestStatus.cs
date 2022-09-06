@@ -12,4 +12,22 @@ namespace ClinicManagementSystem.Entities.Enums
         WaitingToBeAccepted,
         Returned
     }
+
+    public static class TestStatusExtensions
+    {
+        public static string ToReadableString(this TestStatus testStatus)
+        {
+            return testStatus switch
+            {
+                TestStatus.Pending => "waiting to be done",
+                TestStatus.Accepted => "approved by manager",
+                TestStatus.Cancelled => "cancelled",
+                TestStatus.WaitingToBeAccepted => "done, waiting to be accepted",
+                TestStatus.Returned => "done, returned by manager",
+                _ => throw new ArgumentOutOfRangeException("Unknown TestStatus")
+            };
+        }
+    }
+
+    
 }

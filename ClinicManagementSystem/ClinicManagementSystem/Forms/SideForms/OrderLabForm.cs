@@ -17,11 +17,13 @@ namespace ClinicManagementSystem.Forms.SideForms
     {
         private OrderLabListForm _orderLabListForm;
         private IEnumerable<Examination> _examinations;
+        private IEnumerable<LaboratoryExam> _labExams;
 
         public delegate void AddExaminationFunction(string code, string examinationName, ExaminationType examinationType);
         private AddExaminationFunction _addExamination;
 
-        public OrderLabForm(IEnumerable<Examination> examinations, AddExaminationFunction addExamination)
+
+        public OrderLabForm(AddExaminationFunction addExamination)
         {
             InitializeComponent();
             SearchTextBox.KeyDown += (sender, args) => { // search on enter click
@@ -39,10 +41,27 @@ namespace ClinicManagementSystem.Forms.SideForms
             {
                 _addExamination = addExamination;
             }
+        }
 
+        public OrderLabForm(IEnumerable<LaboratoryExam> examinations, AddExaminationFunction addExamination) : this(addExamination)
+        {
+            _labExams = examinations;
+            _orderLabListForm = new OrderLabListForm();
+            _orderLabListForm.PopulateList(examinations);
+            FinalizeForm();
+        }
+
+
+        public OrderLabForm(IEnumerable<Examination> examinations, AddExaminationFunction addExamination) : this(addExamination)
+        {
             _examinations = examinations;
             _orderLabListForm = new OrderLabListForm();
             _orderLabListForm.PopulateList(examinations);
+            FinalizeForm();
+        }
+
+        private void FinalizeForm()
+        {
             _orderLabListForm.ElementClicked += ListElementClicked;
             this.ListPanel.Controls.Add(_orderLabListForm);
             _orderLabListForm.Show();
@@ -97,6 +116,11 @@ namespace ClinicManagementSystem.Forms.SideForms
         }
 
         public void PopulateList(IEnumerable<Examination> examinations)
+        {
+            _orderLabListForm.PopulateList(examinations);
+        }
+
+        public void PopulateList(IEnumerable<LaboratoryExam> examinations)
         {
             _orderLabListForm.PopulateList(examinations);
         }

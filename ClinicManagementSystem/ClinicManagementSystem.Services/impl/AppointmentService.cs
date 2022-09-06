@@ -77,7 +77,13 @@ namespace ClinicManagementSystem.Services.impl
         public IEnumerable<Appointment> GetAppointmentsAsEnumerable(AppointmentStatus? status, DateTime? date, Doctor doctor, Patient patient)
         {
             // PR: takie skladanie where pozornie wyglada na malo wydajne, ale dla EF/LINQ wydaje sie nie miec znaczenia, a mamy jedna krotka funkcje na wszystko
-            IEnumerable<Appointment> appointments = context.Appointments.Include(a => a.Patient).Include(a => a.Doctor);
+            IEnumerable<Appointment> appointments = context.Appointments
+                .Include(a => a.Patient)
+                .Include(a => a.Doctor)
+                .Include(a => a.LaboratoryExams).Include(a => a.LaboratoryExams.Select(e => e.Examination))
+                .Include(a => a.LaboratoryExams.Select(e => e.LaboratoryTechnician)).Include(a => a.LaboratoryExams.Select(e => e.LaboratoryManager))
+                .Include(a => a.PhysicalExams).Include(a => a.PhysicalExams.Select(e => e.Examination))
+                .Include(a => a.Receptionist);
 
             if (status != null)
                 appointments = appointments.Where(a => a.AppointmentStatus == status);

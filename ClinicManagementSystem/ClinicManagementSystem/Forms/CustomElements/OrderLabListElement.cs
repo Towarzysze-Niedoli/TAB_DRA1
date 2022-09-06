@@ -1,4 +1,6 @@
-﻿using ClinicManagementSystem.Entities.Models;
+﻿using ClinicManagementSystem.Entities.Enums;
+using ClinicManagementSystem.Entities.Models;
+using ClinicManagementSystem.Extensions;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,6 +18,9 @@ namespace ClinicManagementSystem.Forms.CustomElements
         public bool IsSelected { get => _status; }
 
         public Examination Examination { get; private set; }
+        public LaboratoryExam LabExam { get; private set; }
+
+        private const char _pun = '\u2022';
 
         public OrderLabListElement(int index, Examination examination) : base(index)
         {
@@ -33,6 +38,13 @@ namespace ClinicManagementSystem.Forms.CustomElements
             UpperMainTextBox.Text = examination.FormattedName; // PR: zamienilem label na textbox udajacy label, bo wtedy dziala word wrap :> kocham winformsy
             UpperMainTextBox.SelectionChanged += UpperMainTextBox_SelectionChanged;
             IsEnabled = true;
+
+            ViewDetailsButton.Hide();
+        }
+
+        public OrderLabListElement(int index, LaboratoryExam laboratoryExam) : this(index, laboratoryExam.Examination)
+        {
+            LabExam = laboratoryExam;
         }
 
         private void UpperMainTextBox_SelectionChanged(object sender, EventArgs e)
@@ -79,7 +91,28 @@ namespace ClinicManagementSystem.Forms.CustomElements
         public void SetDisabled()
         {
             IsEnabled = false;
+            ViewDetailsButton.Show();
         }
 
+        private void ViewDetailsButton_Click(object sender, EventArgs e)
+        {
+            if (LabExam is null)
+            {
+                MessageBox.Show("Invalid state: no examination", "Error");
+                return;
+            }
+            
+            MessageBox.Show(
+                $"Examination with status: {LabExam.Status.ToReadableString()}\n\n" +
+                $"{_pun} Result: {LabExam.Result.WordWrap(64) ?? "none"}\n\n" +
+                $"{_pun} Laboratory Technician: {(LabExam.LaboratoryTechnician is null ? "none" : LabExam.LaboratoryTechnician.FullName)}\n\n" +
+                $"{_pun} Laboratory Manager comment: {LabExam.LaboratoryManagerComment.WordWrap(64) ?? "none"}\n\n" +
+                $"{_pun} Laboratory Manager: {(LabExam.LaboratoryManager is null ? "none" : LabExam.LaboratoryManager.FullName)}\n\n" +
+                $"{_pun} Realisation date: {(LabExam.RealisationDate is null ? "none": LabExam.RealisationDate.Value.ToString("d"))}\n\n" +
+                $"{_pun} Completion date: {(LabExam.CompletionDate is null ? "none" : LabExam.CompletionDate.Value.ToString("d"))}\n\n",
+                "Examination info"
+            );
+
+        }
     }
 }

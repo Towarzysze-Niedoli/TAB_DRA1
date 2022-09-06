@@ -33,6 +33,7 @@ namespace ClinicManagementSystem.Forms.CustomElements
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.UpperMainTextBox = new System.Windows.Forms.RichTextBox();
             this.TickPictureBox = new System.Windows.Forms.PictureBox();
+            this.ViewDetailsButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TickPictureBox)).BeginInit();
             this.SuspendLayout();
@@ -84,10 +85,26 @@ namespace ClinicManagementSystem.Forms.CustomElements
             this.TickPictureBox.TabStop = false;
             this.TickPictureBox.Visible = false;
             // 
+            // ViewDetailsButton
+            // 
+            this.ViewDetailsButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(62)))), ((int)(((byte)(138)))));
+            this.ViewDetailsButton.FlatAppearance.BorderSize = 0;
+            this.ViewDetailsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ViewDetailsButton.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.ViewDetailsButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(247)))), ((int)(((byte)(255)))));
+            this.ViewDetailsButton.Location = new System.Drawing.Point(361, 77);
+            this.ViewDetailsButton.Name = "ViewDetailsButton";
+            this.ViewDetailsButton.Size = new System.Drawing.Size(136, 32);
+            this.ViewDetailsButton.TabIndex = 7;
+            this.ViewDetailsButton.Text = "View details";
+            this.ViewDetailsButton.UseVisualStyleBackColor = false;
+            this.ViewDetailsButton.Click += new System.EventHandler(this.ViewDetailsButton_Click);
+            // 
             // OrderLabListElement
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(119)))), ((int)(((byte)(182)))));
+            this.Controls.Add(this.ViewDetailsButton);
             this.Controls.Add(this.TickPictureBox);
             this.Controls.Add(this.UpperMainTextBox);
             this.Controls.Add(this.pictureBox1);
@@ -104,5 +121,6 @@ namespace ClinicManagementSystem.Forms.CustomElements
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.RichTextBox UpperMainTextBox;
         private System.Windows.Forms.PictureBox TickPictureBox;
+        private System.Windows.Forms.Button ViewDetailsButton;
     }
 }

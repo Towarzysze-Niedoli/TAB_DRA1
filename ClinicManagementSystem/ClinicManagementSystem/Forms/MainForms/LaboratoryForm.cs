@@ -68,7 +68,8 @@ namespace ClinicManagementSystem.Forms.MainForms
             LaboratoryTestsComboBox.SelectedIndex = _level switch // domyslnie wyswietlaja sie "to do" albo "done" aka czekajace na zaakceptowanie
             {
                 UserLevel.Laborant => 1,
-                UserLevel.HeadOfLab => 2
+                UserLevel.HeadOfLab => 2,
+                _ => throw new ArgumentOutOfRangeException("UserLevel")
             };
         }
 
@@ -98,6 +99,9 @@ namespace ClinicManagementSystem.Forms.MainForms
             TestsResults.TestTitle = _selectedExam.Examination.FormattedName;
             TestsResults.Result = _selectedExam.Result ?? "";
             LabManagerTextBox.Text = _selectedExam.LaboratoryManagerComment ?? "";
+            PatientLabel.Text = _selectedExam.Appointment.Patient.FullName;
+            DoctorLabel.Text = _selectedExam.Appointment.Doctor.FullName;
+            DateLabel.Text = _selectedExam.ReferralDate.ToString("g");
         }
 
 
@@ -139,6 +143,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             TestsResults.TestTitle = "Please select the test";
             TestsResults.ClearResult();
             LabManagerTextBox.Clear();
+            PatientLabel.Text = DoctorLabel.Text = DateLabel.Text = "";
         }
 
         private void approveBtn_Click(object sender, EventArgs e)

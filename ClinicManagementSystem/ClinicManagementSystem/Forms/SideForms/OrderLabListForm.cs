@@ -31,6 +31,12 @@ namespace ClinicManagementSystem.Forms.SideForms
             base.PopulateList(elements);
         }
 
+        public void PopulateList(IEnumerable<LaboratoryExam> examinations)
+        {
+            List<ListElement> elements = examinations.Select((e, index) => new OrderLabListElement(index, e)).ToList<ListElement>();
+            base.PopulateList(elements);
+        }
+
         protected override void PopulateListExample()
         {
             //_elements = new List<ListElement>

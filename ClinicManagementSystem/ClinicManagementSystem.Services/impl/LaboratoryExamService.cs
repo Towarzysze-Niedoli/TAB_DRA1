@@ -57,7 +57,11 @@ namespace ClinicManagementSystem.Services.impl
 
         private IEnumerable<LaboratoryExam> GetLE()
         {
-            return context.LaboratoryExams.Include("Examination").Include("Appointment").Include("LaboratoryTechnician").Include("LaboratoryManager");
+            return context.LaboratoryExams
+                .Include(e => e.Examination)
+                .Include(e => e.Appointment).Include(e => e.Appointment.Patient).Include(e => e.Appointment.Doctor)
+                .Include(e => e.LaboratoryTechnician)
+                .Include(e => e.LaboratoryManager);
         }
     }
 }

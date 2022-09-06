@@ -68,7 +68,7 @@ namespace ClinicManagementSystem.Forms.MainForms
             _currentVisitSet = new PerformVisitSideFormsSet(new VisitTextsForm(), new PhysicalForm(), new OrderLabForm(_examinations, _addExamination));
             SubscribeToCurrentVisitForms();
 
-            _previousVisitSet = new PerformVisitSideFormsSet(new VisitTextsForm(), new PhysicalForm(), new OrderLabForm(_examinations, null)); // PR: null zeby wylaczyc mozliwosc dodawania badan w trzybie przegladania poprzednich
+            _previousVisitSet = new PerformVisitSideFormsSet(new VisitTextsForm(), new PhysicalForm(), new OrderLabForm(Enumerable.Empty<LaboratoryExam>(), null)); // PR: null zeby wylaczyc mozliwosc dodawania badan w trzybie przegladania poprzednich
             _previousVisitSet.SetDisabled();
 
             _mode = PerformVisitFormMode.Interview;
@@ -416,7 +416,7 @@ namespace ClinicManagementSystem.Forms.MainForms
 
             _previousVisitSet.VisitTextsForm.FillTextFields(selectedAppointment.Description, selectedAppointment.Diagnosis);
             if (selectedAppointment.LaboratoryExams != null)
-                _previousVisitSet.OrderLabForm.PopulateList(selectedAppointment.LaboratoryExams.Select(le => le.Examination));
+                _previousVisitSet.OrderLabForm.PopulateList(selectedAppointment.LaboratoryExams);
             else
                 _previousVisitSet.OrderLabForm.PopulateList(Enumerable.Empty<Examination>());
             _previousVisitSet.OrderLabForm.SetDisabled();
